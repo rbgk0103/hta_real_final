@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">TABLE NO.1</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table">
+				    <tr>
+				        <th style="width: 10px">No</th>
+				        <th>Menu</th>
+				        <th>Quantity</th>
+				        <th style="">Price</th>
+				    </tr>
+				    <tr>
+				        <td>1.</td>
+				        <td>제육볶음</td>
+				        <td>
+				           3
+				        </td>
+				        <td>13000</td>
+				    </tr>
+				    <tr>
+				        <td>2.</td>
+				        <td>오뎅탕</td>
+				        <td>
+				    		 2
+				        </td>
+				        <td>16000</td>
+				    </tr>
+				    <tr>
+				        <td>3.</td>
+				        <td>소주</td>
+				        <td>
+				 			 1
+				        </td>
+				        <td>4000</td>
+				    </tr>
+				    <tr>
+				        <td>4.</td>
+				        <td>맥주</td>
+				        <td>
+				          	2
+				        </td>
+				        <td>4000</td>
+				    </tr>
+				    <tr>
+						<td>5.</td>
+				        <td>경매)콘치즈</td>
+				        <td>
+				          	1
+				        </td>
+				        <td>6400</td>
+				    </tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary">결제하기</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

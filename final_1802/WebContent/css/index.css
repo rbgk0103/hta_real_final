@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightgray;	
+}
+
+#index {
+	margin: 0 auto;
+	width: 1200px;
+}
+
+#index #top {
+	height: 30px;
+	background-color: #B0845D;
+	margin-bottom: 6px;
+	text-align: right;
+}
+
+#index header {
+	height: 80px;
+	background-color: #793A57;
+	margin-bottom: 4px;
+}
+
+#index #topNav {
+	height: 40px;
+	background-color: #4D3339;
+	margin-bottom: 8px;
+}
+
+#index #middleSec {
+	overflow: hidden;
+	margin-bottom: 6px;
+}
+
+#index #middleSec #leftNav {
+	float: left;
+	background-color: #8C873E;
+	width: 200px;
+	min-height: 300px;
+}
+
+#index #middleSec #leftNav ul li:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#index #middleSec #content {
+	float: right;
+	width: 980px;
+	background-color: #D1C5A5;
+	min-height: 300px;
+	padding: 6px;
+	
+}
+
+/* student - list.jsp */
+#index #middleSec #content #list #findArea  {
+	text-align: right;
+	margin-bottom: 6px;
+	margin-right: 6px;
+}
+
+#index #middleSec #content #list #cols {
+	font-weight: bold;
+	text-align: center;
+}
+
+#index #middleSec #content #list #rows {
+	text-align: center;
+}
+
+#index #middleSec #content #list span {
+	text-align: center;
+	display: inline-block;
+	width: 160px;
+}
+
+/* student - register.jsp */
+#index #middleSec #content #register label {
+	display: inline-block;
+	width: 100px;
+}
+
+/* student - view.jsp */
+#index #middleSec #content #view label {
+	display: inline-block;
+	width: 100px;
+}
+
+
+/* board - list.jsp */
+#index #middleSec #content #brdList #findArea  {
+	text-align: right;
+	margin-bottom: 6px;
+	margin-right: 6px;
+}
+
+#index #middleSec #content #brdList #cols {
+	font-weight: bold;
+	text-align: center;
+}
+
+#index #middleSec #content #brdList #rows {
+	text-align: center;
+}
+
+#index #middleSec #content #brdList span {
+	text-align: center;
+	display: inline-block;
+}
+
+#index #middleSec #content #brdList .rownum, .serial, .pserial, .hit, .level, .attcnt {
+	width: 60px;
+}
+
+#index #middleSec #content #brdList .worker, .mdate {
+	width: 120px;
+}
+#index #middleSec #content #brdList .subject {
+	width: 260px;
+}
+#index #middleSec #content #brdList #pageButtons {
+	text-align: center;
+}
+
+#index #middleSec #content #brdList #pageButtons .nowPage {
+	font-weight: bold;
+	background-color: olive;
+}
+
+/* board - viewForm.jsp */
+#index #middleSec #content #viewForm .att  {
+	display: inline-block;
+	border: 2px solid brown;
+}
+
+
+
+
+
+/* footer */
+#index footer {
+	height: 80px;
+	background-color: #A38A5F;
+}

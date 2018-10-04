@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      
+      xsi:schemaLocation=
+       "http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- controller -->
+   <bean id="mvc_controller" class="bean.MvcController"/>
+   
+<!-- view resolver 어떤 디렉토리(./mvc)의 어떤 파일들(.jsp)을 View로 쓰겠다 -->
+   <bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="./mvc/"/> <!-- 접두사 -->
+      <property name="suffix" value=".jsp"/>   <!-- 접미사 -->
+   </bean>
+</beans>
+
