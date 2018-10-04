@@ -5,7 +5,6 @@
     <section class="sidebar">
         <!-- Sidebar user panel -->
         <div class="user-panel">
-
             <div class="pull-left info">
                 <p>Hello , &nbsp;&nbsp;&nbsp;'관리자'님</p>
             </div>
@@ -21,29 +20,50 @@
         </form>
         <ul class="sidebar-menu">
             <li>
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>테이블관리(메인페이지)</span>
+                <a href="?content=table/table_status.jsp">
+                  	<span>테이블(메인페이지)</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-gavel"></i> <span>경매관리</span>
+                <a href="?content=auction/auction_index.jsp">
+                	<span>경매</span>
                 </a>
             </li>
-
             <li>
-                <a href="#">
-                    <i class="fa fa-globe"></i> <span>물품관리</span>
+                <a href="?content=menu/menu_index.jsp">
+                	<span>메뉴</span>
                 </a>
             </li>
-
+            <li id ='menu_game'>
+                <a>
+                	<span>게임</span>
+                </a>
+            </li>
+            <div id = 'submenu_game'>
+	            <li>
+	            	<a>
+	            		<span>게임  관리</span>
+	            	</a>
+	            </li>
+	            <li>
+	            	<a>
+	            		<span>게임 이벤트 관리</span>
+	            	</a>
+	            </li>
+			</div>
             <li class="#">
                 <a href="simple.html">
-                    <i class="fa fa-glass"></i><span>정산</span>
+                	<span>정산</span>
                 </a>
             </li>
-
         </ul>
     </section>
     <!-- /.sidebar -->
 </aside>
+<script>
+$(document).ready(function(){
+	$("#menu_game").click(function(){
+	    $("#submenu_game").slideToggle();
+	});
+})
+</script>
