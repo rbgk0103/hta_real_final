@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- bean -->
+	<bean id="page" class="bean.PageCompute">
+		<property name="listSize" value="10"/>
+		<property name="blockSize" value="5"/>
+		<property name="nowPage" value="1"/>
+	</bean>
+	<bean id="mbr_vo" class="bean.MembersVo"/>
+	<bean id="sign_vo" class="bean.SignCodeVo"/>
+	<bean id="mbr_dao" class="bean.MembersDao">
+		<constructor-arg ref="page"/>
+		<constructor-arg ref="mbr_vo"/>
+		<constructor-arg ref="sign_vo"/>
+	</bean>
+	
+	<!-- controller -->
+	<bean id="mbr_controller" class="bean.MembersController">
+		<constructor-arg ref="mbr_dao"/>
+		<constructor-arg ref="page"/>
+	</bean>
+	
+	<!-- view resolver -->
+	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="./members/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+      
+</beans>
