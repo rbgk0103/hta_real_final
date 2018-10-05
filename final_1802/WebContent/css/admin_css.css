@@ -868,6 +868,15 @@ content: '';
   padding: 12px 5px 12px 15px;
   display: block;
 }
+.sidebar .sidebar-menu > div > li > a {
+  
+  padding: 12px 5px 12px 15px;
+  display: block;
+  font-size: 12px;
+  padding-left: 30px;
+}
+#submenu_game{display:none;}
+
 .sidebar .sidebar-menu > li > a > .fa,
 .sidebar .sidebar-menu > li > a > .glyphicon,
 .sidebar .sidebar-menu > li > a > .ion {
@@ -2963,6 +2972,14 @@ vertical-align: top;
   color: #f6f6f6;
   background: #425164;
 }
+
+.skin-black .sidebar > .sidebar-menu > div > li > a:hover,
+.skin-black .sidebar > .sidebar-menu > div > li.active > a {
+  color: #f6f6f6;
+  background: #425164;
+}
+
+
 .skin-black .sidebar > .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
   background: #35404d;

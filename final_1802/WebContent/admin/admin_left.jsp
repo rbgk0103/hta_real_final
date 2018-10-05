@@ -41,12 +41,12 @@
             </li>
             <div id = 'submenu_game'>
 	            <li>
-	            	<a>
+	            	<a href="?content=game/gt_list.jsp">
 	            		<span>게임  관리</span>
 	            	</a>
 	            </li>
 	            <li>
-	            	<a>
+	            	<a href="?content=game/ge_list.jsp">
 	            		<span>게임 이벤트 관리</span>
 	            	</a>
 	            </li>

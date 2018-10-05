@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Director | Simple Tables</title>
+<title>관리자 페이지</title>
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
@@ -16,7 +15,7 @@
 <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
 <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-<!-- google font -->
+<!-- google font -->.
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
 <link href="../css/admin_css.css" rel="stylesheet" type="text/css" />
