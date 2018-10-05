@@ -60,13 +60,13 @@
    </servlet-mapping>
    
    	<servlet>
-      <servlet-name>table</servlet-name>
+      <servlet-name>admin</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
    </servlet>
    <servlet-mapping>
-      <servlet-name>table</servlet-name>
-      <url-pattern>*.tbl</url-pattern>
+      <servlet-name>admin</servlet-name>
+      <url-pattern>*.adm</url-pattern>
    </servlet-mapping>
 </web-app>
 

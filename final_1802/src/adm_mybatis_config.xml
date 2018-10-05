@@ -20,7 +20,7 @@
 	
 	<!-- mappers 사용할 xml파일 지정-->
 	<mappers>
-		<mapper resource="tables.xml" />
+		<mapper resource="admin.xml" />
 	</mappers>
 	
 </configuration>
