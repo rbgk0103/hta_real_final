@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+#chatBody {
+	width: 560px;
+	height: 800px;
+	border: 6px solid #FF7E71;
+	border-radius: 30px;
+	background: #030303;
+	color: #ffffff;
+}
+
+#chatContent {
+	height: 477px;
+	overflow: auto;
+	padding: 15px;
+}
+
+#chatWrap {
+	
+}
+
+#chatFooter {
+	
+}
+
+#chatHeader {
+	height: 73px;
+	overflow: hidden;
+	text-align: center;
+	margin: 15px 0 15px 0;
+	padding: 6px;
+}
+
+#chatNotice {
+	background: #333333;
+	border-radius: 20px;
+	text-align: center;
+	padding-top: 10px;
+	overflow: visible;
+	margin-top: 7px;
+}
+
+#msgForm {
+	color: #000000;
+}
+
+#btnChatSend {
+	padding: 32px 12px;
+	border-radius: 11px;
+}
+
+#msg {
+	padding: 2px 12px;
+	width: 75%;
+}
+
+#marginBottomZero {
+	margin-bottom: 0px;
+}
+
+#chatBox {
+	border-radius: 20px;
+	background: #857393;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+#allCircleBorder {
+	border-radius: 100px;
+	border: 1px solid #888888;
+	width: 13.333333%;
+	cursor: pointer;
+}
+
+#circleBorder {
+	border-radius: 100px;
+	border: 1px solid #888888;
+	margin-right: 4px;
+	width: 27.666667%;
+	cursor: pointer;
+}
+
+#circleBorder p {
+	padding-top: 14px;
+}
+
+#allCircleBorder p {
+	padding: 24px 0 11px 0;
+}
+
+#userList {
+	overflow: hidden;
+}
+
+#whiteLine {
+	background: #dfdfdf;
+	margin-top: 10px;
+	padding: 0;
+}
+
+.receive {
+	float: left;
+	text-align: left;
+}
+
+.chatReceiveBox {
+	background: #952389;
+	padding: 9px 12px 9px 12px;
+	border-radius: 20px;
+}
+
+.send {
+	float: right;
+	text-align: left;
+}
+
+.send>h6 {
+	text-align: right;
+}
+
+.chatSendBox {
+	background: #239589;
+	padding: 9px 12px 9px 12px;
+	border-radius: 20px;
+}
+
+#angleLeftIcon {
+	margin-top: 12px;
+	margin-right: 17px;
+	cursor: pointer;
+}
+
+#angleRightIcon {
+	margin-top: 12px;
+	float: right;
+	cursor: pointer;
+}
