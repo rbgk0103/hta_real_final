@@ -12,7 +12,8 @@
 <script type="text/javascript">
 $(function(){
     $("#popbutton").click(function(){
-        $('div.modal').modal({remote : 'auction.jsp', backdrop: 'static',keyboard: false});
+    	
+        $('div.modal').modal({remote : 'auction.jsp?no=1', backdrop: 'static',keyboard: false});
     })
 })
 </script>
