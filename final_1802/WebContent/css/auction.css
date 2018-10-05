@@ -1,0 +1,122 @@
+@charset "EUC-KR";
+#frm_auction {
+	display: inline-block;
+	border-radius: 15px;
+	width: 700px;
+	height: 500px;
+	color: white;
+	background-color:#343a4e;
+	box-shadow: 	
+	0 0 10px #fff,
+    0 0 20px #fff,
+    0 0 30px #fff, 
+    0 0 40px #d1ad8f, 
+    0 0 70px #d1ad8f,
+    0 0 80px #d1ad8f, 
+    0 0 100px #d1ad8f, 
+    0 0 150px #d1ad8f;
+}
+#frm_auction .start_price{
+	font-size : 20px;
+}
+
+#frm_auction .now_price{
+	color : red;
+	font-size : 45px;
+}
+
+#frm_auction .menu_name{
+	font-size	   : 35px;
+	text-decoration: underline;
+}
+
+ #frm_auction #auction_menu{
+	float:left;
+	margin : 40px;
+	
+} 
+
+#frm_auction #header{
+    list-style: none;
+	text-align: center;
+
+	
+}
+#frm_auction .btn_two{
+	padding-left : 25px;
+	margin : 30px 0 0 55px;
+	padding : 7px 30px;
+	border-radius: 6px;
+	color: #000000;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+}
+#frm_auction .btn {
+	margin : 25px 0 0 55px;
+	padding : 10px 45px;
+	border-radius: 6px;
+    color: #000000;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+
+}
+
+#frm_auction .btn:hover {
+    color: #ffffff;
+    background-color: #000000;  
+}
+
+#frm_auction .btn_two:hover {
+    color: #ffffff;
+    background-color: #000000;
+}
+#frm_auction #win_ment{
+	padding: 80px;
+	font-size: 20px;
+	
+}
+
+#frm_auction #win_ment .ment{
+	color : red;
+}
+
+#frm_auction #btnClose {
+	margin : 150px 0px 0px 130px;
+	padding : 10px 15px;
+    color: #000000;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+    transition: all 0.1s ease;
+    -webkit-transition: all 0.1s ease;
+    -moz-transition: all 0.1s ease;
+    border-radius: 10px; 
+}
+
+#frm_auction #btnClose:hover {
+    color: #ffffff;
+    background-color: #000000; 
+}
+#frm_auction #btnDiv{
+   margin : 80px 0 0 270px;
+}
+
+
+#frm_auction #input_ment{
+	padding-top: 45px;
+	font-size: 25px;
+}
+#frm_auction #input_ment .ment{
+	color : red;
+}
+#frm_auction .btnInput {
+	padding : 10px 20px;
+	margin: 25px 0 0 55px;	/* ╩С ©Л го аб */
+	border-radius: 6px;
+    color: #000000;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+}
+#frm_auction .btnInput:hover {
+    color: #ffffff;
+    background-color: #000000; 
+}
