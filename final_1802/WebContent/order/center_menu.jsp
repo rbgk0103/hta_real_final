@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%
 	String typeName = "snack";
 	if (request.getParameter("typeName") != null){
@@ -21,7 +22,7 @@
 			<div class="col-md-3">
 				<div class="item" onclick='appendMenu("snack")'> 
 			        <!-- Item img -->
-			        <div class="item-img"> <img class="img-1" src="./order/img/dani.jpg" alt="" ></div>
+			        <div class="item-img"> <img class="img-1" src="./img/ord_img/dani.jpg" alt="" ></div>
 			        <!-- Item Name -->
 			        <div class="item-name"><a href="#.">안주류</a></div>
 			        <!-- Price --> 
@@ -35,10 +36,10 @@
 			<div class="col-md-3">
 				<div class="item" onclick='appendMenu("liquor")'> 
 			        <!-- Item img -->
-			        <div class="item-img"> <img class="img-1" src="./order/img/dadadadada.jpg" alt="" ></div>
+			        <div class="item-img"> <img class="img-1" src="./img/ord_img/dadadadada.jpg" alt="" ></div>
 			        <!-- Item Name -->
 			        <div class="item-name"><a href="#.">주류</a></div>
-			        <!-- Price --> 
+			        Price 
 			        <span class="price">5.0</span>
 		       </div>
 			</div>
