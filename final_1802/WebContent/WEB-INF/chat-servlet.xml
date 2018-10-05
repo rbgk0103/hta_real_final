@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+   xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="chatVo" class="bean.ChatVo">
+		<property name="chat_date"/>
+		<property name="chat_text"/>
+		<property name="chat_sender"/>
+		<property name="chat_receiver"/>
+		<property name="guest_no"/>
+	</bean>
+	<bean id="chatDao" class="bean.ChatDao">
+	
+	</bean>
+	<!-- controller -->
+	<bean id="ChatController" class="bean.ChatController">
+		<constructor-arg ref="chatDao"/>
+	</bean>
+	
+	<!-- view resolver -->
+	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="./chat/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+      
+</beans>
