@@ -71,7 +71,7 @@ if(request.getParameter("content") !=null){
 			</a>
 		</div>
 		<div class='col-md-6' id = 'header_menu'>
-			<a href ="main.ord">메뉴</a>
+			<a href="main.ord">메뉴</a>
 			<a href ="#">게임</a>
 			<a href ="#">채팅</a>
 			<a href ="#">로그인</a>
@@ -86,5 +86,10 @@ if(request.getParameter("content") !=null){
 	</div>
 </div>
 <%@ include file = "./modal_call_employee.jsp" %>
+<script>
+function goOrderMenu(){
+	$('#content').load('main.ord');
+}
+</script>
 </body>
 </html>
