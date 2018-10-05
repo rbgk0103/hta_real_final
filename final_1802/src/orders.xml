@@ -4,4 +4,6 @@
 
 <mapper namespace='ord'>
 
+	<!-- menu 테이블에서 menu목록을 가져오기 -->
+<!-- 	<select id='menu_list' parameterType -->
 </mapper>

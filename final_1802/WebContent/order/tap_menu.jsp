@@ -13,7 +13,7 @@ var ff = document.tap_frm;
 function goMenu(id){
 	ff.typeName.value = id;
 	var param = $('#tap_frm').serialize();
-	$('#menu_list').load('center_menu.jsp', param);
+	$('#menu_list').load('./order/center_menu.jsp', param);
 	console.log(param);
 }
 
