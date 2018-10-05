@@ -106,3 +106,108 @@
    margin-top: 20px;
    color: #2d3a4b;
 }
+
+/* left_menu */
+#menu {
+	display: inline-block;
+	background: #343a4e;
+	color: #515b7b;
+ 	width: 100%; 
+	height: 700px;
+}
+
+#menu ul {padding-top: 30px;}
+
+#menu ul li {
+	list-style: none;
+	font-size: 20px;
+	text-decoration: underline;
+	margin: 5px;
+}
+
+#menu ul li:hover, #menu ul li:active {
+/* 	list-style: none; */
+	font-size: 20px;
+	text-decoration: underline;
+	color: white;
+	text-shadow: 0 0 10px #fff,
+		 0 0 20px #fff,
+ 		 0 0 30px #fff, 
+		 0 0 40px #d1ad8f, 
+		 0 0 70px #d1ad8f,
+ 		 0 0 80px #d1ad8f, 
+ 		 0 0 100px #d1ad8f, 
+ 		 0 0 150px #d1ad8f; 
+}
+
+/* right_menu */
+#order {
+	display: inline-block;
+ 	width: 100%; 
+	height: 700px;
+}
+
+#order #order_list {
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 35px;
+/* 	border-bottom: 1px solid #9b9b9b; */
+	margin-bottom: 1%;
+}
+
+#order_status {
+	height: 60%;
+	overflow-y: scroll; 
+}
+
+#pre_order {
+	height: 10%;
+	background: #f9f9f9;
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #9b9b9b;
+	color: #c3c3c3;
+}
+
+#pre_order #previous {
+	float: left;
+}
+
+#pre_order #pre_price {
+	float: right;
+}
+
+#now_order {
+	height: 10%;
+	color: #424242;
+}
+
+#now_order #now {
+	float: left;
+}
+
+#now_order #now_price {
+	float: right;
+}
+
+#to_order {
+	height: 15%;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	background: #fd4520;
+	text-align: center;
+	line-height: 5;
+}
+
+.btn-primary {
+	background: #fd4520;
+	color: white;
+	font-weight: bold;
+	border-radius: 0;
+	border: none;
+}
+
+.btn-default {
+	border-radius: 0;
+}

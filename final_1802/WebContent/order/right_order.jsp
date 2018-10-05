@@ -1,86 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>right_order</title>
-<style>
-#order {
-	display: inline-block;
- 	width: 100%; 
-	height: 700px;
-}
-
-#order #order_list {
-	display: block;
-	text-align: center;
-	font-weight: bold;
-	font-size: 35px;
-/* 	border-bottom: 1px solid #9b9b9b; */
-	margin-bottom: 1%;
-}
-
-#order_status {
-	height: 60%;
-	overflow-y: scroll; 
-}
-
-#pre_order {
-	height: 10%;
-	background: #f9f9f9;
-	border-top: 1px solid #dddddd;
-	border-bottom: 1px solid #9b9b9b;
-	color: #c3c3c3;
-}
-
-#pre_order #previous {
-	float: left;
-}
-
-#pre_order #pre_price {
-	float: right;
-}
-
-#now_order {
-	height: 10%;
-	color: #424242;
-}
-
-#now_order #now {
-	float: left;
-}
-
-#now_order #now_price {
-	float: right;
-}
-
-#to_order {
-	height: 15%;
-	color: white;
-	font-weight: bold;
-	font-size: 20px;
-	background: #fd4520;
-	text-align: center;
-	line-height: 5;
-}
-
-.btn-primary {
-	background: #fd4520;
-	color: white;
-	font-weight: bold;
-	border-radius: 0;
-	border: none;
-}
-
-.btn-default {
-	border-radius: 0;
-}
-
-
-</style>
-</head>
-<body>
 <div id='order'>
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
@@ -177,5 +96,3 @@
     </div>
   </div>
 </div>
-</body>
-</html>
