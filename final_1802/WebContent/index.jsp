@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src='./lib/jquery-3.3.1.js'></script>
 <link rel='stylesheet' type='text/css' href='./css/index.css'>
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -20,6 +19,7 @@
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
 <link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
+<link href="./css/orders_css.css" rel="stylesheet" type="text/css" />
 <!-- jQuery 2.0.2 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -29,8 +29,8 @@
 #header{height:140px;}
 #header_logo{height:100%;}
 #header_logo a >img{height:100%;cursor:pointer;}
-#header_menu{    line-height: 5;}
-#header_menu a {font-size:30px;margin: 0px 5%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
+#header_menu{line-height: 5;}
+#header_menu a{font-size:30px;margin: 0px 4%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
 #header_menu a:hover{
 text-shadow: 
 	0 0 10px #fff,
@@ -46,11 +46,16 @@ text-shadow:
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
    
 </style>
-
 <title>중앙 포차</title>
 </head>
 <body>
+<%
+String content = "order/order_menu.jsp";
 
+if(request.getParameter("content") !=null){
+	content = request.getParameter("content");  
+}
+%>
 <div id = 'wrap'>
 	<div id = 'header'>
 		<div class='col-md-4'  id = 'header_logo'>
@@ -58,20 +63,23 @@ text-shadow:
 				<img src ='./img/logo.png'>
 			</a>
 		</div>
-		
 		<div class='col-md-6' id = 'header_menu'>
 			<a href ="#">메뉴</a>
 			<a href ="#">게임</a>
 			<a href ="#">채팅</a>
 			<a href ="#">로그인</a>
+			<a href ="#" data-toggle="modal" data-target="#myModal">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
 			<a>No.01</a>
 		</div>
 	</div>
 	<div id ='content'>
-	
+		<jsp:include page="<%=content %>"/>
 	</div>
+</div>
+<div id = 'modal_call_employee'>
+
 </div>
 </body>
 </html>
