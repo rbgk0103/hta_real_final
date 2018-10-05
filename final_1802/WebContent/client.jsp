@@ -6,7 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		
-		<title>Insert title here</title>
+		<title>**채팅방**</title>
 		<!-- jquery CDN -->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.js"
 			integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
@@ -19,12 +19,48 @@
 		
 		<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		
 		<script>
+		function DisplayIP(response) {
+			document.getElementById("chatContent").innerHTML = response.ip;
+		}
 			$(document).ready(function() {
+				
 				var webSocket = new WebSocket("ws://192.168.0.26:7080/final_1802/client");
 				
 				webSocket.onopen = function() {
-					//logger.info('New websocket connection from %s:%d', ws._socket.remoteAddress, ws._socket.remotePort);
+					console.log("gd");
+					var ipAddress;
+					
+					// 브라우저마다 prefix가 달라 아래와 같이 처리한다.
+					var RTCPeerConnection = window.RTCPeerConnection;
+					// RTCPeerConnection 객체 생성 
+					var rtc = new RTCPeerConnection();
+					// 임의의 이름으로 채널 생성
+					rtc.createDataChannel("TEMP");
+					// 이벤트 핸들러 설정, ice 후보가 감지 되었을때 호출됩니다.
+					// 원래는 이곳에서 해당 candidate를 현재 커넥션에 연결해야 하나, ip를 알아내는 것이 목적이기 때문에 별다른 행동을 하지 않습니다.
+					rtc.onicecandidate = function(iceevent) {
+					  if( iceevent && iceevent.candidate && iceevent.candidate.candidate ) {
+					    var r = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/;
+					    var t = iceevent.candidate.candidate.match(r);
+							console.log(t[0]); //IP
+					  }
+					}
+					
+					/* 
+					var script = document.createElement("script");
+			        script.type = "text/javascript";
+			        script.src = "http://jsonip.appspot.com/?callback=DisplayIP";
+			        document.getElementsByTagName("head")[0].appendChild(script); */
+					
+					/* $.get("http://ipinfo.io", function(e) {
+						console.log("gd2");
+						ipAddress = e.ip;
+					}, "jsonp");
+					console.log(ipAddress);
+					webSocket.send(ipAddress); */
+					
 					$('#chatContent').append("환영합니다!");
 				}
 				

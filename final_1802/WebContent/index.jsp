@@ -7,25 +7,55 @@
 
 <script src='./lib/jquery-3.3.1.js'></script>
 <link rel='stylesheet' type='text/css' href='./css/index.css'>
-
-<script>
-// jQuery - 페이지 로딩되면 실행
-$(document).ready(function() {
-	$('#leftNav').load('./pages/leftNav.jsp');
-});
-
-
-// 페이지 로드용
-function loadPage(page) {
-	$('#content').load(page);
-	sessionStorage.setItem("content", page);
+<link rel='stylesheet' type='text/css' href='./css/bootstrap.min.css'>
+<style>
+#wrap {background-image : url(./img/background-img.jpg);height:900px;width:100%;color:#fff;}
+#header{height:140px;}
+#header_logo{height:100%;}
+#header_logo a >img{height:100%;cursor:pointer;}
+#header_menu{    line-height: 5;}
+#header_menu a {font-size:30px;margin: 0px 5%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
+#header_menu a:hover{
+text-shadow: 
+	0 0 10px #fff,
+	0 0 20px #fff,
+	0 0 30px #fff, 
+	0 0 40px #d1ad8f, 
+	0 0 70px #d1ad8f,
+	0 0 80px #d1ad8f, 
+	0 0 100px #d1ad8f, 
+	0 0 150px #d1ad8f;
 }
-</script>
+#header_tableNo{line-height: 2.1;}
+#header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
+   
+</style>
 
-
-<title>1802_final index</title>
+<title>중앙 포차</title>
 </head>
 <body>
-1802_final index
+
+<div id = 'wrap'>
+	<div id = 'header'>
+		<div class='col-md-4'  id = 'header_logo'>
+			<a href ="index.jsp">
+				<img src ='./img/logo.png'>
+			</a>
+		</div>
+		
+		<div class='col-md-6' id = 'header_menu'>
+			<a href ="#">메뉴</a>
+			<a href ="#">게임</a>
+			<a href ="#">채팅</a>
+			<a href ="#">로그인</a>
+		</div>
+		<div class='col-md-1' id = 'header_tableNo'>
+			<a>No.01</a>
+		</div>
+	</div>
+	<div id ='content'>
+	
+	</div>
+</div>
 </body>
 </html>
