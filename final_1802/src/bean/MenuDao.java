@@ -24,7 +24,7 @@ public class MenuDao {
 	public MenuDao() {
 
 		try {
-			s =	FinalFactory.getFactory().openSession();
+			s =	MenuFactory.getFactory().openSession();
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();

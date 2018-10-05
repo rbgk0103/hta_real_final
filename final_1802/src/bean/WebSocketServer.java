@@ -1,4 +1,4 @@
-package server;
+package bean;
 
 import java.util.ArrayList;
 import java.util.Collections;
