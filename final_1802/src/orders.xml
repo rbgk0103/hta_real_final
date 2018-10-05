@@ -5,5 +5,9 @@
 <mapper namespace='ord'>
 
 	<!-- menu 테이블에서 menu목록을 가져오기 -->
-<!-- 	<select id='menu_list' parameterType -->
+	<select id='menu_list' parameterType='String' resultType='bean.MenuVo'>
+		select menu_no, menu_type, menu_name, menu_price, menu_image, menu_hit, menu_day 
+		from menu 
+		where menu_type = #{findStr}
+	</select>
 </mapper>

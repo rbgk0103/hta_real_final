@@ -7,9 +7,15 @@ import org.apache.ibatis.session.SqlSession;
 public class OrdersDao {
 	SqlSession sqlSession;
 	
+	public OrdersDao() {
+		sqlSession = OrdersFactory.getFatory().openSession();
+	}
 	public List<MenuVo> menuSelect(String findStr){
-		List<MenuVo> vo = null;
-		System.out.println("이거 menu뽑을거야");
-		return vo;
+		if (findStr == null) {findStr = "grill";}
+		
+		System.out.println("findStr:" + findStr);
+		List<MenuVo> list = sqlSession.selectList("ord.menu_list", findStr);
+		System.out.println(list.size());
+		return list;
 	}
 }

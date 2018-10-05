@@ -2,8 +2,6 @@ package bean;
 
 import java.util.List;
 
-import javax.swing.text.AbstractDocument.Content;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +23,7 @@ public class OrdersController {
 		List<MenuVo> list = dao.menuSelect(findStr);
 		System.out.println("우리모두 하하하");
 		
+		mv.addObject("list", list);
 		mv.setViewName("order_menu");
 		return mv;
 	}
