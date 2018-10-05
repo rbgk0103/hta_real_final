@@ -60,12 +60,12 @@
    </servlet-mapping>
    
    	<servlet>
-      <servlet-name>tables</servlet-name>
+      <servlet-name>table</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
    </servlet>
    <servlet-mapping>
-      <servlet-name>tables</servlet-name>
+      <servlet-name>table</servlet-name>
       <url-pattern>*.tbl</url-pattern>
    </servlet-mapping>
 </web-app>
