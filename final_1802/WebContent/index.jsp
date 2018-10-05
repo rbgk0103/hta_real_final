@@ -15,7 +15,7 @@
 <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
 <link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
-<!-- google font -->.
+<!-- google font -->
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
 <link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
@@ -44,7 +44,14 @@ text-shadow:
 }
 #header_tableNo{line-height: 2.1;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
-   
+
+#modal_call_employee_header{background-color:#282832;color:#fff;}
+#modal_call_employee_text{padding:20px 0;}
+#modal_call_employee_check{font-size: 20px;padding-bottom:10px;}
+#modal_call_employee_check > label:first-child{margin-left:0px;}
+#modal_call_employee_check > label{font-weight:100;margin:0 10px;}
+#modal_call_employee_footer{}
+#modal_call_employee_footer_commit{background-color:#282832;}
 </style>
 <title>중앙 포차</title>
 </head>
@@ -64,11 +71,11 @@ if(request.getParameter("content") !=null){
 			</a>
 		</div>
 		<div class='col-md-6' id = 'header_menu'>
-			<a href ="#">메뉴</a>
+			<a href ="?content=order/order_menu.jsp">메뉴</a>
 			<a href ="#">게임</a>
 			<a href ="#">채팅</a>
 			<a href ="#">로그인</a>
-			<a href ="#" data-toggle="modal" data-target="#myModal">직원호출</a>
+			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
 			<a>No.01</a>
@@ -78,8 +85,6 @@ if(request.getParameter("content") !=null){
 		<jsp:include page="<%=content %>"/>
 	</div>
 </div>
-<div id = 'modal_call_employee'>
-
-</div>
+<%@ include file = "./modal_call_employee.jsp" %>
 </body>
 </html>
