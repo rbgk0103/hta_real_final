@@ -951,7 +951,7 @@ content: '';
     right: -220px;
   }
   .row-offcanvas-left .sidebar-offcanvas {
-    left: -220px;
+    left: -300px;
   }
   .row-offcanvas-right.active {
     right: 220px;

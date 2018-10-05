@@ -15,7 +15,7 @@
 <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
 <link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
-<!-- google font -->.
+<!-- google font -->
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
 <link href="../css/admin_css.css" rel="stylesheet" type="text/css" />
