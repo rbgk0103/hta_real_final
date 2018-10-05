@@ -22,7 +22,7 @@ public class AdminController {
 			
 			
 			
-			mv.setViewName("table_status");
+			mv.setViewName("table/table_status");
 			return mv;
 		}
 }

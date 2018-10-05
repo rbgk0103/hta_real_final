@@ -10,19 +10,19 @@
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
 <!-- bootstrap 3.0.2 -->
-<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- font Awesome -->
-<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
-<link href="../css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
 <!-- google font -->
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
-<link href="../css/admin_css.css" rel="stylesheet" type="text/css" />
+<link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
 <!-- jQuery 2.0.2 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../lib/bootstrap.min.js" type="text/javascript"></script>
+<script src="./lib/bootstrap.min.js" type="text/javascript"></script>
 <!-- Director App -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>

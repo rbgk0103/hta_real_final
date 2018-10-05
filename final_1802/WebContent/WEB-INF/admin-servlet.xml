@@ -10,12 +10,12 @@
 		
 <!-- controller -->
 	<bean id="adm_controller" class="bean.AdminController">
-		<constructor-arg ref="tbl_dao"/>
+		<constructor-arg ref="adm_dao"/>
 	</bean>
 	
 <!-- view resolver -->
 	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="admin/admin_index.jsp?content="/>
+		<property name="prefix" value="/admin/admin_index.jsp?content="/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 </beans>

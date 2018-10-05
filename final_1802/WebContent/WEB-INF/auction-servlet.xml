@@ -6,4 +6,11 @@
    xmlns:aop="http://www.springframework.org/schema/aop"
    xsi:schemaLocation="http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd">
+      
+      <!-- view resolver -->
+      <!-- admin_auctin 이랑 auction 합치자. -->
+	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="./auction/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
 </beans>
