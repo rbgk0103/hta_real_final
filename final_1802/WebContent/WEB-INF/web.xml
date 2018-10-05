@@ -49,6 +49,15 @@
       <url-pattern>*.menu</url-pattern>
    </servlet-mapping>
 	
+	<servlet>
+      <servlet-name>chat</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>chat</servlet-name>
+      <url-pattern>*.chat</url-pattern>
+   </servlet-mapping>
 </web-app>
 
 
