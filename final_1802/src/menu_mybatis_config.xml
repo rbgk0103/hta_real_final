@@ -4,6 +4,10 @@
 <!-- 데이터베이스를 연결하기 위한 기본정보를 제공 -->
 
 <configuration>
+    <settings>
+        <setting name="cacheEnabled" value="false" />
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
