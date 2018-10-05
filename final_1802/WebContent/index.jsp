@@ -7,7 +7,23 @@
 
 <script src='./lib/jquery-3.3.1.js'></script>
 <link rel='stylesheet' type='text/css' href='./css/index.css'>
-<link rel='stylesheet' type='text/css' href='./css/bootstrap.min.css'>
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<meta name="description" content="Developed By M Abdur Rokib Promy">
+<meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+<!-- bootstrap 3.0.2 -->
+<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- font Awesome -->
+<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<!-- google font -->.
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<!-- Theme style -->
+<link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
+<!-- jQuery 2.0.2 -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="./lib/bootstrap.min.js" type="text/javascript"></script>
 <style>
 #wrap {background-image : url(./img/background-img.jpg);height:900px;width:100%;color:#fff;}
 #header{height:140px;}
