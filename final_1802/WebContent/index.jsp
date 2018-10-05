@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src='./lib/jquery-3.3.1.js'></script>
 <link rel='stylesheet' type='text/css' href='./css/index.css'>
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
