@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns =	  "http://www.springframework.org/schema/beans"
+	xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	">
+	<!-- bean -->
+	<bean id = 'menu_dao' class = 'bean.MenuDao'/>
+	<bean id = 'menu_vo' class = 'bean.MenuVo'/>
+	
+	<!-- controller -->
+	<bean id = 'menu_controller' class = 'bean.MenuController'>
+		<constructor-arg ref = 'menu_dao'/>
+		<constructor-arg ref = 'menu_vo'/>
+	</bean>
+	
+	<!-- view resolver -->
+	<bean id = 'board_resolver' class = 'org.springframework.web.servlet.view.InternalResourceViewResolver'>
+		<property name = 'prefix' value = './admin/menu/'/> <!-- 항상 사용할 경로(URL) 접두사 -->
+		<property name = 'suffix' value = '.jsp'/>	<!-- 항상 사용할 경로(URL) 접미사 -->
+	</bean>
+
+</beans>

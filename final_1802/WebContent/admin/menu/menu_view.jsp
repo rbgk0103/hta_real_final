@@ -1,23 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<title>Insert title here</title>
 <style>
 #menu_view{
 	position: relative;
 	border-radius: 50px;
-	background:white;
+	background:#E9F0F2;
 	margin: auto;
 	width: 600px;
+	top: 60px;
 	height: 600px;
 	display:block;
 	text-align: center;
@@ -79,8 +69,6 @@
 	
 }
 </style>
-</head>
-<body>
 <script>
 $().ready(function(){
 	$("#frm_menu_view #img").click(function(){
@@ -125,7 +113,7 @@ $().ready(function(){
 		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '수 정' id = 'btn_modify' class = 'menu_btn' name = 'btn_modify'/>
-		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
+		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
 	</form>
 </div>
 <script>
@@ -142,5 +130,3 @@ menu_image.onchange = function(event){
 	reader.readAsDataURL(url);
 }
 </script>
-</body>
-</html>
