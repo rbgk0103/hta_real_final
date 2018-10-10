@@ -1,19 +1,17 @@
 package bean;
 
-import java.sql.Date;
-
 public class ChatVo {
 
-	Date chat_date;
+	String chat_date;
 	String chat_text;
 	String chat_sender;
 	String chat_receiver;
 	int guest_no;
 	
-	public Date getChat_date() {
+	public String getChat_date() {
 		return chat_date;
 	}
-	public void setChat_date(Date chat_date) {
+	public void setChat_date(String chat_date) {
 		this.chat_date = chat_date;
 	}
 	public int getGuest_no() {

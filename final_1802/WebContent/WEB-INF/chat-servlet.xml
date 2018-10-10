@@ -9,17 +9,12 @@
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="chatVo" class="bean.ChatVo">
-		<property name="chat_date"/>
-		<property name="chat_text"/>
-		<property name="chat_sender"/>
-		<property name="chat_receiver"/>
-		<property name="guest_no"/>
 	</bean>
 	<bean id="chatDao" class="bean.ChatDao">
 	
 	</bean>
 	<!-- controller -->
-	<bean id="ChatController" class="bean.ChatController">
+	<bean id="ChatController" class="bean.WebSocketServer">
 		<constructor-arg ref="chatDao"/>
 	</bean>
 	

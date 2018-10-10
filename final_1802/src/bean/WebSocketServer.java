@@ -12,11 +12,20 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
+import org.springframework.stereotype.Controller;
+
+@Controller
 @ServerEndpoint("/broadcasting")
 public class WebSocketServer {
+	
+	ChatDao dao;
 	private static Set<Session> clients =
 			Collections.synchronizedSet(new HashSet<Session>());
-
+	
+	public WebSocketServer(ChatDao dao) {
+		this.dao = dao;
+	}
+	
 	@OnMessage
 	public void onMessage(String msg, Session session) throws Exception {
 		System.out.println("receive message : " + msg);
