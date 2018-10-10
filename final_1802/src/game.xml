@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='ord'>
+
+	<!-- menu 테이블에서 menu목록을 가져오기 -->
+	<select id='menu_list' parameterType='String' resultType='bean.MenuVo'>
+		select menu_no, menu_type, menu_name, menu_price, menu_image, menu_hit, menu_day 
+		from menu 
+		where menu_type = #{findStr}
+	</select>
+</mapper>

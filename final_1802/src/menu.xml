@@ -6,6 +6,9 @@
 
 <mapper namespace="menu">
 	<select id = 'select' parameterType="String" resultType="bean.MenuVo"> <!-- 리스트 검색(select) -->
-		select * from menu where menu_type = #{find}
+		select * from menu where menu_type = #{menu_type}
+	</select>
+	<select id = 'view' parameterType = "int" resultType = 'bean.MenuVo'>
+		select * from menu where menu_no = #{menu_no}
 	</select>
 </mapper>

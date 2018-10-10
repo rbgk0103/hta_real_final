@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <style>
 #menu_div {
 	border: none;
@@ -66,6 +68,7 @@
 	border-radius: 10px;
 	font-style: oblique;
 }
+
 </style>
 <!-- 메뉴 스타일 -->
 <style>
@@ -84,92 +87,61 @@
 }
 </style>
 <script>
-function main_Load(str){
-	$("#menu_type").val(str);
+function main_Load(menu_type){
+	$('#menu_type').val(menu_type)
 	var param = $("#frm_menu").serialize();
-	$(".content").load("list.menu", str);
+	$(".content").load("../list.menu", param);
 }
 </script>
 <script>
 $().ready(function(){
 	$('#menu_index').tabs();
 	$('#menu_index').css({'width':'960px', 'height':'750px'});
+
 })
 function go_insert(){
-	location.href="./menu/menu_insert.jsp";
+	location.href="admin_index.jsp?content=menu/menu_insert.jsp";
 }
-function go_view(){
-	
+function go_view(menu_no){
+	$("#menu_no").val(menu_no);
+	var param = $("#frm_menu").serialize();
+	$(".content").load("../view.menu", param);
 }
 </script>
 <script id = 'script'></script>
 </head>
 <body>
+${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
-	<input type = 'hidden' id = 'menu_type ' name = 'menu_type' value = 'best'/>
+	<input type = 'hidden' id = 'menu_type' name = 'menu_type' value = '${mt }'/>
+	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
 	<ul>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("best")'>베스트메뉴(Best)</a></li>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("fury")'>치즈&후라이</a></li>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("grill")'>볶음&그릴</a></li>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("salad")'>샐러드&떡볶이</a></li>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("stew")'>탕&전골</a></li>
-		<li style = "font-style: italic;"><a href = '#menu_read' onclick = 'main_Load("drink")'>주류</a></li>
-		</ul>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("best")' href = '#menu_read'>베스트메뉴(Best)</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("fury")' href = '#menu_read'>치즈&후라이</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("grill")' href = '#menu_read'>볶음&그릴</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("salad")' href = '#menu_read'>샐러드&떡볶이</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("stew")' href = '#menu_read'>탕&전골</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("drink")' href = '#menu_read'>주류</a></li>
+	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
 			<div id = 'menu_read'>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
+			<c:forEach var = 'a' items = '${list }'>
+				<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
+					<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price }</strong></span><br/>
+					<img src='./menu/menuImg/${a.menu_image }'>
 				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-					<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
-				<div id='menu_div' class='menu_div' data-toggle="modal" data-target="#menu_detail123" onclick=''>
-					<span><strong>치즈콘치킨</strong></span><br/><span><strong>11000 원</strong></span><br/> 
-					<img src='../img/fury_1.jpg'>
-				</div>
+			</c:forEach>
+			</div>
+			<div id= 'tab_b'>
 			</div>
 		</div>
 	</div>
-	<input type = 'button' id = 'btn_menu_insert' value = '메뉴 등록' onclick = 'go_insert()'/>
+	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail111" value = '메뉴 등록'/>
 </div>
 
-<div class="modal fade" id="menu_detail123" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<jsp:include page="menu_view.jsp" />
+<div class="modal fade" id="menu_detail111" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<jsp:include page="menu_insert.jsp" />
 </div>

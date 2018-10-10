@@ -14,11 +14,11 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <style>
 #menu_insert{
-	
 	border-radius: 50px;
 	background:white;
 	margin: auto;
 	width: 600px;
+	top: 90px;
 	height: 600px;
 	display:block;
 	text-align: center;
@@ -73,6 +73,21 @@ $().ready(function(){
 		});
 		$('#menu_type').val(str);
 	})
+	
+	$("#btn_insert").click(function(){
+		var ff = document.frm_menu_insert;
+		var data = new FormData(ff);
+		$.ajax({
+			url : '../insert.menu',
+			data : data,
+			type : 'post',
+			contentType : false,
+			processData : false,
+			success : function(resp){
+				$(".content").html(resp);
+			}
+		});
+	})
 })
 </script>
 
@@ -102,7 +117,7 @@ $().ready(function(){
 		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '등 록' id = 'btn_insert' class = 'menu_btn' name = 'btn_insert'/>
-		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
+		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
 	</form>
 </div>
 <script>

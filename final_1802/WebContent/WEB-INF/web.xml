@@ -59,6 +59,18 @@
       <url-pattern>*.chat</url-pattern>
    </servlet-mapping>
    
+    	<!-- game(이봉기) -->
+	<servlet>
+      <servlet-name>game</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>game</servlet-name>
+      <url-pattern>*.game</url-pattern>
+   </servlet-mapping>
+   
+   
    	<servlet>
       <servlet-name>admin</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
