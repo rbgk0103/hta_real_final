@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 #menu_view{
 	position: relative;
@@ -7,7 +8,7 @@
 	background:#E9F0F2; */
 	margin: auto;
 /* 	top: 60px; */
-	width: 600px;
+	width: 700px;
 	height: 600px;
 	display:block;
 	text-align: center;
@@ -62,10 +63,10 @@
 	border: none;
 	border-radius: 50px;
 }
-#button_G, #button_A{
-	
-}
-#menu_name, #menu_price{
+#day_h{
+	color: red;
+	position: absolute;
+	left: 0px;
 	
 }
 </style>
@@ -109,6 +110,34 @@ $().ready(function(){
 			}
 		});
 	})
+	$("#btn_today_yes").click(function(){
+		var ff = document.frm_menu_view;
+		var data = new FormData(ff);
+		$.ajax({
+			url : '../today.menu',
+			data : data,
+			type : 'post',
+			contentType : false,
+			processData : false,
+			success : function(resp){
+				$(".content").html(resp);
+			}
+		});
+	})
+	$("#btn_today_no").click(function(){
+		var ff = document.frm_menu_view;
+		var data = new FormData(ff);
+		$.ajax({
+			url : '../today_no.menu',
+			data : data,
+			type : 'post',
+			contentType : false,
+			processData : false,
+			success : function(resp){
+				$(".content").html(resp);
+			}
+		});
+	})
 	$("#btn_cancel").click(function(){
 		$(".content").load("./menu/menu_index.jsp");
 	})
@@ -116,15 +145,28 @@ $().ready(function(){
 </script>
 <div id = 'menu_view'>
 <div id = 'button_div'>
-	<input type = 'button' class = 'button' name = '' id=  '' value = '오늘의 메뉴 등록'/><br/><br/><br/><br/>
+	<c:choose>
+		<c:when test="${vo.menu_day eq 'no'}">
+			<input type = 'button' class = 'button' name = 'btn_today_yes' id=  'btn_today_yes' value = '오늘의 메뉴 등록'/>
+		</c:when>
+		<c:otherwise>
+			<input type = 'button' class = 'button' name = 'btn_today_no' id=  'btn_today_no' value = '오늘의 메뉴 취소'/>	
+		</c:otherwise>
+	</c:choose>
+	<br/><br/><br/><br/>
 	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록' /><br/><br/>
 	<input type = 'button' class = 'button' name = 'btn_A' id = 'btn_A' value = 'AUCTION 등록'/><br/>
 </div>
 	<br/>
+	<c:choose>
+	<c:when test="${vo.menu_day eq 'yes'}">
+			<h2 id = 'day_h'>※ 오늘의 메뉴 ※</h2>
+	</c:when>
+	</c:choose>
 	<h1><Strong>${vo.menu_name }</Strong></h1>
 	<hr class = 'my_hr'/>
 	<form id = 'frm_menu_view' name = 'frm_menu_view' method = 'post' enctype = "multipart/form-data">
-	<input type = 'text' id = 'menu_type' name = 'menu_type'value = 'fury'/>
+	<input type = 'hidden' id = 'menu_type' name = 'menu_type'value = 'fury'/>
 		<input type = 'hidden' id = 'menu_no' name = 'menu_no' value = ${vo.menu_no }>
 		<label><h3><Strong>이 름  </Strong></h3></label>
 		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/><br/>

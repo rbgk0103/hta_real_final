@@ -25,4 +25,12 @@
 	<delete id="delete" parameterType = 'int'>
 		delete from menu where menu_no = #{menu_no}
 	</delete>
+	
+	<update id="today" parameterType = "int">
+		update menu set menu_day = 'yes' where menu_no = #{day}
+	</update>
+	
+	<update id="today_no" parameterType = 'int'>
+		update menu set menu_day = 'no' where menu_no = #{day}
+	</update>
 </mapper>

@@ -131,7 +131,55 @@ public class MenuDao {
 			return msg;
 		}
 	}
-
+	
+	public String today(HttpServletRequest req) {
+		MenuVo vo = new MenuVo();
+		int cnt = 0;
+		String msg = "";
+		try {
+			MultipartRequest multi = new MultipartRequest(req, uploadDir, fileSize, encType,
+					new DefaultFileRenamePolicy());
+			vo = setVo(multi);
+			System.out.println("menuNo : " + vo.getMenu_no());
+			cnt = s.update("menu.today", vo.getMenu_no());
+			if(cnt > 0) {
+				s.commit();
+				msg = "<script>alert('오늘의메뉴가 등록 되었습니다.')</script>";
+			}else {
+				s.rollback();
+				msg = "<script>alert('등록중 오류 발생.')</script>";
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			msg = "<script>alert('등록중 오류 발생.')</script>";
+		}finally {
+			return msg;
+		}
+	}
+	public String today_no(HttpServletRequest req) {
+		MenuVo vo = new MenuVo();
+		int cnt = 0;
+		String msg = "";
+		try {
+			MultipartRequest multi = new MultipartRequest(req, uploadDir, fileSize, encType,
+					new DefaultFileRenamePolicy());
+			vo = setVo(multi);
+			System.out.println("menuNo : " + vo.getMenu_no());
+			cnt = s.update("menu.today_no", vo.getMenu_no());
+			if(cnt > 0) {
+				s.commit();
+				msg = "<script>alert('오늘의메뉴가 취소 되었습니다.')</script>";
+			}else {
+				s.rollback();
+				msg = "<script>alert('취소중 오류 발생.')</script>";
+			}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			msg = "<script>alert('취소중 오류 발생.')</script>";
+		}finally {
+			return msg;
+		}
+	}
 	
 	public MenuVo setVo(MultipartRequest multi) {
 		MenuVo vo = new MenuVo();
