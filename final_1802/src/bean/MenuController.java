@@ -16,7 +16,7 @@ public class MenuController {
 			this.vo = vo;
 		}
 		
-		@RequestMapping(value="list.menu")
+		/*@RequestMapping(value="list.menu")
 		public ModelAndView menu_list(String menu_type) {
 			ModelAndView mv = new ModelAndView();
 			List<MenuVo> list = this.dao.list(menu_type);
@@ -25,7 +25,7 @@ public class MenuController {
 			mv.addObject("mt", menu_type);
 			mv.setViewName("menu_index");
 			return mv;
-		}
+		}*/
 		
 		@RequestMapping(value="view.menu")
 		public ModelAndView menu_view(HttpServletRequest req) {
