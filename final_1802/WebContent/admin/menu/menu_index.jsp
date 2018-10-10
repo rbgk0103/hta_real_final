@@ -113,12 +113,12 @@ function go_view(menu_no){
 <body>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
-	<input type = 'text' id = 'menu_type' name = 'menu_type' value = '${mt }'/>
+	<input type = 'text' id = 'menu_type' name = 'menu_type' value = '${mt eq null ? "" : mt}'/>
 	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
 	<ul>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("best")' href = '#menu_read'>베스트메뉴(Best)</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load()' href = '#menu_read'>전체메뉴</a></li>
 		<li style = "font-style: italic;"><a onclick = 'main_Load("fury")' href = '#menu_read'>치즈&후라이</a></li>
 		<li style = "font-style: italic;"><a onclick = 'main_Load("grill")' href = '#menu_read'>볶음&그릴</a></li>
 		<li style = "font-style: italic;"><a onclick = 'main_Load("salad")' href = '#menu_read'>샐러드&떡볶이</a></li>
