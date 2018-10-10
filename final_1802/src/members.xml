@@ -5,5 +5,23 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace='mbr'>
+
+	<select id="login" parameterType="java.util.HashMap" resultType="int">
+		select count(mbr_id)
+		from members
+		where mbr_id = #{id} and mbr_pwd = #{pwd}
+	</select>
+	
+	<insert id="insert" parameterType="bean.MembersVo">
+		insert into members
+		values
+		(seq_mbr_no.nextval, #{mbrId}, 4, #{mbrName}, #{mbrPhone}, #{mbrPwd}, #{mbrGender}, sysdate, #{mbrBirth}, 0)
+	</insert>
+	
+	<select id="findInfo" parameterType="java.util.HashMap" resultType="bean.MembersVo">
+		select mbr_id mbrId, mbr_pwd mbrPwd
+		from members
+		where mbr_name = #{name} and mbr_phone = #{phone}
+	</select>
 	
 </mapper>
