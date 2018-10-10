@@ -11,10 +11,6 @@
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
 <!-- bootstrap 3.0.2 -->
 <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<!-- font Awesome -->
-<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<!-- Ionicons -->
-<link href="./css/ionicons.min.css" rel="stylesheet" type="text/css" />
 <!-- google font -->
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <!-- Theme style -->
