@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,6 +31,8 @@
 				? "./chat/chatContent.jsp"
 				: (String) request.getParameter("chatContent");
 	%>
+		
+	<input type='hidden' id="ip" value='${ip }' />
 	<div class="container" id="chatBody">
 		<%@ include file="./chat/chatHeader.jsp"%>
 		<hr class="col-md-12 col-xs-12" id="whiteLine" />
@@ -44,31 +47,19 @@
 		</div>
 		<%@ include file="./chat/chatFooter.jsp"%>
 	</div>
-	<script>
-	/* $(document).ready(function() {
-		$('#chatContent').load("onOpen.chat", document.getElementById("ipAddress"));
-	})
-	
-	/////////////////////////////////////////////////////
-	$("#chatContent").scrollTop($('#chatContent').height());
-	
-	$('#msg').keyup(function(e) {
-		if(e.keyCode === 13) {
-			sendMessage();
+	<%
+		String ip;
+		if(request.getParameter("ip") != null) {
+			ip = (String)request.getParameter("ip");
+			System.out.println("index에서 받아온 parameter(ip)의 값은 : " + ip);
+			request.setAttribute("ip", ip);
 		}
-	});
-	
-	$('#btnChatSend').click(function() {
-		sendMessage();
-	});
-	
-	function sendMessage() {
-		$('#chatContent').load("sendMessage.chat");
-	} */
-	
+	%>
+	<script>
 		window.onload = function() {
-			var webSocket = new WebSocket('ws://localhost:7080/final_1802/broadcasting');
-	
+			var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
+			
+			console.log("스크립틀릿의 ip : " + $('#ip').val());
 			webSocket.onopen = function() {
 				$('#chatContent').append("연결 성공!!!!");
 			}
@@ -82,6 +73,7 @@
 						+ msg.data
 						+ '</div></div></div>'
 					);
+					$("#chatContent").scrollTop($('#chatContent').height());
 				}
 			}
 	

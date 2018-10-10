@@ -59,11 +59,16 @@ text-shadow:
 <body>
 <%
 String content = "order/order_menu.jsp";
-
+String ip = request.getRemoteAddr();
+request.setAttribute("ip", ip);
+System.out.println("index에서 ip 주소(remoteAddr) : " + ip);
 if(request.getParameter("content") !=null){
 	content = request.getParameter("content");  
 }
 %>
+<form name='ipForm' method='post' target="chat">
+	<input type='hidden' id="ip" value='${ip }' />
+</form>
 <div id = 'wrap'>
 	<div id = 'header'>
 		<div class='col-md-4'  id = 'header_logo'>
@@ -74,7 +79,7 @@ if(request.getParameter("content") !=null){
 		<div class='col-md-6' id = 'header_menu'>
 			<a href="main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
-			<a href ="#">채팅</a>
+			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
 			<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
@@ -92,6 +97,12 @@ if(request.getParameter("content") !=null){
 <script>
 function goOrderMenu(){
 	$('#content').load('main.ord');
+}
+function goChat(ip) {
+	var open = window.open("http://192.168.0.26:7080/final_1802/chatClientIndex.jsp?ip=" + ip, "chat", "_blank", "width=570, height=810");
+	var df = document.ipForm;
+	df.action = "http://192.168.0.26:7080/final_1802/chatClientIndex.jsp";
+	df.submit();
 }
 </script>
 </body>
