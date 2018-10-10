@@ -77,7 +77,7 @@ if(request.getParameter("content") !=null){
 			</a>
 		</div>
 		<div class='col-md-6' id = 'header_menu'>
-			<a href="main.ord">메뉴</a>
+			<a href="index.jsp?content=main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
 			<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
@@ -94,14 +94,15 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./modal_call_employee.jsp" %>
 <%@ include file = "./modal_call_members_login.jsp" %>
 <%@ include file = "./modal_call_members_register.jsp" %>
+<%@ include file = "./modal_call_members_findInfo.jsp" %>
 <script>
 function goOrderMenu(){
 	$('#content').load('main.ord');
 }
 function goChat(ip) {
-	var open = window.open("http://192.168.0.26:7080/final_1802/chatClientIndex.jsp?ip=" + ip, "chat", "_blank", "width=570, height=810");
+	var open = window.open("", "chat", "_blank", "width=570, height=810");
 	var df = document.ipForm;
-	df.action = "http://192.168.0.26:7080/final_1802/chatClientIndex.jsp";
+	df.action = "getIp.chat?ip=" + ip;
 	df.submit();
 }
 </script>

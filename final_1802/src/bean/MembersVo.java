@@ -9,7 +9,7 @@ public class MembersVo {
 	private String mbrPwd;
 	private String mbrGender;
 	private String mbrRegDate;
-	private String birth;
+	private String mbrBirth;
 	private int mbrPoint;
 	
 	
@@ -55,11 +55,11 @@ public class MembersVo {
 	public void setMbrRegDate(String mbrRegDate) {
 		this.mbrRegDate = mbrRegDate;
 	}
-	public String getBirth() {
-		return birth;
+	public String getMbrBirth() {
+		return mbrBirth;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setMbrBirth(String mbrBirth) {
+		this.mbrBirth = mbrBirth;
 	}
 	public int getMbrPoint() {
 		return mbrPoint;
@@ -67,4 +67,6 @@ public class MembersVo {
 	public void setMbrPoint(int mbrPoint) {
 		this.mbrPoint = mbrPoint;
 	}
+	
+	
 }

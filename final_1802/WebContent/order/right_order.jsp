@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id='order'>
+<div id='right_order'>
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
 		<table class="table">
@@ -30,17 +30,9 @@
 		    </tr>
 		</table>
 	<hr>
-	추가
-	<table class='table table_add'>
-		    <tr>
-	        <td >소주</td>
-	      <td> <span class='glyphicon glyphicon-minus icon'></span>
-	      1
-	      <span class='glyphicon glyphicon-plus icon'></span>
-	       </td>
-	        <td>6400</td>
-	    </tr>
-	</table>
+		추가 주문
+		<div id='tableZone'></div>
+
 	</div>
 	<div id='pre_order'>
 		<span id='previous'>이전 주문 금액:</span>

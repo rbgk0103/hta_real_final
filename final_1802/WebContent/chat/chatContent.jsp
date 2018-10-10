@@ -13,7 +13,7 @@
 <div class="textBlock col-md-12 col-xs-12">
 	<div class="send">
 		<!-- send : 보낸 메세지, 오른쪽으로 정렬 -->
-		<h6>No. ?</h6>
+		<h6>No. ${tableNo }</h6>
 		<div class="chatSendBox">나도 반가워 진심이야 알고 있니?</div>
 	</div>
 </div>

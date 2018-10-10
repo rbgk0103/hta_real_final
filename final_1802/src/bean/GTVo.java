@@ -2,28 +2,29 @@ package bean;
 
 public class GTVo {
 	/* GAME_TITLES 테이블 칼럼 */
-	int gt_no;		// PK
-	String gt_name;	
-	String gt_with;
+	int gtNo;		// PK
+	String gtName;	
+	String gtWith;
 
 	
 	/* Set Get */
-	public int getGt_no() {
-		return gt_no;
+	public int getGtNo() {
+		return gtNo;
 	}
-	public void setGt_no(int gt_no) {
-		this.gt_no = gt_no;
+	public void setGtNo(int gtNo) {
+		this.gtNo = gtNo;
 	}
-	public String getGt_name() {
-		return gt_name;
+	public String getGtName() {
+		return gtName;
 	}
-	public void setGt_name(String gt_name) {
-		this.gt_name = gt_name;
+	public void setGtName(String gtName) {
+		this.gtName = gtName;
 	}
-	public String getGt_with() {
-		return gt_with;
+	public String getGtWith() {
+		return gtWith;
 	}
-	public void setGt_with(String gt_with) {
-		this.gt_with = gt_with;
+	public void setGtWith(String gtWith) {
+		this.gtWith = gtWith;
 	}
+	
 }
