@@ -7,10 +7,12 @@
 
 <!-- bean -->
 	<bean id="adm_dao" class="bean.AdminDao"/>
+	<bean id="menu_dao" class="bean.MenuDao"/>
 		
 <!-- controller -->
 	<bean id="adm_controller" class="bean.AdminController">
 		<constructor-arg ref="adm_dao"/>
+		<constructor-arg ref="menu_dao"/>
 	</bean>
 	
 <!-- view resolver -->
