@@ -74,7 +74,7 @@ if(request.getParameter("content") !=null){
 			<a href="main.ord">메뉴</a>
 			<a href ="#">게임</a>
 			<a href ="#">채팅</a>
-			<a href ="#">로그인</a>
+			<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
@@ -86,6 +86,8 @@ if(request.getParameter("content") !=null){
 	</div>
 </div>
 <%@ include file = "./modal_call_employee.jsp" %>
+<%@ include file = "./modal_call_members_login.jsp" %>
+<%@ include file = "./modal_call_members_register.jsp" %>
 <script>
 function goOrderMenu(){
 	$('#content').load('main.ord');
