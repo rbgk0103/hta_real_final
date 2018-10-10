@@ -11,7 +11,7 @@ public class AdminDao {
 	
 	public AdminDao() {
 		try {
-			s =	MenuFactory.getFactory().openSession();
+			s =	AdminFactory.getFactory().openSession();
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
@@ -19,7 +19,7 @@ public class AdminDao {
 	}
 	
 	
-	public List<tblVo> list(){
+	public List<tblVo> table_select(){
 		List<tblVo> list;
 		list = s.selectList("adm.select_table");
 		return list;

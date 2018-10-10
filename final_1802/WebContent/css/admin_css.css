@@ -3221,6 +3221,7 @@ vertical-align: top;
 }
 
 .panel {
+	height:320px;
   border:1px solid black;
 }
 .panel:hover{
@@ -4223,3 +4224,5 @@ padding: 6px 10px;
 .st-blue {
   background-color: #23b7e5;
 }
+
+#set_gender{margin-bottom:15px;}
