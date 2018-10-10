@@ -23,7 +23,7 @@
 						
 					</div>
 					<div class='gt_img_area'>
-						<img src="img/game_img/game_tvt.png" />
+						<img src="img/game_img/${i.gtImage}" />
 					</div>
 					<div class='gt_btn_area'>
 						<input type='button' name='btn_gt_pick' id='btn_gt_pick' value='게임 선택'>

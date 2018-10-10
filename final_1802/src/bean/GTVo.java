@@ -5,6 +5,7 @@ public class GTVo {
 	int gtNo;		// PK
 	String gtName;	
 	String gtWith;
+	String gtImage;
 
 	
 	/* Set Get */
@@ -26,5 +27,10 @@ public class GTVo {
 	public void setGtWith(String gtWith) {
 		this.gtWith = gtWith;
 	}
-	
+	public String getGtImage() {
+		return gtImage;
+	}
+	public void setGtImage(String gtImage) {
+		this.gtImage = gtImage;
+	}
 }
