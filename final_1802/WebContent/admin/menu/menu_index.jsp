@@ -97,7 +97,7 @@ function main_Load(menu_type){
 $().ready(function(){
 	$('#menu_index').tabs();
 	$('#menu_index').css({'width':'960px', 'height':'750px'});
-
+	
 })
 function go_insert(){
 	location.href="admin_index.jsp?content=menu/menu_insert.jsp";
@@ -113,7 +113,7 @@ function go_view(menu_no){
 <body>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
-	<input type = 'hidden' id = 'menu_type' name = 'menu_type' value = '${mt }'/>
+	<input type = 'text' id = 'menu_type' name = 'menu_type' value = '${mt }'/>
 	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
@@ -130,12 +130,14 @@ ${msg }
 			<div id = 'menu_read'>
 			<c:forEach var = 'a' items = '${list }'>
 				<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
-					<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price }</strong></span><br/>
+					<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
 					<img src='./menu/menuImg/${a.menu_image }'>
 				</div>
 			</c:forEach>
 			</div>
 			<div id= 'tab_b'>
+			</div>
+			<div id = 'tab_c'>
 			</div>
 		</div>
 	</div>
@@ -145,3 +147,20 @@ ${msg }
 <div class="modal fade" id="menu_detail111" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<jsp:include page="menu_insert.jsp" />
 </div>
+<script>
+$().ready(function(){
+	if($("#menu_type").val() == "fury"){
+		$("#menu_index").tabs().tabs({'active':1});
+	}else if($("#menu_type").val() == "grill"){
+		$("#menu_index").tabs().tabs({'active':2});		
+	}else if($("#menu_type").val() == "salad"){
+		$("#menu_index").tabs().tabs({'active':3});	
+	}else if($("#menu_type").val() == "stew"){
+		$("#menu_index").tabs().tabs({'active':4});
+	}else if($("#menu_type").val() == "drink"){
+		$("#menu_index").tabs().tabs({'active':5});
+	}else if($("#menu_type").val() == "best"){
+		$("#menu_index").tabs().tabs({'active':0});
+	}
+})
+</script>

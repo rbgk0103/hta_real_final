@@ -14,30 +14,18 @@ public class MenuController {
 		public MenuController(MenuDao dao, MenuVo vo) {
 			this.dao = dao;
 			this.vo = vo;
-			System.out.println("실행");
 		}
 		
 		@RequestMapping(value="list.menu")
-		public ModelAndView menu_list(HttpServletRequest req) {
+		public ModelAndView menu_list(String menu_type) {
 			ModelAndView mv = new ModelAndView();
-			System.out.println(req.getParameter("menu_type"));
+			List<MenuVo> list = this.dao.list(menu_type);
 			
-			List<MenuVo> list = this.dao.list(req.getParameter("menu_type"));
 			mv.addObject("list",list);
-			mv.addObject("mt", req.getParameter("menu_type"));
+			mv.addObject("mt", menu_type);
 			mv.setViewName("menu_index");
 			return mv;
 		}
-		
-/*		@RequestMapping(value="insert.menu")
-		public ModelAndView menu_insert(HttpServletRequest req) {
-			ModelAndView mv = new ModelAndView();
-			String msg = "<script>alert('등록 되셨습니다.')</script>";
-			this.vo = this.dao.insert(req);
-			mv.addObject("msg", msg);
-			mv.setViewName("menu_index");
-			return mv;
-		}*/
 		
 		@RequestMapping(value="view.menu")
 		public ModelAndView menu_view(HttpServletRequest req) {
@@ -48,4 +36,39 @@ public class MenuController {
 			mv.setViewName("menu_view");
 			return mv;
 		}
+		
+		@RequestMapping(value="insert.menu")
+		public ModelAndView menu_insert(HttpServletRequest req) {
+			ModelAndView mv = new ModelAndView();
+			String msg = "";
+			msg = this.dao.insert(req);
+			
+			mv.addObject("msg", msg);
+			mv.setViewName("menu_index");
+			return mv;
+		}
+		
+		@RequestMapping(value="modify.menu")
+		public ModelAndView menu_modify(HttpServletRequest req) {
+			ModelAndView mv = new ModelAndView();
+			String msg = "";
+			msg = this.dao.modify(req);
+			
+			mv.addObject("msg", msg);
+			mv.setViewName("menu_index");
+			return mv;
+		}
+		
+		@RequestMapping(value="delete.menu")
+		public ModelAndView menu_delete(HttpServletRequest req) {
+			ModelAndView mv = new ModelAndView();
+			System.out.println("delete 진입");
+			String msg = "";
+			msg = this.dao.delete(req);
+			System.out.println(msg);
+			mv.addObject("msg", msg);
+			mv.setViewName("menu_index");
+			return mv;
+		}
+		
 }

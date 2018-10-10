@@ -79,21 +79,53 @@ $().ready(function(){
 		$("#frm_menu_view #menu_select option:selected").each(function(){
 			str = $(this).val();
 		});
-		$('#menu_type').val(str);
+		$('#frm_menu_view #menu_type').val(str);
+	})
+	$("#btn_modify").click(function(){
+		var ff = document.frm_menu_view;
+		var data = new FormData(ff);
+		$.ajax({
+			url : '../modify.menu',
+			data : data,
+			type : 'post',
+			contentType : false,
+			processData : false,
+			success : function(resp){
+				$(".content").html(resp);
+			}
+		});
+	})
+	$("#btn_delete").click(function(){
+		var ff = document.frm_menu_view;
+		var data = new FormData(ff);
+		$.ajax({
+			url : '../delete.menu',
+			data : data,
+			type : 'post',
+			contentType : false,
+			processData : false,
+			success : function(resp){
+				$(".content").html(resp);
+			}
+		});
+	})
+	$("#btn_cancel").click(function(){
+		$(".content").load("./menu/menu_index.jsp");
 	})
 })
 </script>
 <div id = 'menu_view'>
 <div id = 'button_div'>
 	<input type = 'button' class = 'button' name = '' id=  '' value = '오늘의 메뉴 등록'/><br/><br/><br/><br/>
-	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록'/><br/><br/>
+	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록' /><br/><br/>
 	<input type = 'button' class = 'button' name = 'btn_A' id = 'btn_A' value = 'AUCTION 등록'/><br/>
 </div>
 	<br/>
 	<h1><Strong>${vo.menu_name }</Strong></h1>
 	<hr class = 'my_hr'/>
 	<form id = 'frm_menu_view' name = 'frm_menu_view' method = 'post' enctype = "multipart/form-data">
-	<input type = 'hidden' id = 'menu_type' name = 'menu_type'/>
+	<input type = 'text' id = 'menu_type' name = 'menu_type'value = 'fury'/>
+		<input type = 'hidden' id = 'menu_no' name = 'menu_no' value = ${vo.menu_no }>
 		<label><h3><Strong>이 름  </Strong></h3></label>
 		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/><br/>
 		<label><h3><Strong>가 격  </Strong></h3></label>
@@ -113,10 +145,12 @@ $().ready(function(){
 		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '수 정' id = 'btn_modify' class = 'menu_btn' name = 'btn_modify'/>
+		<input type = 'button' value = '삭 제' id = 'btn_delete' class = 'menu_btn' name = 'btn_delete'/>
 		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
 	</form>
 </div>
 <script>
+
 var ff = document.frm_menu_view;
 var menu_image = ff.menu_image;
 menu_image.onchange = function(event){

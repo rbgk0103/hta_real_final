@@ -71,7 +71,7 @@ $().ready(function(){
 		$("#frm_menu_insert #menu_select option:selected").each(function(){
 			str = $(this).val();
 		});
-		$('#menu_type').val(str);
+		$('#frm_menu_insert #menu_type').val(str);
 	})
 	
 	$("#btn_insert").click(function(){
@@ -90,14 +90,13 @@ $().ready(function(){
 	})
 })
 </script>
-
 <body>
 <div id = 'menu_insert'>
 	<br/>
 	<h1><strong>메뉴 등록</strong></h1>
 	<hr class = 'my_hr'/>
 	<form method = 'post' id = 'frm_menu_insert' name = 'frm_menu_insert' enctype = "multipart/form-data">
-		<input type = 'hidden' id = 'menu_type' name = 'menu_type'/>
+		<input type = 'text' id = 'menu_type' name = 'menu_type' value = 'fury'/>
 		<label><h3><Strong>이 름  </Strong></h3></label>
 		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name'/><br/>
 		<label><h3><Strong>가 격  </Strong></h3></label>

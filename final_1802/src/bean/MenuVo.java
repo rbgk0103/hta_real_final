@@ -10,6 +10,7 @@ public class MenuVo {
 	int menu_hit;
 	String menu_day;
 	String menu_event;
+	
 	public int getMenu_no() {
 		return menu_no;
 	}
