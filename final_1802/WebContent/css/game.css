@@ -1,7 +1,6 @@
 /* game.css */
 
 /* game_index.jsp */
-
 #gi_wrap {
 	border: 1px solid gray;
 	margin: 0 auto;
@@ -29,5 +28,53 @@
 	border: 1px solid gray;
 	display: inline-block;
 	
+}
+
+#gi_wrap .input_text {
+	color: black;
+}
+
+#gi_wrap .btnGame {
+	color: black;
+	font-weight: bold;
+}
+
+
+/* game_title_list.jsp */
+#gtl_wrap {
+	border: 1px solid gray;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#gtl_wrap h3 {
+	text-align: center;
+}
+
+#gtl_wrap #gtl_list_area {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#gtl_wrap div {
+	border: 1px solid gray;
+}
+
+#gtl_wrap .gt_item {
+	display: inline-block;
+	margin: 1%;
+	width: 20%;	
+}
+
+#gtl_wrap .gt_explain, #gtl_wrap .gt_img_area{
+	display: inline-block;
+	width: 48%;		
+}
+
+
+
+#gtl_wrap input {
+	color: black;
 }
 
