@@ -3,5 +3,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='chat'>
-
+	<select id="chat_table_no" parameterType="String" resultType="int">
+		select tbl_no from table_status where tbl_ip = #{_ip}
+	</select>
+	<select id="chat_table_list" resultType="java.util.Map">
+		select tbl_no, tbl_ip from table_status order by tbl_no
+	</select>
 </mapper>

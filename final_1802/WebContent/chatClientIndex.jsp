@@ -28,11 +28,12 @@
 				: (String) request.getParameter("chatNotice");
 
 		String chatContent = request.getParameter("chatContent") == null
-				? "./chat/chatContent.jsp"
-				: (String) request.getParameter("chatContent");
+				? "./chat/chatContent.jsp?tableNo=" + request.getAttribute("tableNo")
+				: (String) request.getParameter("chatContent") + request.getAttribute("tableNo");
 	%>
 		
 	<input type='hidden' id="ip" value='${ip }' />
+	<input type='hidden' id="tableNo" value='${tableNo }' />
 	<div class="container" id="chatBody">
 		<%@ include file="./chat/chatHeader.jsp"%>
 		<hr class="col-md-12 col-xs-12" id="whiteLine" />
@@ -57,6 +58,7 @@
 	%>
 	<script>
 		window.onload = function() {
+			console.log("스크립틀릿의 ip : " + $('#ip').val());
 			var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
 			
 			console.log("스크립틀릿의 ip : " + $('#ip').val());
@@ -65,15 +67,25 @@
 			}
 	
 			webSocket.onmessage = function(msg) {
-				if (true) {
-					$('#chatContent').append('<div class="textBlock col-md-12 col-xs-12">'
-						+ '<div class="receive">'
-						+ '<h6>No. ' + '1' + '</h6>'
-						+ '<div class="chatReceiveBox">'
-						+ msg.data
+				if (msg.data.substring(0, 1) === $('#tableNo').val()) {
+					$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="send">'
+						+ '<h6>No. ' + $('#tableNo').val() + '</h6>'
+						+ '<div class="chatSendBox">'
+						+ msg.data.substring(1)
 						+ '</div></div></div>'
 					);
 					$("#chatContent").scrollTop($('#chatContent').height());
+				} else {
+					$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="receive">'
+						+ '<h6>No. ' + '?' + '</h6>'
+						+ '<div class="chatReceiveBox">'
+						+ msg.data.substring(1)
+						+ '</div></div></div>'
+					);
 				}
 			}
 	
@@ -94,7 +106,7 @@
 			function sendMessage() {
 				var message = $('#msg').val();
 				if ($.trim($('#msg').val()) !== "") {
-					webSocket.send(message);
+					webSocket.send($('#tableNo').val() + message);
 				}
 			}
 		}
