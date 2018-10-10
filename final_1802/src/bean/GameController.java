@@ -43,6 +43,11 @@ public class GameController {
 		String gm = "여기가 게임 타이틀리스트";
 		System.out.println(gm);
 		
+		List<GTVo> gtList = gtDao.gtSelect(req);
+		
+		System.out.println("gtList.size(): " + gtList.size());
+		
+		mv.addObject("gtList", gtList);
 		mv.setViewName("game_title_list"); // game_index.jsp
 		
 		return mv;

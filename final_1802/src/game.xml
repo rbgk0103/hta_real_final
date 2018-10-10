@@ -6,8 +6,8 @@
 
 	<!-- menu 테이블에서 menu목록을 가져오기 -->
 	<select id='gtList' parameterType='String' resultType='bean.GTVo'>
-		select menu_no, menu_type, menu_name, menu_price, menu_image, menu_hit, menu_day 
-		from menu 
-		where menu_type = #{findStr}
+		SELECT GT_NO gtNo, GT_NAME gtName, GT_WITH gtWith
+		FROM GAME_TITLES
+		WHERE LOWER(GT_WITH) LIKE LOWER(#{_parameter})
 	</select>
 </mapper>

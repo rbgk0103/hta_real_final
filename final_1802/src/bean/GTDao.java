@@ -2,6 +2,8 @@ package bean;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 
 public class GTDao {
@@ -33,18 +35,22 @@ public class GTDao {
 	
 	/* 생성자 - dao객체 만들자마자 커넥션까지! */
 	public GTDao() {
-		sqlSession = OrdersFactory.getFatory().openSession();
+		sqlSession = GameFactory.getFatory().openSession();
 	}
 	
 	
 	/* 사용자 정의 메소드들 */
-	public List<GTVo> gameSelect(String findStr){
-		if (findStr == null) {findStr = "";}
+	public List<GTVo> gtSelect(HttpServletRequest req){
+		findStr = req.getParameter("findStr");
+		
+		if (findStr == null) {findStr = "tvt";}
 		
 		System.out.println("findStr:" + findStr);
 		
 		List<GTVo> gtList = sqlSession.selectList("game.gtList", findStr);
 		System.out.println(gtList.size());
+		System.out.println(gtList.get(0).getGtName());
+		
 		return gtList;
 	}
 }

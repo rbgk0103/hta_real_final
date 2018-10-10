@@ -12,7 +12,7 @@ public class GameFactory {
 	
 	static {
 		try {
-			Reader r = Resources.getResourceAsReader("ord_mybatis_config.xml");
+			Reader r = Resources.getResourceAsReader("game_mybatis_config.xml");
 			factory = new SqlSessionFactoryBuilder().build(r);
 		} catch (IOException e) {
 			e.printStackTrace();
