@@ -71,4 +71,27 @@ public class MenuController {
 			return mv;
 		}
 		
+		@RequestMapping(value="today.menu")
+		public ModelAndView menu_today(HttpServletRequest req) {
+			ModelAndView mv = new ModelAndView();
+			String msg = "";
+			msg = this.dao.today(req);
+			System.out.println(msg);
+			mv.addObject("msg", msg);
+			mv.setViewName("menu_index");
+			return mv;
+		}
+		
+		@RequestMapping(value="today_no.menu")
+		public ModelAndView menu_today_no(HttpServletRequest req) {
+			ModelAndView mv = new ModelAndView();
+			System.out.println("today 진입");
+			String msg = "";
+			msg = this.dao.today_no(req);
+			System.out.println(msg);
+			mv.addObject("msg", msg);
+			mv.setViewName("menu_index");
+			return mv;
+		}
+		
 }

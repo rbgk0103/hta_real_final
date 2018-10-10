@@ -6,11 +6,13 @@
 		 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- bean -->
-	<bean id="gameDao" class="bean.GameDao"/>
+	<bean id="gtDao" class="bean.GTDao"/>
+	<bean id="geDao" class="bean.GEDao"/>
 		
 <!-- controller -->
 	<bean id="gameController" class="bean.GameController">
-		<constructor-arg ref="gameDao"/>
+		<constructor-arg ref="gtDao"/>
+		<constructor-arg ref="geDao"/>
 	</bean>
 	
 <!-- view resolver -->
