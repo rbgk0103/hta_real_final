@@ -38,7 +38,7 @@ public class AdminController {
 		
 		
 
-		mv.setViewName("table/table_set");
+		mv.setViewName("table/table_set_result");
 		return mv;
 	}
 }

@@ -21,14 +21,11 @@
 						    <c:when test="${item.tbl_status eq 0}">
 							    <tr class ='table_set'>
 							    	<td colspan='4'>
-							    	<input type='hidden' id ='tbl_no' value="${item.tbl_no }">
+							    		<input type='hidden' id ='tbl_no' value="${item.tbl_no }">
 							    		Empty
 							    	</td>
 								</tr>
-
 						    </c:when>
-
-						    
 						    <c:otherwise>
 						   		 <tr>
 				                    <td>1.</td>
@@ -53,11 +50,12 @@
   	</div>
 </div>
 <script>
+
 $(function(){
     $(".table_set").click(function(){
-      	var tbl_no = $(this).children().children("input").val();
-      	$('div.modal').modal({remote : './admin/table/table_set.jsp?tbl_no='+tbl_no , backdrop:'static',keyboard: false});
-      
+    	tbl_no = $(this).children().children("input").val();
+    	$('div.modal').modal({remote : './admin/table/table_set.jsp?tbl_no='+tbl_no , backdrop: 'static'});
+    
     })
 })
 </script>
