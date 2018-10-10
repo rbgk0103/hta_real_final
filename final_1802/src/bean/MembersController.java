@@ -69,7 +69,7 @@ public class MembersController {
 			msg = "이름과 연락처를 입력해 쨔샤";
 			
 			mv.addObject("msg", msg);
-			mv.setViewName("msg");
+			mv.setViewName("info");
 			return mv;
 		}
 		
@@ -85,7 +85,7 @@ public class MembersController {
 		System.out.println("컨트롤러 msg : " + msg);
 		
 		mv.addObject("mvo", mvo);
-		mv.setViewName("msg");
+		mv.setViewName("info");
 		
 		return mv;
 	}

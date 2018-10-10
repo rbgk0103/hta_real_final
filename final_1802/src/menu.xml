@@ -5,32 +5,34 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="menu">
-	<select id = 'select' parameterType="String" resultType="bean.MenuVo"> <!-- 리스트 검색(select) -->
-		select * from menu where menu_type = #{menu_type}
+
+	<select id = 'select' parameterType="String" resultType="bean.MenuVo"> <!-- 리스트 -->
+		select * from menu where menu_type like #{menu_type}
 	</select>
 	
-	<select id = 'view' parameterType = "int" resultType = 'bean.MenuVo'> <!-- view -->
+	<select id = 'view' parameterType = "int" resultType = 'bean.MenuVo'> <!-- 자세히보기 -->
 		select * from menu where menu_no = #{menu_no}
 	</select>
 	
-	<insert id="insert" parameterType = 'bean.MenuVo'>
+	<insert id="insert" parameterType = 'bean.MenuVo'> <!-- 입력 -->
 		insert into menu values (seq_menu.nextval, #{menu_type}, #{menu_name}, #{menu_price}, #{menu_image}, 0, 'no', 'N')
 	</insert>
 
-	<update id="modify" parameterType = 'bean.MenuVo'>
+	<update id="modify" parameterType = 'bean.MenuVo'> <!-- 수정 -->
 		update menu set menu_name = #{menu_name}, menu_price = #{menu_price}, menu_type = #{menu_type}, menu_image = #{menu_image}
 		where menu_no = #{menu_no}
 	</update>
 	
-	<delete id="delete" parameterType = 'int'>
+	<delete id="delete" parameterType = 'int'> <!-- 삭제 -->
 		delete from menu where menu_no = #{menu_no}
 	</delete>
 	
-	<update id="today" parameterType = "int">
+	<update id="today" parameterType = "int"> <!-- 오늘의 메뉴 등록 -->
 		update menu set menu_day = 'yes' where menu_no = #{day}
 	</update>
 	
-	<update id="today_no" parameterType = 'int'>
+	<update id="today_no" parameterType = 'int'> <!-- 오늘의 메뉴 취소 -->
 		update menu set menu_day = 'no' where menu_no = #{day}
 	</update>
+	
 </mapper>
