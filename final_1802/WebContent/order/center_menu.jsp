@@ -80,12 +80,12 @@ function addMenu(tableZone, no, name, price){
 	var span2 = document.createElement("span");
 	span2.setAttribute("class", "glyphicon glyphicon-minus");
 	span2.setAttribute("aria-hidden", "true");
-// 	div.appendChild(span2);
+ 	//div.appendChild(span2);
 	
 	var span4 = document.createElement("span");
 	span4.setAttribute("class", "glyphicon glyphicon-plus");
 	span4.setAttribute("aria-hidden", "true");
-// 	div.appendChild(span4);
+ 	//div.appendChild(span4);
 	
 	var span3 = document.createElement("td");
 	//span3.setAttribute("class", "r_cnt");
@@ -100,6 +100,15 @@ function addMenu(tableZone, no, name, price){
 	//span5.setAttribute("class", "r_price");
 	span5.innerHTML = price;
 	div.appendChild(span5);
+	
+	var del_span = document.createElement("td");
+	div.appendChild(del_span);
+	
+	var del = document.createElement("span");
+	del.setAttribute("class", "glyphicon glyphicon-remove");
+	del.setAttribute("aria-hidden", "true");
+	del_span.appendChild(del);
+	
 	
 	tableZone.appendChild(div);
 }

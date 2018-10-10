@@ -27,7 +27,9 @@
 		</table>
 	<hr>
 		추가 주문
-		<table id='tableZone' class='table'></table>
+	<table  class='table'>
+		<tbody id='tableZone'></tbody>
+	</table>
 
 	</div>
 	<div id='pre_order'>
