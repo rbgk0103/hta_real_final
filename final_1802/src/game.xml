@@ -6,7 +6,7 @@
 
 	<!-- menu 테이블에서 menu목록을 가져오기 -->
 	<select id='gtList' parameterType='String' resultType='bean.GTVo'>
-		SELECT GT_NO gtNo, GT_NAME gtName, GT_WITH gtWith
+		SELECT GT_NO gtNo, GT_NAME gtName, GT_WITH gtWith, GT_IMAGE gtImage
 		FROM GAME_TITLES
 		WHERE LOWER(GT_WITH) LIKE LOWER(#{_parameter})
 	</select>
