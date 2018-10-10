@@ -94,6 +94,7 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./modal_call_employee.jsp" %>
 <%@ include file = "./modal_call_members_login.jsp" %>
 <%@ include file = "./modal_call_members_register.jsp" %>
+<%@ include file = "./modal_call_members_findInfo.jsp" %>
 <script>
 function goOrderMenu(){
 	$('#content').load('main.ord');
