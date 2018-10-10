@@ -3,11 +3,11 @@
 <style>
 #menu_view{
 	position: relative;
-	border-radius: 50px;
-	background:#E9F0F2;
+/* 	border-radius: 50px;
+	background:#E9F0F2; */
 	margin: auto;
+/* 	top: 60px; */
 	width: 600px;
-	top: 60px;
 	height: 600px;
 	display:block;
 	text-align: center;
@@ -90,30 +90,30 @@ $().ready(function(){
 	<input type = 'button' class = 'button' name = 'btn_A' id = 'btn_A' value = 'AUCTION 등록'/><br/>
 </div>
 	<br/>
-	<h1><Strong>치즈콘치킨</Strong></h1>
+	<h1><Strong>${vo.menu_name }</Strong></h1>
 	<hr class = 'my_hr'/>
 	<form id = 'frm_menu_view' name = 'frm_menu_view' method = 'post' enctype = "multipart/form-data">
 	<input type = 'hidden' id = 'menu_type' name = 'menu_type'/>
 		<label><h3><Strong>이 름  </Strong></h3></label>
-		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name' value = '치즈콘치킨'/><br/>
+		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/><br/>
 		<label><h3><Strong>가 격  </Strong></h3></label>
-		<input type = 'text' size = '15' id = 'menu_price' name = 'menu_price' value = '11000 원'/><br/>
-		<label> <h3><strong>메뉴 타입</strong></h3>
+		<input type = 'text' size = '15' id = 'menu_price' name = 'menu_price' value = '${vo.menu_price }'/><br/>
+		<label> <h3><strong>메뉴 타입 </strong></h3>
 		<select id = 'menu_select' name = 'menu_select'>
 			<option value = 'fury'>치즈&후라이</option>
 			<option value = 'grill'>볶음&그릴</option>
 			<option value = 'salad'>샐러드&떡볶이</option>
 			<option value = 'stew'>탕&전골</option>
-			<option value = 'drink'>주류</option>						
+			<option value = 'drink'>주류</option>
 		</select>
 		</label>
 		<br/>
 		<hr class = 'my_hr'/>
-		<img src = 'http://placehold.it/160x120' id = 'img' name = 'img'/>
+		<img src = './menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>
 		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '수 정' id = 'btn_modify' class = 'menu_btn' name = 'btn_modify'/>
-		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
+		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
 	</form>
 </div>
 <script>

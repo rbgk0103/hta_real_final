@@ -2,62 +2,63 @@ package bean;
 
 public class MenuVo {
 
-	int menuNo;
-	String menuType;
-	String menuName;
-	int menuPrice;
-	String menuImage;
-	int menuHit;
-	String menuDay;
-	String menuEvent;
+	int menu_no;
+	String menu_type;
+	String menu_name;
+	int menu_price;
+	String menu_image;
+	int menu_hit;
+	String menu_day;
+	String menu_event;
+	public int getMenu_no() {
+		return menu_no;
+	}
+	public void setMenu_no(int menu_no) {
+		this.menu_no = menu_no;
+	}
+	public String getMenu_type() {
+		return menu_type;
+	}
+	public void setMenu_type(String menu_type) {
+		this.menu_type = menu_type;
+	}
+	public String getMenu_name() {
+		return menu_name;
+	}
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
+	}
+	public int getMenu_price() {
+		return menu_price;
+	}
+	public void setMenu_price(int menu_price) {
+		this.menu_price = menu_price;
+	}
+	public String getMenu_image() {
+		return menu_image;
+	}
+	public void setMenu_image(String menu_image) {
+		this.menu_image = menu_image;
+	}
+	public int getMenu_hit() {
+		return menu_hit;
+	}
+	public void setMenu_hit(int menu_hit) {
+		this.menu_hit = menu_hit;
+	}
+	public String getMenu_day() {
+		return menu_day;
+	}
+	public void setMenu_day(String menu_day) {
+		this.menu_day = menu_day;
+	}
+	public String getMenu_event() {
+		return menu_event;
+	}
+	public void setMenu_event(String menu_event) {
+		this.menu_event = menu_event;
+	}
 	
-	public int getMenuNo() {
-		return menuNo;
-	}
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
-	}
-	public String getMenuType() {
-		return menuType;
-	}
-	public void setMenuType(String menuType) {
-		this.menuType = menuType;
-	}
-	public String getMenuName() {
-		return menuName;
-	}
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
-	public int getMenuPrice() {
-		return menuPrice;
-	}
-	public void setMenuPrice(int menuPrice) {
-		this.menuPrice = menuPrice;
-	}
-	public String getMenuImage() {
-		return menuImage;
-	}
-	public void setMenuImage(String menuImage) {
-		this.menuImage = menuImage;
-	}
-	public int getMenuHit() {
-		return menuHit;
-	}
-	public void setMenuHit(int menuHit) {
-		this.menuHit = menuHit;
-	}
-	public String getMenuDay() {
-		return menuDay;
-	}
-	public void setMenuDay(String menuDay) {
-		this.menuDay = menuDay;
-	}
-	public String getMenuEvent() {
-		return menuEvent;
-	}
-	public void setMenuEvent(String menuEvent) {
-		this.menuEvent = menuEvent;
-	}
+	
 	
 }
