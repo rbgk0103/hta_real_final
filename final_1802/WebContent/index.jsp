@@ -10,7 +10,10 @@
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
 <!-- bootstrap 3.0.2 -->
-<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- font Awesome -->
 <link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <!-- Ionicons -->
@@ -43,7 +46,7 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_tableNo{line-height: 2.1;}
+#header_tableNo{line-height: 1.7;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
 #modal_call_employee_header{background-color:#282832;color:#fff;}
@@ -97,9 +100,10 @@ if(request.getParameter("content") !=null){
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
+		
 		<c:choose>
 			<c:when test="${session_id != null }">
-				${session_id } 님 안녕
+				${mvo.mbrName } 님 안녕
 			</c:when>
 		</c:choose>
 			
