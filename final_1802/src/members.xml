@@ -19,9 +19,17 @@
 	</insert>
 	
 	<select id="findInfo" parameterType="java.util.HashMap" resultType="bean.MembersVo">
-		select mbr_id mbrId, mbr_pwd mbrPwd
+		select mbr_no mbrNo, mbr_id mbrId, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
+			mbr_gender mbrGender, mbr_reg_date mbrRegDate, mbr_birth mbrBirth, mbr_point mbrPoint
 		from members
-		where mbr_name = #{name} and mbr_phone = #{phone}
+		<where>
+			<if test="id != null">
+				mbr_id = #{id} and mbr_pwd = #{pwd}
+			</if>
+			<if test="name != null">
+				mbr_name = #{name} and mbr_phone = #{phone}
+			</if>
+		</where>
 	</select>
 	
 </mapper>

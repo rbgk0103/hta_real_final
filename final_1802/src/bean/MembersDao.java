@@ -22,11 +22,11 @@ public class MembersDao {
 		this.page = page;
 	}
 	
-	public boolean login(String id, String pwd) {
+	public MembersVo login(String id, String pwd) {
 		System.out.println("디에이오 로그인");
 		System.out.println("id : " + id);
 		System.out.println("pwd : " + pwd);
-		boolean b = false;
+		mvo = null;
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
@@ -37,7 +37,11 @@ public class MembersDao {
 		int cnt = s.selectOne("mbr.login", params);
 		System.out.println(cnt);
 		
-		return b;
+		if(cnt > 0) {
+			mvo = s.selectOne("mbr.findInfo", params);
+			System.out.println("디에이오 mvo id : " + mvo.getMbrId());
+		}
+		return mvo;
 	}
 	
 	public String register(HttpServletRequest req) {

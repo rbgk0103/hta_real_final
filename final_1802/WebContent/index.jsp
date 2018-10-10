@@ -80,10 +80,29 @@ if(request.getParameter("content") !=null){
 			<a href="index.jsp?content=main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
-			<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
+			
+		<c:choose>
+			<c:when test="${session_id == null }">
+			
+				<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
+			
+			</c:when>
+			<c:when test="${session_id != null }">
+			
+				<a id="mbr_logout">로그아웃</a>
+				
+			</c:when>
+		</c:choose>
+			
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
+		<c:choose>
+			<c:when test="${session_id != null }">
+				${session_id } 님 안녕
+			</c:when>
+		</c:choose>
+			
 			<a>No.01</a>
 		</div>
 	</div>
@@ -96,6 +115,9 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./modal_call_members_register.jsp" %>
 <%@ include file = "./modal_call_members_findInfo.jsp" %>
 <script>
+$("#mbr_logout").click(function(){
+	location.href="./logout.mbr";
+})
 function goOrderMenu(){
 	$('#content').load('main.ord');
 }

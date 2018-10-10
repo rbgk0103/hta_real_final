@@ -29,8 +29,20 @@ public class MembersController {
 		System.out.println("id : " + id);
 		System.out.println("pwd : " + pwd);
 		
-		boolean b = dao.login(id, pwd);
+		MembersVo mvo = dao.login(id, pwd);
+		
+		System.out.println("mvo : " + mvo.getMbrName());
 		String msg = "";
+		
+		if(mvo != null) {
+			session_id.setAttribute("session_id", mvo.getMbrId());
+			mv.addObject("mvo", mvo);
+			mv.setViewName("../index");
+		}else {
+			msg = "아이디 / 암호 다시 확인";
+			mv.addObject("msg", msg);
+			mv.setViewName("../index");
+		}
 		
 		return mv;
 	}
@@ -87,6 +99,17 @@ public class MembersController {
 		mv.addObject("mvo", mvo);
 		mv.setViewName("info");
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="/logout.mbr")
+	public ModelAndView logout(HttpSession sess) {
+		System.out.println("모델엔뷰 로그아웃");
+		ModelAndView mv = new ModelAndView();
+		
+		sess.removeAttribute("session_id");
+		
+		mv.setViewName("../index");
 		return mv;
 	}
 	
