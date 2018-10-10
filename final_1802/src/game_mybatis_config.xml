@@ -20,7 +20,7 @@
 	
 	<!-- mappers 사용할 xml파일 지정-->
 	<mappers>
-		<mapper resource="orders.xml" />
+		<mapper resource="game.xml" />
 	</mappers>
 	
 </configuration>

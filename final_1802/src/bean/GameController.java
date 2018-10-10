@@ -11,11 +11,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GameController {
 	/* 필드 */
-	GameDao dao;
+	GTDao gtDao;
+	GEDao geDao;
 	
 	/* 생성자 */
-	public GameController(GameDao dao) {
-		this.dao = dao;
+	public GameController(GTDao gtDao, GEDao geDao) {
+		this.gtDao = gtDao;
+		this.geDao = geDao;
 	}
 	
 	// [게임] 처음 진입
