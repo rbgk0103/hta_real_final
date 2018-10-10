@@ -1,10 +1,24 @@
 package bean;
 
-public class tblVo {
+public class TblVo {
 	int tbl_no;
 	int tbl_status;
 	String tbl_ip;
+	String guest_gender;
+	int guest_cnt;
 	
+	public String getGuest_gender() {
+		return guest_gender;
+	}
+	public void setGuest_gender(String guest_gender) {
+		this.guest_gender = guest_gender;
+	}
+	public int getGuest_cnt() {
+		return guest_cnt;
+	}
+	public void setGuest_cnt(int guest_cnt) {
+		this.guest_cnt = guest_cnt;
+	}
 	public String getTbl_ip() {
 		return tbl_ip;
 	}

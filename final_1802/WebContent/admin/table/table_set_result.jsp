@@ -4,3 +4,9 @@
 
 테이블 설정 완료
 
+<script>
+	$(document).ready(function(){
+		alert("테이블 설정 완료");
+		location.href = "./table_status.adm";
+	})
+</script>

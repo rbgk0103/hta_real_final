@@ -63,11 +63,22 @@
    height: 700px;
    overflow-y: scroll;
 }
+/* #menu_list */
 
 #menu_list .item {
    margin-top: 5px;
    margin-bottom: 50px;
    position: relative;
+}
+
+#menu_list .item:hover {
+   margin-top: 5px;
+   margin-bottom: 50px;
+   position: relative;
+   text-decoration: underline;
+   text-shadow: 0 0 10px #fff,
+		 0 0 20px #ff1114,
+ 		 0 0 30px #ff1100;
 }
 
 #menu_list  .item-img {
@@ -76,7 +87,8 @@
 }
 
 #menu_list .item img {
-   width: 100%;
+   width: 225px;
+   height: 225px;
    margin-top: 0px;
    top: 0px;
    left: 0px;
@@ -107,6 +119,7 @@
    color: #2d3a4b;
 }
 
+
 /* left_menu */
 #menu {
 	display: inline-block;
@@ -126,7 +139,6 @@
 }
 
 #menu ul li:hover, #menu ul li:active {
-/* 	list-style: none; */
 	font-size: 20px;
 	text-decoration: underline;
 	color: white;
@@ -141,13 +153,13 @@
 }
 
 /* right_menu */
-#order {
+#right_order {
 	display: inline-block;
  	width: 100%; 
 	height: 700px;
 }
 
-#order #order_list {
+#right_order #order_list {
 	display: block;
 	text-align: center;
 	font-weight: bold;
@@ -159,6 +171,34 @@
 #order_status {
 	height: 60%;
 	overflow-y: scroll; 
+}
+
+#order_status #tableZone {
+	height: 200px;
+	
+}
+
+#tableZone .add_list {
+	color: white;
+}
+
+#tableZone .add_list .r_name {
+	display: inline-block;
+	width: 40%;
+	
+}
+
+#tableZone .add_list .r_cnt {
+	display: inline-block;
+	
+	
+}
+
+#tableZone .add_list .r_price {
+	display: inline-block;
+	width: 40%;
+	margin-left: 10%;
+	
 }
 
 #pre_order {

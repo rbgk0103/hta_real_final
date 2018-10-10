@@ -20,7 +20,7 @@
         </form>
         <ul class="sidebar-menu">
             <li>
-                <a href="?content=table/table_status.jsp">
+                <a href="./table_status.adm">
                   	<span>테이블(메인페이지)</span>
                 </a>
             </li>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a href="?content=menu/menu_index.jsp">
+                <a href="./menu_list.adm">
                 	<span>메뉴</span>
                 </a>
             </li>

@@ -9,10 +9,6 @@
 		        <th>메뉴</th><th>수량</th><th style="">가격</th>
 		    </tr>
 		    <tr>
-		        <td>1.</td>
-		        <td>제육볶음</td><td>2</td><td>16000</td>
-		    </tr>
-		    <tr>
 		        <td>2.</td>
 		        <td>오뎅탕</td><td>3</td><td>13000</td>
 		    </tr>
@@ -31,7 +27,7 @@
 		</table>
 	<hr>
 		추가 주문
-		<div id='tableZone'></div>
+		<table id='tableZone' class='table'></table>
 
 	</div>
 	<div id='pre_order'>

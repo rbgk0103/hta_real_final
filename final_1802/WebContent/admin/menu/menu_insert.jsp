@@ -1,17 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <style>
 #menu_insert{
 	border-radius: 50px;
@@ -78,7 +68,7 @@ $().ready(function(){
 		var ff = document.frm_menu_insert;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../insert.menu',
+			url : './insert_menu.adm',
 			data : data,
 			type : 'post',
 			contentType : false,
@@ -90,34 +80,37 @@ $().ready(function(){
 	})
 })
 </script>
-<body>
-<div id = 'menu_insert'>
-	<br/>
-	<h1><strong>메뉴 등록</strong></h1>
-	<hr class = 'my_hr'/>
-	<form method = 'post' id = 'frm_menu_insert' name = 'frm_menu_insert' enctype = "multipart/form-data">
-		<input type = 'text' id = 'menu_type' name = 'menu_type' value = 'fury'/>
-		<label><h3><Strong>이 름  </Strong></h3></label>
-		<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name'/><br/>
-		<label><h3><Strong>가 격  </Strong></h3></label>
-		<input type = 'text' size = '15' id = 'menu_price' name = 'menu_price'/><br/>
-		<label> <h3><strong>메뉴 타입</strong></h3>
-		<select id = 'menu_select' name = 'menu_select'>
-			<option value = 'fury'>치즈&후라이</option>
-			<option value = 'grill'>볶음&그릴</option>
-			<option value = 'salad'>샐러드&떡볶이</option>
-			<option value = 'stew'>탕&전골</option>
-			<option value = 'drink'>주류</option>						
-		</select>
-		</label>
-		<br/>
-		<hr class = 'my_hr'/>
-		<img src = 'http://placehold.it/160x120' id = 'img' name = 'img'/>
-		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
-		<hr class = 'my_hr'/>
-		<input type = 'button' value = '등 록' id = 'btn_insert' class = 'menu_btn' name = 'btn_insert'/>
-		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
-	</form>
+ <div class="modal-dialog">
+    <div class="modal-content">
+		<div id = 'menu_insert'>
+			<br/>
+			<h1><strong>메뉴 등록</strong></h1>
+			<hr class = 'my_hr'/>
+			<form method = 'post' id = 'frm_menu_insert' name = 'frm_menu_insert' enctype = "multipart/form-data">
+				<input type = 'text' id = 'menu_type' name = 'menu_type' value = 'fury'/>
+				<label><h3><Strong>이 름  </Strong></h3></label>
+				<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name'/><br/>
+				<label><h3><Strong>가 격  </Strong></h3></label>
+				<input type = 'text' size = '15' id = 'menu_price' name = 'menu_price'/><br/>
+				<label> <h3><strong>메뉴 타입</strong></h3>
+				<select id = 'menu_select' name = 'menu_select'>
+					<option value = 'fury'>치즈&후라이</option>
+					<option value = 'grill'>볶음&그릴</option>
+					<option value = 'salad'>샐러드&떡볶이</option>
+					<option value = 'stew'>탕&전골</option>
+					<option value = 'drink'>주류</option>						
+				</select>
+				</label>
+				<br/>
+				<hr class = 'my_hr'/>
+				<img src = 'http://placehold.it/160x120' id = 'img' name = 'img'/>
+				<input type = 'file' name = 'menu_image' id = 'menu_image'/>
+				<hr class = 'my_hr'/>
+				<input type = 'button' value = '등 록' id = 'btn_insert' class = 'menu_btn' name = 'btn_insert'/>
+				<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
+			</form>
+		</div>
+	</div>
 </div>
 <script>
 var ff = document.frm_menu_insert;
@@ -133,5 +126,3 @@ menu_image.onchange = function(event){
 	reader.readAsDataURL(url);
 }
 </script>
-</body>
-</html>

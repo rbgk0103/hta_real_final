@@ -90,10 +90,9 @@
 function main_Load(menu_type){
 	$('#menu_type').val(menu_type)
 	var param = $("#frm_menu").serialize();
-	$(".content").load("../list.menu", param);
+	$(".skin-black").load("./menu_list.adm", param);
 }
-</script>
-<script>
+
 $().ready(function(){
 	$('#menu_index').tabs();
 	$('#menu_index').css({'width':'960px', 'height':'750px'});
@@ -108,9 +107,9 @@ function go_view(menu_no){
 	$(".content").load("../view.menu", param);
 }
 </script>
-<script id = 'script'></script>
-</head>
-<body>
+
+
+
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
 	<input type = 'text' id = 'menu_type' name = 'menu_type' value = '${mt eq null ? "" : mt}'/>
@@ -131,7 +130,7 @@ ${msg }
 			<c:forEach var = 'a' items = '${list }'>
 				<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
 					<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
-					<img src='./menu/menuImg/${a.menu_image }'>
+					<img src='./admin/menu/menuImg/${a.menu_image }'>
 				</div>
 			</c:forEach>
 			</div>
@@ -141,11 +140,11 @@ ${msg }
 			</div>
 		</div>
 	</div>
-	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail111" value = '메뉴 등록'/>
+	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
 </div>
 
-<div class="modal fade" id="menu_detail111" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<jsp:include page="menu_insert.jsp" />
+<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<jsp:include page="./menu_insert.jsp" />
 </div>
 <script>
 $().ready(function(){
