@@ -46,7 +46,8 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_tableNo{line-height: 1.7;}
+#header_mbrName{line-height: 2.9;}
+#header_tableNo{line-height: 1.9;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
 #modal_call_employee_header{background-color:#282832;color:#fff;}
@@ -100,14 +101,16 @@ if(request.getParameter("content") !=null){
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
-		
-		<c:choose>
-			<c:when test="${session_id != null }">
-				${mvo.mbrName } 님 안녕
-			</c:when>
-		</c:choose>
-			
 			<a>No.01</a>
+		</div>
+		<div class="col-md-1" id="header_mbrName">
+		
+			<c:choose>
+				<c:when test="${session_id != null }">
+					${mvo.mbrName } 님 안녕하세요
+				</c:when>
+			</c:choose>
+		
 		</div>
 	</div>
 	<div id ='content'>
