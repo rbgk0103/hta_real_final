@@ -8,6 +8,20 @@
 	<select id='menu_list' parameterType='String' resultType='bean.MenuVo'>
 		select menu_no, menu_type, menu_name, menu_price, menu_image, menu_hit, menu_day 
 		from menu 
-		where menu_type = #{findStr}
+		where menu_type like '%${_parameter}%'
+	</select>
+	
+	<!-- 안주류만 가져오기 -->
+	<select id='menu_list2' parameterType='String' resultType='bean.MenuVo'>
+		select menu_no, menu_type, menu_name, menu_price, menu_image, menu_hit, menu_day 
+		from menu 
+		where not menu_type = 'drink'
+	</select>
+	
+	<!-- 주문 추가시 가져올 정보 -->
+	<select id='add_order' parameterType='int' resultType='bean.MenuVo'>
+		select menu_name, menu_price
+		from menu 
+		where  menu_no = ${_parameter}
 	</select>
 </mapper>

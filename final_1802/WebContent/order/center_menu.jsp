@@ -70,31 +70,34 @@ function appendMenu(no, name, price){
 
 function addMenu(tableZone, no, name, price){
 	var div = document.createElement("tr");
-	div.setAttribute("class", "add_list");
+	//div.setAttribute("class", "add_list");
 	
 	var span1 = document.createElement("td");
-	span1.setAttribute("class", "r_name");
+	//span1.setAttribute("class", "r_name");
 	span1.innerHTML = name;
 	div.appendChild(span1);
 	
-	var span2 = document.createElement("td");
+	var span2 = document.createElement("span");
 	span2.setAttribute("class", "glyphicon glyphicon-minus");
 	span2.setAttribute("aria-hidden", "true");
-	div.appendChild(span2);
+// 	div.appendChild(span2);
 	
-	var span3 = document.createElement("td");
-	span3.setAttribute("class", "r_cnt");
-	cnt = 1;
-	span3.innerHTML = cnt;
-	div.appendChild(span3);
-	
-	var span4 = document.createElement("td");
+	var span4 = document.createElement("span");
 	span4.setAttribute("class", "glyphicon glyphicon-plus");
 	span4.setAttribute("aria-hidden", "true");
-	div.appendChild(span4);
+// 	div.appendChild(span4);
+	
+	var span3 = document.createElement("td");
+	//span3.setAttribute("class", "r_cnt");
+	cnt = 1;
+	span3.appendChild(span2);
+	span3.append(cnt);
+	span3.appendChild(span4);
+	div.appendChild(span3);
+	
 
 	var span5 = document.createElement("td");
-	span5.setAttribute("class", "r_price");
+	//span5.setAttribute("class", "r_price");
 	span5.innerHTML = price;
 	div.appendChild(span5);
 	

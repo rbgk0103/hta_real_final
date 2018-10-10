@@ -20,8 +20,6 @@ public class OrdersController {
 	public ModelAndView orderMain(String findStr) {
 		ModelAndView mv = new ModelAndView();
 		findStr = "";
-		String om = "여기가 메뉴 메인";
-		System.out.println(om);
 		List<MenuVo> list = dao.menuSelect(findStr);
 		System.out.println("우리모두 하하하");
 		
