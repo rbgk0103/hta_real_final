@@ -27,7 +27,7 @@ public class MenuController {
 			return mv;
 		}*/
 		
-		@RequestMapping(value="view.menu")
+	/*	@RequestMapping(value="view.menu")
 		public ModelAndView menu_view(HttpServletRequest req) {
 			ModelAndView mv = new ModelAndView();
 			this.vo = this.dao.view(Integer.parseInt(req.getParameter("menu_no")));
@@ -35,9 +35,9 @@ public class MenuController {
 			
 			mv.setViewName("menu_view");
 			return mv;
-		}
+		}*/
 		
-		@RequestMapping(value="insert.menu")
+		/*@RequestMapping(value="insert.menu")
 		public ModelAndView menu_insert(HttpServletRequest req) {
 			ModelAndView mv = new ModelAndView();
 			String msg = "";
@@ -46,8 +46,8 @@ public class MenuController {
 			mv.addObject("msg", msg);
 			mv.setViewName("menu_index");
 			return mv;
-		}
-		
+		}*/
+		/*
 		@RequestMapping(value="modify.menu")
 		public ModelAndView menu_modify(HttpServletRequest req) {
 			ModelAndView mv = new ModelAndView();
@@ -58,8 +58,8 @@ public class MenuController {
 			mv.setViewName("menu_index");
 			return mv;
 		}
-		
-		@RequestMapping(value="delete.menu")
+		*/
+/*		@RequestMapping(value="delete.menu")
 		public ModelAndView menu_delete(HttpServletRequest req) {
 			ModelAndView mv = new ModelAndView();
 			System.out.println("delete 진입");
@@ -70,7 +70,7 @@ public class MenuController {
 			mv.setViewName("menu_index");
 			return mv;
 		}
-		
+		*/
 		@RequestMapping(value="today.menu")
 		public ModelAndView menu_today(HttpServletRequest req) {
 			ModelAndView mv = new ModelAndView();

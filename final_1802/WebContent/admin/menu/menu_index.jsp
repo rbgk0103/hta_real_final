@@ -98,13 +98,11 @@ $().ready(function(){
 	$('#menu_index').css({'width':'960px', 'height':'750px'});
 	
 })
-function go_insert(){
-	location.href="admin_index.jsp?content=menu/menu_insert.jsp";
-}
+
 function go_view(menu_no){
 	$("#menu_no").val(menu_no);
 	var param = $("#frm_menu").serialize();
-	$(".content").load("../view.menu", param);
+	$(".skin-black").load("./menu_view.adm", param);
 }
 </script>
 
@@ -127,12 +125,12 @@ ${msg }
 	<div id = 'content'>
 		<div id = 'menu_center'>
 			<div id = 'menu_read'>
-			<c:forEach var = 'a' items = '${list }'>
-				<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
-					<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
-					<img src='./admin/menu/menuImg/${a.menu_image }'>
-				</div>
-			</c:forEach>
+				<c:forEach var = 'a' items = '${list }'>
+					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
+						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
+						<img src='./admin/menu/menuImg/${a.menu_image }'>
+					</div>
+				</c:forEach>
 			</div>
 			<div id= 'tab_b'>
 			</div>

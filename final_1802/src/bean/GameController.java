@@ -52,4 +52,22 @@ public class GameController {
 		
 		return mv;
 	}
+	
+/*	// [대전을대전을 위한 테이블목록] 
+	@RequestMapping(value = "/tbl_list.game")
+	public ModelAndView tblList(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String gm = "여기가 테이블목록";
+		System.out.println(gm);
+		
+		List<TblVo> tblList = gtDao.tblSelect(req);
+		
+		System.out.println("tblList.size(): " + tblList.size());
+		
+		mv.addObject("tblList", tblList);
+		mv.setViewName("tbl_list"); // tbl_list.jsp
+		
+		return mv;
+	}*/
 }

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-<div id='gtl_wrap'>
-	<h3>게임타이틀 목록 - 게임을 고르세요</h3>
+<div id='tbl_list_wrap'>
+	<h3>테이블 목록 - 맞짱뜰 상대 테이블을 고르세요</h3>
 	
-	<div id='gtl_list_area'>
+	<div id='tbl_list_area'>
 		<form id='frm_gtl_list' name='frm_gtl_list'>	
 
 			<!-- 게임 항목 -->

@@ -74,7 +74,7 @@ $().ready(function(){
 			contentType : false,
 			processData : false,
 			success : function(resp){
-				$(".content").html(resp);
+				$(".skin-black").html(resp);
 			}
 		});
 	})

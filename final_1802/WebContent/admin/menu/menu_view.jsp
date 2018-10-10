@@ -86,13 +86,13 @@ $().ready(function(){
 		var ff = document.frm_menu_view;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../modify.menu',
+			url : './menu_modify.adm',
 			data : data,
 			type : 'post',
 			contentType : false,
 			processData : false,
 			success : function(resp){
-				$(".content").html(resp);
+				$(".skin-black").html(resp);
 			}
 		});
 	})
@@ -100,13 +100,13 @@ $().ready(function(){
 		var ff = document.frm_menu_view;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../delete.menu',
+			url : './menu_delete.adm',
 			data : data,
 			type : 'post',
 			contentType : false,
 			processData : false,
 			success : function(resp){
-				$(".content").html(resp);
+				$(".skin-black").html(resp);
 			}
 		});
 	})
@@ -114,13 +114,13 @@ $().ready(function(){
 		var ff = document.frm_menu_view;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../today.menu',
+			url : './menu_today.adm',
 			data : data,
 			type : 'post',
 			contentType : false,
 			processData : false,
 			success : function(resp){
-				$(".content").html(resp);
+				$(".skin-black").html(resp);
 			}
 		});
 	})
@@ -128,18 +128,18 @@ $().ready(function(){
 		var ff = document.frm_menu_view;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../today_no.menu',
+			url : './menu_today_no.adm',
 			data : data,
 			type : 'post',
 			contentType : false,
 			processData : false,
 			success : function(resp){
-				$(".content").html(resp);
+				$(".skin-black").html(resp);
 			}
 		});
 	})
 	$("#btn_cancel").click(function(){
-		$(".content").load("./menu/menu_index.jsp");
+		$(".skin-black").load("./menu_list.adm");
 	})
 })
 </script>
@@ -183,7 +183,7 @@ $().ready(function(){
 		</label>
 		<br/>
 		<hr class = 'my_hr'/>
-		<img src = './menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>
+		<img src = './admin/menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>
 		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '수 정' id = 'btn_modify' class = 'menu_btn' name = 'btn_modify'/>
