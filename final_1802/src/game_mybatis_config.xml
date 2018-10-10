@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 데이터베이스를 연결하기 위한 기본정보를 제공 -->
+
+<configuration>
+  
+	<!-- Environments 사용할 오라클 서버를 연결 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=35.194.123.33)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=xe)))" />
+				<property name="username" value="final" />
+				<property name="password" value="1111" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- mappers 사용할 xml파일 지정-->
+	<mappers>
+		<mapper resource="orders.xml" />
+	</mappers>
+	
+</configuration>

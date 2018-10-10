@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		 http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- bean -->
+	<bean id="gameDao" class="bean.GameDao"/>
+		
+<!-- controller -->
+	<bean id="gameController" class="bean.GameController">
+		<constructor-arg ref="gameDao"/>
+	</bean>
+	
+<!-- view resolver -->
+	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="index.jsp?content=game/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>

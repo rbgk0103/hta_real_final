@@ -1,0 +1,33 @@
+/* game.css */
+
+/* game_index.jsp */
+
+#gi_wrap {
+	border: 1px solid gray;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#gi_wrap h3 {
+	text-align: center;
+}
+
+#gi_wrap #game_widths {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+}
+
+#gi_wrap .game_with {
+	display: inline-block;
+	border: 1px solid gray;
+	margin: 1%;
+	width: 20%;
+}
+
+#gi_wrap .game_with_img {
+	border: 1px solid gray;
+	display: inline-block;
+	
+}
+
