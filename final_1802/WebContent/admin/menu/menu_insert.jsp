@@ -68,7 +68,7 @@ $().ready(function(){
 		var ff = document.frm_menu_insert;
 		var data = new FormData(ff);
 		$.ajax({
-			url : '../insert.menu',
+			url : './insert_menu.adm',
 			data : data,
 			type : 'post',
 			contentType : false,

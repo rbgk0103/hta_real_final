@@ -54,4 +54,15 @@ public class AdminController {
 		mv.setViewName("menu/menu_index");
 		return mv;
 	}
+	
+	@RequestMapping(value="insert_menu.adm")
+	public ModelAndView menu_insert(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		msg = this.menu_dao.insert(req);
+		
+		mv.addObject("msg", msg);
+		mv.setViewName("menu/menu_index");
+		return mv;
+	}
 }
