@@ -40,6 +40,8 @@ public class GTDao {
 	
 	
 	/* 사용자 정의 메소드들 */
+	
+	// 게임타이틀목록 가져오기
 	public List<GTVo> gtSelect(HttpServletRequest req){
 		findStr = req.getParameter("findStr");
 		
@@ -53,4 +55,13 @@ public class GTDao {
 		
 		return gtList;
 	}
+	
+/*	// 테이블목록 가져오기
+	public List<TblVo> tblSelect(HttpServletRequest req){
+		int findTblNo = 1;
+		
+		List<TblVo> tblList = sqlSession.selectList("game.tblList", findTblNo);
+		System.out.println(tblList.size());
+		return tblList;
+	}*/
 }
