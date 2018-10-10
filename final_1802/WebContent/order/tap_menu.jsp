@@ -3,17 +3,17 @@
 
 <div id='menu_type'>
 	<form name='tap_frm' id='tap_frm' method='post'>
-		<input type='hidden' name='typeName' value='snack'/>
+		<input type='hidden' name='findStr'/>
 	</form>
-	<span id='snack' class='tap_menu' onclick='goMenu(id)'>안주류</span>
-	<span id='liquor' class='tap_menu' onclick='goMenu(id)'>주류</span>
+	<span id='snack' class='tap_menu' onclick='goMenu("snack")'>안주류</span>
+	<span id='liquor' class='tap_menu' onclick='goMenu("drink")'>주류</span>
 </div>
 <script>
 var ff = document.tap_frm;
 function goMenu(id){
-	ff.typeName.value = id;
+	ff.findStr.value = id;
 	var param = $('#tap_frm').serialize();
-	$('#menu_list').load('./order/center_menu.jsp', param);
+	$('#menu_list').load('center.ord', param);
 	console.log(param);
 }
 
