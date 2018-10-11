@@ -4,7 +4,7 @@
 <mapper namespace='adm'>
 	<select id = 'select_table' resultType="bean.TblVo"> <!-- 리스트 검색(select) -->
 		select table_status.* , 
-		guest.guest_gender , guest.guest_cnt , guest.guest_no 
+		guest.guest_gender , guest.guest_cnt , guest.guest_no , guest.guest_status
 		from table_status table_status 
 		left outer join guest guest 
 		on guest.table_no = table_status.tbl_no
@@ -15,7 +15,15 @@
 		update table_status set tbl_status = 1  where tbl_no = #{_parameter}
 	</update>
 	
+	<update id="table_status_off" parameterType="int">
+		update table_status set tbl_status = 0  where tbl_no = #{_parameter}
+	</update>
+	
 	<insert id="guest_insert" parameterType="bean.GuestVo">
 		insert into guest values(seq_guest.nextval , #{table_no} , #{guest_gender} , #{guest_cnt} , 1 , 0 )
 	</insert>
+	
+	<update id ="guest_status_update" parameterType="bean.GuestVo">
+		update guest set guest_status = 2 where table_no = #{table_no} and guest_no = ${guest_no}
+	</update>
 </mapper>

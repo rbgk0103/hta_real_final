@@ -37,13 +37,35 @@ public class AdminController {
 		String table_msg = admin_dao.set_table_on(req);
 		String guest_msg = admin_dao.set_guest(req);
 		
-		System.out.println(table_msg);
-		System.out.println(guest_msg);
+
 		//set_guest;
-		
+		mv.addObject("table_msg" , table_msg);
+		mv.addObject("guest_msg" , guest_msg);
 		mv.setViewName("table/table_set_result");
 		return mv;
 	}
+	
+	@RequestMapping(value="table_set_delete.adm")
+	public ModelAndView table_set_delete(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String table_delete_msg = admin_dao.set_table_off(req);
+		String guest_status = admin_dao.guest_status_update(req);
+
+		mv.addObject("table_delete_msg" , table_delete_msg);
+		mv.addObject("guest_status" , guest_status);
+		mv.setViewName("table/table_set_delete");
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
