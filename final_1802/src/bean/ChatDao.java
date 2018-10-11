@@ -69,8 +69,6 @@ public class ChatDao {
 			System.out.println("\tguest_gender : " + vo.getGuest_gender());
 		}
 		//////////////////////////////////////////
-		
-		//System.out.println("Dao List에 잘 들어갔을까요? : " + tableList.get(1));
 		return openTableList;
 	}
 	

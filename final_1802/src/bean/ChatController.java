@@ -42,7 +42,7 @@ public class ChatController {
 		modelAndView.addObject("ip", ip);
 		modelAndView.addObject("tableNo", tableNo);
 		modelAndView.addObject("openTableList", openTableList);
-		modelAndView.setViewName("chatClientIndex");
+		modelAndView.setViewName("http://192.168.0.26/final_1802/chatClientIndex");
 
 		return modelAndView;
 	}
