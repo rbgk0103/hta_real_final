@@ -52,6 +52,7 @@
 
 <script>
 var tableZone; // right_order.jsp에서 tableZone은 tbody영역
+var tableModal;
 var m_no, m_name, m_price;
 var cnt = 0;
 var bb = true;
@@ -63,6 +64,7 @@ function appendMenu(no, name, price){
 	bb = true;
 	index = -1;
 	tableZone = $('#tableZone')[0];
+	tableModal = $('#tableModal')[0];
 	
 	var size = document.getElementsByClassName("tdName").length;
 	
@@ -139,6 +141,10 @@ function addMenu(tableZone, no, name, price){
 	
 	tableZone.appendChild(tr);
 }
+
+ function append_data_modal(){
+	tableModal.innerHTML = $('#tableZone')[0].innerHTML; 
+ }
  
  function cntPlus(ev){
 	var tag = ev.srcElement;

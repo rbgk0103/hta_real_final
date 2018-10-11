@@ -17,7 +17,7 @@
 		<span id='now'>주문 금액</span>
 		<span id='now_price'>7,900원</span>	
 	</div>
-	<div id='to_order' data-toggle="modal" data-target="#myModal">주문하기</div>
+	<div id='to_order' onclick='append_data_modal()' data-toggle="modal" data-target="#myModal">주문하기</div>
 </div>
 
 <!-- Modal -->
@@ -29,36 +29,11 @@
         <h4 class="modal-title" id="myModalLabel">주문 내용을 확인해주세요.</h4>
       </div>
       <div class="modal-body">
-  	 	<table class="table">
-		    <tr>
-		        <th style="width: 10px">No</th>
-		        <th>메뉴</th><th>수량</th><th style="">가격</th>
-		    </tr>
-		    <tr>
-		        <td>1.</td>
-		        <td>제육볶음</td><td>2</td><td>16000</td>
-		    </tr>
-		    <tr>
-		        <td>2.</td>
-		        <td>오뎅탕</td><td>3</td><td>13000</td>
-		    </tr>
-		    <tr>
-		        <td>3.</td>
-		        <td>소주</td><td>1</td><td>4000</td>
-		    </tr>
-		    <tr>
-		        <td>4.</td>
-		        <td>맥주</td><td>2</td><td>4000</td>
-		    </tr>
-		    <tr>
-		        <td>5.</td>
-		        <td>경매)콘치즈</td><td>1</td><td>6400</td>
-		    </tr>
-		</table>
+  	 	<table class="table" id='tableModal' style='color:black'></table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">주문하기</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">취소하기</button>
+        <button type="button"  class="btn btn-primary">주문하기</button>
+        <button type="button"  class="btn btn-default" data-dismiss="modal">취소하기</button>
       </div>
     </div>
   </div>
