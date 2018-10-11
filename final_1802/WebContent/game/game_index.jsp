@@ -14,7 +14,7 @@
 				</div>
 				<div class='game_with_button_area'>
 					<input type='button' class='btnGame' id='btnTvT' name='btnTvT' value='테이븚vs테이블'
-						onclick="go_gtl('TvT')" />
+						onclick="go_gtl('TVT')" />
 				</div>
 				
 			</div>	
@@ -37,13 +37,17 @@
 			</div>	
 			
 			<div>
-			<label>page변수의 값: </label>
-			<input class='input_text' type='text' name='page' id='page' value='${page}' /><br/>
-			<label>game_with의 값</label>
-			<input class='input_text' type='text' name='game_with' id='game_with' />
-			<label>game_with의 값</label>
-			<input class='input_text' type='text' name='game_with' id='game_with' />
-			
+				<h3>param값: </h3>
+				<label>page: </label>
+				<input class='input_text' type='text' name='page' value='game' /><br/>
+				<label>gt_with: </label>
+				<input class='input_text' type='text' name='gt_with' /><br/>
+				<label>gt_no: </label>
+				<input class='input_text' type='text' name='gt_no'  /><br/>
+				<label>tbl_i:</label>
+				<input class='input_text' type='text' name='tbl_i'  /><br/>
+				<label>tbl_u:</label>
+				<input class='input_text' type='text' name='tbl_u'  />
 			</div>
 		</form>
 	</div>
@@ -53,11 +57,11 @@
 
 
 // 게임타이틀 리스트페이지로 이동함수
-function go_gtl(game_with) {
+function go_gtl(gt_with) {
 	var f = document.frm_widths;
 	
 	f.page.value = 'game';
-	f.game_with.value = game_with;
+	f.gt_with.value = gt_with;
 	
 	f.method = 'POST';
 	f.action = 'game_title_list.game';

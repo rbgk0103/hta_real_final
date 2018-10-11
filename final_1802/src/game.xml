@@ -18,4 +18,15 @@
 		ORDER BY TBL_NO
 	</select> 	
 	
+	<!-- GAME_TITLES 테이블에서 게임타이틀 한개만 가져오기 -->
+	<select id='gtSelectOne' parameterType='int' resultType='bean.GTVo'>
+		SELECT GT_NO gtNo, GT_NAME gtName, GT_WITH gtWith, GT_IMAGE gtImage
+		FROM GAME_TITLES
+		WHERE GT_NO = #{_parameter}
+	</select>
+	
+	<!-- MENU 테이블에서 메뉴정보 한개만 가져오기 -->
+	<select id = 'menuSelectOne' parameterType = "int" resultType = 'bean.MenuVo'> <!-- 자세히보기 -->
+		select * from menu where menu_no = #{_parameter}
+	</select>
 </mapper>

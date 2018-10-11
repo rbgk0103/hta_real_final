@@ -54,4 +54,26 @@ public class GTDao {
 		System.out.println(tblList.size());
 		return tblList;
 	}
+	
+	// 게임타이틀 1개 정보 가져오기
+	public GTVo gtSelectOne(HttpServletRequest req){
+		int findGtNo = Integer.parseInt(req.getParameter("gt_no"));
+		
+		System.out.println("63행 가기 직전에 gt_no: " + findGtNo);
+		GTVo gtVo = sqlSession.selectOne("game.gtSelectOne", findGtNo);
+		System.out.println("mybatis 갔다온 이후에 gtVo.gtNo: " + gtVo.gtNo);
+		
+		
+		return gtVo;
+	}
+	
+	// 메뉴정보 1개 가져오기
+	public MenuVo menuSelectOne(HttpServletRequest req){
+		int findMenuNo = Integer.parseInt(req.getParameter("menu_no"));
+		
+		MenuVo menuVo = sqlSession.selectOne("game.menuSelectOne", findMenuNo);
+		
+		return menuVo;
+	}
+	
 }

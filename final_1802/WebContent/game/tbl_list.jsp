@@ -24,26 +24,34 @@
 						
 					</div>
 					<div id='tbl_btn_area'>
-						<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
-						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')"/>
+						<c:choose>
+							<c:when test="${i.tbl_no eq 1}">
+								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
+						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" class='visibility_hidden'/>
+						 	</c:when>
+						 	<c:otherwise>
+								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
+						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" />
+						 	</c:otherwise>
+						 </c:choose>
+						 
 					</div>
 				</div>
 			</c:forEach>
 
 			<!-- 값 확인용 -->
 			<div>
-				<h3>param 확인용</h3>
+				<h3>param값: </h3>
 				<label>page: </label>
-				 <input type='text' name='page' id='page' value='game' /><br />
-				 
-				 <label>game_with: </label>
-				 <input type='text' name='game_with' id='game_with' value='${param.game_with}' /><br/>
-				 
-				 <label>gt_no: </label>
-				 <input type='text' name='gt_no' id='gt_no' value='${param.gt_no}' /><br/>
-				 
-				 <label>tbl_no: </label>
-				 <input type='text' name='tbl_no' id='tbl_no' value='' /><br/>
+				<input class='input_text' type='text' name='page' value='${param.page}' /><br/>
+				<label>gt_with: </label>
+				<input class='input_text' type='text' name='gt_with' value='${param.gt_with}'  /><br/>
+				<label>gt_no: </label>
+				<input class='input_text' type='text' name='gt_no' value='${param.gt_no}' /><br/>
+				<label>tbl_i:</label>
+				<input class='input_text' type='text' name='tbl_i' value='1' /><br/>
+				<label>tbl_u:</label>
+				<input class='input_text' type='text' name='tbl_u' />
 				 
 			</div>
 		</div>
@@ -55,7 +63,8 @@
 function go_main_ord(tbl_no) {
 	var f = document.frm_tbl_list;
 	
-	f.tbl_no.value = tbl_no;
+	f.tbl_u.value = tbl_no;		// 대적할 상대의 테이블번호
+	
 	f.method = 'POST';
 	f.action = 'index.jsp?content=main.ord';
 	f.submit();

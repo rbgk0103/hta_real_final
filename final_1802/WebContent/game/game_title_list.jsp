@@ -34,12 +34,17 @@
 			
 			<!-- 값 확인용 -->
 			<div>
-				<label>page변수의 값: </label>
-				<input type='text' name='page' id='page' value='game' /><br/>
-				<label>game_with의 값: </label>
-				<input type='text' name='game_with' id='game_with' value='${param.game_with}' />
-				<label>gt_no의 값: </label>
-				<input type='text' name='gt_no' id='gt_no' />
+				<h3>param값: </h3>
+				<label>page: </label>
+				<input class='input_text' type='text' name='page' value='${param.page}' /><br/>
+				<label>gt_with: </label>
+				<input class='input_text' type='text' name='gt_with' value='${param.gt_with}'  /><br/>
+				<label>gt_no: </label>
+				<input class='input_text' type='text' name='gt_no'  /><br/>
+				<label>tbl_i:</label>
+				<input class='input_text' type='text' name='tbl_i'  /><br/>
+				<label>tbl_u:</label>
+				<input class='input_text' type='text' name='tbl_u'  />
 			</div>
 		</form>
 	</div>

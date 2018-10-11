@@ -70,4 +70,21 @@ public class GameController {
 		
 		return mv;
 	}
+	
+	// [tvtReady] 
+	@RequestMapping(value = "/tvt_ready.game")
+	public ModelAndView tvtReady(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		GTVo gtVo = gtDao.gtSelectOne(req);
+		
+//		MenuVo menuVo = gtDao.menuSelectOne(req);
+		
+//		System.out.println("gtVo.getGtNo: " + gtVo.getGtNo());
+//		System.out.println("gtVo.getGtName: " + gtVo.getGtName());
+		
+		mv.setViewName("tvt_ready"); // tbl_list.jsp
+		
+		return mv;
+	}
 }
