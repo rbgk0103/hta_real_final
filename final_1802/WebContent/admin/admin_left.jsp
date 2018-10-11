@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li>
-                <a href="?content=auction/auction_index.jsp">
+                <a href="./auction_list.auc">
                 	<span>경매</span>
                 </a>
             </li>

@@ -141,6 +141,8 @@ $().ready(function(){
 	$("#btn_cancel").click(function(){
 		$(".skin-black").load("./menu_list.adm");
 	})
+	$("#btn")
+	
 })
 </script>
 <div id = 'menu_view'>
@@ -155,7 +157,7 @@ $().ready(function(){
 	</c:choose>
 	<br/><br/><br/><br/>
 	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록' /><br/><br/>
-	<input type = 'button' id = 'btn_auction_input' data-toggle="modal" data-target="#auction_detail" value = 'AUCTION 등록' class = 'button'/>
+	<input type = 'button' id = 'btn_auction_input' value = 'AUCTION 등록' class = 'button'/>
 </div>
 <div class="modal fade" id="auction_detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<jsp:include page="../auction/auction_input.jsp" />
