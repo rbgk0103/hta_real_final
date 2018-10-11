@@ -111,7 +111,18 @@ public class AdminController {
 	public ModelAndView menu_today(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
-		msg = menu_dao.today(req);
+		msg = menu_dao.today(req, 1);
+		System.out.println(msg);
+		mv.addObject("msg", msg);
+		mv.setViewName("menu/menu_index");
+		return mv;
+	}
+	
+	@RequestMapping(value="menu_today_no.adm")
+	public ModelAndView menu_today_no(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		msg = menu_dao.today(req, 0);
 		System.out.println(msg);
 		mv.addObject("msg", msg);
 		mv.setViewName("menu/menu_index");

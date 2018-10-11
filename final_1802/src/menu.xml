@@ -27,12 +27,21 @@
 		delete from menu where menu_no = #{menu_no}
 	</delete>
 	
-	<update id="today" parameterType = "int"> <!-- 오늘의 메뉴 등록 -->
-		update menu set menu_day = 'yes' where menu_no = #{day}
+	<update id="today" parameterType = "bean.MenuDao"> <!-- 오늘의 메뉴 등록 -->
+		update menu set menu_day = 
+		<choose>
+			<when test="day_flag == 1">
+				'yes'
+			</when>
+			<otherwise>
+				'no'
+			</otherwise>
+		</choose>
+		 where menu_no = #{day}
 	</update>
 	
 	<update id="today_no" parameterType = 'int'> <!-- 오늘의 메뉴 취소 -->
-		update menu set menu_day = 'no' where menu_no = #{day}
+
 	</update>
 	
 </mapper>

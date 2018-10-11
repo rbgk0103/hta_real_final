@@ -24,6 +24,9 @@ public class MenuDao {
 	Graphics2D g = null;
 	File file = null;
 	
+	int day;
+	int day_flag;
+	
 	SqlSession s;
 	
 	
@@ -135,7 +138,7 @@ public class MenuDao {
 		}
 	}
 	
-	public String today(HttpServletRequest req) {
+	public String today(HttpServletRequest req,int day_flag) {
 		MenuVo vo = new MenuVo();
 		int cnt = 0;
 		String msg = "";
@@ -144,17 +147,23 @@ public class MenuDao {
 					new DefaultFileRenamePolicy());
 			vo = setVo(multi);
 			System.out.println("menuNo : " + vo.getMenu_no());
-			cnt = s.update("menu.today", vo.getMenu_no());
+			this.setDay(vo.getMenu_no());
+			this.setDay_flag(day_flag);
+			cnt = s.update("menu.today", this);
 			if(cnt > 0) {
 				s.commit();
-				msg = "<script>alert('오늘의메뉴가 등록 되었습니다.')</script>";
+				if(day_flag == 1) {
+					msg = "<script>alert('오늘의메뉴가 등록 되었습니다.')</script>";					
+				}else {
+					msg = "<script>alert('오늘의메뉴가 취소 되었습니다.')</script>";					
+				}
 			}else {
 				s.rollback();
-				msg = "<script>alert('등록중 오류 발생.')</script>";
+				msg = "<script>alert('오류 발생.')</script>";
 			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			msg = "<script>alert('등록중 오류 발생.')</script>";
+			msg = "<script>alert('오류 발생.')</script>";
 		}finally {
 			return msg;
 		}
@@ -206,4 +215,22 @@ public class MenuDao {
 		}
 		return vo;
 	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public int getDay_flag() {
+		return day_flag;
+	}
+
+	public void setDay_flag(int day_flag) {
+		this.day_flag = day_flag;
+	}
+	
+	
 }
