@@ -91,16 +91,13 @@
 }
 </style>
 <script>
-var h;
 function main_Load(menu_type){
-	h = $(document).scrollTop();
 	$('#menu_type').val(menu_type)
 	var param = $("#frm_menu").serialize();
 	$(".skin-black").load("./menu_list.adm", param);
 }
 
 $().ready(function(){
-	$(document).scrollTop(h);
 	$('#menu_index').css({'width':'960px', 'height':'750px'});
 })
 
@@ -109,7 +106,7 @@ function go_view(menu_no){
 	var param = $("#frm_menu").serialize();
 	$(".skin-black").load("./menu_view.adm", param);
 }
-$('#menu_detail1112').modal({backdrop:'static', keyboard: false});
+/* $('#menu_detail1112').modal({backdrop:'static', keyboard: false}); */
 </script>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
@@ -117,16 +114,21 @@ ${msg }
 	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
-	<ul class="nav nav-pills" style = "background-color: #FFEBCD;">
-		<li style = "font-style: italic;"><a onclick = 'main_Load()' href = '#menu_read'>전체메뉴</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("fury")' href = '#menu_read'>치즈&후라이</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("grill")' href = '#menu_read'>볶음&그릴</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("salad")' href = '#menu_read'>샐러드&떡볶이</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("stew")' href = '#menu_read'>탕&전골</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("drink")' href = '#menu_read'>주류</a></li>
+	<ul class="nav nav-tabs" style = "background-color: #FFEBCD;">
+		<li style = "font-style: italic;"><a onclick = 'main_Load()' aria-controls="menu_read">전체메뉴</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("fury")' aria-controls="menu_read">치즈&후라이</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("grill")' aria-controls="menu_read">볶음&그릴</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("salad")' aria-controls="menu_read">샐러드&떡볶이</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("stew")' aria-controls="menu_read">탕&전골</a></li>
+		<li style = "font-style: italic;"><a onclick = 'main_Load("drink")' aria-controls="menu_read">주류</a></li>
 	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
+		<c:if test="${mf eq 1 }">
+		<script>
+			main_Load();
+		</script>
+		</c:if>
 			<div id = 'menu_read' style = "background-color: #F0E68C">
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
@@ -134,12 +136,12 @@ ${msg }
 						<img src='./admin/menu/menuImg/${a.menu_image }'>
 					</div>
 				</c:forEach>
+				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<jsp:include page="./menu_insert.jsp" />
+				</div>
 			</div>
 		</div>
 	</div>
 	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
 </div>
 
-<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<jsp:include page="./menu_insert.jsp" />
-</div>

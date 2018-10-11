@@ -207,7 +207,7 @@ public class MenuDao {
 
 			String tag = (String)e.nextElement();
 			
-			String menuImage = multi.getFilesystemName(tag);
+			String menuImage = multi.getOriginalFileName(tag);
 			if(menuImage == null) {				
 				continue;
 			}
