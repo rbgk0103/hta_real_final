@@ -54,25 +54,32 @@
 var tableZone; // right_order.jsp에서 tableZone은 tbody영역
 var m_no, m_name, m_price;
 var cnt = 0;
+var bb = true;
+var index;
 function appendMenu(no, name, price){
 	m_no = no;
 	m_name = name;
 	m_price = price;
+	bb = true;
+	index = -1;
 	tableZone = $('#tableZone')[0];
 	
 	var size = document.getElementsByClassName("tdName").length;
 	
-	alert(size);
-	
 	for (var i= 0 ; i < size  ; i++){
-		alert(document.getElementsByClassName("tdName")[i].innerHTML);
 		if (document.getElementsByClassName("tdName")[i].innerHTML === name){
-			alert("같은거 등장");
+			bb = false;
+			index = i;
 			break;
-		}
+		} 
 	}
-
-	
+	 
+	if (bb){
+			addMenu(tableZone, m_no, m_name, m_price);
+	} else {
+			document.getElementsByClassName("spanCnt")[index].innerHTML
+			 = Number(document.getElementsByClassName("spanCnt")[index].innerHTML) +1;
+	}
 }
 
  // table태그의 구조를 이용하여 주문서에 append하기
@@ -110,6 +117,8 @@ function addMenu(tableZone, no, name, price){
 		var qty = tag.nextSibling;
 		if (qty.innerHTML != 1){
 			qty.innerHTML = Number(qty.innerHTML) - 1;
+		}else{
+			tableZone.removeChild(tr);
 		}
 	}
 	
