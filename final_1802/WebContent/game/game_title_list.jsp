@@ -27,7 +27,7 @@
 					</div>
 					<div class='gt_btn_area'>
 						<input type='button' name='btn_gt_pick' id='btn_gt_pick' value='게임 선택'
-								onclick="go_tbl_list('${i.gtNo}')">
+								onclick="go_tbl_list('${i.gtNo}')" />
 					</div>
 				</div>
 			</c:forEach>
@@ -51,6 +51,7 @@ function go_tbl_list(gt_no) {
 	var f = document.frm_gtl_list;
 	
 	f.gt_no.value = gt_no;
+	
 	f.method = 'POST';
 	f.action = 'tbl_list.game';
 	f.submit();

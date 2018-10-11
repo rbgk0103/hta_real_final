@@ -12,9 +12,10 @@
 	</select>
 
 	<!-- TABLE_STATUS 테이블에서 테이블 목록을 가져오기 -->
-	<select id='tblList' parameterType='int' resultType='bean.TblVo'>
+ 	<select id='tblList' resultType='bean.TblVo'>
 		SELECT TBL_NO, TBL_STATUS, TBL_IP
 		FROM TABLE_STATUS
-		WHERE TBL_NO = #{_parameter}
-	</select>
+		ORDER BY TBL_NO
+	</select> 	
+	
 </mapper>

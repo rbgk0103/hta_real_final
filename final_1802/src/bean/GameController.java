@@ -53,7 +53,7 @@ public class GameController {
 		return mv;
 	}
 	
-/*	// [대전을대전을 위한 테이블목록] 
+	// [대전을대전을 위한 테이블목록] 
 	@RequestMapping(value = "/tbl_list.game")
 	public ModelAndView tblList(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
@@ -69,5 +69,5 @@ public class GameController {
 		mv.setViewName("tbl_list"); // tbl_list.jsp
 		
 		return mv;
-	}*/
+	}
 }
