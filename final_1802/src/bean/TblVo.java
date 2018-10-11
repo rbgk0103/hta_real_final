@@ -6,8 +6,15 @@ public class TblVo {
    String tbl_ip;
    String guest_gender;
    int guest_cnt;
+   int guest_no;
    
-   public String getGuest_gender() {
+   public int getGuest_no() {
+	return guest_no;
+}
+public void setGuest_no(int guest_no) {
+	this.guest_no = guest_no;
+}
+public String getGuest_gender() {
       return guest_gender;
    }
    public void setGuest_gender(String guest_gender) {

@@ -29,10 +29,25 @@
 			        </div><!-- /.panel-body -->
 			    </div><!-- /.panel -->
 				</c:when>
+				
 				<c:otherwise>
-					<div class="panel">
+				<div class="panel">
 			        <header class="panel-heading">
-			            Table No.${item.tbl_no } ${item.guest_gender} : ${item.guest_cnt}
+			            <span>Table No.${item.tbl_no }</span>
+			            <span class ='table_gender'>
+			            	<c:choose>
+			            		<c:when test="${item.guest_gender eq 'woman'}">
+			            			<label class = 'table_gender_woman'>여자</label>
+			            		</c:when>
+			            		<c:when test="${item.guest_gender eq 'man'}">
+			            			<label class = 'table_gender_man'>남자</label>
+			            		</c:when>
+			            		<c:when test="${item.guest_gender eq 'seam'}">
+			            			<label class = 'table_gender_seam'>합석</label>
+			            		</c:when>
+			            	</c:choose>
+			            : ${item.guest_cnt}
+			           	</span>
 			        </header>
 			        <div class="panel-body">
 			            <table class="table table-bordered">
@@ -45,6 +60,7 @@
 							<tr class = 'table_detail'>
 								<td>
 								<input type='hidden' id ='tbl_no' value="${item.tbl_no }">
+								<input type='hidden' id ='guest_no' value="${item.guest_no }">
 								1.
 								</td>
 								<td>
@@ -65,6 +81,7 @@
 			
 		</div><!-- /.col -->
 	</c:forEach>
+
 </div>
 <div class="modal fade">
 	<div class="modal-dialog">
@@ -78,11 +95,11 @@ $(function(){
     $(".table_set").click(function(){
     	tbl_no = $(this).children().children("input").val();
     	$('div.modal').modal({remote : './admin/table/table_set.jsp?tbl_no='+tbl_no , backdrop: 'static'});
-    
     })
     $(".table_detail").click(function(){
-    	tbl_no = $(this).children().children("input").val();
-    	$('div.modal').modal({remote : './admin/table/table_detail.jsp?tbl_no='+tbl_no , backdrop: 'static'});
+    	tbl_no = $(this).children().children("input").first().val();
+    	guest_no = $(this).children().children("input").next().val();
+    	$('div.modal').modal({remote : './admin/table/table_detail.jsp?tbl_no='+tbl_no+'&guest_no='+guest_no , backdrop: 'static'});
     
     })
 })

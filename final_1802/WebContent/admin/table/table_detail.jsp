@@ -7,7 +7,8 @@
 	<h4 class="modal-title" id="myModalLabel">TABLE NO.${param.tbl_no }</h4>
 </div>
 <form id = 'frm_table_detail' >
-<input type='hidden' id = 'tbl_no' value = '${param.tbl_no }'>
+<input type='hidden' id = 'tbl_no' name ='tbl_no' value = '${param.tbl_no }'>
+<input type='hidden' id = 'guest_no' name ='guest_no' value = '${param.guest_no }'>
 	<div class="modal-body">
 		<table class="table">
 		    <tr>
@@ -33,11 +34,20 @@
 	</div>
 </form>
 <script>
-$('#btn_submit').click(function(){
-	var param = $('#frm_table_set').serialize();
+/* $('#btn_submit').click(function(){
+	var param = $('#frm_table_detail').serialize();
 	alert("param = " + param);
 	$("#frm_table_set").attr("action","table_set.adm?"+param).submit();
 });
+ */
+$('#btn_delete').click(function(){
+	var param = $('#frm_table_detail').serialize();
+	alert("param = " + param);
+	$("#frm_table_detail").attr("action","table_set_delete.adm?"+param).submit();
+});
+
+
+
 
 $('#modal_cancel').click(function(){
 	window.location.reload();

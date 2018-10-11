@@ -146,6 +146,10 @@ h6,
 img {
   max-width: 100% !important;
 }
+.table_gender{right: 35px;position: absolute;}
+.table_gender > .table_gender_man{color:#0000ff;}
+.table_gender > .table_gender_woman{color:#ff0000;}
+.table_gender > .table_gender_seam{color:#33cc33;}
 .sort-highlight {
   background: #f4f4f4;
   border: 1px dashed #ddd;
