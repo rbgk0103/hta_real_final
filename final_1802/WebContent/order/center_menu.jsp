@@ -24,9 +24,9 @@
 </div>
 
 <script>
-var tableZone;
+var tableZone; // right_order.jsp에서 tableZone은 tbody영역
 var m_no, m_name, m_price;
-var cnt;
+var cnt = 0;
 function appendMenu(no, name, price){
 	m_no = no;
 	m_name = name;
@@ -35,83 +35,67 @@ function appendMenu(no, name, price){
 	addMenu(tableZone, m_no, m_name, m_price);
 }
 
-// function addMenu(tableZone, no, name, price){
-// 	var div = document.createElement("div");
-// 	div.setAttribute("class", "add_list");
-	
-// 	var span1 = document.createElement("span");
-// 	span1.setAttribute("class", "r_name");
-// 	span1.innerHTML = name;
-// 	div.appendChild(span1);
-	
-// 	var span2 = document.createElement("span");
-// 	span2.setAttribute("class", "glyphicon glyphicon-minus");
-// 	span2.setAttribute("aria-hidden", "true");
-// 	div.appendChild(span2);
-	
-// 	var span3 = document.createElement("span");
-// 	span3.setAttribute("class", "r_cnt");
-// 	cnt = 1;
-// 	span3.innerHTML = cnt;
-// 	div.appendChild(span3);
-	
-// 	var span4 = document.createElement("span");
-// 	span4.setAttribute("class", "glyphicon glyphicon-plus");
-// 	span4.setAttribute("aria-hidden", "true");
-// 	div.appendChild(span4);
-
-// 	var span5 = document.createElement("span");
-// 	span5.setAttribute("class", "r_price");
-// 	span5.innerHTML = price;
-// 	div.appendChild(span5);
-	
-// 	tableZone.appendChild(div);
-// }
-
+ // table태그의 구조를 이용하여 주문서에 append하기
 function addMenu(tableZone, no, name, price){
-	var div = document.createElement("tr");
-	//div.setAttribute("class", "add_list");
+	var tr = document.createElement("tr");
 	
-	var span1 = document.createElement("td");
-	//span1.setAttribute("class", "r_name");
-	span1.innerHTML = name;
-	div.appendChild(span1);
+	var tdName = document.createElement("td");
+	tdName.setAttribute("class", "tdName");
+	tdName.innerHTML = name;
+	tr.appendChild(tdName);
 	
-	var span2 = document.createElement("span");
-	span2.setAttribute("class", "glyphicon glyphicon-minus");
-	span2.setAttribute("aria-hidden", "true");
- 	//div.appendChild(span2);
+	var btnMinus = document.createElement("span");
+	btnMinus.setAttribute("class", "glyphicon glyphicon-minus");
+	btnMinus.setAttribute("aria-hidden", "true");
 	
-	var span4 = document.createElement("span");
-	span4.setAttribute("class", "glyphicon glyphicon-plus");
-	span4.setAttribute("aria-hidden", "true");
- 	//div.appendChild(span4);
+	var btnPlus = document.createElement("span");
+	btnPlus.setAttribute("class", "glyphicon glyphicon-plus cntplus");
+	btnPlus.setAttribute("aria-hidden", "true");
 	
-	var span3 = document.createElement("td");
-	//span3.setAttribute("class", "r_cnt");
-	cnt = 1;
-	span3.appendChild(span2);
-	span3.append(cnt);
-	span3.appendChild(span4);
-	div.appendChild(span3);
+	var spanCnt = document.createElement("span");
+	spanCnt.setAttribute("class", "spanCnt");
+	spanCnt.innerHTML = 1;
 	
-
-	var span5 = document.createElement("td");
-	//span5.setAttribute("class", "r_price");
-	span5.innerHTML = price;
-	div.appendChild(span5);
+	var tdCnt = document.createElement("td");
+	tdCnt.setAttribute("class", "tdCnt");
+	tdCnt.appendChild(btnMinus);
+	tdCnt.append(spanCnt);
+	tdCnt.appendChild(btnPlus);
+	tr.appendChild(tdCnt);
 	
-	var del_span = document.createElement("td");
-	div.appendChild(del_span);
+	btnPlus.onclick = function(ev){
+ 		var tag = ev.srcElement;
+		var qty = tag.previousSibling;
+		qty.innerHTML = Number(qty.innerHTML) + 1;
+	}
 	
-	var del = document.createElement("span");
-	del.setAttribute("class", "glyphicon glyphicon-remove");
-	del.setAttribute("aria-hidden", "true");
-	del_span.appendChild(del);
+	btnMinus.onclick = function(ev){
+ 		var tag = ev.srcElement;
+		var qty = tag.nextSibling;
+		if (qty.innerHTML != 1){
+			qty.innerHTML = Number(qty.innerHTML) - 1;
+		}
+	}
 	
+	var tdPrice = document.createElement("td");
+	tdPrice.innerHTML = price;
+	tr.appendChild(tdPrice);
 	
-	tableZone.appendChild(div);
+	var tdDel = document.createElement("td");
+	tr.appendChild(tdDel);
+	
+	var btnDel = document.createElement("span");
+	btnDel.setAttribute("class", "glyphicon glyphicon-remove");
+	btnDel.setAttribute("aria-hidden", "true");
+	tdDel.appendChild(btnDel);
+	btnDel.onclick = function(ev){
+		tableZone.removeChild(tr);
+	}
+	
+	tableZone.appendChild(tr);
 }
+
+
 
 </script>
 </body>

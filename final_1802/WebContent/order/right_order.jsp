@@ -3,34 +3,11 @@
 <div id='right_order'>
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
-		<table class="table">
-		    <tr>
-		        <th style="width: 10px">No</th>
-		        <th>메뉴</th><th>수량</th><th style="">가격</th>
-		    </tr>
-		    <tr>
-		        <td>2.</td>
-		        <td>오뎅탕</td><td>3</td><td>13000</td>
-		    </tr>
-		    <tr>
-		        <td>3.</td>
-		        <td>소주</td><td>1</td><td>4000</td>
-		    </tr>
-		    <tr>
-		        <td>4.</td>
-		        <td>맥주</td><td>2</td><td>4000</td>
-		    </tr>
-		    <tr>
-		        <td>5.</td>
-		        <td>경매)콘치즈</td><td>1</td><td>6400</td>
-		    </tr>
+		<table  class='table'>
+			<tbody id='tableZone'>
+				<tr><th>메뉴</th><th>수량</th><th style="">가격</th><th style="width: 10px"></th></tr>
+			</tbody>
 		</table>
-	<hr>
-		추가 주문
-	<table  class='table'>
-		<tbody id='tableZone'></tbody>
-	</table>
-
 	</div>
 	<div id='pre_order'>
 		<span id='previous'>이전 주문 금액:</span>
