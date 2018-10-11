@@ -110,7 +110,7 @@ function go_view(menu_no){
 </script>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
-	<input type = 'text' id = 'menu_type' name = 'menu_type' value = '${mt eq null ? "" : mt}'/>
+	<input type = 'hidden' id = 'menu_type' name = 'menu_type' value = '${mt eq null ? "" : mt}'/>
 	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
@@ -124,11 +124,6 @@ ${msg }
 	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
-		<c:if test="${mf eq 1 }">
-		<script>
-			main_Load();
-		</script>
-		</c:if>
 			<div id = 'menu_read' style = "background-color: #F0E68C">
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
@@ -136,12 +131,11 @@ ${msg }
 						<img src='./admin/menu/menuImg/${a.menu_image }'>
 					</div>
 				</c:forEach>
-<%-- 				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<jsp:include page="./menu_insert.jsp" />
-				</div> --%>
+				</div>
 			</div>
 		</div>
 	</div>
 	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
 </div>
-${ht}
