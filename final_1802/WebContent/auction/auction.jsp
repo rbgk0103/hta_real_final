@@ -54,7 +54,7 @@ function startAu(){
 			<h1><label class = 'auction_header'>A U C T I O N</label></h1>
 		</div>
 		<div id='auction_menu'>
-				<img src='./images/소주.PNG' width='280px' height='280px'/>
+				<img src='./auction/images/소주.PNG' width='280px' height='280px'/>
 		</div>
 				<label class='menu_name'>처음처럼</label><br/>
 				<label class='now_price' >현재가 : 10,000</label><br/>

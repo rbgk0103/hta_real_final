@@ -80,6 +80,16 @@
       <servlet-name>admin</servlet-name>
       <url-pattern>*.adm</url-pattern>
    </servlet-mapping>
+   
+    <servlet>
+      <servlet-name>auction</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>auction</servlet-name>
+      <url-pattern>*.auc</url-pattern>
+   </servlet-mapping>
 </web-app>
 
 
