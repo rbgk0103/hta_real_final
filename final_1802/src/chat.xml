@@ -6,7 +6,20 @@
 	<select id="chat_table_no" parameterType="String" resultType="int">
 		select tbl_no from table_status where tbl_ip = #{_ip}
 	</select>
-	<select id="chat_table_list" resultType="java.util.Map">
-		select tbl_no, tbl_ip from table_status order by tbl_no
+	<select id="chat_table_list" parameterType="bean.ChatDao" resultType="bean.TblVo">
+		select * from (
+			select rownum num, tbl.* from (
+				select tbl_no, tbl_ip from table_status where tbl_ip is not null order by tbl_no
+				) tbl
+			) where num between #{startNo} and #{endNo}
+	</select>
+	<select id="chat_count" resultType="int">
+		select count(tbl_ip) cnt from table_status where tbl_ip is not null
+	</select>
+	<select id="chat_open_list" resultType="bean.GuestVo">
+		select  table_no, guest_gender from (
+			select table_no, min(table_no), guest_gender, guest_status from 
+			guest group by table_no,guest_gender, guest_status) 
+		where guest_status = 1 order by table_no
 	</select>
 </mapper>

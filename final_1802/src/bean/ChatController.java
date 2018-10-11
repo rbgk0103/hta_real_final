@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -31,12 +33,24 @@ public class ChatController {
 	public ModelAndView onOpen(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
 		String ip = req.getParameter("ip");
-		System.out.println("컨트롤러 ip : " + ip);
-		int tableNo = dao.getTableNo(ip);
+		String ipCut = ip.substring(ip.length()-2, ip.length());
+		System.out.println("컨트롤러 ip : " + ipCut);
+		int tableNo = dao.getTableNo(ipCut);
 		System.out.println("Controller tableNo : " + tableNo);
+		//	테이블번호, ip 뒤 두 자리
+		List<GuestVo> openTableList = dao.openTableList();
 		modelAndView.addObject("ip", ip);
 		modelAndView.addObject("tableNo", tableNo);
+		modelAndView.addObject("openTableList", openTableList);
 		modelAndView.setViewName("chatClientIndex");
+
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="header.chat")
+	public ModelAndView loadHeader() {
+		ModelAndView modelAndView = new ModelAndView();
+		
 		return modelAndView;
 	}
 }

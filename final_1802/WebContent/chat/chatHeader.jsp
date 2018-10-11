@@ -1,25 +1,46 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="bean.GuestVo"%>
+<%@page import="javax.websocket.Session"%>
+<%@page import="java.util.Map"%>
+<%@page import="bean.WebSocketServer"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%
+	/* 
+	* GuestVo를 가지고 있는 List을 getAttribute로 받아옴
+	*/
+	List<GuestVo> openTableList; //테이블번호, 성별
+	int openTableListCount;
+	
+	if(request.getAttribute("openTableList") != null) {
+		openTableList = (List<GuestVo>)request.getAttribute("openTableList");
+		openTableListCount = openTableList.size();
+		request.setAttribute("openTableList", openTableList);
+	} else {
+		out.print("<h1>header리스트(Map)가 비었음.(손님이 0명)</h1>");
+	}
+%>
 <div id='chatHeader' class='col-md-12 col-xs-12'>
 	<div class="col-md-1 col-xs-1" id="allCircleBorder">
 		<p>전체</p>
 	</div>
 	<!-- 전체채팅목록, 유저목록, 아이콘 -->
 	<div class="col-md-10 col-xs-10" id="userBox">
-		<i class="fa fa-angle-left fa-3x col-md-1 col-xs-1" id="angleLeftIcon"></i>
 		<!-- 왼쪽 화살표 아이콘 -->
+		<i class="fa fa-angle-left fa-3x col-md-1 col-xs-1" id="angleLeftIcon"></i>
 		<!-- 개개인의 유저 목록 -->
 		<div class="col-md-8 col-xs-8" id="userList">
-			<div class="col-md-2 col-xs-2" id="circleBorder">
-				<p>No. 1</p>
-			</div>
-			<div class="col-md-2 col-xs-2" id="circleBorder">
-				<p>No. 2</p>
-			</div>
-			<div class="col-md-2 col-xs-2" id="circleBorder">
-				<p>No. 3</p>
-			</div>
+			<c:forEach var='i' items='${openTableList}' begin='0' end='${openTableList.size()-1}'>
+				<c:if test="${i.table_no != tableNo}">
+					<div class="col-md-2 col-xs-2" id="circleBorder">
+						<p>No. ${i.table_no}</p>
+					</div>
+				</c:if>
+			</c:forEach>
 		</div>
 		<!-- 개개인의 유저목록 끝 -->
 		<i class="fa fa-angle-right fa-3x col-md-1 col-xs-1"
@@ -27,9 +48,6 @@
 		<!-- 오른쪽 화살표 아이콘 -->
 	</div>
 	<!-- 전체채팅목록, 유저목록, 아이콘 끝 -->
-		<%--
-	<c:forEach begin="1" end="3">
-		<span class="i"></span>
-	</c:forEach>
-	--%>
 </div>
+<script>
+</script>

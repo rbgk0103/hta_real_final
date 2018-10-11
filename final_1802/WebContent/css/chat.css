@@ -103,8 +103,14 @@
 	text-align: left;
 }
 
-.chatReceiveBox {
-	background: #952389;
+.chatWomanBox {
+	background: #E85078;
+	padding: 9px 12px 9px 12px;
+	border-radius: 20px;
+}
+
+.chatSeamBox {
+	background: #50C250;
 	padding: 9px 12px 9px 12px;
 	border-radius: 20px;
 }
@@ -118,8 +124,8 @@
 	text-align: right;
 }
 
-.chatSendBox {
-	background: #239589;
+.chatManBox {
+	background: #5095E8;
 	padding: 9px 12px 9px 12px;
 	border-radius: 20px;
 }
