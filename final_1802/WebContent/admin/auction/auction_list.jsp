@@ -21,10 +21,10 @@
                                       <th>Project</th>
                                       <th>Manager</th>
                                       <!-- <th>Client</th> -->
-                                      <th>Deadline</th>
+                                      <th>Deadlineawe</th>
                                       <!-- <th>Price</th> -->
-                                      <th>Status</th>
-                                      <th>Progress</th>
+                                      <th>Statusage</th>
+                                      <th></th>
                                   </tr>
                               </thead>
                               <tbody>

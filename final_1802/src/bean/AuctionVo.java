@@ -4,63 +4,64 @@ import java.sql.Date;
 
 public class AuctionVo {
 	
-	int  aeNo;
-	int  menuNo;
-	Date aeDate; 
-	int  aePrice;
-	int  aePctMax;
-	int  aeCost;
-	int  aePctMin;
-	int  aeWinTable;
+	int  ae_no;
+	int  menu_no;
+	Date ae_date; 
+	int  ae_price;
+	int  ae_pct_max;
+	int  ae_cost;
+	int  ae_pct_min;
+	int  ae_win_table;
 	
-	public int getAeNo() {
-		return aeNo;
+	public int getAe_no() {
+		return ae_no;
 	}
-	public void setAeNo(int aeNo) {
-		this.aeNo = aeNo;
+	public void setAe_no(int ae_no) {
+		this.ae_no = ae_no;
 	}
-	public int getMenuNo() {
-		return menuNo;
+	public int getMenu_no() {
+		return menu_no;
 	}
-	public void setMenuNo(int menuNo) {
-		this.menuNo = menuNo;
+	public void setMenu_no(int menu_no) {
+		this.menu_no = menu_no;
 	}
-	public Date getAeDate() {
-		return aeDate;
+	public Date getAe_date() {
+		return ae_date;
 	}
-	public void setAeDate(Date aeDate) {
-		this.aeDate = aeDate;
+	public void setAe_date(Date ae_date) {
+		this.ae_date = ae_date;
 	}
-	public int getAePrice() {
-		return aePrice;
+	public int getAe_price() {
+		return ae_price;
 	}
-	public void setAePrice(int aePrice) {
-		this.aePrice = aePrice;
+	public void setAe_price(int ae_price) {
+		this.ae_price = ae_price;
 	}
-	public int getAePctMax() {
-		return aePctMax;
+	public int getAe_pct_max() {
+		return ae_pct_max;
 	}
-	public void setAePctMax(int aePctMax) {
-		this.aePctMax = aePctMax;
+	public void setAe_pct_max(int ae_pct_max) {
+		this.ae_pct_max = ae_pct_max;
 	}
-	public int getAeCost() {
-		return aeCost;
+	public int getAe_cost() {
+		return ae_cost;
 	}
-	public void setAeCost(int aeCost) {
-		this.aeCost = aeCost;
+	public void setAe_cost(int ae_cost) {
+		this.ae_cost = ae_cost;
 	}
-	public int getAePctMin() {
-		return aePctMin;
+	public int getAe_pct_min() {
+		return ae_pct_min;
 	}
-	public void setAePctMin(int aePctMin) {
-		this.aePctMin = aePctMin;
+	public void setAe_pct_min(int ae_pct_min) {
+		this.ae_pct_min = ae_pct_min;
 	}
-	public int getAeWinTable() {
-		return aeWinTable;
+	public int getAe_win_table() {
+		return ae_win_table;
 	}
-	public void setAeWinTable(int aeWinTable) {
-		this.aeWinTable = aeWinTable;
+	public void setAe_win_table(int ae_win_table) {
+		this.ae_win_table = ae_win_table;
 	}
+	
 	
 	
 }

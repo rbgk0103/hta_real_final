@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans 
-   xmlns="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:context="http://www.springframework.org/schema/context"
-   xmlns:aop="http://www.springframework.org/schema/aop"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans.xsd">
-      
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		 http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
       <!-- bean -->
-	<bean id = 'auction_dao' class = 'bean.AuctionDao'/>
-	<bean id = 'auction_vo' class = 'bean.AuctionVo'/>
+	<bean id = "auc_dao" class = "bean.AuctionDao"/>
+	
 	
 	<!-- controller -->
-	<bean id = 'auction_controller' class = 'bean.AuctionController'>
-		<constructor-arg ref = 'auction_dao'/>
-		<constructor-arg ref = 'auction_vo'/>
+	<bean id = "auc_controller" class = "bean.AuctionController">
+		<constructor-arg ref = "auc_dao"/>	
 	</bean>
       
       
       <!-- view resolver -->
       <!-- admin_auctin 이랑 auction 합치자. -->
 	<bean id="view_resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="./auction/"/>
+		<property name="prefix" value="/admin/admin_index.jsp?content="/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 </beans>

@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -7,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 public class AuctionDao {
 		
 	SqlSession s;
-	AuctionVo vo;
 	
 	public AuctionDao(){
 		try {
@@ -17,22 +18,12 @@ public class AuctionDao {
 		}
 	}
 	
-	public String insert(HttpServletRequest req) {
-		int cnt = 0;
-		String msg = "";
-		try {
-			cnt = s.insert("auc.insert_list",vo);
-			if(cnt > 0 ) {
-				msg = "<script>alert('등록완료')</script>";
-			}else {
-				msg = "<script>alert('등록실패')</script>";
-			}
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			msg = "<script>alert('예외발생')</script>";
-		}
-		
-		return msg;
-		
+	public List<AuctionVo> list(){
+		List<AuctionVo> list;
+		list = s.selectList("auc.auction_list");
+		return list;
 	}
+	
+	
+
 }
