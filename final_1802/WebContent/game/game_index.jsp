@@ -41,6 +41,8 @@
 			<input class='input_text' type='text' name='page' id='page' value='${page}' /><br/>
 			<label>game_with의 값</label>
 			<input class='input_text' type='text' name='game_with' id='game_with' />
+			<label>game_with의 값</label>
+			<input class='input_text' type='text' name='game_with' id='game_with' />
 			
 			</div>
 		</form>

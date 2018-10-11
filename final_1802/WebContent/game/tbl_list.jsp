@@ -25,18 +25,26 @@
 					</div>
 					<div id='tbl_btn_area'>
 						<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
-						 		value='대적할 테이블로 선택'	onclick="go_tbl_list()"/>
+						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')"/>
 					</div>
 				</div>
 			</c:forEach>
 
 			<!-- 값 확인용 -->
 			<div>
-				<label>page변수의 값: </label> <input type='text' name='page' id='page'
-					value='game' /><br /> <label>game_with의 값: </label> <input
-					type='text' name='game_with' id='game_with'
-					value='${param.game_with}' /> <label>gt_no의 값: </label> <input
-					type='text' name='gt_no' id='gt_no' />
+				<h3>param 확인용</h3>
+				<label>page: </label>
+				 <input type='text' name='page' id='page' value='game' /><br />
+				 
+				 <label>game_with: </label>
+				 <input type='text' name='game_with' id='game_with' value='${param.game_with}' /><br/>
+				 
+				 <label>gt_no: </label>
+				 <input type='text' name='gt_no' id='gt_no' value='${param.gt_no}' /><br/>
+				 
+				 <label>tbl_no: </label>
+				 <input type='text' name='tbl_no' id='tbl_no' value='' /><br/>
+				 
 			</div>
 		</div>
 	</form>
@@ -44,12 +52,12 @@
 
 <script>
 // '음식메뉴선택' 페이지로 이동 함수
-function go_tbl_list(gt_no) {
-	var f = document.frm_gtl_list;
+function go_main_ord(tbl_no) {
+	var f = document.frm_tbl_list;
 	
-	f.gt_no.value = gt_no;
+	f.tbl_no.value = tbl_no;
 	f.method = 'POST';
-	f.action = 'tbl_list.game';
+	f.action = 'index.jsp?content=main.ord';
 	f.submit();
 } 
 </script>
