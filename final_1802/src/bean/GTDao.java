@@ -13,25 +13,10 @@ public class GTDao {
 	// Game 파일업로드처리 변수들 : TODO
 	
 	
-	// 페이징처리를 위한 11개의 변수 (처음 3개는 초기값 지정해주기)
-	int listSize = 10;
-	int blockSize = 3;
-	
-	int nowPage = 1;		// 외부에서 주입해줘야 함
-	int totSize = 0;		// 외부에서 주입해줘야 함 
-	
-	int totPage = 0;
-	int totBlock = 0;
-	int nowBlock = 0;
-
-	int endPage = 0;
-	int startPage = 0;
-	
-	int endNo = 0;						
-	int startNo = 0;
-	
-	// findStr
+	// 파라미터 변수들
 	String findStr;
+	int findTblNo;
+	
 	
 	/* 생성자 - dao객체 만들자마자 커넥션까지! */
 	public GTDao() {
@@ -44,7 +29,6 @@ public class GTDao {
 	// 게임타이틀목록 가져오기
 	public List<GTVo> gtSelect(HttpServletRequest req){
 		findStr = req.getParameter("findStr");
-		
 		if (findStr == null) {findStr = "tvt";}
 		
 		System.out.println("findStr:" + findStr);
@@ -56,12 +40,18 @@ public class GTDao {
 		return gtList;
 	}
 	
-/*	// 테이블목록 가져오기
+	// 테이블목록 가져오기
 	public List<TblVo> tblSelect(HttpServletRequest req){
-		int findTblNo = 1;
 		
-		List<TblVo> tblList = sqlSession.selectList("game.tblList", findTblNo);
+		/*if (req.getParameter("tbl_no") == null) {
+			findTblNo = 1;
+		}else {
+			findTblNo = Integer.parseInt(req.getParameter("tbl_no")); 
+		}*/
+		
+		List<TblVo> tblList = sqlSession.selectList("game.tblList");
+		
 		System.out.println(tblList.size());
 		return tblList;
-	}*/
+	}
 }
