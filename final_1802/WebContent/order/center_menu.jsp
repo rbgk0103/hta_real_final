@@ -5,18 +5,45 @@
 <div id='menu_list'>
 	
 	<form name='menu_frm' id='menu_frm' method='post'>
-		<input type='hidden' name='menu_no'/>
+		<input type='hidden' name='page' value='${param.page }'/>
+		<input type='hidden' name='gt_with' value='${param.gt_with}' />
+		<input type='hidden' name='gt_no' value='${param.gt_no}' />
+		<input type='hidden' name='tbl_i' value='${param.tbl_i}' />
+		<input type='hidden' name='tbl_u' value='${param.tbl_u}' />
+		<input type='hidden' name='menu_no'  />
 		<c:forEach var='list' items='${list}'>
 		<input type='hidden' name='typeName' value='${list.menu_type }'/>
 			<div class="col-md-3">
+			 <c:choose>
+			 <c:when test='${param.page eq "game" }'>
+				 <div class="item">
+				   <!-- Item img -->
+			        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
+			        <!-- Item Name -->
+			        <div class="item-name"><a>${list.menu_name }</a></div>
+			        <!-- Price --> 
+			        <span class="price">${list.menu_price }</span>
+			        <c:if test='${param.page eq "game" }'>
+			       		<input type='button' name='btnToGame' value='to게임'
+			       		onclick="toGame('${list.menu_no}')"
+			       		/>
+			        </c:if>
+				</div>
+			 </c:when>
+			 <c:otherwise>
 				<div class="item" onclick='appendMenu("${list.menu_no}", "${list.menu_name }", "${list.menu_price }")'> 
-		        <!-- Item img -->
-		        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
-		        <!-- Item Name -->
-		        <div class="item-name"><a>${list.menu_name }</a></div>
-		        <!-- Price --> 
-		        <span class="price">${list.menu_price }</span>
-		      	</div>
+			 	  <!-- Item img -->
+			        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
+			        <!-- Item Name -->
+			        <div class="item-name"><a>${list.menu_name }</a></div>
+			        <!-- Price --> 
+			        <span class="price">${list.menu_price }</span>
+			        <c:if test='${param.page eq "game" }'>
+			       		<input type='button' value='to게임'/>
+			        </c:if>
+			      </div>  
+			 </c:otherwise>
+			 </c:choose>
 			</div>
 		</c:forEach>
 	</form>
@@ -32,7 +59,20 @@ function appendMenu(no, name, price){
 	m_name = name;
 	m_price = price;
 	tableZone = $('#tableZone')[0];
-	addMenu(tableZone, m_no, m_name, m_price);
+	
+	var size = document.getElementsByClassName("tdName").length;
+	
+	alert(size);
+	
+	for (var i= 0 ; i < size  ; i++){
+		alert(document.getElementsByClassName("tdName")[i].innerHTML);
+		if (document.getElementsByClassName("tdName")[i].innerHTML === name){
+			alert("같은거 등장");
+			break;
+		}
+	}
+
+	
 }
 
  // table태그의 구조를 이용하여 주문서에 append하기
@@ -63,11 +103,7 @@ function addMenu(tableZone, no, name, price){
 	tdCnt.appendChild(btnPlus);
 	tr.appendChild(tdCnt);
 	
-	btnPlus.onclick = function(ev){
- 		var tag = ev.srcElement;
-		var qty = tag.previousSibling;
-		qty.innerHTML = Number(qty.innerHTML) + 1;
-	}
+	btnPlus.onclick = cntPlus;
 	
 	btnMinus.onclick = function(ev){
  		var tag = ev.srcElement;
@@ -94,6 +130,23 @@ function addMenu(tableZone, no, name, price){
 	
 	tableZone.appendChild(tr);
 }
+ 
+ function cntPlus(ev){
+	var tag = ev.srcElement;
+	var qty = tag.previousSibling;
+	qty.innerHTML = Number(qty.innerHTML) + 1;
+ }
+
+ 
+//'게임준비완료' 페이지로 이동 함수
+function toGame(menu_no) {
+	var f = document.menu_frm;
+	
+	f.menu_no.value = menu_no;
+	f.method = 'POST';
+	f.action = 'tvt_ready.game';
+	f.submit();
+} 
 
 
 
