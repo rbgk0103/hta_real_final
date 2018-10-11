@@ -136,12 +136,12 @@ ${msg }
 						<img src='./admin/menu/menuImg/${a.menu_image }'>
 					</div>
 				</c:forEach>
-				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<%-- 				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<jsp:include page="./menu_insert.jsp" />
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</div>
 	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
 </div>
-
+${ht}

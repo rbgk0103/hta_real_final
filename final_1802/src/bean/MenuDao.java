@@ -42,8 +42,8 @@ public class MenuDao {
 	
 	public List<MenuVo> list(String menu_type){
 		List<MenuVo> list;
-		if(menu_type == "") {
-			menu_type = "%"+menu_type+"%";
+		if(menu_type == ""||menu_type == null) {
+			menu_type = "%%";
 		}
 		list = s.selectList("menu.select", menu_type);
 		return list;
