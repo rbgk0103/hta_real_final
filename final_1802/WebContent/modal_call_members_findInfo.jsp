@@ -16,13 +16,13 @@
 					<div class="form-group">
 						<label for="mbr_findInfo_name" class="col-sm-3 control-label"> 이름 </label>
 						<div class="col-sm-8">
-							<input type="text" name="mbr_name" id="mbr_findInfo_name" class="form-control" value="" autocomplete="off" placeholder="">
+							<input type="text" name="mbr_name" id="mbr_findInfo_name" class="form-control" value="" autocomplete="off" placeholder="ex) 김민수">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="mbr_findInfo_phone" class="col-sm-3 control-label"> 연락처 </label>
 						<div class="col-sm-8">
-							<input type="text" name="mbr_phone" id="mbr_findInfo_phone" class="form-control" value="" autocomplete="off" placeholder="">
+							<input type="text" name="mbr_phone" id="mbr_findInfo_phone" class="form-control" value="" autocomplete="off" placeholder="ex) 01075029632">
 						</div>
 					</div>
 					<br/>
@@ -46,8 +46,6 @@
 
 <script>
 	$("#btn_mbr_findInfo").click(function(){
-// 		var finfo = document.frm_mbr_findInfo;
-// 		var param = finfo.serialize();
 		var param = $("#frm_mbr_findInfo").serialize();
 		$("#mbr_info_result").load("./findInfo.mbr", param);
 	})

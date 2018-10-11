@@ -20,7 +20,7 @@
 				</div>
 				<br/>
 				<br/>
-				<form name="frm_mbr_login" method="post" class="frm_mbr_login form-horizontal">
+				<form name="frm_mbr_login" id="frm_mbr_login" method="post" class="frm_mbr_login form-horizontal">
 		
 					<div class="form-group">
 						<label for="mbr_login_id" class="col-sm-3 control-label"> 아이디 </label>
@@ -35,6 +35,7 @@
 						</div>
 					</div>
 				</form>
+				<div id="mbr_login_result"></div>
 			</div>
 			<div class="modal-footer" id ="modal_call_members_login_footer">
 				<div class="col-sm-4">
@@ -64,8 +65,7 @@
 
 <script>
 	$("#btn_mbr_login").click(function(){
-		var ff = document.frm_mbr_login;
-		ff.action = "./login.mbr";
-		ff.submit();
+		var param = $("#frm_mbr_login").serialize();
+		$("#mbr_login_result").load("./login.mbr", param);
 	})	
 </script>

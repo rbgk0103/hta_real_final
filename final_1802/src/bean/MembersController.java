@@ -21,64 +21,76 @@ public class MembersController {
 	@RequestMapping(value="/login.mbr")
 	public ModelAndView login(HttpServletRequest req, HttpSession session_id) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("모델앤뷰 로그인");
 		
 		String id = req.getParameter("mbr_id");
 		String pwd = req.getParameter("mbr_pwd");
 		
-		System.out.println("id : " + id);
-		System.out.println("pwd : " + pwd);
-		
 		MembersVo mvo = dao.login(id, pwd);
 		
-		System.out.println("mvo : " + mvo.getMbrName());
 		String msg = "";
 		
 		if(mvo != null) {
 			session_id.setAttribute("session_id", mvo.getMbrId());
 			mv.addObject("mvo", mvo);
-			mv.setViewName("../index");
+			msg = "login";
+			mv.addObject("msg", msg);
+			mv.setViewName("info");
 		}else {
 			msg = "아이디 / 암호 다시 확인";
 			mv.addObject("msg", msg);
-			mv.setViewName("../index");
+			mv.setViewName("info");
 		}
+		
 		
 		return mv;
 	}
 
+	@RequestMapping(value="/idCheck.mbr")
+	public ModelAndView idCheck(String id) {
+		ModelAndView mv = new ModelAndView();
+
+		int cnt = dao.idCheck(id);
+		String msg = "";
+		
+		if(cnt > 0) {
+			msg = "id_over";
+			mv.addObject("msg", msg);
+			mv.addObject("id_chk", "over");
+			mv.setViewName("info");
+		}else if(cnt == 0) {
+			msg = "id_possible";
+			mv.addObject("msg", msg);
+			mv.addObject("id_chk", "possible");
+			mv.setViewName("info");
+		}
+		
+		return mv;
+	}
+	
 	@RequestMapping(value="/register.mbr")
 	public ModelAndView register(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("모델앤뷰 레지스터");
+		String msg = "";
 		
-		String id = req.getParameter("mbr_id");
-		String pwd = req.getParameter("mbr_pwd");
-		String name = req.getParameter("mbr_name");
-		String phone = req.getParameter("mbr_phone");
-		String birth = req.getParameter("mbr_birth");
-		String gender = req.getParameter("mbr_gender");
-		System.out.println("id : " + id);
-		System.out.println("pwd : " + pwd);
-		System.out.println("name : " + name);
-		System.out.println("phone : " + phone);
-		System.out.println("birth : " + birth);
-		System.out.println("gender : " + gender);
+		msg = dao.register(req);
 		
-		String msg = dao.register(req);
+		if(msg.equals("reg_success")) {
+			msg = "reg_success";
+		}else if(msg.equals("reg_false")) {
+			msg = "reg_false";
+		}
 		mv.addObject("msg", msg);
-		
+		mv.setViewName("info");
 		return mv;
 	}
 	
 	@RequestMapping(value="/findInfo.mbr")
 	public ModelAndView findInfo(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("모델엔뷰 파인드");
 		String msg = "";
 		
 		if(req.getParameter("mbr_name").equals("") || req.getParameter("mbr_phone").equals("")) {
-			msg = "이름과 연락처를 입력해 쨔샤";
+			msg = "이름과 연락처를 모두 입력해주세요.";
 			
 			mv.addObject("msg", msg);
 			mv.setViewName("info");
@@ -88,13 +100,9 @@ public class MembersController {
 		String name = req.getParameter("mbr_name");
 		String phone = req.getParameter("mbr_phone");
 		
-		System.out.println("name : " + name);
-		System.out.println("phone : " + phone);
-		
 		MembersVo mvo = dao.findInfo(name, phone);
 		
 		msg = "아이디 : " + mvo.getMbrId() + "\n비밀번호 : " + mvo.getMbrPwd();
-		System.out.println("컨트롤러 msg : " + msg);
 		
 		mv.addObject("mvo", mvo);
 		mv.setViewName("info");
@@ -104,12 +112,13 @@ public class MembersController {
 	
 	@RequestMapping(value="/logout.mbr")
 	public ModelAndView logout(HttpSession sess) {
-		System.out.println("모델엔뷰 로그아웃");
 		ModelAndView mv = new ModelAndView();
 		
 		sess.removeAttribute("session_id");
 		
-		mv.setViewName("../index");
+		String msg = "logout";
+		mv.addObject("msg", msg);
+		mv.setViewName("info");
 		return mv;
 	}
 	

@@ -88,7 +88,7 @@ if(request.getParameter("content") !=null){
 		<c:choose>
 			<c:when test="${session_id == null }">
 			
-				<a href ="#" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
+				<a id="mbr_login" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
 			
 			</c:when>
 			<c:when test="${session_id != null }">
@@ -124,6 +124,7 @@ if(request.getParameter("content") !=null){
 <script>
 $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
+// 	location.replace("./index.jsp")
 })
 function goOrderMenu(){
 	$('#content').load('main.ord');

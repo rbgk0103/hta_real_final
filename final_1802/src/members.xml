@@ -12,6 +12,12 @@
 		where mbr_id = #{id} and mbr_pwd = #{pwd}
 	</select>
 	
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(mbr_id) cnt
+		from members
+		where mbr_id = #{_parameter}
+	</select>	
+	
 	<insert id="insert" parameterType="bean.MembersVo">
 		insert into members
 		values
