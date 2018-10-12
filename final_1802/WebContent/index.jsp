@@ -47,7 +47,7 @@ text-shadow:
 	0 0 150px #d1ad8f;
 }
 #header_mbrName{line-height: 2.9; position: absolute; right: 6%;}
-#header_tableNo{line-height: 1.9;}
+#header_tableNo{line-height: 2.0; position: absolute; right: 8%;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
 #modal_call_employee_header{background-color:#282832;color:#fff;}
