@@ -8,9 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <title>**채팅방**</title>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.js"
-	integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -42,11 +40,12 @@
 	String chatHeader = "./chat/chatHeader.jsp?tableNo=" + request.getAttribute("tableNo");
 %>
 	<!-- table no를 id로, guest gender를 value로 만들었습니다. -->
-	<c:forEach var='i' items='${allTableList}'>
-		<input type="hidden" id="${i.table_no }" value="${i.guest_gender}">
-	</c:forEach>
-	<input type='hidden' id="ip" value='${ip }' />
-	<input type='hidden' id="tableNo" value='${tableNo }' />
+		<c:forEach var='i' items='${allTableList}'>
+			<input type="hidden" id="${i.table_no }" value="${i.guest_gender}">
+		</c:forEach>
+		<input type='hidden' id="ip" value='${ip }' />
+		<input type='hidden' id="tableNo" value='${tableNo }' />
+		
 	<div class="container" id="chatBody">
 		<div id='chatHeader' class='col-md-12 col-xs-12'>
 			<jsp:include page='<%=chatHeader%>' />
@@ -72,7 +71,6 @@
 			System.out.println("index에서 받아온 parameter(ip)의 값은 : " + ip);
 			request.setAttribute("ip", ip);
 		}
-		
 	%>
 	<script>
 		window.onload = function() {
@@ -80,16 +78,16 @@
 			console.log("스크립틀릿의 ip : " + $('#ip').val());
 			var ip = $('#ip').val();
 			var ipCut = ip.substr(ip.length-2, ip.length);
+			
 			//자신의 ip로 테이블 번호를 데이터베이스에서 꺼내옴 = tableNo
 			var tableNo = $('#tableNo').val();
 			var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
 			
-			
 			console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
 			console.log("자른 ip : " + ipCut);
+			
 			webSocket.onopen = function() {
 				$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
-				
 				webSocket.send(tableNo + ipCut);	//3자리
 			}
 	

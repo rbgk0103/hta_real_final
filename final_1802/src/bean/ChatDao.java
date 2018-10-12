@@ -10,7 +10,7 @@ public class ChatDao {
 	SqlSession sqlSession;
 	
 	int listSize = 3;
-	int blockSize = 5;
+	int blockSize = 3;
 	int nowPage = 1;
 	
 	int totSize = 0;
@@ -69,16 +69,23 @@ public class ChatDao {
 		return openTableList;
 	}
 	
-	//guest_status가 1인 테이블 목록을 가져옴
+	//guest_status = 1 테이블 목록을 가져옴
 	public List<GuestVo> sessionOpenAllTableList() {
 		List<GuestVo> sessionOpenAllTableList = sqlSession.selectList("chat.chat_all_list");
+		// 콘솔 확인용//////////////////////
+		Iterator<GuestVo> iterator = sessionOpenAllTableList.iterator();
+		System.out.println("-------sessionOpenAllTableList--------");
+		while(iterator.hasNext()) {
+			GuestVo vo = iterator.next();
+			System.out.print("tbl_no : " + vo.getTable_no());
+			System.out.println("\tguest_gender : " + vo.getGuest_gender());
+		}
+		//////////////////////////////////////////
 		return sessionOpenAllTableList;
 	}
 	
 	public void pageCompute() {
-		int cnt = sqlSession.selectOne("chat.chat_count");
-		setCnt(cnt);
-		totSize = cnt;
+		totSize = sqlSession.selectOne("chat.chat_count");
 		
 		totPage = (int)Math.ceil(totSize/(double)listSize);
 		totBlock = (int)Math.ceil(totPage/(double)blockSize);
@@ -117,6 +124,18 @@ public class ChatDao {
 	
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+	
+	public int getListSize() {
+		return listSize;
+	}
+	
+	public int getBlockSize() {
+		return blockSize;
+	}
+	
+	public int getTotSize() {
+		return totSize;
 	}
 	
 	public int getCnt() {

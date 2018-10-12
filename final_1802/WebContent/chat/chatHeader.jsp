@@ -17,35 +17,27 @@
 	////////////////////////////
 	/* 
 	 GuestVo를 가지고 있는 List을 getAttribute로 받아옴
-	
+	 */
 	List<GuestVo> openTableList; //테이블번호, 성별
-	int openTableListCount;
 	
 	if(request.getAttribute("openTableList") != null) {
 		openTableList = (List<GuestVo>)request.getAttribute("openTableList");
-		openTableListCount = openTableList.size();
 		request.setAttribute("openTableList", openTableList);
 	} else {
-		out.print("<h1>header리스트(Map)가 비었음.(손님이 0명)</h1>");
+		out.print("<h1>header리스트가 비었음.(손님이 0명)</h1>");
 	}
 	ChatDao dao = request.getAttribute("chatDao") != null
 				? (ChatDao)request.getAttribute("chatDao")
 				: null;
-	if(dao == null) {
-		out.print("다오 널임");
-	} else {
-		out.print("다오 널 아님");
-	}
-	*/
 %>
 <div class="col-md-1 col-xs-1" id="allCircleBorder">
 	<p>전체</p>
 </div>
 <!-- 전체채팅목록, 유저목록, 아이콘 -->
 <div class="col-md-10 col-xs-10" id="userBox">
-	<%-- <!-- 왼쪽 화살표 아이콘 -->
-	<c:if test="${chatDao.nowBlock > 1 }">
-		<a onclick="movePage(${chatDao.startPage-1})">
+	<!-- 왼쪽 화살표 아이콘 -->
+	<c:if test="${chatDao.nowPage > 1 }">
+		<a href="#" onclick="movePage(${chatDao.nowPage-1})">
 			<i class="fa fa-angle-left fa-3x col-md-1 col-xs-1" id="angleLeftIcon"></i>
 		</a>
 	</c:if>
@@ -60,16 +52,18 @@
 		</c:forEach>
 	</div>
 	<!-- 개개인의 유저목록 끝 -->
-	<c:if test="${chatDao.nowBlock < chatDao.totBlock }">
-		<a onclick="movePage(${chatDao.endPage + 1})">
+	<c:if test="${chatDao.nowPage < chatDao.totPage}">
+		<a href="#" onclick='movePage(${chatDao.nowPage+1})'>
 			<i class="fa fa-angle-right fa-3x col-md-1 col-xs-1" id="angleRightIcon"></i>
 		</a>
-	</c:if> --%>
+	</c:if>
 	<!-- 오른쪽 화살표 아이콘 -->
 </div>
 <!-- 전체채팅목록, 유저목록, 아이콘 끝 -->
 <script>
-	/* function movePage(nowPage) {
-		$('#chatHeader').html("header.chat?nowPage=" + nowPage + "&ip=" + ip);
-	} */
+	function movePage(nowPage) {
+		var param = "?nowPage=" + nowPage + "&ip=" + $('#ip').val();
+		alert(param);
+		$("#chatHeader").load("header.chat", param);
+	}
 </script>

@@ -14,7 +14,7 @@
 			) where num between #{startNo} and #{endNo}
 	</select>
 	<select id="chat_count" resultType="int">
-		select count(guest_status) from guest where guest_status = 1
+		select count(guest_status)-1 from guest where guest_status = 1
 	</select>
 	<select id="chat_open_list" resultType="bean.GuestVo" parameterType="bean.ChatDao">
 		select * from (
