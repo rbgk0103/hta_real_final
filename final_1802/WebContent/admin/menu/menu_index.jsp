@@ -43,19 +43,37 @@
 }
 
 #menu_index{
+	padding-top: 40px;
+	padding-left: 80px;
+	padding-right: 80px;
 	background:white;
 	margin: auto;
 	position: relative;
 	border-radius: 5%;
-	width: 1100px;
-	height: 800px;
+	width: 100%;
+	height: 1000px;
 	display:block;
 }
-
+#menu_index ul{
+	width: 100%; 
+	background: #FFEBCD; 
+	text-align: center;
+}
+#menu_index ul li{
+	font-style: oblique; 
+	font-size: 20px;
+	width: 16%;
+}
+#menu_index ul li:hover{
+	cursor: pointer;
+	color: black;
+	text-shadow:0 0 10px #fff, 0 0 20px #ff1114, 0 0 30px #ff1100;
+}
 #content{
-	width: 950px;
-	height:700px;
+	width: 100%;
+	height:100%;
 	overflow: auto;
+	position: relative;
 }
 
 #btn_menu_insert{
@@ -66,12 +84,15 @@
 	padding: 0 2em;
 	display: inline-block;
 	height: 50px;
-	bottom: 10px;
-	right: 30px;
+	bottom: 0px;
+	right: 110px;
 	position: absolute;
 	cursor:pointer;
 	border-radius: 10px;
 	font-style: oblique;
+}
+#btn_menu_insert:hover{
+	text-shadow:0 0 10px #fff, 0 0 20px #ff1114, 0 0 30px #ff1100;
 }
 </style>
 <!-- 메뉴 스타일 -->
@@ -81,8 +102,8 @@
 	text-align: center;
 	margin:10px;
 	display: block;
-	width: 200px;
-	height: 200px;
+	width: 23%;
+	height: 23%;
 	float: left;
 }
 #menu_center #menu_div img{
@@ -97,16 +118,12 @@ function main_Load(menu_type){
 	$(".skin-black").load("./menu_list.adm", param);
 }
 
-$().ready(function(){
-	$('#menu_index').css({'width':'960px', 'height':'750px'});
-})
 
 function go_view(menu_no){
 	$("#menu_no").val(menu_no);
 	var param = $("#frm_menu").serialize();
 	$(".skin-black").load("./menu_view.adm", param);
 }
-/* $('#menu_detail1112').modal({backdrop:'static', keyboard: false}); */
 </script>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
@@ -114,24 +131,24 @@ ${msg }
 	<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
 </form>
 <div id = 'menu_index'>
-	<ul class="nav nav-tabs" style = "background-color: #FFEBCD;">
-		<li style = "font-style: italic;"><a onclick = 'main_Load()' aria-controls="menu_read">전체메뉴</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("fury")' aria-controls="menu_read">치즈&후라이</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("grill")' aria-controls="menu_read">볶음&그릴</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("salad")' aria-controls="menu_read">샐러드&떡볶이</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("stew")' aria-controls="menu_read">탕&전골</a></li>
-		<li style = "font-style: italic;"><a onclick = 'main_Load("drink")' aria-controls="menu_read">주류</a></li>
+	<ul class="nav nav-tabs">
+		<li><a onclick = 'main_Load()'><strong>전체메뉴</strong></a></li>
+		<li><a onclick = 'main_Load("fury")'><strong>치즈&후라이</strong></a></li>
+		<li><a onclick = 'main_Load("grill")'><strong>볶음&그릴</strong></a></li>
+		<li><a onclick = 'main_Load("salad")'><strong>샐러드&떡볶이</strong></a></li>
+		<li><a onclick = 'main_Load("stew")'><strong>탕&전골</strong></a></li>
+		<li><a onclick = 'main_Load("drink")'><strong>주류</strong></a></li>
 	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
-			<div id = 'menu_read' style = "background-color: #F0E68C">
+			<div id = 'menu_read' style = "background-color: red">
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
 						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
 						<img src='./admin/menu/menuImg/${a.menu_image }'>
 					</div>
 				</c:forEach>
-				<div class="modal fade" id="menu_detail1112" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="menu_detail1112">
 					<jsp:include page="./menu_insert.jsp" />
 				</div>
 			</div>

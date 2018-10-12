@@ -78,6 +78,11 @@ $().ready(function(){
 		});
 	})
 })
+
+
+</script>
+<script>
+$("#ae_menu_name").val()
 </script>
  <div class="modal-dialog">
     <div class="modal-content">
