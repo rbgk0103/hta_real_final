@@ -1,106 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>메뉴만들기</title>
+<title>경 매 관 리 자</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
 </head>
-
+<script>
+$().ready(function(){
+	$("#btnInput").click(function(){
+		$(".skin-black").load("./menu_list.adm");
+	})	
+})
+</script>
 <body>
+<!-- 성공,실패 확인 메세지  -->
+${msg }
 <div class="wrap">
-
-   <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Project</th>
-                                      <th>Manager</th>
-                                      <!-- <th>Client</th> -->
-                                      <th>Deadlineawe</th>
-                                      <!-- <th>Price</th> -->
-                                      <th>Statusage</th>
-                                      <th></th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Facebook</td>
-                                  <td>Mark</td>
-                                  <!-- <td>Steve</td> -->
-                                  <td>10/10/2014</td>
-                                  <!-- <td>$1500</td> -->
-                                  <td><span class="label label-danger">in progress</span></td>
-                                  <td><span class="badge badge-info">50%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Twitter</td>
-                                  <td>Evan</td>
-                                  <!-- <td>Darren</td> -->
-                                  <td>10/8/2014</td>
-                                  <!-- <td>$1500</td> -->
-                                  <td><span class="label label-success">completed</span></td>
-                                  <td><span class="badge badge-success">100%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Google</td>
-                                  <td>Larry</td>
-                                  <!-- <td>Nick</td> -->
-                                  <td>10/12/2014</td>
-                                  <!-- <td>$2000</td> -->
-                                  <td><span class="label label-warning">in progress</span></td>
-                                  <td><span class="badge badge-warning">75%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>4</td>
-                                  <td>LinkedIn</td>
-                                  <td>Allen</td>
-                                  <!-- <td>Rock</td> -->
-                                  <td>10/01/2015</td>
-                                  <!-- <td>$2000</td> -->
-                                  <td><span class="label label-info">in progress</span></td>
-                                  <td><span class="badge badge-info">65%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>5</td>
-                                  <td>Tumblr</td>
-                                  <td>David</td>
-                                  <!-- <td>HHH</td> -->
-                                  <td>01/11/2014</td>
-                                  <!-- <td>$2000</td> -->
-                                  <td><span class="label label-warning">in progress</span></td>
-                                  <td><span class="badge badge-danger">95%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>6</td>
-                                  <td>Tesla</td>
-                                  <td>Musk</td>
-                                  <!-- <td>HHH</td> -->
-                                  <td>01/11/2014</td>
-                                  <!-- <td>$2000</td> -->
-                                  <td><span class="label label-info">in progress</span></td>
-                                  <td><span class="badge badge-success">95%</span></td>
-                              </tr>
-                              <tr>
-                                  <td>7</td>
-                                  <td>Ghost</td>
-                                  <td>XXX</td>
-                                  <!-- <td>HHH</td> -->
-                                  <td>01/11/2014</td>
-                                  <!-- <td>$2000</td> -->
-                                  <td><span class="label label-info">in progress</span></td>
-                                  <td><span class="badge badge-success">95%</span></td>
-                              </tr>
-                          </tbody>
-                      </table>
-
+   <div id='menu_div' class='menu_div' class="tbList paginated">
+      <table class="table table-hover">
+         <thead>
+            <tr>
+               <th>No</th>
+               <th>Time</th>
+               <th>PRICE</th>
+               <th>MAX</th>
+               <th>MIN</th>
+            </tr>
+         </thead>
+         
+       <c:forEach var='auc' items='${list }'>   
+         <tbody>
+            <tr>
+               <td><span>${auc.ae_no}</span></td>
+               <td><span>${auc.ae_date }</span></td> 
+               <td><span>${auc.ae_price }</span></td> 
+               <td><span>${auc.ae_pct_max }</span></td> 
+               <td><span>${auc.ae_pct_min }</span></td> 
+            </tr>
+         </tbody>
+         </c:forEach>
+      </table>
+		<input type = 'button' value = '등 록' id = 'btnInput' name = 'btnInput'/>
+	</div>
 
   <!--  <!-- page_navi start 
    <div class="page_navi">
@@ -118,6 +64,6 @@
       <a href="#" class="last">마지막</a>
    </div>
    page_navi end -->
-
-   
 </div>
+</body>
+</html>

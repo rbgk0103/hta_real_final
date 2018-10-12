@@ -72,6 +72,11 @@
 </style>
 <script>
 $().ready(function(){
+	$("#btnAuction").click(function(){
+		var param = $('#frm_auc_input').serialize();
+		$(".skin-black").load('./auction_input.auc',param);
+	})
+	
 	$("#frm_menu_view #img").click(function(){
 		$("#frm_menu_view #menu_image").click();
 	})
@@ -141,7 +146,6 @@ $().ready(function(){
 	$("#btn_cancel").click(function(){
 		$(".skin-black").load("./menu_list.adm");
 	})
-	$("#btn")
 	
 })
 </script>
@@ -157,7 +161,7 @@ $().ready(function(){
 	</c:choose>
 	<br/><br/><br/><br/>
 	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록' /><br/><br/>
-	<input type = 'button' id = 'btn_auction_input' value = 'AUCTION 등록' class = 'button'/>
+	<input type = 'button' id = 'btnAuction' name = 'btnAuction'value = 'AUCTION 등록' class = 'button'/>
 </div>
 <div class="modal fade" id="auction_detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<jsp:include page="../auction/auction_input.jsp" />
@@ -195,9 +199,13 @@ $().ready(function(){
 		<input type = 'button' value = '삭 제' id = 'btn_delete' class = 'menu_btn' name = 'btn_delete'/>
 		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
 	</form>
+	<form id = 'frm_auc_input' name = 'frm_auc_input' method = 'post' >
+		<input type ='hidden' id = 'ae_price'   name = 'ae_price' value = ${vo.menu_price } >
+		<input type ='hidden' id = 'ae_pct_min' name = 'ae_pct_min' value = ${vo.menu_price } >
+		<input type ='hidden' id = 'ae_pct_max' name = 'ae_pct_max' value = ${vo.menu_price } >
+	</form>
 </div>
 <script>
-
 var ff = document.frm_menu_view;
 var menu_image = ff.menu_image;
 menu_image.onchange = function(event){

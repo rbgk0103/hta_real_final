@@ -6,12 +6,13 @@ public class AuctionVo {
 	
 	int  ae_no;
 	int  menu_no;
-	Date ae_date; 
+	String ae_date; 
 	int  ae_price;
 	int  ae_pct_max;
 	int  ae_cost;
 	int  ae_pct_min;
 	int  ae_win_table;
+	
 	
 	public int getAe_no() {
 		return ae_no;
@@ -25,10 +26,10 @@ public class AuctionVo {
 	public void setMenu_no(int menu_no) {
 		this.menu_no = menu_no;
 	}
-	public Date getAe_date() {
+	public String getAe_date() {
 		return ae_date;
 	}
-	public void setAe_date(Date ae_date) {
+	public void setAe_date(String ae_date) {
 		this.ae_date = ae_date;
 	}
 	public int getAe_price() {
@@ -61,7 +62,5 @@ public class AuctionVo {
 	public void setAe_win_table(int ae_win_table) {
 		this.ae_win_table = ae_win_table;
 	}
-	
-	
-	
+		
 }

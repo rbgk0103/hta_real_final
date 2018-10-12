@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace='auc'>
-	<select id = "auction_list" resultType = "bean.AuctionVo">
-		select * from auction_events
-	</select>
+   <!-- menu_histoty -->
+   <select id='auction_list' resultType='bean.AuctionVo'>
+    select ae_no, menu_no, to_char(ae_date, 'TS') ae_date, ae_price, ae_pct_max,
+      ae_cost,ae_pct_min, ae_win_table
+      from auction_events
+   </select>
+   
+   <insert id="auction_input" parameterType = "bean.AuctionVo" >
+   	  insert into auction_events values(seq_auction_events.nextval, 1, sysdate, #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0) 
+   </insert>
 </mapper>
