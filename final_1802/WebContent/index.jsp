@@ -46,7 +46,7 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_mbrName{line-height: 2.9; position: absolute; right: 6%;}
+#header_mbrName{line-height: 2.9; position: absolute; right: 3%;}
 #header_tableNo{line-height: 2.0; position: absolute; right: 8%;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
@@ -75,12 +75,12 @@ if(request.getParameter("content") !=null){
 </form>
 <div id = 'wrap'>
 	<div id = 'header'>
-		<div class='col-md-4'  id = 'header_logo'>
+		<div class='col-md-3'  id = 'header_logo'>
 			<a href ="index.jsp">
 				<img src ='./img/logo.png'>
 			</a>
 		</div>
-		<div class='col-md-6' id = 'header_menu'>
+		<div class='col-md-7' id = 'header_menu'>
 			<a href="index.jsp?content=main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
@@ -99,6 +99,15 @@ if(request.getParameter("content") !=null){
 		</c:choose>
 			
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
+			
+		<c:choose>
+			<c:when test="${session_mbr.scNo == 0 }">
+			
+				<a href="table_status.adm">관리</a>
+			
+			</c:when>
+		</c:choose>
+			
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
 			<a>No.01</a>
