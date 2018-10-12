@@ -39,6 +39,11 @@
                 	<span>게임</span>
                 </a>
             </li>
+            <li>
+	            <a href="./mbr_list.mbr">
+	               <span>회원</span>
+	            </a>
+         	</li>
             <div id = 'submenu_game'>
 	            <li>
 	            	<a href="?content=game/gt_list.jsp">
