@@ -27,8 +27,9 @@
 	<select id="findInfo" parameterType="java.util.HashMap" resultType="bean.MembersVo">
 		select mbr_no mbrNo, mbr_id mbrId, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
 			mbr_gender mbrGender, mbr_reg_date mbrRegDate, mbr_birth mbrBirth, mbr_point mbrPoint,
-			sc_no scNo, sc_from scFrom
-		from members
+			m.sc_no scNo, s.sc_from scFrom
+		from members m join sign_code s
+		on m.sc_no = s.sc_no
 		<where>
 			<if test="id != null">
 				mbr_id = #{id} and mbr_pwd = #{pwd}
