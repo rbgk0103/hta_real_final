@@ -40,15 +40,15 @@ public class OrdersController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/add_list.ord")
-	public ModelAndView orderMenu(HttpServletRequest req, int menu_no) {
+	
+	@RequestMapping(value = "/orderMenu.ord")
+	public ModelAndView orderMenu(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		menu_no = Integer.parseInt(req.getParameter("menu_no"));
-		System.out.println("메뉴 번호야: " + menu_no);
+		String nos[] = req.getParameterValues("menu_no");
+		String qtys[] = req.getParameterValues("os_qty");
+		String prices[] = req.getParameterValues("os_price");
 		
-		MenuVo vo = dao.addList(menu_no);
-		mv.addObject("vo", vo);
-		mv.setViewName("right_order");
+		String msg = dao.addList(nos, qtys, prices);
 		return mv;
 	}
 }

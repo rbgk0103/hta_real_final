@@ -1,11 +1,28 @@
 package bean;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class OrdersVo {
 	/* orders 테이블 컬럼 */
 	int ord_no;		// PK
 	int guest_no;	// FK
 	int ord_table_no;
 	String ord_date;
+	
+	ArrayList<ArrayList<String>> stuff;
+	
+	
+	
+	
+	public ArrayList<ArrayList<String>> getStuff() {
+		return stuff;
+	}
+	public void setStuff(ArrayList<ArrayList<String>> stuff) {
+		this.stuff = stuff;
+	}
+	Map<String, String> ordersSet = new HashMap<String, String>();
 	
 	
 	public int getOrd_no() {
@@ -32,6 +49,18 @@ public class OrdersVo {
 	public void setOrd_date(String ord_date) {
 		this.ord_date = ord_date;
 	}
-	
+	public Map<String, String> getOrdersSet() {
+		return ordersSet;
+	}
+	public void setOrdersSet(Map<String, String> ordersSet) {
+		this.ordersSet = ordersSet;
+	}
+//	public List<OrdersSetVo> getOs() {
+//		return os;
+//	}
+//	public void setOs(List<OrdersSetVo> os) {
+//		this.os = os;
+//	}
+//	
 	
 }

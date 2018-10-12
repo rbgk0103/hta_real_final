@@ -57,6 +57,7 @@ var m_no, m_name, m_price;
 var cnt = 0;
 var bb = true;
 var index;
+
 function appendMenu(no, name, price){
 	m_no = no;
 	m_name = name;
@@ -86,7 +87,28 @@ function appendMenu(no, name, price){
 
  // table태그의 구조를 이용하여 주문서에 append하기
 function addMenu(tableZone, no, name, price){
+	var inputNo = document.createElement("input");
+	inputNo.setAttribute("type", "hidden")
+	inputNo.setAttribute("name", "menu_no");
+	inputNo.setAttribute("value", no);
+	
+	
+	var inputQty = document.createElement("input");
+	inputQty.setAttribute("type", "hidden")
+	inputQty.setAttribute("name", "os_qty");
+	inputQty.setAttribute("value", "1");
+	inputQty.setAttribute("style", "color:black");
+	
+	var inputPrice = document.createElement("input");
+	inputPrice.setAttribute("type", "text")
+	inputPrice.setAttribute("name", "os_price");
+	inputPrice.setAttribute("value", price);
+	inputPrice.setAttribute("style", "color:black");
+	 
 	var tr = document.createElement("tr");
+	tr.appendChild(inputNo);
+	tr.appendChild(inputQty);
+	tr.appendChild(inputPrice);
 	
 	var tdName = document.createElement("td");
 	tdName.setAttribute("class", "tdName");
@@ -112,17 +134,26 @@ function addMenu(tableZone, no, name, price){
 	tdCnt.appendChild(btnPlus);
 	tr.appendChild(tdCnt);
 	
-	btnPlus.onclick = cntPlus;
+	btnPlus.onclick =  function(ev){
+		var tag = ev.srcElement;
+		var qty = tag.previousSibling;
+		qty.innerHTML = Number(qty.innerHTML) + 1;
+		inputQty.value = qty.innerHTML;
+		inputPrice.value = price * qty.innerHTML;
+	 };
 	
 	btnMinus.onclick = function(ev){
  		var tag = ev.srcElement;
 		var qty = tag.nextSibling;
 		if (qty.innerHTML != 1){
 			qty.innerHTML = Number(qty.innerHTML) - 1;
+			inputQty.value = qty.innerHTML;
+			inputPrice.value = price * qty.innerHTML;
 		}else{
 			tableZone.removeChild(tr);
 		}
 	}
+	
 	
 	var tdPrice = document.createElement("td");
 	tdPrice.innerHTML = price;
@@ -144,12 +175,6 @@ function addMenu(tableZone, no, name, price){
 
  function append_data_modal(){
 	tableModal.innerHTML = $('#tableZone')[0].innerHTML; 
- }
- 
- function cntPlus(ev){
-	var tag = ev.srcElement;
-	var qty = tag.previousSibling;
-	qty.innerHTML = Number(qty.innerHTML) + 1;
  }
 
  

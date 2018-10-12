@@ -24,4 +24,17 @@
 		from menu 
 		where  menu_no = ${_parameter}
 	</select>
+	
+	<!-- 주문을 넣어보자 -->
+	<insert id='order' parameterType='bean.OrdersVo'>
+		insert all
+			into orders
+				values(seq_orders.nextval, 1, 1, sysdate)
+	<foreach collection='stuff' item='value' index='key'>
+			into orders_set
+				values(addOrdersSerial(), seq_orders.currval, ${value[0]}, ${value[1]}, ${value[2]}, null)
+	</foreach>
+	select * from dual
+	</insert>
+	
 </mapper>

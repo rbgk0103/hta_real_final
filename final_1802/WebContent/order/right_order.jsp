@@ -3,11 +3,13 @@
 <div id='right_order'>
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
+		<form name='right_frm' id='right_frm' method='post'>
 		<table  class='table'>
 			<tbody id='tableZone'>
 				<tr><th>메뉴</th><th>수량</th><th style="">가격</th><th style="width: 10px"></th></tr>
 			</tbody>
 		</table>
+		</form>	
 	</div>
 	<div id='pre_order'>
 		<span id='previous'>이전 주문 금액:</span>
@@ -32,9 +34,18 @@
   	 	<table class="table" id='tableModal' style='color:black'></table>
       </div>
       <div class="modal-footer">
-        <button type="button"  class="btn btn-primary">주문하기</button>
+        <button type="button"  onclick='orderMenu()' class="btn btn-primary">주문하기</button>
         <button type="button"  class="btn btn-default" data-dismiss="modal">취소하기</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+function orderMenu(){
+	var param = $('#right_frm').serialize();
+	$('#myModal').load('orderMenu.ord', param);
+	console.log("주~문");
+	
+}
+</script>

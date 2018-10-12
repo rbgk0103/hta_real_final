@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.ArrayList;
+
 public class OrdersSetVo {
 	/* oders_set 테이블의 컬럼들 */
 	int os_no;		// PK
@@ -7,8 +9,17 @@ public class OrdersSetVo {
 	int menu_no;	// FK
 	int os_qty;
 	int os_price;
-	String os_evnet;
+	String os_event;
 	
+	ArrayList<ArrayList<String>> stuff;
+	
+	
+	public ArrayList<ArrayList<String>> getStuff() {
+		return stuff;
+	}
+	public void setStuff(ArrayList<ArrayList<String>> stuff) {
+		this.stuff = stuff;
+	}
 	
 	public int getOs_no() {
 		return os_no;
@@ -40,11 +51,11 @@ public class OrdersSetVo {
 	public void setOs_price(int os_price) {
 		this.os_price = os_price;
 	}
-	public String getOs_evnet() {
-		return os_evnet;
+	public String getOs_event() {
+		return os_event;
 	}
-	public void setOs_evnet(String os_evnet) {
-		this.os_evnet = os_evnet;
+	public void setOs_event(String os_event) {
+		this.os_event = os_event;
 	}
 	
 	
