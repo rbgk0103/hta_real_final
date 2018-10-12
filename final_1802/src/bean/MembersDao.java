@@ -76,7 +76,18 @@ public class MembersDao {
 	}
 	
 	public List<MembersVo> list(String findStr){
-		List<MembersVo> list = null;
+		
+		if(findStr == null) findStr = "";
+		
+		page.setTotSize(s.selectOne("mbr.listCnt", "%"+findStr+"%"));
+		page.pageCompute();
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("findStr", "%"+findStr+"%");
+		params.put("startNo", page.getStartNo());
+		params.put("endNo", page.getEndNo());
+		
+		List<MembersVo> list = s.selectList("mbr.list", params);
 		
 		return list;
 	}

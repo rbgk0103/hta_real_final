@@ -131,7 +131,6 @@ public class MembersController {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 		}
 		
-		
 		page.setNowPage(nowPage);
 		List<MembersVo> list = dao.list(findStr);
 		

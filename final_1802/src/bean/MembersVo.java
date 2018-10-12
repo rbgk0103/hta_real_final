@@ -54,7 +54,7 @@ public class MembersVo {
 		return mbrRegDate;
 	}
 	public void setMbrRegDate(String mbrRegDate) {
-		this.mbrRegDate = mbrRegDate;
+		this.mbrRegDate = mbrRegDate.substring(0, 11);
 	}
 	public String getMbrBirth() {
 		return mbrBirth;

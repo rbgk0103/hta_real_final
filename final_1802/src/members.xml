@@ -40,4 +40,37 @@
 		</where>
 	</select>
 	
+	<select id="listCnt" parameterType="String" resultType="int">
+		select count(mbr_no) cnt
+		from members m join sign_code s
+		on m.sc_no = s.sc_no
+		where lower(mbr_id) like lower(#{_parameter})
+			or lower(mbr_name) like lower(#{_parameter})
+			or lower(mbr_phone) like lower(#{_parameter})
+			or lower(mbr_gender) like lower(#{_parameter})
+			or lower(mbr_birth) like lower(#{_parameter})
+			or lower(mbr_point) like lower(#{_parameter})
+			or lower(sc_from) like lower(#{_parameter})
+	</select>
+	
+	<select id="list" parameterType="java.util.HashMap" resultType="bean.MembersVo">
+		select * from(
+			select rownum num, r.* from(
+				select mbr_no mbrNo, mbr_id mbrId, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
+					mbr_gender mbrGender, mbr_reg_date mbrRegDate, mbr_birth mbrBirth, mbr_point mbrPoint,
+					m.sc_no scNo, s.sc_from scFrom
+				from members m join sign_code s
+				on m.sc_no = s.sc_no
+				where lower(mbr_id) like lower(#{findStr})
+					or lower(mbr_name) like lower(#{findStr})
+					or lower(mbr_phone) like lower(#{findStr})
+					or lower(mbr_gender) like lower(#{findStr})
+					or lower(mbr_birth) like lower(#{findStr})
+					or lower(mbr_point) like lower(#{findStr})
+					or lower(sc_from) like lower(#{findStr})
+				order by mbr_reg_date desc
+			)r
+		) where num between #{startNo} and #{endNo}
+	</select>
+	
 </mapper>
