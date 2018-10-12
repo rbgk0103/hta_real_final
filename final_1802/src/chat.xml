@@ -14,12 +14,20 @@
 			) where num between #{startNo} and #{endNo}
 	</select>
 	<select id="chat_count" resultType="int">
-		select count(tbl_ip) cnt from table_status where tbl_ip is not null
+		select count(guest_status) from guest where guest_status = 1
 	</select>
-	<select id="chat_open_list" resultType="bean.GuestVo">
-		select  table_no, guest_gender from (
-			select table_no, min(table_no), guest_gender, guest_status from 
-			guest group by table_no,guest_gender, guest_status) 
-		where guest_status = 1 order by table_no
+	<select id="chat_open_list" resultType="bean.GuestVo" parameterType="bean.ChatDao">
+		select * from (
+			select rownum num, g.* from (
+				select table_no, guest_status, guest_gender 
+				from guest where guest_status = 1 
+				order by table_no
+			) g
+		) where num between #{startNo} and #{endNo}
+	</select>
+	<select id='chat_all_list' resultType="bean.GuestVo">
+		select table_no, guest_status, guest_gender 
+		from guest where guest_status = 1 
+		order by table_no
 	</select>
 </mapper>

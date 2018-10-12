@@ -46,17 +46,14 @@ public class ChatDao {
 		} else {
 			result = sqlSession.selectOne("chat.chat_table_no", ip);
 		}
-		System.out.println("result : " + result);
+		System.out.println("getTableNo : " + result);
 		return result;
 	}
 	
 	// tableNo, tableIp
+	//page Compute해서 전체 session이 아닌 3개의 세션만 가져옴
 	public List<GuestVo> openTableList() {
-		try {
-			pageCompute();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
+		pageCompute();
 		List<GuestVo> openTableList = sqlSession.selectList("chat.chat_open_list", this);
 		
 		System.out.println("openTableList에 잘 들어갔는지 확인하자");
@@ -70,6 +67,12 @@ public class ChatDao {
 		}
 		//////////////////////////////////////////
 		return openTableList;
+	}
+	
+	//guest_status가 1인 테이블 목록을 가져옴
+	public List<GuestVo> sessionOpenAllTableList() {
+		List<GuestVo> sessionOpenAllTableList = sqlSession.selectList("chat.chat_all_list");
+		return sessionOpenAllTableList;
 	}
 	
 	public void pageCompute() {
@@ -96,8 +99,11 @@ public class ChatDao {
 		if(endNo > totSize) {
 			endNo = totSize;
 		}
-		if(startNo < 1) {
-			this.startNo = 1;
+		if (startNo < 1) {
+			startNo = 1;
+		}
+		if (nowBlock < 1) {
+			nowBlock = 1;
 		}
 	}
 	

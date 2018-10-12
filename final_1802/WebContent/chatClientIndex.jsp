@@ -42,13 +42,15 @@
 	String chatHeader = "./chat/chatHeader.jsp?tableNo=" + request.getAttribute("tableNo");
 %>
 	<!-- table no를 id로, guest gender를 value로 만들었습니다. -->
-	<c:forEach var='i' items='${openTableList}'>
+	<c:forEach var='i' items='${allTableList}'>
 		<input type="hidden" id="${i.table_no }" value="${i.guest_gender}">
 	</c:forEach>
 	<input type='hidden' id="ip" value='${ip }' />
 	<input type='hidden' id="tableNo" value='${tableNo }' />
 	<div class="container" id="chatBody">
-		<jsp:include page="<%=chatHeader%>" />
+		<div id='chatHeader' class='col-md-12 col-xs-12'>
+			<jsp:include page='<%=chatHeader%>' />
+		</div>
 		<hr class="col-md-12 col-xs-12" id="whiteLine" />
 		<div id='chatWrap' class='col-md-12 col-xs-12'>
 			<div id="chatNotice"
@@ -86,16 +88,16 @@
 			console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
 			console.log("자른 ip : " + ipCut);
 			webSocket.onopen = function() {
-				$('#chatContent').append("연결 성공!!!!");
+				$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
+				
 				webSocket.send(tableNo + ipCut);	//3자리
 			}
 	
 			webSocket.onmessage = function(msg) {
+				//msg.data.substring(0, 1) : 자신의 table 번호
 				//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
-				//msg.data.substring(0, 1) 자신의 table 번호
-				
-				
-				if (msg.data.substring(0, 1) === tableNo) {
+				var myTableNo = msg.data.substring(0, 1);
+				if (myTableNo === tableNo) {
 					// 자기 자신 테이블이 남자 테이블일 경우 div class=chatManBox(파랑 말풍선) 사용
 					if(document.getElementById(tableNo).value === "man") {
 						$('#chatContent').append
@@ -127,10 +129,10 @@
 							+ '</div></div></div>'
 						);
 					}
-				//받은 메세지일 경우 div class=receive, msg에서 테이블 번호 substring
 				} 
+				//받은 메세지일 경우 div class=receive, msg에서 테이블 번호 substring
 				else {
-					if(document.getElementById(msg.data.substring(0, 1)).value === "man") {
+					if(document.getElementById(myTableNo).value === "man") {
 						$('#chatContent').append
 							( '<div class="textBlock col-md-12 col-xs-12">'
 							+ '<div class="receive">'
@@ -139,7 +141,7 @@
 							+ msg.data.substring(1, msg.data.length-2)
 							+ '</div></div></div>'
 						);
-					} else if(document.getElementById(msg.data.substring(0, 1)).value === "woman") {
+					} else if(document.getElementById(myTableNo).value === "woman") {
 						$('#chatContent').append
 							( '<div class="textBlock col-md-12 col-xs-12">'
 							+ '<div class="receive">'
@@ -148,7 +150,7 @@
 							+ msg.data.substring(1, msg.data.length-2)
 							+ '</div></div></div>'
 						);
-					} else if(document.getElementById(msg.data.substring(0, 1)).value === "seam") {
+					} else if(document.getElementById(myTableNo).value === "seam") {
 						$('#chatContent').append
 							( '<div class="textBlock col-md-12 col-xs-12">'
 							+ '<div class="receive">'
