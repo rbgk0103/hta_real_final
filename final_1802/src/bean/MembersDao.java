@@ -1,6 +1,7 @@
 package bean;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +75,12 @@ public class MembersDao {
 		mvo = s.selectOne("mbr.findInfo", params);
 		
 		return mvo;
+	}
+	
+	public List<MembersVo> list(String findStr){
+		List<MembersVo> list = null;
+		
+		return list;
 	}
 	
 	public MembersVo setVo(HttpServletRequest req) {

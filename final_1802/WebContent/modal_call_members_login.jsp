@@ -41,7 +41,7 @@
 				<div class="col-sm-4">
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" name="btn_mbr_login" id="btn_mbr_login">LOGIN</button>
+					<button type="button" class="btn btn-success btn-lg" name="btn_mbr_login" id="btn_mbr_login">LOGIN</button>
 				</div>
 				<div class="col-sm-2">
 					<button type="button" class="btn btn-primary btn-lg" name="btn_mbr_register" data-dismiss="modal"

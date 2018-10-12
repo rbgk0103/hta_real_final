@@ -4,7 +4,6 @@ public class MembersVo {
 	
 	private int mbrNo;
 	private String mbrId;
-	private int scNo;
 	private String mbrName;
 	private String mbrPhone;
 	private String mbrPwd;
@@ -12,7 +11,8 @@ public class MembersVo {
 	private String mbrRegDate;
 	private String mbrBirth;
 	private int mbrPoint;
-	
+	private int scNo;
+	private String scFrom;
 	
 	public int getMbrNo() {
 		return mbrNo;
@@ -25,12 +25,6 @@ public class MembersVo {
 	}
 	public void setMbrId(String mbrId) {
 		this.mbrId = mbrId;
-	}
-	public int getScNo() {
-		return scNo;
-	}
-	public void setScNo(int scNo) {
-		this.scNo = scNo;
 	}
 	public String getMbrName() {
 		return mbrName;
@@ -74,6 +68,17 @@ public class MembersVo {
 	public void setMbrPoint(int mbrPoint) {
 		this.mbrPoint = mbrPoint;
 	}
-	
+	public int getScNo() {
+		return scNo;
+	}
+	public void setScNo(int scNo) {
+		this.scNo = scNo;
+	}
+	public String getScFrom() {
+		return scFrom;
+	}
+	public void setScFrom(String scFrom) {
+		this.scFrom = scFrom;
+	}
 	
 }

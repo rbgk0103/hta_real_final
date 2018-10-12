@@ -139,7 +139,7 @@
 					<div class="form-group">
 						<div class="col-sm-3"></div>
 						<label for="mbr_id" class="col-sm-1 control-label"> 
-							<button type="button" class="btn btn-primary btn-xs" id="btn_mbr_id_check">중복확인</button>
+							<button type="button" class="btn btn-info btn-xs" id="btn_mbr_id_check">중복확인</button>
 						</label>
 						<div class="col-sm-6">
 							<output name="result_mbr_id_check" id="result_mbr_id_check" class="col-sm-12 error">${msg }</output>
@@ -204,11 +204,11 @@
 				<div class="col-sm-2"></div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" name="btn_close" data-dismiss="modal" data-dismiss="modal"
-						 data-toggle="modal" data-target="#modal_call_members_login">LOGIN</button>
+					<button type="button" id="btn_mbr_register" class="btn btn-success btn-lg" name="btn_mbr_register">REGIT</button>
 				</div>
 				<div class="col-sm-2">
-					<button type="button" id="btn_mbr_register" class="btn btn-primary btn-lg" name="btn_mbr_register">REGIT</button>
+					<button type="button" class="btn btn-primary btn-lg" name="btn_close" data-dismiss="modal" data-dismiss="modal"
+						 data-toggle="modal" data-target="#modal_call_members_login">LOGIN</button>
 				</div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-2"></div>

@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -26,7 +28,6 @@ public class MembersController {
 		String pwd = req.getParameter("mbr_pwd");
 		
 		MembersVo mvo = dao.login(id, pwd);
-		System.out.println(mvo.getScNo());
 		String msg = "";
 		
 		if(mvo != null) {
@@ -116,6 +117,29 @@ public class MembersController {
 		String msg = "logout";
 		mv.addObject("msg", msg);
 		mv.setViewName("info");
+		return mv;
+	}
+	
+	@RequestMapping(value="/mbr_list.mbr")
+	public ModelAndView list(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String findStr = req.getParameter("findStr");
+		int nowPage = 1;
+		
+		if(req.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		}
+		
+		
+		page.setNowPage(nowPage);
+		List<MembersVo> list = dao.list(findStr);
+		
+		mv.addObject("page", page);
+		mv.addObject("list", list);
+		
+		mv.setViewName("mbr_list");
+		
 		return mv;
 	}
 	

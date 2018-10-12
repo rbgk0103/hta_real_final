@@ -33,7 +33,7 @@
 				<div class="col-sm-4">
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" name="btn_mbr_findInfo" id="btn_mbr_findInfo">FIND</button>
+					<button type="button" class="btn btn-success btn-lg" name="btn_mbr_findInfo" id="btn_mbr_findInfo">FIND</button>
 				</div>
 				<div class="col-sm-2">
 					<button type="button" class="btn btn-primary btn-lg" name="btn_mbr_login" data-dismiss="modal"
