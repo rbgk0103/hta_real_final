@@ -19,32 +19,29 @@ public class MembersController {
 	}
 	
 	@RequestMapping(value="/login.mbr")
-	public ModelAndView login(HttpServletRequest req, HttpSession session_id) {
+	public ModelAndView login(HttpServletRequest req, HttpSession session_mbr) {
 		ModelAndView mv = new ModelAndView();
 		
 		String id = req.getParameter("mbr_id");
 		String pwd = req.getParameter("mbr_pwd");
 		
 		MembersVo mvo = dao.login(id, pwd);
-		
+		System.out.println(mvo.getScNo());
 		String msg = "";
 		
 		if(mvo != null) {
-			session_id.setAttribute("session_id", mvo.getMbrId());
+			session_mbr.setAttribute("session_mbr", mvo);
 			mv.addObject("mvo", mvo);
 			msg = "login";
-			mv.addObject("msg", msg);
-			mv.setViewName("info");
 		}else {
 			msg = "아이디 / 암호 다시 확인";
-			mv.addObject("msg", msg);
-			mv.setViewName("info");
 		}
-		
+		mv.addObject("msg", msg);
+		mv.setViewName("info");
 		
 		return mv;
 	}
-
+	
 	@RequestMapping(value="/idCheck.mbr")
 	public ModelAndView idCheck(String id) {
 		ModelAndView mv = new ModelAndView();
@@ -114,7 +111,7 @@ public class MembersController {
 	public ModelAndView logout(HttpSession sess) {
 		ModelAndView mv = new ModelAndView();
 		
-		sess.removeAttribute("session_id");
+		sess.removeAttribute("session_mbr");
 		
 		String msg = "logout";
 		mv.addObject("msg", msg);

@@ -30,7 +30,7 @@
 <script src="./lib/bootstrap.min.js" type="text/javascript"></script>
 <style>
 #wrap {background-image : url(./img/background-img.jpg);height:900px;width:100%;color:#fff;}
-#header{height:140px;}
+#header{height:140px;position: relative;}
 #header_logo{height:100%;}
 #header_logo a >img{height:100%;cursor:pointer;}
 #header_menu{line-height: 5;}
@@ -46,7 +46,7 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_mbrName{line-height: 2.9;}
+#header_mbrName{line-height: 2.9; position: absolute; right: 6%;}
 #header_tableNo{line-height: 1.9;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
@@ -86,12 +86,12 @@ if(request.getParameter("content") !=null){
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
 			
 		<c:choose>
-			<c:when test="${session_id == null }">
+			<c:when test="${session_mbr == null }">
 			
 				<a id="mbr_login" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
 			
 			</c:when>
-			<c:when test="${session_id != null }">
+			<c:when test="${session_mbr != null }">
 			
 				<a id="mbr_logout">로그아웃</a>
 				
@@ -103,11 +103,11 @@ if(request.getParameter("content") !=null){
 		<div class='col-md-1' id = 'header_tableNo'>
 			<a>No.01</a>
 		</div>
-		<div class="col-md-1" id="header_mbrName">
+		<div id="header_mbrName">
 		
 			<c:choose>
-				<c:when test="${session_id != null }">
-					${mvo.mbrName } 님 안녕하세요
+				<c:when test="${session_mbr.mbrId != null }">
+					${session_mbr.mbrName } 님 안녕하세요
 				</c:when>
 			</c:choose>
 		
@@ -124,7 +124,6 @@ if(request.getParameter("content") !=null){
 <script>
 $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
-// 	location.replace("./index.jsp")
 })
 function goOrderMenu(){
 	$('#content').load('main.ord');

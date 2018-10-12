@@ -25,7 +25,7 @@
 	</insert>
 	
 	<select id="findInfo" parameterType="java.util.HashMap" resultType="bean.MembersVo">
-		select mbr_no mbrNo, mbr_id mbrId, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
+		select mbr_no mbrNo, mbr_id mbrId, sc_no scNo, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
 			mbr_gender mbrGender, mbr_reg_date mbrRegDate, mbr_birth mbrBirth, mbr_point mbrPoint
 		from members
 		<where>

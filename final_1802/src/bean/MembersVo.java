@@ -4,6 +4,7 @@ public class MembersVo {
 	
 	private int mbrNo;
 	private String mbrId;
+	private int scNo;
 	private String mbrName;
 	private String mbrPhone;
 	private String mbrPwd;
@@ -24,6 +25,12 @@ public class MembersVo {
 	}
 	public void setMbrId(String mbrId) {
 		this.mbrId = mbrId;
+	}
+	public int getScNo() {
+		return scNo;
+	}
+	public void setScNo(int scNo) {
+		this.scNo = scNo;
 	}
 	public String getMbrName() {
 		return mbrName;
