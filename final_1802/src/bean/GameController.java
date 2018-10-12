@@ -76,12 +76,27 @@ public class GameController {
 	public ModelAndView tvtReady(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
+		int tbl_i = -1;		// 내 테이블 번호
+		int tbl_u = -1;		// 상대 테이블 번호
+		
+		if (req.getParameter("tbl_i") != null) {
+			tbl_i = Integer.parseInt(req.getParameter("tbl_i"));
+		}
+		
+		if (req.getParameter("tbl_u") != null) {
+			tbl_u = Integer.parseInt(req.getParameter("tbl_u"));
+		}
+		
 		GTVo gtVo = gtDao.gtSelectOne(req);
+		MenuVo menuVo = gtDao.menuSelectOne(req);
 		
-//		MenuVo menuVo = gtDao.menuSelectOne(req);
 		
-//		System.out.println("gtVo.getGtNo: " + gtVo.getGtNo());
-//		System.out.println("gtVo.getGtName: " + gtVo.getGtName());
+		mv.addObject("tbl_i", tbl_i);
+		mv.addObject("tbl_u", tbl_u);
+		
+		mv.addObject("gtVo", gtVo);
+		mv.addObject("menuVo", menuVo);
+		
 		
 		mv.setViewName("tvt_ready"); // tbl_list.jsp
 		

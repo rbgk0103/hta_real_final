@@ -59,11 +59,7 @@ public class GTDao {
 	public GTVo gtSelectOne(HttpServletRequest req){
 		int findGtNo = Integer.parseInt(req.getParameter("gt_no"));
 		
-		System.out.println("63행 가기 직전에 gt_no: " + findGtNo);
 		GTVo gtVo = sqlSession.selectOne("game.gtSelectOne", findGtNo);
-		System.out.println("mybatis 갔다온 이후에 gtVo.gtNo: " + gtVo.gtNo);
-		
-		
 		return gtVo;
 	}
 	
