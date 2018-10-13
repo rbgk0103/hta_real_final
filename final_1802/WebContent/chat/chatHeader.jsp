@@ -62,8 +62,7 @@
 <!-- 전체채팅목록, 유저목록, 아이콘 끝 -->
 <script>
 	function movePage(nowPage) {
-		var param = "?nowPage=" + nowPage + "&ip=" + $('#ip').val();
-		alert(param);
+		var param = "&ip=" + $('#ip').val() + "&nowPage=" + nowPage;
 		$("#chatHeader").load("header.chat", param);
 	}
 </script>

@@ -67,42 +67,29 @@ public class ChatController {
 	public ModelAndView loadHeader(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println("loadHeader 메소드");
+		System.out.println("ip param = " + req.getParameter("ip"));
+		System.out.println("nowPage param : " + req.getParameter("nowPage"));
 		String ip = req.getParameter("ip");
 		String ipCut = ip.substring(ip.length()-2, ip.length());
-		int nowPage = req.getParameter("nowPage") != null
-				? Integer.parseInt(req.getParameter("nowPage"))
-				: 1;
+		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
 		dao.setNowPage(nowPage);
 		int tableNo = dao.getTableNo(ipCut);
 		List<GuestVo> openTableList = dao.openTableList();
-		System.out.println("--------------HEADER.CHAT--------------");
+		// openTableList 쿼리에서 현재 테이블 번호를 제외한 접속한 테이블의 정보를 불러와야합니다.
+		// 테이블 목록을 볼 때 자기 자신의 테이블 이 속해있는 page일 경우 
+		// 테이블 갯수가 2개로 나오고 그 뒤에 있는 테이블은 보이지 않게됩니다.
 		Iterator<GuestVo> iterator = openTableList.iterator();
 		while(iterator.hasNext()) {
 			GuestVo vo = iterator.next();
-			System.out.println("vo.getTable_no() : " + vo.getTable_no());
-			System.out.println("vo.getGuest_gender() : " + vo.getGuest_gender());
+			System.out.print("vo.getTable_no() : " + vo.getTable_no());
+			System.out.println("\tvo.getGuest_gender() : " + vo.getGuest_gender());
 		}
-		System.out.println("header.chat의 nowPageParameter : " + nowPage);
-		System.out.println("header.chat의 ip parameter : " + ip);
-		System.out.println("dao.getBlockSize() : " + dao.getBlockSize());
-		System.out.println("dao.getEndNo() : " + dao.getEndNo());
-		System.out.println("dao.getEndPage() : " + dao.getEndPage());
-		System.out.println("dao.getListSize() : " + dao.getListSize());
-		System.out.println("dao.getNowBlock() : " + dao.getNowBlock());
-		System.out.println("dao.getNowPage() : " + dao.getNowPage());
-		System.out.println("dao.getStartNo() : " + dao.getStartNo());
-		System.out.println("dao.getStartPage() : " + dao.getStartPage());
-		System.out.println("dao.getTableNo(ipCut) : " + dao.getTableNo(ipCut));
-		System.out.println("dao.getTotBlock() : " + dao.getTotBlock());
-		System.out.println("dao.getTotPage() : " + dao.getTotPage());
-		System.out.println("dao.getTotSize() : " + dao.getTotSize());
 		
 		modelAndView.addObject("ip", ip);
 		modelAndView.addObject("tableNo", tableNo);
 		modelAndView.addObject("openTableList", openTableList);
 		modelAndView.addObject("chatDao", dao);
 		modelAndView.setViewName("chat/chatHeader");
-		System.out.println("dao end page : " + dao.getEndNo());
 		return modelAndView;
 	}
 }
