@@ -19,8 +19,8 @@
 	<select id="chat_open_list" resultType="bean.GuestVo" parameterType="bean.ChatDao">
 		select * from (
 			select rownum num, g.* from (
-				select table_no, guest_status, guest_gender 
-				from guest where guest_status = 1 
+				select table_no, guest_status, guest_gender
+				from guest where guest_status = 1 and table_no != #{tableNo}
 				order by table_no
 			) g
 		) where num between #{startNo} and #{endNo}

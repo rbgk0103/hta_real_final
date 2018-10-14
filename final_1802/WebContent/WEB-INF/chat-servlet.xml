@@ -11,6 +11,8 @@
 		<constructor-arg ref="chatDao"/>
 	</bean>
 	
+	<bean id="serverController" class="bean.WebSocketServer">
+	</bean>
 	
 	<!-- view resolver -->
 	<bean id="chatResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

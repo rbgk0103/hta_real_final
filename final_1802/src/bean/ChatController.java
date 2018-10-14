@@ -46,7 +46,7 @@ public class ChatController {
 		System.out.println("Controller tableNo : " + tableNo);
 		
 		//	테이블번호, ip 뒤 두 자리
-		List<GuestVo> openTableList = dao.openTableList();
+		List<GuestVo> openTableList = dao.openTableList(tableNo);
 		List<GuestVo> sessionOpenAllTableList = dao.sessionOpenAllTableList();
 		if(req.getParameter("nowPage") != null) {
 			url = "chat/chatHeader";
@@ -74,9 +74,9 @@ public class ChatController {
 		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
 		dao.setNowPage(nowPage);
 		int tableNo = dao.getTableNo(ipCut);
-		List<GuestVo> openTableList = dao.openTableList();
+		List<GuestVo> openTableList = dao.openTableList(tableNo);
 		// openTableList 쿼리에서 현재 테이블 번호를 제외한 접속한 테이블의 정보를 불러와야합니다.
-		// 테이블 목록을 볼 때 자기 자신의 테이블 이 속해있는 page일 경우 
+		// 테이블 목록을 볼 때 자기 자신의 테이블 이 속해있는 page일 경우
 		// 테이블 갯수가 2개로 나오고 그 뒤에 있는 테이블은 보이지 않게됩니다.
 		Iterator<GuestVo> iterator = openTableList.iterator();
 		while(iterator.hasNext()) {

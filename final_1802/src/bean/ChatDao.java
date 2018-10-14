@@ -24,6 +24,14 @@ public class ChatDao {
 	int cnt = 0;
 	GuestVo guestVo;
 	
+	int tableNo;
+	
+	public int getTableNo() {
+		return tableNo;
+	}
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
+	}
 	public GuestVo getGuestVo() {
 		return guestVo;
 	}
@@ -52,8 +60,9 @@ public class ChatDao {
 	
 	// tableNo, tableIp
 	//page Compute해서 전체 session이 아닌 3개의 세션만 가져옴
-	public List<GuestVo> openTableList() {
+	public List<GuestVo> openTableList(int tableNo) {
 		pageCompute();
+		setTableNo(tableNo);
 		List<GuestVo> openTableList = sqlSession.selectList("chat.chat_open_list", this);
 		
 		System.out.println("openTableList에 잘 들어갔는지 확인하자");

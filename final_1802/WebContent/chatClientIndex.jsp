@@ -81,7 +81,7 @@
 			
 			//자신의 ip로 테이블 번호를 데이터베이스에서 꺼내옴 = tableNo
 			var tableNo = $('#tableNo').val();
-			var webSocket = new WebSocket('ws://172.30.1.52:8080/final_1802/broadcasting');
+			var webSocket = new WebSocket('ws://172.30.1.37:8080/final_1802/broadcasting');
 			
 			console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
 			console.log("자른 ip : " + ipCut);

@@ -14,7 +14,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Controller;
 
-
+@Controller
 @ServerEndpoint("/broadcasting")
 public class WebSocketServer {
 	
