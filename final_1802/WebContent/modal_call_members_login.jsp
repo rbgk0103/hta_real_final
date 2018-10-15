@@ -44,8 +44,7 @@
 					<button type="button" class="btn btn-success btn-lg" name="btn_mbr_login" id="btn_mbr_login">LOGIN</button>
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" name="btn_mbr_register" data-dismiss="modal"
-						 data-toggle="modal" data-target="#modal_call_members_register">REGIT</button>
+					<button type="button" class="btn btn-primary btn-lg" name="btn_close" data-dismiss="modal">CANCEL</button>
 				</div>
 				<div class="col-sm-4">
 					<div class="col-sm-12 form-inline">

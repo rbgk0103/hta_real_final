@@ -35,6 +35,15 @@
 			<c:when test="${msg eq 'reg_false' }">
 				<p class="form-control-static">회원 가입 실패</p>
 			</c:when>
+			<c:when test="${msg eq 'mody_success' }">
+				setInterval(function() {
+					<p class="form-control-static">회원 수정 성공</p>
+				}, 1500)
+					<script>window.location.reload()</script>
+			</c:when>
+			<c:when test="${msg eq 'mody_false' }">
+				<p class="form-control-static">회원 수정 실패</p>
+			</c:when>
 			<c:when test="${msg != null }">
 	    
 				<p class="form-control-static">${msg}</p>

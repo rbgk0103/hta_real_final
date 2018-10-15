@@ -34,7 +34,7 @@
 #header_logo{height:100%;}
 #header_logo a >img{height:100%;cursor:pointer;}
 #header_menu{line-height: 5;}
-#header_menu a{font-size:30px;margin: 0px 4%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
+#header_menu a, .glyphicon{font-size:30px;margin: 0px 4%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
 #header_menu a:hover{
 text-shadow: 
 	0 0 10px #fff,
@@ -46,7 +46,7 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_mbrName{line-height: 2.9; position: absolute; right: 3%;}
+#header_mbr{line-height: 2.9; position: absolute; right: 15%; top: 35%; outline: none;}
 #header_tableNo{line-height: 2.0; position: absolute; right: 8%;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
@@ -75,7 +75,7 @@ if(request.getParameter("content") !=null){
 </form>
 <div id = 'wrap'>
 	<div id = 'header'>
-		<div class='col-md-3'  id = 'header_logo'>
+		<div class='col-md-4'  id = 'header_logo'>
 			<a href ="index.jsp">
 				<img src ='./img/logo.png'>
 			</a>
@@ -84,44 +84,82 @@ if(request.getParameter("content") !=null){
 			<a href="index.jsp?content=main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
-			
-		<c:choose>
-			<c:when test="${session_mbr == null }">
-			
-				<a id="mbr_login" data-toggle="modal" data-target="#modal_call_members_login">로그인</a>
-			
-			</c:when>
-			<c:when test="${session_mbr != null }">
-			
-				<a id="mbr_logout">로그아웃</a>
-				
-			</c:when>
-		</c:choose>
-			
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
-			
-		<c:choose>
-			<c:when test="${session_mbr.scNo == 0 }">
-			
-				<a href="table_status.adm">관리</a>
-			
-			</c:when>
-		</c:choose>
-			
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
 			<a>No.01</a>
 		</div>
-		<div id="header_mbrName">
+			
+		<div id="header_mbr">
+			
+			<button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+				<div class="dropdown">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				</div>
+			</button>
+			
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			
+				<c:choose>
+					<c:when test="${session_mbr == null }">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#modal_call_members_login">
+								로그인
+							</a>
+						</li>
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#modal_call_members_register">
+								회원가입
+							</a>
+						</li>
+					</c:when>
+					<c:when test="${session_mbr != null }">
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1">
+								${session_mbr.mbrName } 님 안녕하세요.
+							</a>
+						</li>
+						<li role="presentation" class="divider"></li>
+						
+						<c:choose>
+							<c:when test="${session_mbr.scNo == 0 }">
+								<li role="presentation">
+									<a role="menuitem" tabindex="-1" href="table_status.adm">
+										관리자 페이지
+									</a>
+								</li>
+							</c:when>
+							<c:when test="${session_mbr.scNo == 4 }">
+								<li role="presentation">
+									<a role="menuitem" tabindex="-1">
+										${session_mbr.mbrPoint } Point 사용 가능
+									</a>
+								</li>							
+								<li role="presentation">
+									<a role="menuitem" tabindex="-1" 
+										onclick="mbrModify('${session_mbr.mbrNo}', '${session_mbr.mbrId}', '${session_mbr.mbrPwd}', '${session_mbr.mbrName}', '${session_mbr.mbrPhone}', '${session_mbr.mbrBirth}', '${session_mbr.mbrGender}', '${session_mbr.mbrPoint }')">
+										정보 수정
+									</a>
+								</li>							
+							</c:when>
+						</c:choose>
+						
+						<li role="presentation">
+							<a id="mbr_logout" role="menuitem" tabindex="-1" href="#">
+								로그아웃
+							</a>
+						</li>
+						
+					</c:when>
+				</c:choose>
+			</ul>
 		
-			<c:choose>
-				<c:when test="${session_mbr.mbrId != null }">
-					${session_mbr.mbrName } 님 안녕하세요
-				</c:when>
-			</c:choose>
 		
 		</div>
 	</div>
+	
+	
+	
 	<div id ='content'>
 		<jsp:include page="<%=content %>"/>
 	</div>
@@ -130,10 +168,23 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./modal_call_members_login.jsp" %>
 <%@ include file = "./modal_call_members_register.jsp" %>
 <%@ include file = "./modal_call_members_findInfo.jsp" %>
+<%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
 $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
 })
+function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
+	$(".modal-body #mbr_no").val(mbrNo);
+	$(".modal-body #mbr_mid").val(mbrId);
+	$(".modal-body #mbr_mpwd").val(mbrPwd);
+	$(".modal-body #mbr_mname").val(mbrName);
+	$(".modal-body #mbr_mphone").val(mbrPhone);
+	$(".modal-body #mbr_mbirth").val(mbrBirth);
+	$("input:radio[name='mbr_gender']:radio[value='male']").prop("checked",true);
+	$(".modal-body #mbr_mpoint").val(mbrPoint);
+	
+	$("#modal_call_members_modify").modal("show");
+}
 function goOrderMenu(){
 	$('#content').load('main.ord');
 }

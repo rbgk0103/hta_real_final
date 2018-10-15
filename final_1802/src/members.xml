@@ -73,4 +73,15 @@
 		) where num between #{startNo} and #{endNo}
 	</select>
 	
+	<update id="update" parameterType="bean.MembersVo">
+		update members set
+		mbr_name = #{mbrName}, mbr_phone = #{mbrPhone}, mbr_pwd = #{mbrPwd}, mbr_birth = #{mbrBirth}, mbr_gender = #{mbrGender}, mbr_point = #{mbrPoint}
+		where mbr_no = #{mbrNo}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from members
+		where mbr_no = #{_parameter}
+	</delete>
+	
 </mapper>

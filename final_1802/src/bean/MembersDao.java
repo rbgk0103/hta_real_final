@@ -92,8 +92,48 @@ public class MembersDao {
 		return list;
 	}
 	
+	public String modify(HttpServletRequest req) {
+		System.out.println("dao 모디파이");
+		String msg = "";
+
+		mvo = null;
+		
+		mvo = setVo(req);
+		System.out.println("엠보 겟 넘버" + mvo.getMbrNo());
+		int cnt = s.update("mbr.update", mvo);
+		System.out.println(cnt);
+		
+		if(cnt > 0) {
+			s.commit();
+			msg = "mody_success";
+		}else {
+			s.rollback();
+			msg = "mody_false";
+		}
+		
+		return msg;
+	}
+	
+	public void delete(int mbrNo) {
+		
+		int cnt = s.delete("mbr.delete", mbrNo);
+		
+		if(cnt > 0) {
+			s.commit();
+		}else {
+			s.rollback();
+		}
+		return;
+	}
+	
 	public MembersVo setVo(HttpServletRequest req) {
+		
+		System.out.println("디에이오 셋보  리퀘스트 넘버 : " + Integer.parseInt(req.getParameter("mbr_no")));
 		mvo = new MembersVo();
+		
+		if(req.getParameter("mbr_no") != null) {
+			mvo.setMbrNo(Integer.parseInt(req.getParameter("mbr_no")));
+		}
 		
 		mvo.setMbrId(req.getParameter("mbr_id"));
 		mvo.setMbrName(req.getParameter("mbr_name"));
@@ -101,6 +141,10 @@ public class MembersDao {
 		mvo.setMbrPwd(req.getParameter("mbr_pwd"));
 		mvo.setMbrGender(req.getParameter("mbr_gender"));
 		mvo.setMbrBirth(req.getParameter("mbr_birth"));
+		
+		if(req.getParameter("mbr_point") != null) {
+			mvo.setMbrPoint(Integer.parseInt(req.getParameter("mbr_point")));
+		}
 		
 		return mvo;
 	}

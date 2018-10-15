@@ -142,4 +142,41 @@ public class MembersController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/mbr_modify.mbr")
+	public ModelAndView modify(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String msg = "";
+		
+		msg = dao.modify(req);
+		
+		
+		mv.addObject("msg", msg);
+		mv.setViewName("info");
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/mbr_delete.mbr")
+	public ModelAndView delete(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String findStr = req.getParameter("mbr_findStr");
+		int mbrNo = Integer.parseInt(req.getParameter("mbrNo"));
+		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		
+		page.setNowPage(nowPage);
+		
+		dao.delete(mbrNo);
+
+		List<MembersVo> list = dao.list(findStr);
+		
+		mv.addObject("page", page);
+		mv.addObject("list", list);
+		
+		mv.setViewName("mbr_list");
+		
+		return mv;
+	}
+	
 }

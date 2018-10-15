@@ -229,5 +229,4 @@
 		$("#result_mbr_id_check").load("idCheck.mbr", param, function(id_result){
 		});
 	})
-
 </script>
