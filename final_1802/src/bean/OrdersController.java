@@ -44,11 +44,16 @@ public class OrdersController {
 	@RequestMapping(value = "/orderMenu.ord")
 	public ModelAndView orderMenu(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
+		int tblNo = Integer.parseInt(req.getParameter("ord_table_no")); 
+		int g_no = Integer.parseInt(req.getParameter("guest_no")); 
 		String nos[] = req.getParameterValues("menu_no");
 		String qtys[] = req.getParameterValues("os_qty");
 		String prices[] = req.getParameterValues("os_price");
 		
-		String msg = dao.addList(nos, qtys, prices);
+		String msg = dao.addList(nos, qtys, prices, tblNo, g_no);
+		
+		mv.addObject("msg", msg);
+		//mv.setViewName("order_menu");
 		return mv;
 	}
 }
