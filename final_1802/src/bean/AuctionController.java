@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.http.HttpOutputMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,20 +18,20 @@ public class AuctionController {
       this.dao = dao;
    }
    
-   // 
+   //관리자 list
    @RequestMapping(value="auction_list.auc")
-   public ModelAndView auctionList(String menu_type) {
+   public ModelAndView auctionList() {
       System.out.println("con_list 입장");
       
       ModelAndView mv = new ModelAndView();      
-      List<MenuVo> list = dao.list(menu_type);
+      List<AuctionVo> list = dao.list();
       
       mv.addObject("list",list);
-      mv.addObject("mt",menu_type);
       mv.setViewName("auction/auction_list");
       return mv;
    }
    
+   //관리자 insert
    @RequestMapping(value="auction_input.auc")
    public ModelAndView auctionInput(HttpServletRequest req) {
       ModelAndView mv = new ModelAndView();
@@ -42,9 +43,55 @@ public class AuctionController {
       mv.setViewName("auction/auction_list");
       
       return mv;
-   }
-   
-   
+   } 
+    //관리자 view
+    @RequestMapping(value="auction_view.auc")
+    public ModelAndView auctionView(HttpServletRequest req) {
+    	
+    	ModelAndView mv = new ModelAndView();
+    	System.out.println("con_view 입장");
+    	AuctionVo vo = dao.view(Integer.parseInt(req.getParameter("ae_no")));
+    	
+    	mv.addObject("vo",vo);
+    	mv.setViewName("auction/auction_view");
+		
+    	return mv;
+    }
+    
+    //관리자 delete
+    @RequestMapping(value="auction_delete.auc")
+    public ModelAndView auctionDelete(HttpServletRequest req) {
+    	System.out.println("con_del 입장");
+    	
+    	ModelAndView mv = new ModelAndView();
+    	String msg = "";
+    	
+    	System.out.println("ae"+Integer.parseInt(req.getParameter("ae_no")));
+    	
+    	msg = dao.delete(Integer.parseInt(req.getParameter("ae_no")));
+    	mv.addObject("msg",msg);
+    	mv.setViewName("auction/auction_list");
+    	
+    	return mv;
+    }
+    
+    //관리자 modify
+    @RequestMapping(value="auction_modify.auc")
+    public ModelAndView auctionModify(HttpServletRequest req) {
+    	System.out.println("con_mod 입장");
+    	
+    	ModelAndView mv = new ModelAndView();
+    	String msg = "";
+    	msg = dao.modify(req);
+    	
+    	System.out.println("mo"+Integer.parseInt(req.getParameter("ae_no")));
 
+    	mv.addObject("msg",msg);
+    	mv.setViewName("auction/auction_list");
+		
+    	return mv;
+    }
+    
+    
 
 } // End of class

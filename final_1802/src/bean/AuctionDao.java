@@ -19,17 +19,15 @@ public class AuctionDao {
       }
    }
    
-   public List<MenuVo> list(String menu_type){
+   //관리자 list
+   public List<AuctionVo> list(){
       System.out.println("dao 입장");
-      List<MenuVo> list;
-      if(menu_type == ""||menu_type == null) {
-         menu_type = "%%";
-      }
-      list = s.selectList("auc.auction_list", menu_type);
+      List<AuctionVo> list = s.selectList("auc.auction_list");
       
       return list;
    }
    
+   //관리자 insert
    public String insert(HttpServletRequest req) {
 	  AuctionVo vo = new AuctionVo();
 	  String msg = "";
@@ -55,10 +53,76 @@ public class AuctionDao {
 	  System.out.println(msg);
 	  return msg;
    }
+    
+   //관리자 view
+   public AuctionVo view(int ae_no) {
+	   AuctionVo vo = new AuctionVo();
+	   vo = s.selectOne("auc.view",ae_no);
+	   return vo;
+   }
    
-   
-   
-   
-     
+   //관리자 delete
+   public String delete(int ae_no) {
+	   String msg = "";
+	   int cnt = 0;
+	   
+	   try {	
+		  
+		   cnt = s.delete("auc.delete", ae_no);
+		   if(cnt > 0) {
+				msg = "<script>alert('정상적으로 삭제 되었습니다.')</script>";
+				s.commit();
+		   }else {
+				msg = "<script>alert('삭제 실패')</script>";
+				s.rollback();
+		   }
+	   }catch(Exception ex) {
+		   ex.printStackTrace();
+			msg = "<script>alert('예외 발생')</script>";
+	   }   
+	   return msg; 
+   }
+
+   //관리자 modify
+   public String modify(HttpServletRequest req) {
+	    AuctionVo vo = new AuctionVo();
+	    System.out.println("dao_mod 입장");
+	    String msg = "";
+	   
+	    int cnt = 0;
+	  	
+	    try {
+	    	if (req.getParameter("ae_price") == null ) {
+	    	System.out.println("룰루~~~~~");
+	    	}
+	    	// req.getParameter("get 될 id")
+	    	vo.setAe_no(Integer.parseInt(req.getParameter("ae_no")));
+	    	vo.setAe_price(Integer.parseInt(req.getParameter("price"))); // 5000
+	    	vo.setAe_pct_max(Integer.parseInt(req.getParameter("pct_max"))); // 500
+	    	vo.setAe_pct_min(Integer.parseInt(req.getParameter("pct_min"))); // 400
+	    	   	
+	    	/*System.out.println("1" + vo.getAe_price());
+	    	System.out.println("2" + vo.getAe_pct_max());
+	    	System.out.println("3" + vo.getAe_pct_min());
+	    	System.out.println("4" + vo.getAe_no());*/
+	    	
+	    	cnt = s.update("auc.modify",vo);
+	    	
+	    	System.out.println("cnt" + cnt);
+	    	
+	    	if(cnt > 0) {
+	    		s.commit();
+				msg = "<script>alert('정상적으로 수정되셨습니다.')</script>";
+	    	}else {
+	    		s.rollback();
+				msg = "<script>alert('수정중 오류 발생.')</script>";
+	    	}
+	    }catch(Exception ex) {
+	    	ex.printStackTrace();
+			s.rollback();
+			msg = "<script>alert('수정중 예외 발생.')</script>";
+	    }
+	    return msg;
+   }
 
 }

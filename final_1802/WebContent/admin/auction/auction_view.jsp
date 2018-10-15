@@ -1,128 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<link rel='stylesheet' type='text/css' href='./css/auction.css'   />
 <style>
-#auction_insert{
-	border-radius: 50px;
-	background:white;
-	margin: auto;
-	width: 600px;
-	top: 90px;
-	height: 600px;
-	display:block;
-	text-align: center;
-}
-#frm_auction_insert #auction_image{
-	display: none;
-}
-#frm_auction_insert #img{
-	border-radius: 50px;
-	width: 160px;
-	height: 120px;
-}
-#frm_auction_insert #auction_name,#auction_price, #auction_select{
-	border-radius: 50px;
-}
-#frm_auction_insert .auction_btn{
-background: #1AAB8A;
-	color: #fff;
-	border: none;
-	font-size: 1.6em;
-	padding: 0 2em;
-	display: inline-block;
-	height: 50px;
-	cursor:pointer;
-	border-radius: 10px;
-	font-style: oblique;
-}
-#frm_auction_insert .auction_btn:hover{
-	background: #ff0f;
-	color: #1AABBf;
-}
-.my_hr{
-	height: 3px;
-	border: 0;
-	background: #ccc;
-}
-#frm_auction_insert input{
-	text-align: center;
-	color: green;
+#frm_auction #button .button{
+	
 }
 </style>
-
 <script>
 $().ready(function(){
-	$("#frm_auction_insert #img").click(function(){
-		$("#frm_menu_insert #menu_image").click();
+	$("#btnClose").click(function(){
+		$(".skin-black").load("./auction_list.auc");
 	})
-	$("#frm_auction_insert #auction_select").change(function(){
-		var str = "";
-		$("#frm_auction_insert #auction_select option:selected").each(function(){
-			str = $(this).val();
-		});
-		$('#frm_auction_insert #menu_type').val(str);
+
+	/* ajax 는 이미지가 있을경우 */
+	
+	$("#btnDelete").click(function(){
+		var param = $('#frm_auction').serialize();
+		var url   = './auction_delete.auc';
+		$('.skin-black').load(url,param);
 	})
 	
-	$("#btn_insert").click(function(){
-		var ff = document.frm_menu_insert;
-		var data = new FormData(ff);
-		$.ajax({
-			url : './insert_menu.adm',
-			data : data,
-			type : 'post',
-			contentType : false,
-			processData : false,
-			success : function(resp){
-				$(".skin-black").html(resp);
-			}
-		});
+	$("#btnModify").click(function(){
+		var param = $("#frm_auction").serialize();
+		var url   = './auction_modify.auc';
+		$('.skin-black').load(url,param);
 	})
+	
 })
 </script>
- <div class="modal-dialog">
-    <div class="modal-content">
-		<div id = 'auction_insert'>
-			<br/>
-			<h1><strong>메뉴 등록</strong></h1>
-			<hr class = 'my_hr'/>
-			<form method = 'post' id = 'frm_menu_insert' name = 'frm_menu_insert' enctype = "multipart/form-data">
-				<input type = 'text' id = 'menu_type' name = 'menu_type' value = 'fury'/>
-				<label><h3><Strong>이 름  </Strong></h3></label>
-				<input type = 'text' size = '15' id = 'menu_name' name = 'menu_name'/><br/>
-				<label><h3><Strong>가 격  </Strong></h3></label>
-				<input type = 'text' size = '15' id = 'menu_price' name = 'menu_price'/><br/>
-				<label> <h3><strong>메뉴 타입</strong></h3>
-				<select id = 'menu_select' name = 'menu_select'>
-					<option value = 'fury'>치즈&후라이</option>
-					<option value = 'grill'>볶음&그릴</option>
-					<option value = 'salad'>샐러드&떡볶이</option>
-					<option value = 'stew'>탕&전골</option>
-					<option value = 'drink'>주류</option>						
-				</select>
-				</label>
-				<br/>
-				<hr class = 'my_hr'/>
-				<img src = 'http://placehold.it/160x120' id = 'img' name = 'img'/>
-				<input type = 'file' name = 'auction_image' id = 'auction_image'/>
-				<hr class = 'my_hr'/>
-				<input type = 'button' value = '등 록' id = 'btn_insert' class = 'menu_btn' name = 'btn_insert'/>
-				<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
-			</form>
-		</div>
+<div class="modal-dialog">
+	<div class="modal-content">
+		<form id = 'frm_auction' name = 'frm_auction' method = 'post'>
+				<div id='header'>
+					<h1>
+						<label class='auction_header'>A U C T I O N</label>
+					</h1>
+				</div>	
+			<div id='win_ment'>
+			<!-- INT 값은 value 에 '' 나 "" 를 붙이지 않는다. -->
+				<input type = 'hidden' id = 'ae_no' name = 'ae_no' value = ${vo.ae_no }>
+				<label>경매번호  : <span class='ment' >${vo.ae_no}</span></label><br /> 
+				<label>시작가  :  <input type = 'text' class='ment' name = 'price'   id = 'price'   value = ${vo.ae_price }></label><br/>
+				<label>최대값  :  <input type = 'text' class='ment' name = 'pct_max' id = 'pct_max' value = ${vo.ae_pct_max }></label><br/>
+				<label>최소값  :  <input type = 'text' class='ment' name = 'pct_min' id = 'pct_min' value = ${vo.ae_pct_min }></label><br/>
+			</div>
+			<div id = 'btn'>
+				<input type='button' name='btnDelete' id = 'btnDelete' class = 'btn' value='D E L E T E' />
+				<input type='button' name='btnClose'  id = 'btnClose'  class = 'btn' value='C L O S E' />
+				<input type='button' name='btnModify' id = 'btnModify' class = 'btn' value='M O D I F Y' />	
+			</div>
+		</form>
 	</div>
 </div>
-<script>
-var ff = document.frm_auction_insert;
-var auction_image = ff.menu_image;
-auction_image.onchange = function(event){
-	var file = event.srcElement;
-	var url = menu_image.files[0];
-	var reader = new FileReader();
-	
-	reader.onload = function(e){
-		ff.img.src = e.target.result;
-	}
-	reader.readAsDataURL(url);
-}
-</script>

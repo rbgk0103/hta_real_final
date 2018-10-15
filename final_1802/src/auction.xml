@@ -4,12 +4,38 @@
 <mapper namespace='auc'>
    <!-- menu_histoty -->
    <select id='auction_list' resultType='bean.AuctionVo'>
-    select ae_no, menu_no, to_char(ae_date, 'TS') ae_date, ae_price, ae_pct_max,
+    select ae_no, menu_no, ae_date, ae_price, ae_pct_max,
       ae_cost,ae_pct_min, ae_win_table
       from auction_events
+      order by ae_no ASC
    </select>
    
+   <!-- menu_insert -->
+   <!-- 약 1시간 뒤 등록 -->
    <insert id="auction_input" parameterType = "bean.AuctionVo" >
-   	  insert into auction_events values(seq_auction_events.nextval, 1, sysdate, #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0) 
+   	  insert into auction_events values(seq_auction_events.nextval, 1, SYSDATE+0.04, #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0) 
    </insert>
+   
+	<!-- menu_view -->
+	<select id="view" parameterType = "int" resultType="bean.AuctionVo">
+		select *
+		from auction_events
+		where ae_no = #{ae_no}
+	</select>
+	
+	<!-- menu_delete -->
+	<delete id="delete" parameterType="int">
+		delete
+		from auction_events
+		where ae_no = #{ae_no}
+	</delete>
+	
+	<!-- menu_modify -->
+	<update id = 'modify' parameterType="bean.AuctionVo">
+		update auction_events 
+		set ae_price = #{ae_price}, ae_pct_max = #{ae_pct_max}, ae_pct_min = #{ae_pct_min}
+		where ae_no = #{ae_no}
+	</update>
+	
+	
 </mapper>

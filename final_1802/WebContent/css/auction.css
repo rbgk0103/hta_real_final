@@ -4,7 +4,6 @@
 	border-radius: 15px;
 	width: 700px;
 	height: 500px;
-	color: white;
 	background-color:#343a4e;
 	box-shadow: 	
 	0 0 10px #fff,
@@ -80,8 +79,7 @@
 	color : red;
 }
 
-#frm_auction #btnClose {
-	margin : 150px 0px 0px 130px;
+#frm_auction #button .button{
 	padding : 10px 15px;
     color: #000000;
     background-color: #ffffff;
@@ -92,7 +90,7 @@
     border-radius: 10px; 
 }
 
-#frm_auction #btnClose:hover {
+#frm_auction .button:hover {
     color: #ffffff;
     background-color: #000000; 
 }
@@ -108,6 +106,19 @@
 #frm_auction #input_ment .ment{
 	color : red;
 }
+.wrap .menu_div .btnInput {
+	padding : 10px 20px;
+	margin: 25px 0 0 55px;	/* ╩С ©Л го аб */
+	border-radius: 6px;
+    color: #000000;
+    background-color: #ffffff;
+    border: #000000 solid 1px;
+}
+.menu_div .btnInput:hover {
+    color: #ffffff;
+    background-color: #000000; 
+}
+
 #frm_auction .btnInput {
 	padding : 10px 20px;
 	margin: 25px 0 0 55px;	/* ╩С ©Л го аб */
@@ -120,3 +131,4 @@
     color: #ffffff;
     background-color: #000000; 
 }
+

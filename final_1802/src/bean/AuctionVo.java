@@ -1,7 +1,5 @@
 package bean;
 
-import java.sql.Date;
-
 public class AuctionVo {
 	
 	int  ae_no;
