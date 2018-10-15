@@ -192,9 +192,9 @@ if (localIp.length() == 11) {
 <%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
 
-window.onload = function(){
+/* window.onload = function(){
 	$('#wrap').load("getIp.ip");
-}
+} */
 
 
 $("#mbr_logout").click(function(){
