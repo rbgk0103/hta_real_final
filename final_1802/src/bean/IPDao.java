@@ -17,7 +17,6 @@ public class IPDao {
 	public TblVo tblVoSelectOne(String tblIp) {
 
 		TblVo tblVo;
-		System.out.println(tblIp);
 		tblVo = sqlSession.selectOne("ip.getTblVo", tblIp);
 		return tblVo;
 	}
