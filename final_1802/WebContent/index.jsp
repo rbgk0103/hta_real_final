@@ -1,3 +1,4 @@
+<%@page import="java.net.InetAddress"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -70,6 +71,26 @@ if(request.getParameter("content") !=null){
 	content = request.getParameter("content");  
 }
 %>
+
+<%
+/* 이봉기(게임)가 작성한 부분 */
+// 이 페이지(index.jsp)를 실행한 컴퓨터의 IP 얻어내기
+InetAddress local = InetAddress.getLocalHost();
+String localIp = local.getHostAddress();
+String tbl_ip = "-1";
+
+// 아이피 끝번호만 얻어내기
+if (localIp.length() == 11) {
+	tbl_ip = localIp.substring(9);	
+}else {
+	tbl_ip = localIp.substring(10);
+}
+
+// 아이피 끝번호를 이용해서 DB(TABLE_STATUS테이블)에서 테이블번호 가져오기
+
+
+%>
+
 <form name='ipForm' method='post' target="chat">
 	<input type='hidden' id="ip" value='${ip }' />
 </form>
@@ -87,7 +108,7 @@ if(request.getParameter("content") !=null){
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
-			<a>No.01</a>
+			<a>No.0${tblNo}</a>
 		</div>
 			
 		<div id="header_mbr">
@@ -170,6 +191,12 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./modal_call_members_findInfo.jsp" %>
 <%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
+
+window.onload = function(){
+	$('#wrap').load("getIp.ip");
+}
+
+
 $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
 })
