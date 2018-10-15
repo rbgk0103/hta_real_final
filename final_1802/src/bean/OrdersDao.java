@@ -59,4 +59,9 @@ public class OrdersDao {
 		return msg;
 	}
 	
+	public List<OrdersSetVo> viewList(int tblNo, int g_no){
+		List<OrdersSetVo> list = sqlSession.selectList("ord.view_list", g_no);
+		return list;
+	}
+	
 }

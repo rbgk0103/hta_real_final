@@ -42,8 +42,6 @@
   </div>
 </div>
 
-
-
 <div class="modal fade hey123">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -62,9 +60,12 @@ function orderMenu(){
 
 
 $('#all_order').click(function(){
-  	tbl_no = 4;
-    guest_no = 29;
-    $('div.hey123').modal({remote : './modal_show_order_list.jsp', backdrop: 'static'});
+	var param = $('#right_frm').serialize();
+	$('#all_order').load('viewList.ord');
+  	tbl_no = ${tblVo.tbl_no};
+    guest_no = ${tblVo.guest_no};
+	alert("얍얍");
+    $('div.hey123').modal({remote : './order/modal_show_order_list.jsp', backdrop: 'static'});
  
 })
 </script>
