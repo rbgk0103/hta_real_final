@@ -133,7 +133,7 @@
 					<div class="form-group">
 						<label for="mbr_mpwd" class="col-sm-3 control-label"> *비밀번호 </label>
 						<div class="col-sm-8">
-							<input type="text" name="mbr_pwd" id="mbr_mpwd" class="form-control" value="" autocomplete="off" placeholder="3자 이상의 영숫자를 입력해주세요"> 
+							<input type="password" name="mbr_pwd" id="mbr_mpwd" class="form-control" value="" autocomplete="off" placeholder="3자 이상의 영숫자를 입력해주세요"> 
 						</div>
 						<div class="col-sm-12">
 							<output name="mbr_pwd_error" class="error"></output>
