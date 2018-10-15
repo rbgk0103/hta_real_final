@@ -1,5 +1,7 @@
 package bean;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,13 +11,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller(value="*.chat")
+@Controller
 public class ChatController {
 
-	ChatDao dao;
+	ChatDao chatDao;
+	ChatVo chatVo;
+	TotalChatListVo totalChatListVo;
+	boolean chatSwitch;	//전체채팅 : true, 1:1채팅 : false;
 	
-	public ChatController(ChatDao dao) {
-		this.dao = dao;
+	public ChatController(ChatVo chatVo, ChatDao chatDao, TotalChatListVo totalChatListVo) {
+		this.chatVo = chatVo;
+		this.chatDao = chatDao;
+		this.totalChatListVo = totalChatListVo;
 	}
 	
 	public ModelAndView notice() {
@@ -24,10 +31,40 @@ public class ChatController {
 		return modelAndView;
 	}
 	
-	public ModelAndView content(String message) {
+	@RequestMapping(value="content.chat")
+	public ModelAndView content(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("chatContent");
+		String msg = req.getParameter("msg");
+		String receiver = msg.substring(1);
+		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
+		if(msg.substring(1).equals("a")) {
+			list = chatDao.totalChatList();
+		} else {
+			list = chatDao.oneToOneChatList(receiver);
+		}
+		
+		System.out.println("1대1대화중의 msg : " + msg);
+		if(list != null) {
+			modelAndView.addObject("totalChatList", list);
+		}
+		modelAndView.addObject("tableNo", msg.substring(0, 1));
+		modelAndView.setViewName("chat/chatContent");
 		return modelAndView;
+	}
+	
+	@RequestMapping(value="insert.chat")
+	public void onMessage(HttpServletRequest req) {
+		System.out.println("insert.chat 들어옴");
+		System.out.println("msg param : " + req.getParameter("msg"));
+		String msg = req.getParameter("msg");
+		chatSwitch = msg.substring(1).equals("a") ? true : false;
+		
+		chatVo.setChat_date(new Date());
+		chatVo.setChat_sender(msg.substring(0, 1));
+		chatVo.setChat_receiver(msg.substring(1, 2));
+		chatVo.setChat_text(msg.substring(2, msg.length()-2));
+		
+		chatDao.inputMessage(chatVo);
 	}
 	
 	@RequestMapping(value="getIp.chat")
@@ -39,30 +76,40 @@ public class ChatController {
 		int nowPage = req.getParameter("nowPage") != null
 					? Integer.parseInt(req.getParameter("nowPage"))
 					: 1;
-		dao.setNowPage(nowPage);
-		int tableNo = dao.getTableNo(ipCut);
+		chatDao.setNowPage(nowPage);
+		int tableNo = chatDao.getTableNo(ipCut);
 		
 		System.out.println("컨트롤러 ip : " + ipCut);
 		System.out.println("Controller tableNo : " + tableNo);
 		
 		//	테이블번호, ip 뒤 두 자리
-		List<GuestVo> openTableList = dao.openTableList(tableNo);
-		List<GuestVo> sessionOpenAllTableList = dao.sessionOpenAllTableList();
+		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
+		List<GuestVo> sessionOpenAllTableList = chatDao.sessionOpenAllTableList();
+		List<TotalChatListVo> totalChatList = chatDao.totalChatList();
 		if(req.getParameter("nowPage") != null) {
 			url = "chat/chatHeader";
 		} else {
 			url = "chatClientIndex";
 		}
+		Iterator<TotalChatListVo> iterator = totalChatList.iterator();
+		while(iterator.hasNext()) {
+			TotalChatListVo vo = iterator.next();
+			System.out.println("getIp 메소드 : " + vo.getGuest_gender());
+		}
+		
+		modelAndView.addObject("totalChatList", totalChatList);
 		modelAndView.addObject("ip", ip);
 		modelAndView.addObject("tableNo", tableNo);
 		modelAndView.addObject("openTableList", openTableList);
 		modelAndView.addObject("allTableList", sessionOpenAllTableList);
-		modelAndView.addObject("chatDao", dao);
+		modelAndView.addObject("chatDao", chatDao);
 		modelAndView.setViewName(url);
 		
 		return modelAndView;
 	}
-	
+	////////////////////////////////////////////////
+	// "#allCircleBorder, #circleBorder 색상 조정 필요 //
+	////////////////////////////////////////////////
 	@RequestMapping(value="header.chat")
 	public ModelAndView loadHeader(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
@@ -72,9 +119,9 @@ public class ChatController {
 		String ip = req.getParameter("ip");
 		String ipCut = ip.substring(ip.length()-2, ip.length());
 		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
-		dao.setNowPage(nowPage);
-		int tableNo = dao.getTableNo(ipCut);
-		List<GuestVo> openTableList = dao.openTableList(tableNo);
+		chatDao.setNowPage(nowPage);
+		int tableNo = chatDao.getTableNo(ipCut);
+		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
 		// openTableList 쿼리에서 현재 테이블 번호를 제외한 접속한 테이블의 정보를 불러와야합니다.
 		// 테이블 목록을 볼 때 자기 자신의 테이블 이 속해있는 page일 경우
 		// 테이블 갯수가 2개로 나오고 그 뒤에 있는 테이블은 보이지 않게됩니다.
@@ -88,7 +135,7 @@ public class ChatController {
 		modelAndView.addObject("ip", ip);
 		modelAndView.addObject("tableNo", tableNo);
 		modelAndView.addObject("openTableList", openTableList);
-		modelAndView.addObject("chatDao", dao);
+		modelAndView.addObject("chatDao", chatDao);
 		modelAndView.setViewName("chat/chatHeader");
 		return modelAndView;
 	}

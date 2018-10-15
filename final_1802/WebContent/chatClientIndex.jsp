@@ -1,3 +1,5 @@
+<%@page import="bean.GuestVo"%>
+<%@page import="java.util.List"%>
 <%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -32,9 +34,7 @@
 			: (String) request.getParameter("chatNotice");
 	
 	// 대화 내용
-	String chatContent = request.getParameter("chatContent") == null
-			? "./chat/chatContent.jsp?tableNo=" + request.getAttribute("tableNo")
-			: (String) request.getParameter("chatContent") + request.getAttribute("tableNo");
+	String chatContent = "./chat/chatContent.jsp?tableNo=" + request.getAttribute("tableNo");
 	
 	// 사용자 목록(Header)
 	String chatHeader = "./chat/chatHeader.jsp?tableNo=" + request.getAttribute("tableNo");
@@ -45,6 +45,7 @@
 		</c:forEach>
 		<input type='hidden' id="ip" value='${ip }' />
 		<input type='hidden' id="tableNo" value='${tableNo }' />
+		<input type='hidden' id='receiverNo' value='a'/>
 		
 	<div class="container" id="chatBody">
 		<div id='chatHeader' class='col-md-12 col-xs-12'>
@@ -58,11 +59,11 @@
 			</div>
 			<div id='chatContent' class='col-md-12 col-xs-12'>
 				<jsp:include page="<%=chatContent%>" />
-				
 			</div>
 		</div>
 		<%@ include file="./chat/chatFooter.jsp"%>
 	</div>
+	<div id='model'></div>
 	<%	
 		//index.jsp에서 채팅을 눌렀을 때 parameter로 ip를 받습니다.
 		String ip;
@@ -73,6 +74,8 @@
 		}
 	%>
 	<script>
+		var tableNo = $('#tableNo').val();
+		
 		window.onload = function() {
 			
 			console.log("스크립틀릿의 ip : " + $('#ip').val());
@@ -80,17 +83,16 @@
 			var ipCut = ip.substr(ip.length-2, ip.length);
 			
 			//자신의 ip로 테이블 번호를 데이터베이스에서 꺼내옴 = tableNo
-			var tableNo = $('#tableNo').val();
 			var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
 			
 			console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
 			console.log("자른 ip : " + ipCut);
-			
+			//$('#chatContent').load("content.chat", "msg=" + tableNo + "a");
 			webSocket.onopen = function() {
 				$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
-				webSocket.send(tableNo + ipCut);	//3자리
+				webSocket.send(tableNo + "a" + ipCut);	//4자리
 			}
-	
+			
 			webSocket.onmessage = function(msg) {
 				//msg.data.substring(0, 1) : 자신의 table 번호
 				//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
@@ -103,7 +105,8 @@
 							+ '<div class="send">'
 							+ '<h6>No. ' + tableNo + '</h6>'
 							+ '<div class="chatManBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
+							+ '<p>' + 
 							+ '</div></div></div>'
 						);
 						// 자기 자신 테이블이 여자 테이블일 경우 div class=chatWomanBox(분홍 말풍선) 사용
@@ -113,7 +116,7 @@
 							+ '<div class="send">'
 							+ '<h6>No. ' + tableNo + '</h6>'
 							+ '<div class="chatWomanBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
 							+ '</div></div></div>'
 						);
 						// 자기 자신 테이블이 혼성 테이블일 경우 div class=chatSeamBox(초록 말풍선) 사용
@@ -123,7 +126,7 @@
 							+ '<div class="send">'
 							+ '<h6>No. ' + tableNo + '</h6>'
 							+ '<div class="chatSeamBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
 							+ '</div></div></div>'
 						);
 					}
@@ -136,7 +139,7 @@
 							+ '<div class="receive">'
 							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
 							+ '<div class="chatManBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
 							+ '</div></div></div>'
 						);
 					} else if(document.getElementById(myTableNo).value === "woman") {
@@ -145,7 +148,7 @@
 							+ '<div class="receive">'
 							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
 							+ '<div class="chatWomanBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
 							+ '</div></div></div>'
 						);
 					} else if(document.getElementById(myTableNo).value === "seam") {
@@ -154,15 +157,16 @@
 							+ '<div class="receive">'
 							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
 							+ '<div class="chatSeamBox">'
-							+ msg.data.substring(1, msg.data.length-2)
+							+ msg.data.substring(2, msg.data.length-2)
 							+ '</div></div></div>'
 						);
 					}
 				}
 				//메세지 오면 스크롤 아래로
 				$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+				$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
 			}
-	
+		
 			webSocket.onclose = function() {
 				$('#chatContent').append("연결 종료");
 			}
@@ -176,14 +180,23 @@
 					sendMessage();
 				}
 			});
-	
+		
 			function sendMessage() {
 				var message = $('#msg').val();
 				if ($.trim(message) !== "") {
-					webSocket.send(tableNo + message + ipCut);
+					webSocket.send(tableNo + $('#receiverNo').val() + message + ipCut);
 				}
 				$('#msg').val("");	//textarea 지움
 			}
+		}
+		
+		function setReceiver(receiveNo) {
+			$('#receiverNo').val(receiveNo);
+			$("#allCircleBorder").style.backgroundColor = "#030303";
+			$("#circleBorder").style.backgroundColor = "#030303";
+			document.getElementsByClassName(receiveNo).style.backgroundColor = "#aaaaaa";
+			
+			$('#chatContent').load("content.chat", "msg=" + tableNo + receiveNo);
 		}
 	
 		// chat 테이블에 값이 있을 때, 공지 테이블이 있을 때 사용할 예정

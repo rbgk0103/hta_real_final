@@ -1,5 +1,6 @@
 package bean;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,22 +23,11 @@ public class ChatDao {
 	int endNo = 0;
 	int startNo = 0;
 	int cnt = 0;
+	
 	GuestVo guestVo;
+	ChatVo chatVo;
 	
 	int tableNo;
-	
-	public int getTableNo() {
-		return tableNo;
-	}
-	public void setTableNo(int tableNo) {
-		this.tableNo = tableNo;
-	}
-	public GuestVo getGuestVo() {
-		return guestVo;
-	}
-	public void setGuestVo(GuestVo guestVo) {
-		this.guestVo = guestVo;
-	}
 	
 	public ChatDao() {
 		try {
@@ -46,6 +36,42 @@ public class ChatDao {
 			ex.printStackTrace();
 		}
 	}
+	
+	public List<TotalChatListVo> oneToOneChatList(String sender) {
+		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
+		list = sqlSession.selectList("chat.chat_one_to_one_list", sender);
+		return list;
+	}
+	
+	//주문 날짜(guest.guest_status = 1)부터 현재 시간까지의 1대1 채팅, 또는 전체 채팅 목록을 불러옵니다.
+	public List<TotalChatListVo> totalChatList() {
+		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
+		list = sqlSession.selectList("chat.chat_content_list");
+		return list;
+	}
+	
+	public void inputMessage(ChatVo vo) {
+		System.out.println("input Message 메소드");
+		System.out.println("vo.gettext : " + vo.getChat_text());
+		int result;
+		try {
+			result = sqlSession.insert("chat.chat_insert", vo);
+			
+			if(result > 0) {
+				sqlSession.commit();
+				System.out.println(result);
+			} else {
+				sqlSession.rollback();
+				System.out.println(result);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			sqlSession.rollback();
+			
+		}
+		
+	}
+	
 	public int getTableNo(String ip) {
 		int result = 0;
 		System.out.println("ChatDao ip : " + ip);
@@ -121,6 +147,30 @@ public class ChatDao {
 		if (nowBlock < 1) {
 			nowBlock = 1;
 		}
+	}
+	
+	public ChatVo getChatVo() {
+		return chatVo;
+	}
+	
+	public void setChatVo(ChatVo chatVo) {
+		this.chatVo = chatVo;
+	}
+	
+	public int getTableNo() {
+		return tableNo;
+	}
+	
+	public void setTableNo(int tableNo) {
+		this.tableNo = tableNo;
+	}
+	
+	public GuestVo getGuestVo() {
+		return guestVo;
+	}
+	
+	public void setGuestVo(GuestVo guestVo) {
+		this.guestVo = guestVo;
 	}
 	
 	public void setEndNo(int endNo) {

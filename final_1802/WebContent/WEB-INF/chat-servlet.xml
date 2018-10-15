@@ -6,9 +6,13 @@
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="chatDao" class="bean.ChatDao" />
+	<bean id="chatVo" class="bean.ChatVo" />
+	<bean id="totalChatListVo" class="bean.TotalChatListVo"/>
 	<!-- controller -->
 	<bean id="chatController" class="bean.ChatController">
+		<constructor-arg ref="chatVo"/>
 		<constructor-arg ref="chatDao"/>
+		<constructor-arg ref="totalChatListVo"/>
 	</bean>
 	
 	<bean id="serverController" class="bean.WebSocketServer">

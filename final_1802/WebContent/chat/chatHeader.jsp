@@ -30,7 +30,7 @@
 				? (ChatDao)request.getAttribute("chatDao")
 				: null;
 %>
-<div class="col-md-1 col-xs-1" id="allCircleBorder">
+<div class="col-md-1 col-xs-1" id="allCircleBorder" onclick="setReceiver('a')">
 	<p>전체</p>
 </div>
 <!-- 전체채팅목록, 유저목록, 아이콘 -->
@@ -45,7 +45,7 @@
 	<div class="col-md-8 col-xs-8" id="userList">
 		<c:forEach var='i' items='${openTableList}'>
 			<c:if test="${i.table_no != tableNo}">
-				<div class="col-md-2 col-xs-2" id="circleBorder">
+				<div class="col-md-2 col-xs-2 ${i.table_no }" id="circleBorder" onclick="setReceiver(${i.table_no })">
 					<p>No. ${i.table_no}</p>
 				</div>
 			</c:if>
@@ -65,4 +65,6 @@
 		var param = "&ip=" + $('#ip').val() + "&nowPage=" + nowPage;
 		$("#chatHeader").load("header.chat", param);
 	}
+	
+	
 </script>

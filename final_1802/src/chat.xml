@@ -30,4 +30,42 @@
 		from guest where guest_status = 1 
 		order by table_no
 	</select>
+	<select id="chat_content_list" resultType="bean.TotalChatListVo">
+		select g.table_no, g.guest_gender, c.chat_date, c.chat_sender, c.chat_text, c.chat_receiver
+		from guest g full outer join table_status ts 
+		on g.table_no = ts.tbl_no 
+		right outer join chat c 
+		on g.table_no = c.chat_sender 
+		where g.guest_status = 1 
+		and to_char(c.chat_date, 'YY/MM/DD') between (
+			select min(o.ord_date) 
+			from guest g join orders o 
+			on g.guest_no = o.guest_no 
+			where g.guest_status = '1') 
+		and to_char(sysdate, 'YY/MM/DD') 
+		and c.chat_receiver = 'a' 
+		order by c.chat_date asc
+	</select>
+	<select id="chat_one_to_one_list" resultType="bean.TotalChatListVo" parameterType="String">
+		select g.table_no, g.guest_gender, c.chat_date, c.chat_sender, c.chat_text, c.chat_receiver
+		from guest g full outer join table_status ts 
+		on g.table_no = ts.tbl_no 
+		right outer join chat c 
+		on g.table_no = c.chat_sender 
+		where g.guest_status = 1 
+		and to_char(c.chat_date, 'YY/MM/DD') between (
+			select min(o.ord_date) 
+			from guest g join orders o 
+			on g.guest_no = o.guest_no 
+			where g.guest_status = '1') 
+		and to_char(sysdate, 'YY/MM/DD') 
+		and c.chat_receiver != 'a' 
+		and (c.chat_sender = #{receiver} or c.chat_receiver = #{receiver}) 
+		order by c.chat_date asc
+	</select>
+	<insert id="chat_insert" parameterType="bean.ChatVo">
+		insert into chat values (
+			sysdate, #{chat_text}, #{chat_sender}, #{chat_receiver}
+		)
+	</insert>
 </mapper>
