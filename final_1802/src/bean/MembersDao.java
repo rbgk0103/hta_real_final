@@ -70,7 +70,11 @@ public class MembersDao {
 		params.put("name", name);
 		params.put("phone", phone);
 		
-		mvo = s.selectOne("mbr.findInfo", params);
+		int cnt = s.selectOne("mbr.checkInfo", params);
+		
+		if(cnt > 0) {
+			mvo = s.selectOne("mbr.findInfo", params);			
+		}
 		
 		return mvo;
 	}
@@ -93,15 +97,14 @@ public class MembersDao {
 	}
 	
 	public String modify(HttpServletRequest req) {
-		System.out.println("dao 모디파이");
 		String msg = "";
 
 		mvo = null;
 		
 		mvo = setVo(req);
-		System.out.println("엠보 겟 넘버" + mvo.getMbrNo());
+
 		int cnt = s.update("mbr.update", mvo);
-		System.out.println(cnt);
+
 		
 		if(cnt > 0) {
 			s.commit();
@@ -127,8 +130,7 @@ public class MembersDao {
 	}
 	
 	public MembersVo setVo(HttpServletRequest req) {
-		
-		System.out.println("디에이오 셋보  리퀘스트 넘버 : " + Integer.parseInt(req.getParameter("mbr_no")));
+
 		mvo = new MembersVo();
 		
 		if(req.getParameter("mbr_no") != null) {

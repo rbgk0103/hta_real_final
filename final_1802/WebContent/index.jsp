@@ -174,7 +174,7 @@ $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
 })
 function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
-	$(".modal-body #mbr_no").val(mbrNo);
+	$(".modal-body #mbr_mno").val(mbrNo);
 	$(".modal-body #mbr_mid").val(mbrId);
 	$(".modal-body #mbr_mpwd").val(mbrPwd);
 	$(".modal-body #mbr_mname").val(mbrName);

@@ -24,6 +24,12 @@
 		(seq_mbr_no.nextval, #{mbrId}, 4, #{mbrName}, #{mbrPhone}, #{mbrPwd}, #{mbrGender}, sysdate, #{mbrBirth}, 0)
 	</insert>
 	
+	<select id="checkInfo" parameterType="java.util.HashMap" resultType="int">
+		select count(mbr_no)
+		from members
+		where mbr_name = #{name} and mbr_phone = #{phone}
+	</select>
+	
 	<select id="findInfo" parameterType="java.util.HashMap" resultType="bean.MembersVo">
 		select mbr_no mbrNo, mbr_id mbrId, mbr_name mbrName, mbr_phone mbrPhone, mbr_pwd mbrPwd,
 			mbr_gender mbrGender, mbr_reg_date mbrRegDate, mbr_birth mbrBirth, mbr_point mbrPoint,

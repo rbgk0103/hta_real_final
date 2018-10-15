@@ -33,9 +33,9 @@ public class MembersController {
 		if(mvo != null) {
 			session_mbr.setAttribute("session_mbr", mvo);
 			mv.addObject("mvo", mvo);
-			msg = "login";
+			msg = "login_success";
 		}else {
-			msg = "아이디 / 암호 다시 확인";
+			msg = "login_false";
 		}
 		mv.addObject("msg", msg);
 		mv.setViewName("info");
@@ -88,7 +88,7 @@ public class MembersController {
 		String msg = "";
 		
 		if(req.getParameter("mbr_name").equals("") || req.getParameter("mbr_phone").equals("")) {
-			msg = "이름과 연락처를 모두 입력해주세요.";
+			msg = "find_null";
 			
 			mv.addObject("msg", msg);
 			mv.setViewName("info");
@@ -100,10 +100,18 @@ public class MembersController {
 		
 		MembersVo mvo = dao.findInfo(name, phone);
 		
-		msg = "아이디 : " + mvo.getMbrId() + "\n비밀번호 : " + mvo.getMbrPwd();
-		
-		mv.addObject("mvo", mvo);
-		mv.setViewName("info");
+		if(mvo != null) {
+			msg = "find_success";
+			
+			mv.addObject("msg", msg);
+			mv.addObject("mvo", mvo);
+			mv.setViewName("info");
+		}else {
+			msg = "find_false";
+			
+			mv.addObject("msg", msg);
+			mv.setViewName("info");
+		}
 		
 		return mv;
 	}
@@ -146,10 +154,19 @@ public class MembersController {
 	public ModelAndView modify(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
+		System.out.println("컨트롤러");
+		System.out.println("엠뱔엔오 : " + Integer.parseInt(req.getParameter("mbr_no")));
+		System.out.println("엠뱔아디 : " + req.getParameter("mbr_id"));
+		System.out.println("엠뱔피됩 : " + req.getParameter("mbr_pwd"));
+		System.out.println("엠뱔넴 : " + req.getParameter("mbr_name"));
+		System.out.println("엠뱔폰 : " + req.getParameter("mbr_phone"));
+		System.out.println("엠뱔벌쓰 : " + req.getParameter("mbr_birth"));
+		System.out.println("엠뱔젠더 : " + req.getParameter("mbr_gender"));
+		System.out.println("엠뱔푄트 : " + Integer.parseInt(req.getParameter("mbr_point")));
+		
 		String msg = "";
 		
 		msg = dao.modify(req);
-		
 		
 		mv.addObject("msg", msg);
 		mv.setViewName("info");

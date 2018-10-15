@@ -10,8 +10,11 @@
 	    
 	    			
 		<c:choose>
-			<c:when test="${msg eq 'login' }">
+			<c:when test="${msg eq 'login_success' }">
 				<script>window.location.reload()</script>
+			</c:when>
+			<c:when test="${msg eq 'login_false' }">
+				<p class="form-control-static">아이디와 비밀번호를 다시 확인해주세요</p>
 			</c:when>
 			<c:when test="${msg eq 'logout' }">
 				<script>location.href="./index.jsp";</script>
@@ -24,7 +27,7 @@
 				<input type="hidden" id="return_id_chk" value="${id_chk }"/>
 			</c:when>
 			<c:when test="${msg eq 'reg_success' }">
-				<p class="form-control-static"> 회원 가입 성공</p>
+				<p class="form-control-static">회원 가입 성공</p>
 				<script>
 					setInterval(function() {
 						$("#modal_call_members_register").modal("hide");
@@ -36,20 +39,18 @@
 				<p class="form-control-static">회원 가입 실패</p>
 			</c:when>
 			<c:when test="${msg eq 'mody_success' }">
-				setInterval(function() {
-					<p class="form-control-static">회원 수정 성공</p>
-				}, 1500)
-					<script>window.location.reload()</script>
+				<script>window.location.reload()</script>
 			</c:when>
 			<c:when test="${msg eq 'mody_false' }">
 				<p class="form-control-static">회원 수정 실패</p>
 			</c:when>
-			<c:when test="${msg != null }">
-	    
-				<p class="form-control-static">${msg}</p>
-			
+			<c:when test="${msg eq 'find_null' }">
+				<p class="form-control-static">이름과 연락처를 모두 입력해주세요</p>
 			</c:when>
-			<c:when test="${msg == null }">
+			<c:when test="${msg eq 'find_false' }">
+				<p class="form-control-static">잘못된 이름 또는 연락처 입니다.</p>
+			</c:when>
+			<c:when test="${msg == 'find_success' }">
 			
 				<p class="form-control-static">아이디 : ${mvo.mbrId}</p>
 				<p class="form-control-static">비밀번호 : ${mvo.mbrPwd}</p>
