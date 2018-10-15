@@ -82,6 +82,11 @@ function appendMenu(no, name, price){
 	} else {
 			document.getElementsByClassName("spanCnt")[index].innerHTML
 			 = Number(document.getElementsByClassName("spanCnt")[index].innerHTML) +1;
+			document.getElementsByName("os_price")[index].value
+			= (document.getElementsByName("os_price")[index].value) *
+			  (document.getElementsByClassName("spanCnt")[index].innerHTML);
+			alert(document.getElementsByName("os_price")[index].value);
+			
 	}
 }
 
@@ -100,7 +105,7 @@ function addMenu(tableZone, no, name, price){
 	inputQty.setAttribute("style", "color:black");
 	
 	var inputPrice = document.createElement("input");
-	inputPrice.setAttribute("type", "text")
+	inputPrice.setAttribute("type", "hidden")
 	inputPrice.setAttribute("name", "os_price");
 	inputPrice.setAttribute("value", price);
 	inputPrice.setAttribute("style", "color:black");
@@ -159,6 +164,10 @@ function addMenu(tableZone, no, name, price){
 	tdPrice.innerHTML = price;
 	tr.appendChild(tdPrice);
 	
+	var spanPrice = document.createElement("spanPrice");
+	spanPrice.setAttribute("class", "spanPrice");
+	tdPrice.appendChild(spanPrice);
+	
 	var tdDel = document.createElement("td");
 	tr.appendChild(tdDel);
 	
@@ -174,7 +183,12 @@ function addMenu(tableZone, no, name, price){
 }
 
  function append_data_modal(){
-	tableModal.innerHTML = $('#tableZone')[0].innerHTML; 
+	if ($('#tableZone')[0].innerHTML != null){
+		tableModal.innerHTML = $('#tableZone')[0].innerHTML; 
+	} else {
+		tableModal.innerHTML = "메뉴를 선택해주세요";
+	}
+	
  }
 
  
