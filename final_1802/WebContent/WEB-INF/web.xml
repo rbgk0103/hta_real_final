@@ -38,17 +38,7 @@
 		<servlet-name>orders</servlet-name>
 		<url-pattern>*.ord</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-      <servlet-name>menu-mvc</servlet-name>
-      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-      <load-on-startup>1</load-on-startup>
-   </servlet>
-   <servlet-mapping>
-      <servlet-name>menu-mvc</servlet-name>
-      <url-pattern>*.menu</url-pattern>
-   </servlet-mapping>
-	
+
 	<servlet>
       <servlet-name>chat</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

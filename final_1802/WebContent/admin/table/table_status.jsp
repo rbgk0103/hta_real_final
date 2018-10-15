@@ -8,7 +8,6 @@
 		    <c:choose>
 			    <c:when test="${item.tbl_status eq 0}">
 			    <div class="panel">
-			        <header class="panel-heading">
 			            Table No.${item.tbl_no } 
 			        </header>
 			        <div class="panel-body">
