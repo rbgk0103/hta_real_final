@@ -84,6 +84,8 @@ public class MembersDao {
 		if(findStr == null) findStr = "";
 		
 		page.setTotSize(s.selectOne("mbr.listCnt", "%"+findStr+"%"));
+		
+		System.out.println("디에이오 톳사이즈 : " + page.getTotSize());
 		page.pageCompute();
 		
 		Map<String, Object> params = new HashMap<String, Object>();

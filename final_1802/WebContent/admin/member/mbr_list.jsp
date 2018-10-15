@@ -123,18 +123,17 @@ li {list-style: none;}
 	</div>
 </div>
 <div class="col-sm-1"></div>
-<%@ include file = "./modal_call_members_modify.jsp" %>
+
 
 <script>
 $("#btn_mbr_find").click(function(){
 	var param = $("#frm_mbr_list").serialize();
-	$("#section_mbr_list").load("mbr_list.mbr", param);
+	$(".skin-black").load("mbr_list.etc", param);
 });
 function movePage(nowPage){
 	$("#nowPage").val(nowPage);
 	var param = $("#frm_mbr_list").serialize();
-	console.log(param);
-	$("#section_mbr_list").load("mbr_list.mbr", param);
+	$(".skin-black").load("mbr_list.etc", param);
 }
 function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
 	$(".modal-body #mbr_mno").val(mbrNo);
@@ -151,6 +150,6 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 function mbrDelete(mbrNo){
 	$("#mbrNo").val(mbrNo);
 	var param = $("#frm_mbr_list").serialize();
-	$("#section_mbr_list").load("mbr_delete.mbr", param);
+	$(".skin-black").load("mbr_delete.etc", param);
 }
 </script>
