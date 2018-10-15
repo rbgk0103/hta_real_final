@@ -22,12 +22,11 @@ public class IPController {
 	@RequestMapping(value = "/getIp.ip")
 	public ModelAndView orderMain(String findStr) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("나 여기");
 		
 		/* 이봉기(게임)가 작성한 부분 */
 		// 이 페이지(index.jsp)를 실행한 컴퓨터의 IP 얻어내기
 		InetAddress local;
-		String tblNo = "-1";
+		TblVo tblVo;
 		
 		try {
 			local = InetAddress.getLocalHost();
@@ -42,13 +41,9 @@ public class IPController {
 			}
 			
 			// 아이피 끝번호를 이용해서 DB(TABLE_STATUS테이블)에서 테이블번호 가져오기
-			System.out.println("tblIp: " + tblIp);
+			tblVo = ipDao.tblVoSelectOne(tblIp);
 			
-			tblNo = ipDao.tblNoSelectOne(tblIp);
-			System.out.println(tblNo);
-			
-			
-			mv.addObject("tblNo", tblNo);
+			mv.addObject("tblVo", tblVo);
 			mv.setViewName("index");
 			
 		} catch (UnknownHostException e) {

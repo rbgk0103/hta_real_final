@@ -108,7 +108,7 @@ if (localIp.length() == 11) {
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
 		</div>
 		<div class='col-md-1' id = 'header_tableNo'>
-			<a>No.0${tblNo}</a>
+			<a>No.0${tblVo.tbl_no}</a>
 		</div>
 			
 		<div id="header_mbr">

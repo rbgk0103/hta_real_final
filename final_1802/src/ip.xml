@@ -5,9 +5,11 @@
 <mapper namespace='ip'>
 	
 	<!-- tblIp로 tblNo 가져오기 -->
-	<select id='getTblNo' parameterType='String' resultType='String'>
-		SELECT TBL_NO
-		FROM TABLE_STATUS
-		WHERE TBL_IP = #{_parameter}
+	<select id='getTblVo' parameterType='String' resultType='bean.TblVo'>
+		select guest_no, table_no tbl_no, guest_gender, guest_status
+			from guest where guest_status = 1 
+			                  and table_no = 
+											(select tbl_no from table_status
+											 	where tbl_ip = #{_parameter})
 	</select>
 </mapper>

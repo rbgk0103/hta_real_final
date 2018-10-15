@@ -13,11 +13,12 @@ public class IPDao {
 	
 	/* 사용자 정의 메소드들 */
 	
-	//tblIp를 이용하여, tblNo 얻기
-	public String tblNoSelectOne(String tblIp) {
+	//tblIp를 이용하여, tblVo 얻기
+	public TblVo tblVoSelectOne(String tblIp) {
 
-		String tblNo = "-1";
-		tblNo = sqlSession.selectOne("ip.getTblNo", tblIp);
-		return tblNo;
+		TblVo tblVo;
+		System.out.println(tblIp);
+		tblVo = sqlSession.selectOne("ip.getTblVo", tblIp);
+		return tblVo;
 	}
 }
