@@ -42,16 +42,29 @@
   </div>
 </div>
 
+
+
+<div class="modal fade hey123">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		</div>
+  	</div>
+</div>
 <script>
 function orderMenu(){
 	var param = $('#right_frm').serialize();
 	if (param === ""){
 		alert("메뉴를 선택해주세요.");
 	} else{
-		alert(param);
-		alert("주문 완료");
 		$('#content').load('orderMenu.ord', param);
 	}
-	
 }
+
+
+$('#all_order').click(function(){
+  	tbl_no = 4;
+    guest_no = 29;
+    $('div.hey123').modal({remote : './modal_show_order_list.jsp', backdrop: 'static'});
+ 
+})
 </script>

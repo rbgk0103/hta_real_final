@@ -36,7 +36,7 @@ public class OrdersDao {
 		
 		OrdersVo vo = new OrdersVo();
 		
-		vo.setOrd_table_no(tblNo);
+		vo.setOrd_tbl_no(tblNo);
 		vo.setGuest_no(g_no);
 		
 		for (int k=0 ; k<size ; k++) {

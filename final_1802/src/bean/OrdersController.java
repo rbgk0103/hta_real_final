@@ -53,7 +53,7 @@ public class OrdersController {
 		String msg = dao.addList(nos, qtys, prices, tblNo, g_no);
 		
 		mv.addObject("msg", msg);
-		//mv.setViewName("order_menu");
+		mv.setViewName("order_result");
 		return mv;
 	}
 }

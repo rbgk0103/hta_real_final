@@ -8,7 +8,7 @@ public class OrdersVo {
 	/* orders 테이블 컬럼 */
 	int ord_no;		// PK
 	int guest_no;	// FK
-	int ord_table_no;
+	int ord_tbl_no;
 	String ord_date;
 	
 	ArrayList<ArrayList<String>> stuff;
@@ -37,11 +37,11 @@ public class OrdersVo {
 	public void setGuest_no(int guest_no) {
 		this.guest_no = guest_no;
 	}
-	public int getOrd_table_no() {
-		return ord_table_no;
+	public int getOrd_tbl_no() {
+		return ord_tbl_no;
 	}
-	public void setOrd_table_no(int ord_table_no) {
-		this.ord_table_no = ord_table_no;
+	public void setOrd_tbl_no(int ord_tbl_no) {
+		this.ord_tbl_no = ord_tbl_no;
 	}
 	public String getOrd_date() {
 		return ord_date;

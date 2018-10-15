@@ -29,7 +29,7 @@
 	<insert id='order' parameterType='bean.OrdersVo'>
 		insert all
 			into orders
-				values(seq_orders.nextval, ${guest_no}, ${ord_table_no}, sysdate)
+				values(seq_orders.nextval, ${guest_no}, ${ord_tbl_no}, sysdate)
 	<foreach collection='stuff' item='value' index='key'>
 			into orders_set
 				values(addOrdersSerial(), seq_orders.currval, ${value[0]}, ${value[1]}, ${value[2]}, null)
