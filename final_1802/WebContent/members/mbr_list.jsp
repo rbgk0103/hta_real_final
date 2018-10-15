@@ -18,6 +18,7 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <style>
 li {list-style: none;}
+#section_mbr_list {margin: 0; auto;}
 .findZone #frm_mbr_list {text-align: right;}
 .list-group-item-info, .list-group-item-success {margin: 0;}
 .mbr_list_head {font-size: larger;}
@@ -25,6 +26,7 @@ li {list-style: none;}
 .mbr_list_item > ul > li {text-overflow: ellipsis; white-space: nowrap;}
 .btnZone {text-align: center;}
 </style>
+<div class="col-sm-1"></div>
 <div id="section_mbr_list" class="col-sm-10">
 	<h3>Members List</h3>
 	<br/>
@@ -120,6 +122,7 @@ li {list-style: none;}
 		</div>
 	</div>
 </div>
+<div class="col-sm-1"></div>
 <%@ include file = "./modal_call_members_modify.jsp" %>
 
 <script>

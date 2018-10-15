@@ -40,7 +40,7 @@
                 </a>
             </li>
             <li>
-	            <a href="./mbr_list.mbr">
+	            <a href="./mbr_list.etc">
 	               <span>회원</span>
 	            </a>
          	</li>

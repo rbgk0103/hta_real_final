@@ -127,28 +127,28 @@ public class MembersController {
 		mv.setViewName("info");
 		return mv;
 	}
-	
-	@RequestMapping(value="/mbr_list.mbr")
-	public ModelAndView list(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		
-		String findStr = req.getParameter("findStr");
-		int nowPage = 1;
-		
-		if(req.getParameter("nowPage") != null) {
-			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-		}
-		
-		page.setNowPage(nowPage);
-		List<MembersVo> list = dao.list(findStr);
-		
-		mv.addObject("page", page);
-		mv.addObject("list", list);
-		
-		mv.setViewName("mbr_list");
-		
-		return mv;
-	}
+//	
+//	@RequestMapping(value="/mbr_list.etc")
+//	public ModelAndView list(HttpServletRequest req) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//		String findStr = req.getParameter("findStr");
+//		int nowPage = 1;
+//		
+//		if(req.getParameter("nowPage") != null) {
+//			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+//		}
+//		
+//		page.setNowPage(nowPage);
+//		List<MembersVo> list = dao.list(findStr);
+//		
+//		mv.addObject("page", page);
+//		mv.addObject("list", list);
+//		
+//		mv.setViewName("mbr_list");
+//		
+//		return mv;
+//	}
 	
 	@RequestMapping(value="/mbr_modify.mbr")
 	public ModelAndView modify(HttpServletRequest req) {
