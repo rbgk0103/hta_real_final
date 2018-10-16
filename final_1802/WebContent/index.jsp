@@ -35,7 +35,7 @@
 #header_logo{height:100%;}
 #header_logo a >img{height:100%;cursor:pointer;}
 #header_menu{line-height: 5;}
-#header_menu a, .glyphicon{font-size:30px;margin: 0px 4%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
+#header_menu a{font-size:30px;margin: 0px 4%;color: #fff;text-decoration:none;cursor:pointer;font-weight:bold;}
 #header_menu a:hover{
 text-shadow: 
 	0 0 10px #fff,
@@ -47,7 +47,6 @@ text-shadow:
 	0 0 100px #d1ad8f, 
 	0 0 150px #d1ad8f;
 }
-#header_mbr{line-height: 2.9; position: absolute; right: 15%; top: 35%; outline: none;}
 #header_tableNo{line-height: 2.0; position: absolute; right: 8%;}
 #header_tableNo a {font-weight: 900;font-size: 70px;color: #fff;text-decoration:none;margin-left: 30px;}
 
@@ -58,6 +57,9 @@ text-shadow:
 #modal_call_employee_check > label{font-weight:100;margin:0 10px;}
 #modal_call_employee_footer{}
 #modal_call_employee_footer_commit{background-color:#282832;}
+#header_mbr{line-height: 2.9; position: absolute; right: 15%; top: 30%; outline: none;}
+.glyphicon {color: #fff; font-size: 50px; cursor: pointer;}
+.dropdown-menu li > a:hover {color: black;}
 </style>
 <title>중앙 포차</title>
 </head>

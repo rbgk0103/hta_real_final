@@ -71,8 +71,8 @@
 			} else if (!mval(/^[0-9]+$/, fm.mbr_point)){
 				return;
 			} else {
-				var param = $("#frm_mbr_modify").serialize();
-				$("#frm_mbr_modify").load("./mbr_modify.mbr", param);
+				var param = $("#frm_admin_mbr_modify").serialize();
+				location.href='mbr_modify.etc?'+param;
 			}
 		}
 	}
@@ -122,7 +122,10 @@
 				<form name="frm_admin_mbr_modify" id="frm_admin_mbr_modify" method="post" class="form-horizontal">
 					
 					<input type="hidden" name="mbr_no" id="mbr_mno" class="form-control" value="" autocomplete="off" readonly="readonly"> 
-				
+					<input type="text" name="mbr_findStr" id="modal_mbr_findStr" class="form-control" value="" autocomplete="off" readonly="readonly">
+					<input type="text" name="mbr_nowPage" id="modal_mbr_nowPage" class="form-control" value="" autocomplete="off" readonly="readonly">
+					
+					
 					<div class="form-group">
 						<label for="mbr_mid" class="col-sm-3 control-label"> *아이디 </label>
 						<div class="col-sm-8">

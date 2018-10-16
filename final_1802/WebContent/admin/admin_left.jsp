@@ -40,11 +40,6 @@
                 	<span>게임</span>
                 </a>
             </li>
-            <li>
-	            <a href="./mbr_list.etc">
-	               <span>회원 관리</span>
-	            </a>
-         	</li>
             <div id = 'submenu_game'>
 	            <li>
 	            	<a href="?content=game/gt_list.jsp">
@@ -57,6 +52,11 @@
 	            	</a>
 	            </li>
 			</div>
+            <li>
+	            <a href="./mbr_list.etc">
+	               <span>회원 관리</span>
+	            </a>
+         	</li>
             <li class="#">
                 <a href="simple.html">
                 	<span>정산</span>

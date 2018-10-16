@@ -80,12 +80,10 @@ public class MembersDao {
 	}
 	
 	public List<MembersVo> list(String findStr){
-		
 		if(findStr == null) findStr = "";
 		
 		page.setTotSize(s.selectOne("mbr.listCnt", "%"+findStr+"%"));
 		
-		System.out.println("디에이오 톳사이즈 : " + page.getTotSize());
 		page.pageCompute();
 		
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -99,15 +97,12 @@ public class MembersDao {
 	}
 	
 	public MembersVo modify(HttpServletRequest req) {
-		String msg = "";
-
 		mvo = null;
 		
 		mvo = setVo(req);
 
 		int cnt = s.update("mbr.update", mvo);
 
-		
 		if(cnt > 0) {
 			int no = mvo.getMbrNo();
 			Map<String, Object> params = new HashMap<String, Object>();
@@ -122,20 +117,21 @@ public class MembersDao {
 		return mvo;
 	}
 	
-	public void delete(int mbrNo) {
-		
+	public boolean delete(int mbrNo) {
+		boolean b = false;
 		int cnt = s.delete("mbr.delete", mbrNo);
 		
 		if(cnt > 0) {
+			b = true;
 			s.commit();
 		}else {
+			b = false;
 			s.rollback();
 		}
-		return;
+		return b;
 	}
 	
 	public MembersVo setVo(HttpServletRequest req) {
-
 		mvo = new MembersVo();
 		
 		if(req.getParameter("mbr_no") != null) {

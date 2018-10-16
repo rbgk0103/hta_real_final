@@ -3,7 +3,6 @@ package bean;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,19 +23,26 @@ public class EtcController {
 	public ModelAndView list(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		String findStr = req.getParameter("mbr_findStr");
-		int nowPage = 1;
-		
-		if(req.getParameter("nowPage") != null) {
-			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		String findStr = "";
+		if(req.getParameter("mbr_findStr") != null) {
+			findStr = req.getParameter("mbr_findStr");
 		}
+		
+		int nowPage = 1;
+		if(req.getParameter("mbr_nowPage") != null) {
+			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
+		}
+		
 		
 		page.setNowPage(nowPage);
 		List<MembersVo> list = dao.list(findStr);
 		
+		mv.addObject("mbr_findStr", findStr);
+		mv.addObject("mbr_nowPage", nowPage);
 		mv.addObject("page", page);
 		mv.addObject("list", list);
-		mv.setViewName("./member/mbr_list");
+		
+		mv.setViewName("members_manage/mbr_list");
 		
 		return mv;
 	}
@@ -45,16 +51,35 @@ public class EtcController {
 	public ModelAndView modify(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("컨트롤러");
-		System.out.println("엠뱔엔오 : " + Integer.parseInt(req.getParameter("mbr_no")));
+		String findStr = "";
 		
-		String msg = "";
+		if(req.getParameter("mbr_findStr") != null) {
+			findStr = req.getParameter("mbr_findStr");
+		}
 		
-		msg = dao.modify(req);
+		int nowPage = 1;
 		
-		mv.addObject("msg", msg);
-		mv.setViewName("./member/mbr_list");
+		if(req.getParameter("mbr_nowPage").equals("") || req.getParameter("mbr_nowPage") == null) {
+			nowPage = 1;
+		}else {
+			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
+		}
 		
+		MembersVo mvo = dao.modify(req);
+		
+		page.setNowPage(nowPage);
+		List<MembersVo> list = dao.list(findStr);
+		
+		if(mvo != null) {
+			
+			mv.addObject("mbr_findStr", findStr);
+			mv.addObject("mbr_nowPage", nowPage);
+			mv.addObject("page", page);
+			mv.addObject("list", list);
+
+			mv.setViewName("members_manage/mbr_list");
+		}
+
 		return mv;
 	}
 	
@@ -62,20 +87,35 @@ public class EtcController {
 	public ModelAndView delete(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
-		String findStr = req.getParameter("mbr_findStr");
+		
 		int mbrNo = Integer.parseInt(req.getParameter("mbrNo"));
-		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
+		
+		String findStr = "";
+		
+		if(req.getParameter("mbr_findStr") != null) {
+			findStr = req.getParameter("mbr_findStr");
+		}
+		
+		int nowPage = 1;
+		
+		if(req.getParameter("mbr_nowPage") != null) {
+			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
+		}
+		
+		boolean b = dao.delete(mbrNo);
 		
 		page.setNowPage(nowPage);
-		
-		dao.delete(mbrNo);
-
 		List<MembersVo> list = dao.list(findStr);
 		
-		mv.addObject("page", page);
-		mv.addObject("list", list);
-		
-		mv.setViewName("./member/mbr_list");
+		if(b) {
+			
+			mv.addObject("mbr_findStr", findStr);
+			mv.addObject("mbr_nowPage", nowPage);
+			mv.addObject("page", page);
+			mv.addObject("list", list);
+			
+			mv.setViewName("members_manage/mbr_list");
+		}
 		
 		return mv;
 	}

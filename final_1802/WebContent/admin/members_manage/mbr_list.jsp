@@ -5,7 +5,7 @@
 
 <style>
 li {list-style: none;}
-#section_mbr_list {margin: 0; auto;}
+#section_mbr_list {margin: 0; auto; margin-top: 5%;}
 .findZone #frm_mbr_list {text-align: right;}
 .list-group-item-info, .list-group-item-success {margin: 0;}
 .mbr_list_head {font-size: larger;}
@@ -22,19 +22,19 @@ li {list-style: none;}
 		<form name="frm_mbr_list" id="frm_mbr_list" method="post">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-8">
-				<input type="text" name="mbr_findStr" id="mbr_findStr" class="form-control" value="${empty param.findStr ? '' : param.findStr }" autocomplete="off"/>
+				<input type="text" name="mbr_findStr" id="mbr_findStr" class="form-control" value="${empty param.findStr ? mbr_findStr : param.findStr }" autocomplete="off"/>
 			</div>
 			<div class="col-sm-3">
 				<input type="button" name="btn_mbr_find" id="btn_mbr_find" class="btn btn-success" value="Search"/>
 			</div>
 				
 			<br/>
-			<input type="hidden" name="nowPage" id="nowPage" value="${empty param.nowPage ? 1 : param.nowPage }"/>
+			<input type="hidden" name="mbr_nowPage" id="mbr_nowPage" value="${empty param.nowPage ? mbr_nowPage : param.nowPage }"/>
 			<input type="hidden" name="mbrNo" id="mbrNo"/>
 		</form>
 	</div>
 	
-	<br/><br/><br/>
+	<br/><br/><br/><br/>
 	
 	<div class="col-sm-12">
 		<div class="list-group mbr_list_head">
@@ -127,7 +127,11 @@ function movePage(nowPage){
 	location.href='mbr_list.etc?'+param;
 }
 function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
+	var findStr = $("#frm_mbr_list #mbr_findStr").val();
+	var nowPage = $("#frm_mbr_list #nowPage").val();
 	$(".modal-body #mbr_mno").val(mbrNo);
+	$(".modal-body #modal_mbr_findStr").val(findStr);
+	$(".modal-body #modal_mbr_nowPage").val(nowPage);
 	$(".modal-body #mbr_mid").val(mbrId);
 	$(".modal-body #mbr_mpwd").val(mbrPwd);
 	$(".modal-body #mbr_mname").val(mbrName);
@@ -139,6 +143,7 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 	$("#modal_call_admin_members_modify").modal("show");
 }
 function mbrDelete(mbrNo){
+	alert(mbrNo);
 	$("#mbrNo").val(mbrNo);
 	var param = $("#frm_mbr_list").serialize();
 	location.href='mbr_delete.etc?'+param;
