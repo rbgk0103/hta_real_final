@@ -10,29 +10,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<%	////////////////////////////
-	/*
-		페이징, 대화 망가진거 다시 고치기
-	*/
-	////////////////////////////
-	/* 
-	 GuestVo를 가지고 있는 List을 getAttribute로 받아옴
-	 */
-	List<GuestVo> openTableList; //테이블번호, 성별
-	
-	if(request.getAttribute("openTableList") != null) {
-		openTableList = (List<GuestVo>)request.getAttribute("openTableList");
-		request.setAttribute("openTableList", openTableList);
-	} else {
-		out.print("<h1>header리스트가 비었음.(손님이 0명)</h1>");
-	}
-	ChatDao dao = request.getAttribute("chatDao") != null
-				? (ChatDao)request.getAttribute("chatDao")
-				: null;
-%>
-<div class="col-md-1 col-xs-1" id="allCircleBorder" onclick="setReceiver('a')">
-	<p>전체</p>
-</div>
+<c:choose>
+	<c:when test="${receiveStringNo eq 'a'}">
+		<div class="col-md-1 col-xs-1 receiveBackground" id="allCircleBorder" onclick="setReceiver('a')">
+			<p>전체</p>
+		</div>
+	</c:when>
+	<c:otherwise>
+		<div class="col-md-1 col-xs-1" id="allCircleBorder" onclick="setReceiver('a')">
+			<p>전체</p>
+		</div>
+	</c:otherwise>
+</c:choose>
 <!-- 전체채팅목록, 유저목록, 아이콘 -->
 <div class="col-md-10 col-xs-10" id="userBox">
 	<!-- 왼쪽 화살표 아이콘 -->
@@ -45,9 +34,24 @@
 	<div class="col-md-8 col-xs-8" id="userList">
 		<c:forEach var='i' items='${openTableList}'>
 			<c:if test="${i.table_no != tableNo}">
-				<div class="col-md-2 col-xs-2 circleBorder ${i.table_no }" id="circleBorder" onclick="setReceiver(${i.table_no })">
-					<p>No. ${i.table_no}</p>
-				</div>
+				<c:choose>
+					<c:when test="${i.table_no eq receiveIntNo}">
+					${i.table_no }
+					${receiveStringNo }
+					${receiveIntNo }
+						<div class="col-md-2 col-xs-2 circleBorder receiveBackground" id="circleBorder" onclick="setReceiver(${i.table_no })">
+							<p>No. ${i.table_no}</p>
+						</div>
+					</c:when>
+					<c:otherwise>
+					${i.table_no}
+					${receiveStringNo }
+					${receiveIntNo }
+						<div class="col-md-2 col-xs-2 circleBorder" id="circleBorder" onclick="setReceiver(${i.table_no })">
+							<p>No. ${i.table_no}</p>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</c:if>
 		</c:forEach>
 	</div>
@@ -61,61 +65,21 @@
 </div>
 <!-- 전체채팅목록, 유저목록, 아이콘 끝 -->
 <script>
-	$(function() {
-		$('#allCircleBorder').css('background-color', '#aaaaaa');
-	})
+	
 	function movePage(nowPage) {
-		var param = "&ip=" + $('#ip').val() + "&nowPage=" + nowPage;
+		var param = "&ip=" + "${ip}" + "&nowPage=" + nowPage + "&receiveNo=" + '${receiveNo}';
 		$("#chatHeader").load("header.chat", param);
 	}
 	
 	function setReceiver(receiveNo) {
-		$('#receiverNo').val(receiveNo);
-		//var receiveClass = document.getElementsByClassName(receiveNo);
-		
-		var circleBorderClass = $('.circleBorder');
-		console.log("랭쓰 : " + circleBorderClass.length);
+		document.getElementById('receiverNo').value = receiveNo;
+		var nowPage = ${chatDao.nowPage}
+		console.log("chatDaonowPage : " + nowPage);
+		var circleBorderClass = document.getElementsByClassName('circleBorder');
 		console.log("receiveNo : " + receiveNo);
-		//$('#allCircleBorder').css('background-color', '#030303');
 		
-		circleBorderClass.css('background-color', '#030303 !important');
-		
-		//$('.' + receiveNo).css('background-color', "#aaaaaa");
-		
-		switch (receiveNo) {
-			case '1' : 
-				$('.1').css('background-color', "#aaaaaa !important");
-				break;
-			case '2' : 
-				$('.2').css('background-color', "#aaaaaa !important");
-				break;
-			case '3' : 
-				$('.3').css('background-color', "#aaaaaa !important");
-				break;
-			case '4' : 
-				$('.4').css('background-color', "#aaaaaa !important");
-				break;
-			case '5' : 
-				$('.5').css('background-color', "#aaaaaa !important");
-				break;
-			case '6' : 
-				$('.6').css('background-color', "#aaaaaa !important");
-				break;
-			case '7' : 
-				$('.7').css('background-color', "#aaaaaa !important");
-				break;
-			case '8' : 
-				$('.8').css('background-color', "#aaaaaa !important");
-				break;
-			case '9' : 
-				$('.9').css('background-color', "#aaaaaa !important");
-				break;
-			case 'a' : 
-				$('.a').css('background-color', "#aaaaaa !important");
-				break;
-		}
-		
-		$('#chatContent').load("content.chat", "msg=" + tableNo + receiveNo);
+		$('#chatContent').load("content.chat", "msg=" + reqAttrMyNo + receiveNo);
+		$('#chatHeader').load("header.chat", "ip=" + ip + "&nowPage=" + ${chatDao.nowPage} + "&receiveNo=" + receiveNo);
 	}
 	
 </script>

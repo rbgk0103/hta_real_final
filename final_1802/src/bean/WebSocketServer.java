@@ -18,22 +18,18 @@ import org.springframework.stereotype.Controller;
 public class WebSocketServer {
 	
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-	
 	boolean chatSwitch;
 	
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {
-		String sender = msg.substring(0, 1);
-		String receiver = msg.substring(1, 2);
-		String ipCut = msg.substring(msg.length()-2, msg.length());
-		
-		System.out.println("msg : " + msg);
 		
 		if(msg.length() > 4) {
 			for(Session sess : clients) {
 				sess.getBasicRemote().sendText(msg);
 				System.out.println(sess.getBasicRemote().hashCode());
 			}
+		} else {
+			System.out.println("msg : " + msg);
 		}
 	}
 	

@@ -80,6 +80,10 @@
 	cursor: pointer;
 }
 
+.receiveBackground {
+	background-color: '#ffffff';
+}
+
 .circleBorder p {
 	padding-top: 14px;
 }

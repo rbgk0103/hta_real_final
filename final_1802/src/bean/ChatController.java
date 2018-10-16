@@ -35,25 +35,28 @@ public class ChatController {
 	public ModelAndView content(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
 		String msg = req.getParameter("msg");
-		String receiver = msg.substring(1);
+		String receiveNo = msg.substring(1);
 		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
 		if(msg.substring(1).equals("a")) {
 			list = chatDao.totalChatList();
 		} else {
-			list = chatDao.oneToOneChatList(receiver);
+			list = chatDao.oneToOneChatList(receiveNo);
 		}
 		
 		System.out.println("1대1대화중의 msg : " + msg);
 		if(list != null) {
 			modelAndView.addObject("totalChatList", list);
 		}
+		modelAndView.addObject("receiveNo", receiveNo);
 		modelAndView.addObject("tableNo", msg.substring(0, 1));
 		modelAndView.setViewName("chat/chatContent");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="insert.chat")
-	public void onMessage(HttpServletRequest req) {
+	public ModelAndView onMessage(HttpServletRequest req) {
+		ModelAndView modelAndView = new ModelAndView();
+		
 		System.out.println("insert.chat 들어옴");
 		System.out.println("msg param : " + req.getParameter("msg"));
 		String msg = req.getParameter("msg");
@@ -65,6 +68,7 @@ public class ChatController {
 		chatVo.setChat_text(msg.substring(2, msg.length()-2));
 		
 		chatDao.inputMessage(chatVo);
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="getIp.chat")
@@ -86,11 +90,11 @@ public class ChatController {
 		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
 		List<GuestVo> sessionOpenAllTableList = chatDao.sessionOpenAllTableList();
 		List<TotalChatListVo> totalChatList = chatDao.totalChatList();
-		if(req.getParameter("nowPage") != null) {
+		/*if(req.getParameter("nowPage") != null) {
 			url = "chat/chatHeader";
 		} else {
 			url = "chatClientIndex";
-		}
+		}*/
 		Iterator<TotalChatListVo> iterator = totalChatList.iterator();
 		while(iterator.hasNext()) {
 			TotalChatListVo vo = iterator.next();
@@ -103,7 +107,7 @@ public class ChatController {
 		modelAndView.addObject("openTableList", openTableList);
 		modelAndView.addObject("allTableList", sessionOpenAllTableList);
 		modelAndView.addObject("chatDao", chatDao);
-		modelAndView.setViewName(url);
+		modelAndView.setViewName("chatClientIndex");
 		
 		return modelAndView;
 	}
@@ -118,15 +122,25 @@ public class ChatController {
 		System.out.println("nowPage param : " + req.getParameter("nowPage"));
 		String ip = req.getParameter("ip");
 		String ipCut = ip.substring(ip.length()-2, ip.length());
-		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
-		chatDao.setNowPage(nowPage);
+		int nowPage;
+		if(req.getParameter("nowPage") != null) {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			chatDao.setNowPage(nowPage);
+		}
 		int tableNo = chatDao.getTableNo(ipCut);
 		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
-		Iterator<GuestVo> iterator = openTableList.iterator();
-		while(iterator.hasNext()) {
-			GuestVo vo = iterator.next();
-			System.out.print("vo.getTable_no() : " + vo.getTable_no());
-			System.out.println("\tvo.getGuest_gender() : " + vo.getGuest_gender());
+		int receiveIntNo;
+		String receiveStringNo;
+		try {
+		if(req.getParameter("receiveNo") == "a" || req.getParameter("receiveNo") == null) {
+			receiveStringNo = "a";
+			modelAndView.addObject("receiveStringNo", receiveStringNo);
+		} else {
+			receiveIntNo = Integer.parseInt(req.getParameter("receiveNo"));
+			modelAndView.addObject("receiveIntNo", receiveIntNo);
+		}
+		} catch (NumberFormatException ex) {
+			System.out.println("넘포익");
 		}
 		
 		modelAndView.addObject("ip", ip);
