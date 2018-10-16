@@ -68,7 +68,7 @@ window.onload = function() {
 		if ($.trim(message) !== "") {
 			webSocket_request.send(message);
 		}
-		alert(message);
+// 		alert(message);
 	}
 	$('#modal_call_employee_footer_commit').click(function(){
 		var chkbox = document.getElementsByName("request");

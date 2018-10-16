@@ -100,6 +100,18 @@
 		<servlet-name>ip</servlet-name>
 		<url-pattern>*.ip</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>modal</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>modal</servlet-name>
+		<url-pattern>*.modal</url-pattern>
+	</servlet-mapping>
    
 </web-app>
 

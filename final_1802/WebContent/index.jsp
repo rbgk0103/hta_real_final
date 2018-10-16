@@ -91,6 +91,7 @@ if(request.getParameter("content") !=null){
 		</div>
 		
 		<%@ include file = "./header_tableNo.jsp" %>
+		<%@ include file = "./game/ws_tvt_client.jsp" %>
 		
 
 			
@@ -169,9 +170,9 @@ if(request.getParameter("content") !=null){
 	</div>
 </div>
 <%@ include file = "./modal_call_employee.jsp" %>
-<%@ include file = "./modal_call_members_login.jsp" %>
-<%@ include file = "./modal_call_members_register.jsp" %>
-<%@ include file = "./modal_call_members_findInfo.jsp" %>
+<%@ include file = "./members/modal_call_members_login.jsp" %>
+<%@ include file = "./members/modal_call_members_register.jsp" %>
+<%@ include file = "./members/modal_call_members_findInfo.jsp" %>
 <%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
 

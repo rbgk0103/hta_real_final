@@ -127,46 +127,22 @@ public class MembersController {
 		mv.setViewName("info");
 		return mv;
 	}
-//	
-//	@RequestMapping(value="/mbr_list.etc")
-//	public ModelAndView list(HttpServletRequest req) {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		String findStr = req.getParameter("findStr");
-//		int nowPage = 1;
-//		
-//		if(req.getParameter("nowPage") != null) {
-//			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-//		}
-//		
-//		page.setNowPage(nowPage);
-//		List<MembersVo> list = dao.list(findStr);
-//		
-//		mv.addObject("page", page);
-//		mv.addObject("list", list);
-//		
-//		mv.setViewName("mbr_list");
-//		
-//		return mv;
-//	}
 	
 	@RequestMapping(value="/mbr_modify.mbr")
-	public ModelAndView modify(HttpServletRequest req) {
+	public ModelAndView modify(HttpServletRequest req, HttpSession session_mbr) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("컨트롤러");
-		System.out.println("엠뱔엔오 : " + Integer.parseInt(req.getParameter("mbr_no")));
-		System.out.println("엠뱔아디 : " + req.getParameter("mbr_id"));
-		System.out.println("엠뱔피됩 : " + req.getParameter("mbr_pwd"));
-		System.out.println("엠뱔넴 : " + req.getParameter("mbr_name"));
-		System.out.println("엠뱔폰 : " + req.getParameter("mbr_phone"));
-		System.out.println("엠뱔벌쓰 : " + req.getParameter("mbr_birth"));
-		System.out.println("엠뱔젠더 : " + req.getParameter("mbr_gender"));
-		System.out.println("엠뱔푄트 : " + Integer.parseInt(req.getParameter("mbr_point")));
-		
+		MembersVo mvo = dao.modify(req);
 		String msg = "";
 		
-		msg = dao.modify(req);
+		if(mvo != null) {
+			session_mbr.removeAttribute("session_mbr");
+			session_mbr.setAttribute("session_mbr", mvo);
+			mv.addObject("mvo", mvo);
+			msg = "mody_success";
+		}else {
+			msg = "mody_false";
+		}
 		
 		mv.addObject("msg", msg);
 		mv.setViewName("info");

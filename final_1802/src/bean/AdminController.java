@@ -22,9 +22,11 @@ public class AdminController {
 	public ModelAndView table_status() {
 		ModelAndView mv = new ModelAndView();
 		
+		
 		List<TblVo> list = admin_dao.table_select();
 		List<OrdersSetVo> list_orders = admin_dao.table_order_select();
-
+		
+		
 		mv.addObject("list",list);
 		mv.addObject("list_orders",list_orders);
 		mv.setViewName("table/table_status");
@@ -43,6 +45,14 @@ public class AdminController {
 		//set_guest;
 		
 		mv.setViewName("table/table_set_result");
+		return mv;
+	}
+	
+	@RequestMapping(value="table_detail.adm")
+	public ModelAndView table_detail(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("table/table_detail");
 		return mv;
 	}
 	
@@ -128,4 +138,10 @@ public class AdminController {
 		mv.setViewName("menu/menu_index");
 		return mv;
 	}
+	@RequestMapping(value="menu_go_insert.adm")
+	   public ModelAndView menu_go_insert(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      mv.setViewName("menu/menu_insert");
+	      return mv;
+	   }
 }

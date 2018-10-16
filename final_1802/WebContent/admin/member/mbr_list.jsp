@@ -10,20 +10,21 @@ li {list-style: none;}
 .list-group-item-info, .list-group-item-success {margin: 0;}
 .mbr_list_head {font-size: larger;}
 .mbr_list_item {min-height: 400px;}
-.mbr_list_item > ul > li {text-overflow: ellipsis; white-space: nowrap;}
+#frm_mbr_list, .mbr_list_item > ul > li {text-overflow: ellipsis; white-space: nowrap;}
 .btnZone {text-align: center;}
 </style>
 <div class="col-sm-1"></div>
 <div id="section_mbr_list" class="col-sm-10">
 	<h3>Members List</h3>
 	<br/>
-	<div class="col-sm-6"></div>
-	<div class="form-group col-sm-6 findZone">
+	<div class="col-sm-4"></div>
+	<div class="form-group col-sm-8 findZone">
 		<form name="frm_mbr_list" id="frm_mbr_list" method="post">
-			<div class="col-sm-9">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-8">
 				<input type="text" name="mbr_findStr" id="mbr_findStr" class="form-control" value="${empty param.findStr ? '' : param.findStr }" autocomplete="off"/>
 			</div>
-			<div>
+			<div class="col-sm-3">
 				<input type="button" name="btn_mbr_find" id="btn_mbr_find" class="btn btn-success" value="Search"/>
 			</div>
 				
@@ -74,12 +75,14 @@ li {list-style: none;}
 					<li class="col-sm-4">${empty vo.mbrRegDate ? '' : vo.mbrRegDate }</li>
 					<li class="col-sm-4">
 						<button type="button" class="btn btn-xs btn-warning"
-							 onclick="mbrModify('${vo.mbrNo}', '${vo.mbrId}', '${vo.mbrPwd}', '${vo.mbrName}', '${vo.mbrPhone}', '${vo.mbrBirth}', '${vo.mbrGender}', '${vo.mbrPoint }')">수정</button>
+							 onclick="mbrModify('${vo.mbrNo}', '${vo.mbrId}', '${vo.mbrPwd}', 
+							 '${vo.mbrName}', '${vo.mbrPhone}', '${vo.mbrBirth}', '${vo.mbrGender}', '${vo.mbrPoint }')">수정</button>
 						<button type="button" class="btn btn-xs btn-danger" onclick="mbrDelete('${vo.mbrNo}')">삭제</button>
 					</li>
 				</ul>
 				<br/><br/>
 			</c:forEach>
+			
 		</div>
 		
 		<div class='btnZone'>
@@ -111,20 +114,19 @@ li {list-style: none;}
 </div>
 <div class="col-sm-1"></div>
 
-<%-- <%@ include file = "./modal_call_admin_members_modify.jsp" %> --%>
+<%@ include file = "./modal_call_admin_members_modify.jsp" %>
 
 <script>
 $("#btn_mbr_find").click(function(){
 	var param = $("#frm_mbr_list").serialize();
-	$(".skin-black").load("mbr_list.etc", param);
+	location.href='mbr_list.etc?'+param;
 });
 function movePage(nowPage){
 	$("#nowPage").val(nowPage);
 	var param = $("#frm_mbr_list").serialize();
-	$(".skin-black").load("mbr_list.etc", param);
+	location.href='mbr_list.etc?'+param;
 }
 function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
-	
 	$(".modal-body #mbr_mno").val(mbrNo);
 	$(".modal-body #mbr_mid").val(mbrId);
 	$(".modal-body #mbr_mpwd").val(mbrPwd);
@@ -139,6 +141,6 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 function mbrDelete(mbrNo){
 	$("#mbrNo").val(mbrNo);
 	var param = $("#frm_mbr_list").serialize();
-	$(".skin-black").load("mbr_delete.etc", param);
+	location.href='mbr_delete.etc?'+param;
 }
 </script>
