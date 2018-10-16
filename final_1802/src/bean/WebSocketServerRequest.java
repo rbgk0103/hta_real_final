@@ -40,10 +40,10 @@ public class WebSocketServerRequest {
 		 * msg가 3자리일 경우 메세지를 보내지 않습니다.
 		*/
 //		if(msg.length() > 3) {
-			for(Session sess : clients) {
-					sess.getBasicRemote().sendText(msg);
-				System.out.println("sess: " + sess.getBasicRemote().hashCode());
-			}
+//			for(Session sess : clients) {
+//					sess.getBasicRemote().sendText(msg);
+//				System.out.println("sess: " + sess.getBasicRemote().hashCode());
+//			}
 			
 			Set set = clientsMap.keySet();
 
