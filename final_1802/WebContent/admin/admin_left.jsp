@@ -6,7 +6,8 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left info">
-                <p>Hello , &nbsp;&nbsp;&nbsp;'관리자'님</p>
+<!--                 <p>Hello , &nbsp;&nbsp;&nbsp;'관리자'님</p> -->
+                <p>Hello , &nbsp;&nbsp;&nbsp;${session_mbr.mbrName }</p>
             </div>
         </div>
         <!-- search form -->
@@ -41,7 +42,7 @@
             </li>
             <li>
 	            <a href="./mbr_list.etc">
-	               <span>회원</span>
+	               <span>회원 관리</span>
 	            </a>
          	</li>
             <div id = 'submenu_game'>
