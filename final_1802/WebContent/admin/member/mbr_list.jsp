@@ -3,19 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<!-- bootstrap 3.0.2 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- google font -->
-<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<!-- Theme style -->
-<link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
-<!-- jQuery 2.0.2 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="./lib/bootstrap.min.js" type="text/javascript"></script>
-<!-- Director App -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <style>
 li {list-style: none;}
 #section_mbr_list {margin: 0; auto;}
@@ -123,7 +110,7 @@ li {list-style: none;}
 	</div>
 </div>
 <div class="col-sm-1"></div>
-
+<%@ include file = "./modal_call_admin_members_modify.jsp" %>
 
 <script>
 $("#btn_mbr_find").click(function(){
@@ -136,6 +123,7 @@ function movePage(nowPage){
 	$(".skin-black").load("mbr_list.etc", param);
 }
 function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender, mbrPoint){
+	
 	$(".modal-body #mbr_mno").val(mbrNo);
 	$(".modal-body #mbr_mid").val(mbrId);
 	$(".modal-body #mbr_mpwd").val(mbrPwd);

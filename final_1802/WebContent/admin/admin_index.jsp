@@ -54,7 +54,7 @@ if(request.getParameter("content") !=null){
     </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->
 
-<%@ include file = "../members/modal_call_members_modify.jsp" %>
+
 
 </body>
 </html>
