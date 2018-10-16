@@ -19,7 +19,7 @@
 <!-- 	<div id='now_order'> -->
 <!-- 		<span id='now'>주문 금액</span> -->
 <!-- 		<span id='now_price'>7,900원</span>	 -->
-	</div>
+<!-- 	</div> -->
 	<div id='to_order' onclick='append_data_modal()' data-toggle="modal" data-target="#myModal" >주문하기</div>
 </div>
 
@@ -60,12 +60,9 @@ function orderMenu(){
 
 
 $('#all_order').click(function(){
-	var param = $('#right_frm').serialize();
-	$('#all_order').load('viewList.ord');
-  	tbl_no = ${tblVo.tbl_no};
-    guest_no = ${tblVo.guest_no};
-	alert("얍얍");
-    $('div.hey123').modal({remote : './order/modal_show_order_list.jsp', backdrop: 'static'});
+// 	var param = $('#right_frm').serialize();
+// 	$('#listZone').load('viewList.ord', param);
+    $('div.hey123').modal({remote : 'viewList.ord?tbl_no='+${tblVo.tbl_no}+'&g_no='+${tblVo.guest_no}, backdrop: 'static'});
  
 })
 </script>

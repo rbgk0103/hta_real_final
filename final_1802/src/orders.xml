@@ -38,10 +38,10 @@
 	</insert>
 	
 	<!-- 주문내역을 가져와보자 -->
-	<select id='view_list' parameterType='int' resultType='bean.OrdersVo'>
-		select os.*, (select menu_name from menu m where os.menu_no = m.menu_no)
+	<select id='view_list' parameterType='int' resultType='bean.OrdersSetVo'>
+		select os.*, (select menu_name from menu m where os.menu_no = m.menu_no) menu_name
 		from orders_set os join orders ord 
 		on os.ord_no = ord.ord_no
-		where ord.guest_no = ${_parameter};
+		where ord.guest_no = ${_parameter}
 	</select>
 </mapper>

@@ -61,6 +61,7 @@ public class OrdersDao {
    
    public List<OrdersSetVo> viewList(int tblNo, int g_no){
       List<OrdersSetVo> list = sqlSession.selectList("ord.view_list", g_no);
+      System.out.println(list.get(0).getMenu_name());
       return list;
    }
    
