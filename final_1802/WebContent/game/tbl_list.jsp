@@ -4,7 +4,7 @@
 
 
 <div id='tbl_list_wrap'>
-	<h3>테이블 목록 - 맞짱뜰 상대 테이블을 고르세요</h3>
+	<h3>테이블 목록 - 맞짱뜰 상대 테이블을 고르세요 ${tblVo.tbl_no }</h3>
 
 	<form id='frm_tbl_list' name='frm_tbl_list'>
 		<div id='tbl_list_area'>
@@ -25,9 +25,9 @@
 					</div>
 					<div id='tbl_btn_area'>
 						<c:choose>
-							<c:when test="${i.tbl_no eq 1}">
-								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
-						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" class='visibility_hidden'/>
+						
+							<c:when test="${i.tbl_no eq tblVo.tbl_no}">
+								<span>여기는 나의 테이블</span>
 						 	</c:when>
 						 	<c:otherwise>
 								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
