@@ -111,6 +111,21 @@ public class AdminDao {
 	}
 
 
+	public List<OrdersSetVo> table_detail_list(int tbl_no, int guest_no) {
+		List<OrdersSetVo> list_orders;
+		GuestVo gVo = new GuestVo();
+		gVo.setGuest_no(guest_no);
+		gVo.setTable_no(tbl_no);
+		System.out.println(gVo.getTable_no());
+		System.out.println(gVo.getGuest_no());
+		
+		list_orders = s.selectList("adm.select_orders_table_detail" , gVo);
+		System.out.println(list_orders.size());
+		return list_orders;
+
+	}
+
+
 
 
 

@@ -62,24 +62,28 @@
 			                    <th>Quantity</th>
 			                    <th >Price</th>
 							</tr>
+							<c:set var = "cnt" value = "0"/>
 							<c:forEach var="item_list" items="${list_orders}">
-								<c:choose>
-									<c:when test="${item.tbl_no eq item_list.ord_tbl_no}">
-										<tr class = ''>
-											<td>
-											1.
-											<td>
-											${item_list.menu_name }
-											</td>
-											<td>
-											${item_list.os_qty }
-											</td>
-											<td><span>${item_list.os_price }</span></td>
-											</td>
-										</tr>
-									</c:when>
-								</c:choose>
+								<c:if test="${item.tbl_no eq item_list.ord_tbl_no}">
+									<c:set var = "cnt" value = "${cnt+1}"/>
+										<c:if test ="${cnt le 5 }"> 
+											<tr class = ''>
+												<td>
+													${cnt }
+												</td>
+												<td>
+													${item_list.menu_name }
+												</td>
+												<td>
+													${item_list.os_qty }
+												</td>
+													<td><span>${item_list.os_price }</span></td>
+												</td>
+											</tr>
+										</c:if>
+								</c:if>
 							</c:forEach>
+										
 					    </table>
 			        </div><!-- /.panel-body -->
 			    </div><!-- /.panel -->
@@ -108,7 +112,7 @@ $(function(){
     $(".table_detail").click(function(){
     	tbl_no = $(this).children("input").first().val();
     	guest_no = $(this).children("input").next().val();
-    	$('div.modal').modal({remote : './admin/table/table_detail.jsp?tbl_no='+tbl_no+'&guest_no='+guest_no , backdrop: 'static'});
+    	$('div.modal').modal({remote : './table_detail.modal?tbl_no='+tbl_no+'&guest_no='+guest_no , backdrop: 'static'});
     
     })
 })
