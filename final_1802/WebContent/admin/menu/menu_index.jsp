@@ -38,9 +38,6 @@
 	cursor:pointer;
 	border-radius: 10px;
 }
-#menu_detail1112{
-	border-radius: 20%;
-}
 
 #menu_index{
 	padding-top: 40px;
@@ -118,12 +115,17 @@ function main_Load(menu_type){
 	$(".skin-black").load("./menu_list.adm", param);
 }
 
-
 function go_view(menu_no){
 	$("#menu_no").val(menu_no);
 	var param = $("#frm_menu").serialize();
 	$(".skin-black").load("./menu_view.adm", param);
 }
+
+function go_insert(){
+	var param = $("#frm_menu").serialize();
+	$(".skin-black").load("./menu_go_insert.adm", param);
+}
+
 </script>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
@@ -141,18 +143,22 @@ ${msg }
 	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
-			<div id = 'menu_read' style = "background-color: red">
+			<div id = 'menu_read'>
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
 						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
-						<img src='./admin/menu/menuImg/${a.menu_image }'>
+						<c:choose>
+							<c:when test="${a.menu_image eq null }">
+								<img src = './admin/menu/menuImg/gong.jpg'>
+							</c:when>
+							<c:otherwise>
+								<img src='./admin/menu/menuImg/${a.menu_image }'>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</c:forEach>
-				<div class="modal fade" id="menu_detail1112">
-					<jsp:include page="./menu_insert.jsp" />
-				</div>
 			</div>
 		</div>
 	</div>
-	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
+	<input type = 'button' id = 'btn_menu_insert'onclick ='go_insert()'value = '메뉴 등록'/>
 </div>

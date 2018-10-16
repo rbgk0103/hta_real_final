@@ -2,6 +2,7 @@ package bean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class OrdersVo {
@@ -12,7 +13,7 @@ public class OrdersVo {
 	String ord_date;
 	
 	ArrayList<ArrayList<String>> stuff;
-	
+	List<OrdersSetVo> orderList;
 	
 	
 	
@@ -23,7 +24,6 @@ public class OrdersVo {
 		this.stuff = stuff;
 	}
 	Map<String, String> ordersSet = new HashMap<String, String>();
-	
 	
 	public int getOrd_no() {
 		return ord_no;
@@ -55,12 +55,11 @@ public class OrdersVo {
 	public void setOrdersSet(Map<String, String> ordersSet) {
 		this.ordersSet = ordersSet;
 	}
-//	public List<OrdersSetVo> getOs() {
-//		return os;
-//	}
-//	public void setOs(List<OrdersSetVo> os) {
-//		this.os = os;
-//	}
-//	
+	public List<OrdersSetVo> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<OrdersSetVo> orderList) {
+		this.orderList = orderList;
+	}
 	
 }

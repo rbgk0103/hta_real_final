@@ -4,8 +4,8 @@
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
 		<form name='right_frm' id='right_frm' method='post'>
-		<input type='hidden' name='ord_table_no' value='${tblVo.tbl_no}'/>
-		<input type='hidden' name='guest_no' value='${tblVo.guest_no}'/>
+			<input type='hidden' name='ord_tbl_no' value='${tblVo.tbl_no}'/>
+			<input type='hidden' name='guest_no'   value='${tblVo.guest_no}'/>
 		<table  class='table'>
 			<tbody id='tableZone'>
 				<tr><th>메뉴</th><th>수량</th><th style="">가격</th><th style="width: 10px"></th></tr>
@@ -42,8 +42,6 @@
   </div>
 </div>
 
-
-
 <div class="modal fade hey123">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -62,9 +60,9 @@ function orderMenu(){
 
 
 $('#all_order').click(function(){
-  	tbl_no = 4;
-    guest_no = 29;
-    $('div.hey123').modal({remote : './modal_show_order_list.jsp', backdrop: 'static'});
+// 	var param = $('#right_frm').serialize();
+// 	$('#listZone').load('viewList.ord', param);
+    $('div.hey123').modal({remote : 'viewList.ord?tbl_no='+${tblVo.tbl_no}+'&g_no='+${tblVo.guest_no}, backdrop: 'static'});
  
 })
 </script>

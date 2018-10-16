@@ -4,7 +4,6 @@
 
 <style>
 #menu_insert{
-	border-radius: 50px;
 	background:white;
 	margin: auto;
 	width: 600px;
@@ -25,7 +24,7 @@
 	border-radius: 50px;
 }
 #frm_menu_insert .menu_btn{
-background: #1AAB8A;
+	background: #1AAB8A;
 	color: #fff;
 	border: none;
 	font-size: 1.6em;
@@ -62,8 +61,19 @@ $().ready(function(){
 		});
 		$('#frm_menu_insert #menu_type').val(str);
 	})
+	$("#btn_cancel").click(function(){
+		var param = $("#frm_menu").serialize();
+		$(".skin-black").load("./menu_list.adm", param);
+	})
 	
 	$("#btn_insert").click(function(){
+		if($("#menu_name").val().length <= 1){
+			alert("메뉴 이름을 확인하세요.");
+			return;
+		}else if(!/^[0-9{1,9}]+$/.test($("#menu_price").val())){
+			alert("메뉴 가격을 확인하세요");
+			return;
+		}
 		var ff = document.frm_menu_insert;
 		var data = new FormData(ff);
 		$.ajax({
@@ -78,11 +88,6 @@ $().ready(function(){
 		});
 	})
 })
-
-
-</script>
-<script>
-$("#ae_menu_name").val()
 </script>
  <div class="modal-dialog">
     <div class="modal-content">
@@ -111,7 +116,7 @@ $("#ae_menu_name").val()
 				<input type = 'file' name = 'menu_image' id = 'menu_image'/>
 				<hr class = 'my_hr'/>
 				<input type = 'button' value = '등 록' id = 'btn_insert' class = 'menu_btn' name = 'btn_insert'/>
-				<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel' class="btn btn-default" data-dismiss="modal"/>
+				<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
 			</form>
 		</div>
 	</div>

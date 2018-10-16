@@ -230,6 +230,15 @@
 	float: right;
 }
 
+#all_order{
+	text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    background: #9999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 #to_order {
 	height: 15%;
 	color: white;

@@ -26,8 +26,13 @@ public class AdminDao {
 		list = s.selectList("adm.select_table");
 		return list;
 	}
-
-
+	public List<OrdersSetVo> table_order_select() {
+		List<OrdersSetVo> list_orders;
+		list_orders = s.selectList("adm.select_orders_table");
+		return list_orders;
+	}
+	
+	
 	public String set_table_on(HttpServletRequest req) {
 		
 		int tbl_no = Integer.parseInt(req.getParameter("tbl_no"));
@@ -104,6 +109,12 @@ public class AdminDao {
 		
 		return msg;
 	}
+
+
+
+
+
+
 
 
 

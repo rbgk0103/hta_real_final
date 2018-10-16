@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-${msg }
+<div class="modal-dialog">
+	<div class="modal-content">
+		<div>
+			<form method = 'post' id = 'frm_email' name = 'frm_email'>
+	
+	
+			</form>
+		</div>
+	</div>
+</div>
 </body>
 </html>

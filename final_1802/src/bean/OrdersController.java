@@ -3,6 +3,7 @@ package bean;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.ws.RequestWrapper;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,7 +45,7 @@ public class OrdersController {
 	@RequestMapping(value = "/orderMenu.ord")
 	public ModelAndView orderMenu(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		int tblNo = Integer.parseInt(req.getParameter("ord_table_no")); 
+		int tblNo = Integer.parseInt(req.getParameter("ord_tbl_no")); 
 		int g_no = Integer.parseInt(req.getParameter("guest_no")); 
 		String nos[] = req.getParameterValues("menu_no");
 		String qtys[] = req.getParameterValues("os_qty");
@@ -54,6 +55,25 @@ public class OrdersController {
 		
 		mv.addObject("msg", msg);
 		mv.setViewName("order_result");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/viewList.ord")
+	public ModelAndView viewList(HttpServletRequest req){
+		ModelAndView mv = new ModelAndView();
+		System.out.println("viewList안에");
+		System.out.println(req.getParameter("ord_tbl_no"));
+//		int tblNo = Integer.parseInt(req.getParameter("ord_tbl_no")); 
+//		int g_no = Integer.parseInt(req.getParameter("guest_no"));
+		
+		int tblNo = Integer.parseInt(req.getParameter("tbl_no")); 
+		int g_no = Integer.parseInt(req.getParameter("g_no"));
+		
+		List<OrdersSetVo> orderList = dao.viewList(tblNo, g_no);
+		
+		mv.addObject("orderList", orderList);
+		mv.setViewName("modal_show_order_list");
+		
 		return mv;
 	}
 }

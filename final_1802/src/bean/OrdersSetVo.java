@@ -11,6 +11,12 @@ public class OrdersSetVo {
 	int os_price;
 	String os_event;
 	
+	/* menu테이블과 join해서 가져오는 컬럼 */
+	String menu_name;
+	
+	/* orders테이블과 join해서 가져오는 컬럼 */
+	int ord_tbl_no;
+	
 	ArrayList<ArrayList<String>> stuff;
 	
 	
@@ -57,7 +63,18 @@ public class OrdersSetVo {
 	public void setOs_event(String os_event) {
 		this.os_event = os_event;
 	}
-	
+	public String getMenu_name() {
+		return menu_name;
+	}
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
+	}
+	public int getOrd_tbl_no() {
+		return ord_tbl_no;
+	}
+	public void setOrd_tbl_no(int ord_tbl_no) {
+		this.ord_tbl_no = ord_tbl_no;
+	}
 	
 	
 }

@@ -10,6 +10,15 @@
 		on guest.table_no = table_status.tbl_no
 		and guest.guest_status = 1 
 	</select>
+	<select id = 'select_orders_table' resultType="bean.OrdersSetVo">
+		select orders.* ,orders_set.* , menu.menu_name
+		from orders orders 
+		inner join orders_set orders_set
+		on orders_set.ord_no = orders.ord_no 
+		inner join
+		menu menu
+		on orders_set.menu_no = menu.menu_no
+	</select>
 
 	<update id="table_status_on" parameterType="int">
 		update table_status set tbl_status = 1  where tbl_no = #{_parameter}

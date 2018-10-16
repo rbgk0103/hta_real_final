@@ -1,3 +1,4 @@
+<%@page import="java.net.InetAddress"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div class="modal fade" id="modal_call_employee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -13,11 +14,13 @@
 				</div>
 				
 				<div id ='modal_call_employee_check'>
-					<label><input type="checkbox">물</label>
-					<label><input type="checkbox">수저</label>
-					<label><input type="checkbox">젓가락</label>
-					<label><input type="checkbox">물티슈</label>
-					<label><input type="checkbox">휴지</label>
+					<form name='call_employee_frm' method='post'>
+						<label><input type="checkbox" name='request' value='물'>물</label>
+						<label><input type="checkbox" name='request' value='수저'>수저</label>
+						<label><input type="checkbox" name='request' value='젓가락'>젓가락</label>
+						<label><input type="checkbox" name='request' value='물티슈'>물티슈</label>
+						<label><input type="checkbox" name='request' value='휴지'>휴지</label>
+					</form>
 				</div>
 				
 				
@@ -28,4 +31,94 @@
 			</div>
 		</div>
   </div>
+
 </div>
+
+
+<script>
+window.onload = function() {
+	var req = '';
+	var tableNo = ${tblVo.tbl_no};
+	var tableIp = ${tblIp};
+	console.log("테이블: " + tableNo);
+	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+	
+	
+	webSocket_request.onopen = function() {
+// 		$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
+		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
+	}
+
+	webSocket_request.onmessage = function(msg) {
+		//msg.data.substring(0, 1) : 자신의 table 번호
+		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
+		alert(msg.data);
+		//메세지 오면 스크롤 아래로
+// 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+	}
+
+	webSocket_request.onclose = function() {
+// 		$('#chatContent').append("연결 종료");
+		console.log("연결종료");
+	}
+	
+	
+	function sendMessage() {
+		var message = tableNo + req;
+		if ($.trim(message) !== "") {
+			webSocket_request.send(message);
+		}
+		alert(message);
+	}
+	$('#modal_call_employee_footer_commit').click(function(){
+		var chkbox = document.getElementsByName("request");
+		req = '';
+		for (var i=0 ; i<chkbox.length ; i++){
+			if (chkbox[i].checked){
+				req += chkbox[i].value + ' ';
+			}
+		}
+		sendMessage();
+
+		
+		
+		
+	// 	alert(req);
+		
+	});
+}
+
+
+
+
+
+
+
+
+		
+// window.onload = function() {
+	
+// 	console.log("스크립틀릿의 ip : " + $('#ip').val());
+// 	var ip = $('#ip').val();
+// 	var ipCut = ip.substr(ip.length-2, ip.length);
+	
+// 	//자신의 ip로 테이블 번호를 데이터베이스에서 꺼내옴 = tableNo
+// 	var tableNo = ${tblVo.tbl_no};
+// 	console.log("테이블: " + tableNo);
+// 	var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/request_list');
+	
+// 	console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
+// 	console.log("자른 ip : " + ipCut);
+	
+
+
+
+// 	function sendMessage() {
+// 		var message = $('#msg').val();
+// 		if ($.trim(message) !== "") {
+// 			webSocket.send(tableNo + message + ipCut);
+// 		}
+// 		$('#msg').val("");	//textarea 지움
+// 	}
+// }
+</script>
