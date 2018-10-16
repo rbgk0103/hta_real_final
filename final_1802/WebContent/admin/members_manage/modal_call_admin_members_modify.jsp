@@ -122,8 +122,8 @@
 				<form name="frm_admin_mbr_modify" id="frm_admin_mbr_modify" method="post" class="form-horizontal">
 					
 					<input type="hidden" name="mbr_no" id="mbr_mno" class="form-control" value="" autocomplete="off" readonly="readonly"> 
-					<input type="text" name="mbr_findStr" id="modal_mbr_findStr" class="form-control" value="" autocomplete="off" readonly="readonly">
-					<input type="text" name="mbr_nowPage" id="modal_mbr_nowPage" class="form-control" value="" autocomplete="off" readonly="readonly">
+					<input type="hidden" name="mbr_findStr" id="modal_mbr_findStr" class="form-control" value="" autocomplete="off" readonly="readonly">
+					<input type="hidden" name="mbr_nowPage" id="modal_mbr_nowPage" class="form-control" value="" autocomplete="off" readonly="readonly">
 					
 					
 					<div class="form-group">

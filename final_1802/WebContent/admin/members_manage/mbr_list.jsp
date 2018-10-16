@@ -143,7 +143,6 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 	$("#modal_call_admin_members_modify").modal("show");
 }
 function mbrDelete(mbrNo){
-	alert(mbrNo);
 	$("#mbrNo").val(mbrNo);
 	var param = $("#frm_mbr_list").serialize();
 	location.href='mbr_delete.etc?'+param;
