@@ -91,6 +91,7 @@ if(request.getParameter("content") !=null){
 		</div>
 		
 		<%@ include file = "./header_tableNo.jsp" %>
+		<%@ include file = "./game/ws_tvt_client.jsp" %>
 		
 
 			
