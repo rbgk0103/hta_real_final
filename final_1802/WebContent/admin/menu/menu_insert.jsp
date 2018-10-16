@@ -4,7 +4,6 @@
 
 <style>
 #menu_insert{
-	border-radius: 50px;
 	background:white;
 	margin: auto;
 	width: 600px;
@@ -25,7 +24,7 @@
 	border-radius: 50px;
 }
 #frm_menu_insert .menu_btn{
-background: #1AAB8A;
+	background: #1AAB8A;
 	color: #fff;
 	border: none;
 	font-size: 1.6em;
@@ -64,6 +63,13 @@ $().ready(function(){
 	})
 	
 	$("#btn_insert").click(function(){
+		if($("#menu_name").val().length <= 1){
+			alert("메뉴 이름을 확인하세요.");
+			return;
+		}else if(!/^[0-9{1,9}]+$/.test($("#menu_price").val())){
+			alert("메뉴 가격을 확인하세요");
+			return;
+		}
 		var ff = document.frm_menu_insert;
 		var data = new FormData(ff);
 		$.ajax({

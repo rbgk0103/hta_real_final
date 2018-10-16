@@ -192,8 +192,15 @@ $().ready(function(){
 		</label>
 		<br/>
 		<hr class = 'my_hr'/>
-		<img src = './admin/menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>
-		<input type = 'file' name = 'menu_image' id = 'menu_image'/>
+		<c:choose>
+			<c:when test="${vo.menu_image eq null }">
+				<img src = "./admin/menu/menuImg/gong.jpg" id = 'img' name = 'img'/>
+			</c:when>
+			<c:otherwise>
+				<img src = './admin/menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>
+			</c:otherwise>
+		</c:choose>
+		<input type = 'file' name = 'menu_image' id = 'menu_image' value = '${vo.menu_image }'/>
 		<hr class = 'my_hr'/>
 		<input type = 'button' value = '수 정' id = 'btn_modify' class = 'menu_btn' name = 'btn_modify'/>
 		<input type = 'button' value = '삭 제' id = 'btn_delete' class = 'menu_btn' name = 'btn_delete'/>
