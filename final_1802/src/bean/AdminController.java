@@ -23,7 +23,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<TblVo> list = admin_dao.table_select();
-		List<OrdersVo> list_orders = admin_dao.table_order_select();
+		List<OrdersSetVo> list_orders = admin_dao.table_order_select();
 
 		mv.addObject("list",list);
 		mv.addObject("list_orders",list_orders);

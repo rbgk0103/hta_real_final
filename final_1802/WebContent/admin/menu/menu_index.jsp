@@ -115,12 +115,17 @@ function main_Load(menu_type){
 	$(".skin-black").load("./menu_list.adm", param);
 }
 
-
 function go_view(menu_no){
 	$("#menu_no").val(menu_no);
 	var param = $("#frm_menu").serialize();
 	$(".skin-black").load("./menu_view.adm", param);
 }
+
+function go_insert(){
+	var param = $("#frm_menu").serialize();
+	$(".skin-black").load("./menu_go_insert.adm", param);
+}
+
 </script>
 ${msg }
 <form name = 'frm_menu' id = 'frm_menu' method = 'post'>
@@ -155,8 +160,5 @@ ${msg }
 			</div>
 		</div>
 	</div>
-	<input type = 'button' id = 'btn_menu_insert' data-toggle="modal" data-target="#menu_detail1112" value = '메뉴 등록'/>
-	<div class="modal fade" id="menu_detail1112">
-		<jsp:include page="./menu_insert.jsp" />
-	</div>
+	<input type = 'button' id = 'btn_menu_insert'onclick ='go_insert()'value = '메뉴 등록'/>
 </div>

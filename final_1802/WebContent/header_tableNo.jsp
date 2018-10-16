@@ -22,14 +22,12 @@ if (localIp.length() == 11) {
 IPDao ipDao = new IPDao();
 TblVo tblVo = ipDao.tblVoSelectOne(tblIp);
 
-
+request.setAttribute("tblIp", tblIp);
 request.setAttribute("tblVo", tblVo);
 %>
 
 
 <div class='col-md-1' id = 'header_tableNo'>
 	<a>No.0${tblVo.tbl_no}</a>
-	
-	
 	
 </div>
