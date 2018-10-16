@@ -25,13 +25,11 @@
 <%
 	if(request.getAttribute("openTableList") == null) {
 		out.print("<h1>index리스트(List)가 비었음.</h1>");
-	}  else {
+	} else {
 		request.setAttribute("openTableList", request.getAttribute("openTableList"));
 	}
 	// 공지 창
-	String chatNotice = request.getParameter("chatNotice") == null
-			? "./chat/chatNotice.jsp"
-			: (String) request.getParameter("chatNotice");
+	String chatNotice = "./chat/chatNotice.jsp";
 	
 	// 대화 내용
 	String chatContent = "./chat/chatContent.jsp?tableNo=" + request.getAttribute("tableNo");
@@ -74,130 +72,84 @@
 		}
 	%>
 	<script>
-		var tableNo = $('#tableNo').val();
+		var ip = "${param.ip}";
+		var ipCut = ip.substr(ip.length-2, ip.length);
+		var reqAttrSenderNo = "${tableNo}";
+		var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
+		console.log("ipCut : " + ipCut);
+		var list = new Array();
+		console.log("javascript list :  " + "${allTableList[0].guest_gender}");
 		
-		window.onload = function() {
-			
-			console.log("스크립틀릿의 ip : " + $('#ip').val());
-			var ip = $('#ip').val();
-			var ipCut = ip.substr(ip.length-2, ip.length);
-			
-			//자신의 ip로 테이블 번호를 데이터베이스에서 꺼내옴 = tableNo
-			var webSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/broadcasting');
-			
-			console.log("도큐멘트 tableNo의 value = " + document.getElementById(tableNo).value);
-			console.log("자른 ip : " + ipCut);
-			//$('#chatContent').load("content.chat", "msg=" + tableNo + "a");
-			webSocket.onopen = function() {
-				$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
-				webSocket.send(tableNo + "a" + ipCut);	//4자리
-			}
-			
-			webSocket.onmessage = function(msg) {
-				//msg.data.substring(0, 1) : 자신의 table 번호
-				//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
-				var myTableNo = msg.data.substring(0, 1);
-				if (myTableNo === tableNo) {
-					// 자기 자신 테이블이 남자 테이블일 경우 div class=chatManBox(파랑 말풍선) 사용
-					if(document.getElementById(tableNo).value === "man") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="send">'
-							+ '<h6>No. ' + tableNo + '</h6>'
-							+ '<div class="chatManBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '<p>' + 
-							+ '</div></div></div>'
-						);
-						// 자기 자신 테이블이 여자 테이블일 경우 div class=chatWomanBox(분홍 말풍선) 사용
-					} else if(document.getElementById(tableNo).value === "woman") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="send">'
-							+ '<h6>No. ' + tableNo + '</h6>'
-							+ '<div class="chatWomanBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '</div></div></div>'
-						);
-						// 자기 자신 테이블이 혼성 테이블일 경우 div class=chatSeamBox(초록 말풍선) 사용
-					} else if(document.getElementById(tableNo).value === "seam") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="send">'
-							+ '<h6>No. ' + tableNo + '</h6>'
-							+ '<div class="chatSeamBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '</div></div></div>'
-						);
-					}
-				} 
-				//받은 메세지일 경우 div class=receive, msg에서 테이블 번호 substring
-				else {
-					if(document.getElementById(myTableNo).value === "man") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="receive">'
-							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
-							+ '<div class="chatManBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '</div></div></div>'
-						);
-					} else if(document.getElementById(myTableNo).value === "woman") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="receive">'
-							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
-							+ '<div class="chatWomanBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '</div></div></div>'
-						);
-					} else if(document.getElementById(myTableNo).value === "seam") {
-						$('#chatContent').append
-							( '<div class="textBlock col-md-12 col-xs-12">'
-							+ '<div class="receive">'
-							+ '<h6>No. ' + msg.data.substring(0, 1) + '</h6>'
-							+ '<div class="chatSeamBox">'
-							+ msg.data.substring(2, msg.data.length-2)
-							+ '</div></div></div>'
-						);
-					}
-				}
-				//메세지 오면 스크롤 아래로
-				$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-				$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
-			}
 		
-			webSocket.onclose = function() {
-				$('#chatContent').append("연결 종료");
-			}
-	
-			$('#btnChatSend').click(function() {
-				sendMessage();
-			})
-	
-			$('#msg').keyup(function(e) {
-				if (e.keyCode === 13) {
-					sendMessage();
-				}
-			});
 		
-			function sendMessage() {
-				var message = $('#msg').val();
-				if ($.trim(message) !== "") {
-					webSocket.send(tableNo + $('#receiverNo').val() + message + ipCut);
-				}
-				$('#msg').val("");	//textarea 지움
-			}
+		webSocket.onopen = function() {
+			webSocket.send(reqAttrSenderNo + "a" + ipCut);	//4자리
 		}
 		
-		function setReceiver(receiveNo) {
-			$('#receiverNo').val(receiveNo);
-			$("#allCircleBorder").style.backgroundColor = "#030303";
-			$("#circleBorder").style.backgroundColor = "#030303";
-			document.getElementsByClassName(receiveNo).style.backgroundColor = "#aaaaaa";
+		webSocket.onmessage = function(msg) {
+			var msgSenderNo = msg.data.substring(0, 1);
+			var msgGetGender = document.getElementById(msgSenderNo).value;
 			
-			$('#chatContent').load("content.chat", "msg=" + tableNo + receiveNo);
+			
+			$('#chatContent').append('<div class="textBlock col-md-12 col-xs-12">');
+			
+			if (msgSenderNo === reqAttrSenderNo) {
+				$('#chatContent').append('<div class="send">'
+						+ '<h6>No. ' + reqAttrSenderNo + '</h6>');
+
+				switch (document.getElementById(reqAttrSenderNo).value) {
+					case "man" : 
+						$('#chatContent').append('<div class="chatManBox">');
+						
+					case "woman" : 
+						$('#chatContent').append('<div class="chatWomanBox">');
+						
+					case "seam" : 
+						$('#chatContent').append('<div class="chatSeamBox">');
+				}
+			} else {
+				$('#chatContent').append('<div class="receive">'
+					+ '<h6>No. ' + msgSenderNo + '</h6>');
+				
+				switch (msgGetGender) {
+					case "man" : 
+						$('#chatContent').append('<div class="chatManBox">');
+						
+					case "woman" : 
+						$('#chatContent').append('<div class="chatWomanBox">');
+						
+					case "seam" : 
+						$('#chatContent').append('<div class="chatSeamBox">');
+				}
+			}
+			
+			$('#chatContent').append('</div></div></div>');
+			
+			$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+			$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
 		}
+	
+		webSocket.onclose = function() {
+			console.log("연결 종료");
+		}
+		
+		document.getElementById("btnChatSend").onclick = sendMessage;
+
+		document.getElementById('msg').onkeyup(function(e) {
+			if (e.keyCode === 13) {
+				sendMessage;
+			}
+		});
+	
+		function sendMessage() {
+			var message = $('#msg').val();
+			if ($.trim(message) !== "") {
+				webSocket.send(reqAttrSenderNo + $('#receiverNo').val() + message + ipCut);
+			}
+			$('#msg').val("");	//textarea 지움
+		}
+		
+		
 	
 		// chat 테이블에 값이 있을 때, 공지 테이블이 있을 때 사용할 예정
 		function loadWrap() {

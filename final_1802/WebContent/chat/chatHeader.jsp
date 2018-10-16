@@ -45,7 +45,7 @@
 	<div class="col-md-8 col-xs-8" id="userList">
 		<c:forEach var='i' items='${openTableList}'>
 			<c:if test="${i.table_no != tableNo}">
-				<div class="col-md-2 col-xs-2 ${i.table_no }" id="circleBorder" onclick="setReceiver(${i.table_no })">
+				<div class="col-md-2 col-xs-2 circleBorder ${i.table_no }" id="circleBorder" onclick="setReceiver(${i.table_no })">
 					<p>No. ${i.table_no}</p>
 				</div>
 			</c:if>
@@ -61,10 +61,61 @@
 </div>
 <!-- 전체채팅목록, 유저목록, 아이콘 끝 -->
 <script>
+	$(function() {
+		$('#allCircleBorder').css('background-color', '#aaaaaa');
+	})
 	function movePage(nowPage) {
 		var param = "&ip=" + $('#ip').val() + "&nowPage=" + nowPage;
 		$("#chatHeader").load("header.chat", param);
 	}
 	
+	function setReceiver(receiveNo) {
+		$('#receiverNo').val(receiveNo);
+		//var receiveClass = document.getElementsByClassName(receiveNo);
+		
+		var circleBorderClass = $('.circleBorder');
+		console.log("랭쓰 : " + circleBorderClass.length);
+		console.log("receiveNo : " + receiveNo);
+		//$('#allCircleBorder').css('background-color', '#030303');
+		
+		circleBorderClass.css('background-color', '#030303 !important');
+		
+		//$('.' + receiveNo).css('background-color', "#aaaaaa");
+		
+		switch (receiveNo) {
+			case '1' : 
+				$('.1').css('background-color', "#aaaaaa !important");
+				break;
+			case '2' : 
+				$('.2').css('background-color', "#aaaaaa !important");
+				break;
+			case '3' : 
+				$('.3').css('background-color', "#aaaaaa !important");
+				break;
+			case '4' : 
+				$('.4').css('background-color', "#aaaaaa !important");
+				break;
+			case '5' : 
+				$('.5').css('background-color', "#aaaaaa !important");
+				break;
+			case '6' : 
+				$('.6').css('background-color', "#aaaaaa !important");
+				break;
+			case '7' : 
+				$('.7').css('background-color', "#aaaaaa !important");
+				break;
+			case '8' : 
+				$('.8').css('background-color', "#aaaaaa !important");
+				break;
+			case '9' : 
+				$('.9').css('background-color', "#aaaaaa !important");
+				break;
+			case 'a' : 
+				$('.a').css('background-color', "#aaaaaa !important");
+				break;
+		}
+		
+		$('#chatContent').load("content.chat", "msg=" + tableNo + receiveNo);
+	}
 	
 </script>

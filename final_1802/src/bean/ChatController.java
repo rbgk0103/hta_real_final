@@ -122,9 +122,6 @@ public class ChatController {
 		chatDao.setNowPage(nowPage);
 		int tableNo = chatDao.getTableNo(ipCut);
 		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
-		// openTableList 쿼리에서 현재 테이블 번호를 제외한 접속한 테이블의 정보를 불러와야합니다.
-		// 테이블 목록을 볼 때 자기 자신의 테이블 이 속해있는 page일 경우
-		// 테이블 갯수가 2개로 나오고 그 뒤에 있는 테이블은 보이지 않게됩니다.
 		Iterator<GuestVo> iterator = openTableList.iterator();
 		while(iterator.hasNext()) {
 			GuestVo vo = iterator.next();
