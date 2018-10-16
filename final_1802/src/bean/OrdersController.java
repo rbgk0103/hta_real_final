@@ -61,6 +61,8 @@ public class OrdersController {
 	@RequestMapping(value = "/viewList.ord")
 	public ModelAndView viewList(HttpServletRequest req){
 		ModelAndView mv = new ModelAndView();
+		System.out.println("viewList안에");
+		System.out.println(req.getParameter("ord_tbl_no"));
 		int tblNo = Integer.parseInt(req.getParameter("ord_tbl_no")); 
 		int g_no = Integer.parseInt(req.getParameter("guest_no"));
 		

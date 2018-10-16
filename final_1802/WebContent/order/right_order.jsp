@@ -4,8 +4,8 @@
 	<span id='order_list'>주문서</span>
 	<div id='order_status'>
 		<form name='right_frm' id='right_frm' method='post'>
-		<input type='hidden' name='ord_table_no' value='${tblVo.tbl_no}'/>
-		<input type='hidden' name='guest_no' value='${tblVo.guest_no}'/>
+			<input type='hidden' name='ord_tbl_no' value='${tblVo.tbl_no}'/>
+			<input type='hidden' name='guest_no'   value='${tblVo.guest_no}'/>
 		<table  class='table'>
 			<tbody id='tableZone'>
 				<tr><th>메뉴</th><th>수량</th><th style="">가격</th><th style="width: 10px"></th></tr>
@@ -19,7 +19,7 @@
 <!-- 	<div id='now_order'> -->
 <!-- 		<span id='now'>주문 금액</span> -->
 <!-- 		<span id='now_price'>7,900원</span>	 -->
-<!-- 	</div> -->
+	</div>
 	<div id='to_order' onclick='append_data_modal()' data-toggle="modal" data-target="#myModal" >주문하기</div>
 </div>
 
