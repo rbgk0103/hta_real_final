@@ -48,7 +48,12 @@ if(request.getParameter("content") !=null){
         </section>
         <!-- /.content -->
         <div class="footer-main">
-            Copyright &copy 1802-final, 2018
+        <%-- 	<a href="./menu_list.adm">
+        		<span><h3><strong>이메일 문의</strong></h3></span>
+        	</a>
+        	<div class="modal fade">
+        		<jsp:include page="./admin_email.jsp"/>	
+        	</div> --%>
         </div>
     </aside><!-- /.right-side -->
 </div><!-- ./wrapper -->

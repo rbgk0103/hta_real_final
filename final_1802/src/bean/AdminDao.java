@@ -26,8 +26,8 @@ public class AdminDao {
 		list = s.selectList("adm.select_table");
 		return list;
 	}
-	public List<OrdersVo> table_order_select() {
-		List<OrdersVo> list_orders;
+	public List<OrdersSetVo> table_order_select() {
+		List<OrdersSetVo> list_orders;
 		list_orders = s.selectList("adm.select_orders_table");
 		return list_orders;
 	}
