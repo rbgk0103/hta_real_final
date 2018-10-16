@@ -165,7 +165,7 @@ if(request.getParameter("content") !=null){
 	
 	
 	<div id ='content'>
-		<jsp:include page="<%=content %>"/>
+<%-- 		<jsp:include page="<%=content %>"/> --%>
 	</div>
 </div>
 <%@ include file = "./modal_call_employee.jsp" %>
