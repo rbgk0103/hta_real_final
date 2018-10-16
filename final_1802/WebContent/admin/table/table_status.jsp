@@ -8,6 +8,7 @@
 		    <c:choose>
 			    <c:when test="${item.tbl_status eq 0}">
 			    <div class="panel">
+			      <header class="panel-heading">
 			            Table No.${item.tbl_no } 
 			        </header>
 			        <div class="panel-body">
@@ -62,6 +63,14 @@
 								<input type='hidden' id ='guest_no' value="${item.guest_no }">
 								1.
 								</td>
+								<c:forEach var="item_list" items="${list_orders}">
+									${item_list.ord_tbl_no }
+									<c:choose>
+										<c:when test="${item.tbl_no eq item_list.ord_tbl_no}">
+											
+										</c:when>
+									</c:choose>
+								</c:forEach>
 								<td>
 								제육볶음
 								</td>
