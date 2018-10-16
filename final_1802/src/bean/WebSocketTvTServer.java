@@ -20,6 +20,7 @@ public class WebSocketTvTServer {
 	@OnMessage
 	public void onMessage(String msg, Session session) throws Exception {
 		System.out.println("receive message : " + msg);
+		
 		for (Session s : clients) {
 			s.getBasicRemote().sendText(msg);
 		}

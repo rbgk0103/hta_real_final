@@ -20,8 +20,8 @@ $(document).ready(function(){
 
 	// 보내는 메시지
 	$('#tvt_ready_wrap #btn_req').click(function() {
-		// tvtWebSocket.send('${thisIP}: ' +   $('#msg').val());
-		   tvtWebSocket.send('${tblVo.tbl_no}' + ',' + '${tbl_u}' + ',' + '${gtVo.gtName}' + ',' + '${gtVo.gtImage}');
+		
+	   tvtWebSocket.send('${tblVo.tbl_no}' + ',' + '${tbl_u}' + ',' + '${gtVo.gtName}' + ',' + '${gtVo.gtImage}');
 	})	
 });
 
@@ -61,8 +61,8 @@ $(document).ready(function(){
 			<div id='tvt_req'>
 				<input type='text' id='tvt_req_msg' />
 			
-				<input type='button' name='btn_req' value='대전신청' />
-				<input type='button' name='btn_cancel' value='취소' />
+				<input type='button' id='btn_req' name='btn_req' value='대전신청' />
+				<input type='button' id='btn_req' name='btn_cancel' value='취소' />
 			</div>
 			<div id='result'></div>
 			

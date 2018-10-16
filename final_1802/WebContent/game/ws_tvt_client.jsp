@@ -21,12 +21,13 @@ $(document).ready(function(){
 		tvtWebSocket.onopen = function() {
 		$('#result').html("연결 성공!!!!");
 
-	}
+		}
 
 		tvtWebSocket.onmessage = function(msg) {
-		$('#result').append('<div>' + msg.data + '</div>');
-
-	}
+			
+			// alert(msg.data);
+		
+		}
 	
 		tvtWebSocket.onclose = function() {
 		$('#result').html("연결 종료");
