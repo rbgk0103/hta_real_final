@@ -132,17 +132,6 @@ public class MembersController {
 	public ModelAndView modify(HttpServletRequest req, HttpSession session_mbr) {
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("컨트롤러");
-		System.out.println("엠뱔엔오 : " + Integer.parseInt(req.getParameter("mbr_no")));
-		System.out.println("엠뱔아디 : " + req.getParameter("mbr_id"));
-		System.out.println("엠뱔피됩 : " + req.getParameter("mbr_pwd"));
-		System.out.println("엠뱔넴 : " + req.getParameter("mbr_name"));
-		System.out.println("엠뱔폰 : " + req.getParameter("mbr_phone"));
-		System.out.println("엠뱔벌쓰 : " + req.getParameter("mbr_birth"));
-		System.out.println("엠뱔젠더 : " + req.getParameter("mbr_gender"));
-		System.out.println("엠뱔푄트 : " + Integer.parseInt(req.getParameter("mbr_point")));
-		
-		
 		MembersVo mvo = dao.modify(req);
 		String msg = "";
 		
