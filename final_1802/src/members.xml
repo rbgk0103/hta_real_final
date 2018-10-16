@@ -43,6 +43,9 @@
 			<if test="name != null">
 				mbr_name = #{name} and mbr_phone = #{phone}
 			</if>
+			<if test="no != null">
+				mbr_no = #{no}
+			</if>
 		</where>
 	</select>
 	

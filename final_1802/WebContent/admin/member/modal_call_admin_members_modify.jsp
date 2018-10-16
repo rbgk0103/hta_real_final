@@ -3,21 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<!-- google font -->
-<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-<!-- Theme style -->
-<link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
-<!-- jQuery 2.0.2 -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="./lib/bootstrap.min.js" type="text/javascript"></script>
-<!-- Director App -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<!-- bootstrap 3.0.2 -->
-<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-
 <style>
 .mbr_radio {
     font-size: 20px;
@@ -59,7 +44,7 @@
 </style>
 <script>
 	function mchk() {
-		fm = document.frm_mbr_modify;
+		fm = document.frm_admin_mbr_modify;
 		
 		var mbtn = document.getElementById("btn_mbr_modify");
 		
@@ -124,24 +109,24 @@
 	}
 </script>
 
-<div class="modal fade" id="modal_call_members_modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_call_admin_members_modify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		
-			<div class="modal-header" id ='modal_call_members_modify_header'>
+			<div class="modal-header" id ='modal_call_admin_members_modify_header'>
 				<h3>MODIFY</h3>
 			</div>
 			<br/>
 			<div class="modal-body">
 			
-				<form name="frm_mbr_modify" id="frm_mbr_modify" method="post" class="form-horizontal">
+				<form name="frm_admin_mbr_modify" id="frm_admin_mbr_modify" method="post" class="form-horizontal">
 					
 					<input type="hidden" name="mbr_no" id="mbr_mno" class="form-control" value="" autocomplete="off" readonly="readonly"> 
 				
 					<div class="form-group">
 						<label for="mbr_mid" class="col-sm-3 control-label"> *아이디 </label>
 						<div class="col-sm-8">
-							<input type="text" name="mbr_id" id="mbr_mid" class="form-control" value="${empty msg ? '???' : 'msg'}" autocomplete="off" readonly="readonly"> 
+							<input type="text" name="mbr_id" id="mbr_mid" class="form-control" value="" autocomplete="off" readonly="readonly"> 
 						</div>
 					</div>
 					
@@ -222,7 +207,7 @@
 						</c:choose>
 				</form>
 			</div>
-			<div class="modal-footer" id ="modal_call_members_modify_footer">
+			<div class="modal-footer" id ="modal_call_admin_members_modify_footer">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-2"></div>
 				<div class="col-sm-2">

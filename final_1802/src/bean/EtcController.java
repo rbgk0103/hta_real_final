@@ -36,7 +36,6 @@ public class EtcController {
 		
 		mv.addObject("page", page);
 		mv.addObject("list", list);
-		
 		mv.setViewName("./member/mbr_list");
 		
 		return mv;

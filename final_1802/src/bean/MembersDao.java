@@ -98,7 +98,7 @@ public class MembersDao {
 		return list;
 	}
 	
-	public String modify(HttpServletRequest req) {
+	public MembersVo modify(HttpServletRequest req) {
 		String msg = "";
 
 		mvo = null;
@@ -109,14 +109,17 @@ public class MembersDao {
 
 		
 		if(cnt > 0) {
+			int no = mvo.getMbrNo();
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("no", no);
+			mvo = s.selectOne("mbr.findInfo", params);
 			s.commit();
-			msg = "mody_success";
 		}else {
+			mvo = null;
 			s.rollback();
-			msg = "mody_false";
 		}
 		
-		return msg;
+		return mvo;
 	}
 	
 	public void delete(int mbrNo) {
