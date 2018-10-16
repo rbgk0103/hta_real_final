@@ -110,7 +110,8 @@ li {list-style: none;}
 	</div>
 </div>
 <div class="col-sm-1"></div>
-<%@ include file = "./modal_call_admin_members_modify.jsp" %>
+
+<%-- <%@ include file = "./modal_call_admin_members_modify.jsp" %> --%>
 
 <script>
 $("#btn_mbr_find").click(function(){
@@ -133,7 +134,7 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 	$("input:radio[name='mbr_gender']:radio[value='male']").prop("checked",true);
 	$(".modal-body #mbr_mpoint").val(mbrPoint);
 	
-	$("#modal_call_members_modify").modal("show");
+	$("#modal_call_admin_members_modify").modal("show");
 }
 function mbrDelete(mbrNo){
 	$("#mbrNo").val(mbrNo);

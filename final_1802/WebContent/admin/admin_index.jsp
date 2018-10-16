@@ -9,6 +9,7 @@
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+
 <!-- bootstrap 3.0.2 -->
 <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- google font -->
@@ -22,8 +23,6 @@
 <!-- Director App -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"/>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
-
 
 </head>
 <body class="skin-black">
