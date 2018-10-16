@@ -46,7 +46,7 @@ window.onload = function() {
 	
 	webSocket_request.onopen = function() {
 // 		$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
-		alert(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
+		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
 
 	webSocket_request.onmessage = function(msg) {
@@ -59,7 +59,7 @@ window.onload = function() {
 
 	webSocket_request.onclose = function() {
 // 		$('#chatContent').append("연결 종료");
-		alert("연결종료");
+		console.log("연결종료");
 	}
 	
 	
