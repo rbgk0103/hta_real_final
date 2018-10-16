@@ -141,7 +141,7 @@ ${msg }
 	</ul>
 	<div id = 'content'>
 		<div id = 'menu_center'>
-			<div id = 'menu_read' style = "background-color: red">
+			<div id = 'menu_read'>
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
 						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
