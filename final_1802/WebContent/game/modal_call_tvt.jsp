@@ -7,17 +7,34 @@
 <div class="modal fade" id="modal_call_tvt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<div class="modal-header" id ='modal_call_employee_header'>
+			<div class="modal-header" id ='modal_call_tvt_header'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="myModalLabel">테이블vs테이블 게임요청 </h4>
 			</div>
 			<div class="modal-body">
-				<div id ='modal_call_employee_text' style='color:red'>
-					필요하신 것을 체크해 주세요...
+			
+			
+			
+			
+				<div id ='modal_call_tvt_text' style='color:red'>
+					<ul>
+						<li>도전자의 테이블번호: ${tblVo.tbl_no}</li>
+						<li>
+					</ul>
+				</div>
+				<div id='modal_call_tvt_gt_and_menu'>
+					<div id='modal_call_tvt_gt'>
+						<div id='modal_call_tvt_gt_image'>
+							<img src='./img/game_img/${gtVo.gtImage}'/>
+						</div>
+					</div>
+					<div id='modal_call_tvt_menu'>
+					</div>
+					
 				</div>
 				
-				<div id ='modal_call_employee_check'>
-					<form name='call_employee_frm' method='post'>
+				<div id ='modal_call_tvt_check'>
+					<form name='call_tvt_frm' method='post'>
 						<label><input type="checkbox" name='request' value='물' >물</label>
 						<label><input type="checkbox" name='request' value='수저'>수저</label>
 						<label><input type="checkbox" name='request' value='젓가락'>젓가락</label>
@@ -26,8 +43,8 @@
 					</form>
 				</div>
 			</div>
-			<div class="modal-footer" id ="modal_call_employee_footer">
-				<button type="button" class="btn btn-primary" id='modal_call_employee_footer_commit'>호출하기</button>
+			<div class="modal-footer" id ="modal_call_tvt_footer">
+				<button type="button" class="btn btn-primary" id='modal_call_tvt_footer_commit'>호출하기</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 			</div>
 		</div>
