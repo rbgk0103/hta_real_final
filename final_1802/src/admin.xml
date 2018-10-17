@@ -40,11 +40,18 @@
 		update table_status set tbl_status = 0  where tbl_no = #{_parameter}
 	</update>
 	
+	<insert id="insert_table_pay" parameterType="bean.PayVo">
+		insert into pay values(seq_pay.nextval , (select pc_no from pay_code where PC_TYPE = #{pc_type}) , sysdate , #{pay_tot_price} , ${guest_no})
+	</insert>
+	
 	<insert id="guest_insert" parameterType="bean.GuestVo">
 		insert into guest values(seq_guest.nextval , #{table_no} , #{guest_gender} , #{guest_cnt} , 1 , 0 )
 	</insert>
 	
 	<update id ="guest_status_update" parameterType="bean.GuestVo">
+		update guest set guest_status = 0 where table_no = #{table_no} and guest_no = ${guest_no}
+	</update>
+	<update id ="guest_status_update_pay" parameterType="bean.GuestVo">
 		update guest set guest_status = 2 where table_no = #{table_no} and guest_no = ${guest_no}
 	</update>
 </mapper>

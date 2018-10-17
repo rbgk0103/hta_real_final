@@ -39,11 +39,7 @@ public class AdminController {
 	
 		String table_msg = admin_dao.set_table_on(req);
 		String guest_msg = admin_dao.set_guest(req);
-		
-		System.out.println(table_msg);
-		System.out.println(guest_msg);
-		//set_guest;
-		
+
 		mv.setViewName("table/table_set_result");
 		return mv;
 	}
@@ -54,15 +50,25 @@ public class AdminController {
 		
 		String table_msg = admin_dao.set_table_off(req);
 		String guest_msg = admin_dao.guest_status_update(req);
-		
-		System.out.println(table_msg);
-		System.out.println(guest_msg);
-		//set_guest;
-		
+
 		mv.setViewName("table/table_set_delete");
 		return mv;
 	}
 	
+	@RequestMapping(value="table_pay.adm")
+	public ModelAndView table_pay(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String table_pay = admin_dao.insert_table_pay(req);
+		String guest_msg = admin_dao.guest_status_update_pay(req);
+		String table_msg = admin_dao.set_table_off(req);
+		
+		mv.addObject("table_msg",table_msg);
+		mv.addObject("table_pay",table_pay);
+		mv.addObject("guest_msg",guest_msg);
+		mv.setViewName("table/table_pay");
+		return mv;
+	}
 
 	
 	
