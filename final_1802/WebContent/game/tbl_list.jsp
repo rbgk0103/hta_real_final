@@ -68,7 +68,7 @@ function go_main_ord(tbl_no) {
 	f.tbl_u.value = tbl_no;		// 대적할 상대의 테이블번호
 	
 	f.method = 'POST';
-	f.action = 'main.ord';
+	f.action = 'center.ord';
 	f.submit();
 } 
 </script>

@@ -58,7 +58,7 @@ text-shadow:
 #modal_call_employee_footer{}
 #modal_call_employee_footer_commit{background-color:#282832;}
 #header_mbr{line-height: 2.9; position: absolute; right: 15%; top: 30%; outline: none;}
-.glyphicon {color: #FF8000; font-size: 50px; cursor: pointer;}
+.glyphicon-user {color: #FF8000; font-size: 50px; cursor: pointer;}
 .dropdown-menu li {cursor: pointer;}
 .dropdown-menu li > a:hover {color: black;}
 </style>

@@ -37,7 +37,7 @@ public class OrdersController {
 		System.out.println("우리모두 하하하");
 		
 		mv.addObject("list", list);
-		mv.setViewName("order_menu");
+		mv.setViewName("center_menu");
 		return mv;
 	}
 	

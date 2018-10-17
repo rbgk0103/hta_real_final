@@ -53,6 +53,7 @@ window.onload = function() {
 		//msg.data.substring(0, 1) : 자신의 table 번호
 		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
 		alert(msg.data);
+		$('#call_employee_new').append(msg.data);
 		//메세지 오면 스크롤 아래로
 // 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
 	}
@@ -64,14 +65,16 @@ window.onload = function() {
 	
 	
 	function sendMessage() {
-		var message = tableNo + req;
+		var message = "<li class = 'hi'>테이블 "+tableNo+" : "+ req +"</li>";
 		if ($.trim(message) !== "") {
 			webSocket_request.send(message);
 		}
 // 		alert(message);
 	}
+
 	$('#modal_call_employee_footer_commit').click(function(){
 		var chkbox = document.getElementsByName("request");
+		alert('야');
 		req = '';
 		for (var i=0 ; i<chkbox.length ; i++){
 			if (chkbox[i].checked){
@@ -79,23 +82,9 @@ window.onload = function() {
 			}
 		}
 		sendMessage();
-
-		
-		
-		
-	// 	alert(req);
-		
 	});
 }
-
-
-
-
-
-
-
-
-		
+	
 // window.onload = function() {
 	
 // 	console.log("스크립틀릿의 ip : " + $('#ip').val());

@@ -68,7 +68,7 @@ public class WebSocketServerRequest {
 	/* 클라이언트에서 서버로 접속할 때*/
 	@OnOpen
 	public void onOpen(Session s) {
-		System.out.println("session open : " + s);
+		System.out.println("session //open : " + s);
 		clients.add(s);
 	}
 	
@@ -79,7 +79,7 @@ public class WebSocketServerRequest {
 	/* 접속이 끊겼을 때 */
 	@OnClose
 	public void onClose(Session s) {
-		System.out.println("session close : " + s);
+		System.out.println("session //close : " + s);
 		clients.remove(s);
 	}
 	
