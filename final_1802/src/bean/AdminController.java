@@ -48,14 +48,22 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value="table_detail.adm")
-	public ModelAndView table_detail(HttpServletRequest req) {
+	@RequestMapping(value="table_set_delete.adm")
+	public ModelAndView table_set_delete(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("table/table_detail");
+		
+		String table_msg = admin_dao.set_table_off(req);
+		String guest_msg = admin_dao.guest_status_update(req);
+		
+		System.out.println(table_msg);
+		System.out.println(guest_msg);
+		//set_guest;
+		
+		mv.setViewName("table/table_set_delete");
 		return mv;
 	}
 	
+
 	
 	
 	

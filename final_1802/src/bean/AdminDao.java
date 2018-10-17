@@ -24,6 +24,7 @@ public class AdminDao {
 	public List<TblVo> table_select(){
 		List<TblVo> list;
 		list = s.selectList("adm.select_table");
+		System.out.println(list.get(1).getTbl_status());
 		return list;
 	}
 	public List<OrdersSetVo> table_order_select() {
@@ -34,7 +35,6 @@ public class AdminDao {
 	
 	
 	public String set_table_on(HttpServletRequest req) {
-		
 		int tbl_no = Integer.parseInt(req.getParameter("tbl_no"));
 		int cnt = s.update("adm.table_status_on" , tbl_no);
 		
@@ -47,9 +47,7 @@ public class AdminDao {
 		}
 		return msg;
 	}
-	
 	public String set_table_off(HttpServletRequest req) {
-		
 		int tbl_no = Integer.parseInt(req.getParameter("tbl_no"));
 		int cnt = s.update("adm.table_status_off", tbl_no);
 		
@@ -63,7 +61,6 @@ public class AdminDao {
 		return msg;
 	}
 	
-
 	public String set_guest(HttpServletRequest req) {
 		GuestVo gVo = new GuestVo();
 		gVo = guest_setVo(req);
@@ -78,6 +75,8 @@ public class AdminDao {
 		}
 		return msg;
 	}
+
+	
 	
 	public GuestVo guest_setVo(HttpServletRequest req) {
 		GuestVo gVo = new GuestVo();

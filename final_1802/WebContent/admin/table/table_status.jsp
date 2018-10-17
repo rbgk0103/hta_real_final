@@ -14,6 +14,7 @@
 				  <input type='hidden' id ='tbl_no' value="${item.tbl_no }">
 			      <header class="panel-heading">
 			            Table No.${item.tbl_no } 
+			            안녕
 			        </header>
 			        <div class="panel-body">
 			            <table class="table table-bordered">

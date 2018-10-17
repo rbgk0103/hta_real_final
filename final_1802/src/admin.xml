@@ -18,6 +18,7 @@
 		inner join
 		menu menu
 		on orders_set.menu_no = menu.menu_no
+		where orders.guest_no in (SELECT GUEST_NO from guest where guest_status = 1)
 	</select>
 	
 	<select id = 'select_orders_table_detail' resultType="bean.OrdersSetVo" parameterType="bean.GuestVo">
