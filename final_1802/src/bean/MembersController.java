@@ -1,7 +1,5 @@
 package bean;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,11 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class MembersController {
 	
 	MembersDao dao;
-	PageCompute page;
-	
-	public MembersController(MembersDao dao, PageCompute page) {
+
+	public MembersController(MembersDao dao) {
 		this.dao = dao;
-		this.page = page;
 	}
 	
 	@RequestMapping(value="/login.mbr")
@@ -146,28 +142,6 @@ public class MembersController {
 		
 		mv.addObject("msg", msg);
 		mv.setViewName("info");
-		
-		return mv;
-	}
-	
-	@RequestMapping(value="/mbr_delete.mbr")
-	public ModelAndView delete(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		
-		String findStr = req.getParameter("mbr_findStr");
-		int mbrNo = Integer.parseInt(req.getParameter("mbrNo"));
-		int nowPage = Integer.parseInt(req.getParameter("nowPage"));
-		
-		page.setNowPage(nowPage);
-		
-		dao.delete(mbrNo);
-
-		List<MembersVo> list = dao.list(findStr);
-		
-		mv.addObject("page", page);
-		mv.addObject("list", list);
-		
-		mv.setViewName("mbr_list");
 		
 		return mv;
 	}

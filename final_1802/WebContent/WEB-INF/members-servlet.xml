@@ -10,23 +10,15 @@
 
 
 	<!-- bean -->
-	<bean id="page" class="bean.PageCompute">
-		<property name="listSize" value="10"/>
-		<property name="blockSize" value="5"/>
-		<property name="nowPage" value="1"/>
-	</bean>
-	
 	<bean id="mbr_vo" class="bean.MembersVo"/>
 	
 	<bean id="mbr_dao" class="bean.MembersDao">
-		<constructor-arg ref="page"/>
 		<constructor-arg ref="mbr_vo"/>
 	</bean>
 	
 	<!-- controller -->
 	<bean id="mbr_controller" class="bean.MembersController">
 		<constructor-arg ref="mbr_dao"/>
-		<constructor-arg ref="page"/>
 	</bean>
 	
 	<!-- view resolver -->

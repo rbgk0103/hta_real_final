@@ -11,7 +11,7 @@
 	    			
 		<c:choose>
 			<c:when test="${msg eq 'login_success' }">
-				<script>window.location.reload()</script>
+				<script>window.location.reload();</script>
 			</c:when>
 			<c:when test="${msg eq 'login_false' }">
 				<p class="form-control-static">아이디와 비밀번호를 다시 확인해주세요</p>
@@ -29,10 +29,11 @@
 			<c:when test="${msg eq 'reg_success' }">
 				<p class="form-control-static">회원 가입 성공</p>
 				<script>
-					setInterval(function() {
-						$("#modal_call_members_register").modal("hide");
-						$("#modal_call_members_login").modal("show");
-					}, 1500)
+					window.location.reload();
+// 					setInterval(function() {
+// 						$("#modal_call_members_register").modal("hide");
+// 						$("#modal_call_members_login").modal("show");
+// 					}, 1500)
 				</script>
 			</c:when>
 			<c:when test="${msg eq 'reg_false' }">

@@ -10,10 +10,15 @@ import org.apache.ibatis.session.SqlSession;
 
 public class MembersDao {
 	
-	MembersVo mvo;
-	PageCompute page;
+	MembersVo mvo = null;
+	PageCompute page = null;
 	
 	SqlSession s;
+	
+	public MembersDao(MembersVo mvo) {
+		s = MbrFactory.getFactory().openSession();
+		this.mvo = mvo;
+	}
 	
 	public MembersDao(MembersVo mvo, PageCompute page) {
 		s = MbrFactory.getFactory().openSession();
@@ -83,7 +88,7 @@ public class MembersDao {
 		if(findStr == null) findStr = "";
 		
 		page.setTotSize(s.selectOne("mbr.listCnt", "%"+findStr+"%"));
-		System.out.println("데이터 총 개수 : " + page.getTotSize());
+
 		page.pageCompute();
 		
 		Map<String, Object> params = new HashMap<String, Object>();

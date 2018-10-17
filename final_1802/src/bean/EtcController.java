@@ -22,7 +22,7 @@ public class EtcController {
 	@RequestMapping(value="/mbr_list.etc")
 	public ModelAndView list(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		String findStr = "";
 		if(req.getParameter("mbr_findStr") != null) {
 			findStr = req.getParameter("mbr_findStr");
@@ -33,9 +33,8 @@ public class EtcController {
 			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
 		}
 		
-		System.out.println("리스트 컨트롤에서 findStr : " + findStr);
-		System.out.println("리스트 컨트롤러 nowPage : " + nowPage);
 		page.setNowPage(nowPage);
+
 		List<MembersVo> list = dao.list(findStr);
 		
 		mv.addObject("mbr_findStr", findStr);
