@@ -260,3 +260,25 @@
 .btn-default {
 	border-radius: 0;
 }
+
+/* 총 주문내역( modal_show_order_list)  */
+#modal_show_order_list_text{
+	color: #181c1f;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    text-shadow: 2px 2px #ddd;
+}
+
+#modal_show_order_list_tot_price {
+	color: #181c1f;
+    text-align: center;
+    font-size: 18px;
+	font-weight: bold;
+}
+
+#modal_show_order_list_footer .btn-default {
+	color: black;
+}
+

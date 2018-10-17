@@ -87,7 +87,7 @@ if(request.getParameter("content") !=null){
 			</a>
 		</div>
 		<div class='col-md-7' id = 'header_menu'>
-			<a href="main.ord">메뉴</a>
+			<a href="index.jsp?content=main.ord">메뉴</a>
 			<a href ="index.game">게임</a>
 			<a href ="#" onclick ="goChat('${ip}')">채팅</a>
 			<a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>

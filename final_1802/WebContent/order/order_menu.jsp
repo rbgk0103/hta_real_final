@@ -142,6 +142,16 @@ var cnt = 0;
 var bb = true;
 var index;
 
+$(document).ready(function(){
+    if (document.menu_frm.page.value == 'game'){
+       console.log(document.menu_frm.page.value);
+       $('#t_menu, #l_menu, #r_menu').css('display', 'none');
+       $('#c_menu').css('width', '100%');
+       
+    }
+ 
+});
+
 function goMenu(id){
 	$('#menuType').val(id);
 	var param = $('#tap_frm').serialize();
@@ -302,7 +312,7 @@ function toGame(menu_no) {
 function leftMenu(menu_type){
 	$('#leftMenu #findStr').val(menu_type);
 	var param = $('#leftMenu').serialize();
-	$('#wrap').load('center.ord', param);
+	$('#content').load('center.ord', param);
 }
 
 
@@ -312,7 +322,7 @@ function orderMenu(){
 	if (param === ""){
 		alert("메뉴를 선택해주세요.");
 	} else{
-		$('#wrap').load('orderMenu.ord', param);
+		$('#content').load('orderMenu.ord', param);
 	}
 }
 
@@ -323,6 +333,8 @@ $('#all_order').click(function(){
     $('div.hey123').modal({remote : 'viewList.ord?tbl_no='+${tblVo.tbl_no}+'&g_no='+${tblVo.guest_no}, backdrop: 'static'});
  
 })
+
+
 
 
 </script>
