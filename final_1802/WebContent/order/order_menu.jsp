@@ -312,7 +312,7 @@ function orderMenu(){
 	if (param === ""){
 		alert("메뉴를 선택해주세요.");
 	} else{
-		$('#content').load('orderMenu.ord', param);
+		$('#wrap').load('orderMenu.ord', param);
 	}
 }
 
