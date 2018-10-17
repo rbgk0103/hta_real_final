@@ -34,17 +34,11 @@
 			
 			<!-- 값 확인용 -->
 			<div>
-				<h3>param값: </h3>
-				<label>page: </label>
-				<input class='input_text' type='text' name='page' value='${param.page}' /><br/>
-				<label>gt_with: </label>
-				<input class='input_text' type='text' name='gt_with' value='${param.gt_with}'  /><br/>
-				<label>gt_no: </label>
-				<input class='input_text' type='text' name='gt_no'  /><br/>
-				<label>tbl_i:</label>
-				<input class='input_text' type='text' name='tbl_i'  /><br/>
-				<label>tbl_u:</label>
-				<input class='input_text' type='text' name='tbl_u'  />
+				<input class='input_text' type='text' name='page' value='${param.page}' style='display:hidden' /><br/>
+				<input class='input_text' type='text' name='gt_with' value='${param.gt_with}' style='display:hidden' /><br/>
+				<input class='input_text' type='text' name='gt_no' style='display:hidden' /><br/>
+				<input class='input_text' type='text' name='tbl_i' style='display:hidden' /><br/>
+				<input class='input_text' type='text' name='tbl_u' style='display:hidden' />
 			</div>
 		</form>
 	</div>

@@ -75,6 +75,7 @@
 	visibility: hidden;
 }
 
+
 /* tvt_ready */
 #tvt_ready_wrap {
 	text-align:center;
@@ -89,13 +90,13 @@
 #tvt_ready_wrap #tvt_info_gt, #tvt_ready_wrap #tvt_info_menu {
 	display: inline-block;
 	width: 46%;
-	
 }
 
 #tvt_ready_wrap input {
 	color: black;
 }
 
-
-
-
+/* gmae_index.jsp */
+#gi_wrap .input_text {
+	display:hidden;
+}

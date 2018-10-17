@@ -2,7 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
+// 타이머용 시간 설정
+
 $(document).ready(function(){
+var count = 30;
+var timerId = 0;
+	
+	
 	var tvtWebSocket = new WebSocket(
 	'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
 
@@ -25,11 +31,37 @@ $(document).ready(function(){
 		 	   + '${tbl_u},'	 				// 상대 테이블번호
 		 	   + '${gtVo.gtImage},'				// 게임타이틀이미지	
 		 	   + '${gtVo.gtName},'				// 게임타이틀이름
-		 	   + '${menuVo.menu_image},'			// 메뉴이미지
+		 	   + '${menuVo.menu_image},'		// 메뉴이미지
 		 	   + '${menuVo.menu_name}';			// 메뉴이름
-	   tvtWebSocket.send(tvtMsg);
-	})	
-});
+	   	tvtWebSocket.send(tvtMsg)
+		 	   
+	   	
+	   	// 타이머 가동
+		timerId = setInterval(function() {
+			console.log('이봉기');
+			count--;
+			$('#timer_text').val(count);
+		}, 1000);
+	   	
+	   	
+	}) // End of [도전신청] 클릭
+
+		/* 타이머 */
+	
+		// textarea에 포거스가 되면 타이머 작동
+		$('#btn_timer_start').click(function() {
+			timerId = setInterval(function() {
+				console.log('이봉기');
+			}, 1000);
+		});
+
+		// textarea에서 포커스를 잃으면 타이머 중지
+		$('#btn_timer_stop').click(function() {
+			clearInterval(timerId);
+		});
+
+	}); // End of jQuery
+
 
 </script>    
     
@@ -65,12 +97,19 @@ $(document).ready(function(){
 			</div>
 			
 			<div id='tvt_req'>
-				<input type='text' id='tvt_req_msg' />
-			
 				<input type='button' id='btn_req' name='btn_req' value='대전신청' />
+				<input type='button' id='btn_timer_start' value='타이머시작' />
+				<input type='button' id='btn_timer_stop' value='타이머종료' />
 				<input type='button' id='btn_req' name='btn_cancel' value='취소' />
 			</div>
+			
+			<div id='timer_area'>
+			<label>${tbl_u}로부터 응답을 기다리는 중...(30초 제한)</label>&nbsp;
+			<input type='text' id='timer_text' />
+			</div>
+			
 			<div id='result'></div>
+			<textarea></textarea>
 			
 		</div>
 	</form>
