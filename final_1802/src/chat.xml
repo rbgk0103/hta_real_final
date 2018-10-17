@@ -46,7 +46,7 @@
 		and c.chat_receiver = 'a' 
 		order by c.chat_date asc
 	</select>
-	<select id="chat_one_to_one_list" resultType="bean.TotalChatListVo" parameterType="String">
+	<select id="chat_one_to_one_list" resultType="bean.TotalChatListVo" parameterType="bean.ChatVo">
 		select g.table_no, g.guest_gender, c.chat_date, c.chat_sender, c.chat_text, c.chat_receiver
 		from guest g full outer join table_status ts 
 		on g.table_no = ts.tbl_no 
@@ -60,8 +60,16 @@
 			where g.guest_status = '1') 
 		and to_char(sysdate, 'YY/MM/DD') 
 		and c.chat_receiver != 'a' 
-		and (c.chat_sender = #{receiver} or c.chat_receiver = #{receiver}) 
+		and ( (
+				c.chat_sender = #{chat_sender} 
+				and c.chat_receiver = #{chat_receiver}) 
+			or (
+				c.chat_sender = #{chat_receiver} 
+				and c.chat_receiver = #{chat_sender}
+			) )
 		order by c.chat_date asc
+		
+		
 	</select>
 	<insert id="chat_insert" parameterType="bean.ChatVo">
 		insert into chat values (

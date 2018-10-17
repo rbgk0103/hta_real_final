@@ -35,19 +35,24 @@ public class ChatController {
 	public ModelAndView content(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
 		String msg = req.getParameter("msg");
-		String receiveNo = msg.substring(1);
+		String senderNo = msg.substring(0, 1);
+		String receiverNo = msg.substring(1);
+		
 		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
 		if(msg.substring(1).equals("a")) {
 			list = chatDao.totalChatList();
 		} else {
-			list = chatDao.oneToOneChatList(receiveNo);
+			ChatVo vo = new ChatVo();
+			vo.setChat_sender(senderNo);
+			vo.setChat_receiver(receiverNo);
+			list = chatDao.oneToOneChatList(vo);
 		}
 		
 		System.out.println("1대1대화중의 msg : " + msg);
 		if(list != null) {
 			modelAndView.addObject("totalChatList", list);
 		}
-		modelAndView.addObject("receiveNo", receiveNo);
+		modelAndView.addObject("receiveNo", receiverNo);
 		modelAndView.addObject("tableNo", msg.substring(0, 1));
 		modelAndView.setViewName("chat/chatContent");
 		return modelAndView;

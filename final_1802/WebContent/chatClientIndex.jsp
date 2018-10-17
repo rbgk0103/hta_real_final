@@ -163,7 +163,7 @@
 		function sendMessage() {
 			var message = document.getElementById('msg').value;
 			if ($.trim(message) !== "") {
-				webSocket.send(reqAttrMyNo + ${receiveNo} + message + ipCut);
+				webSocket.send(reqAttrMyNo + '${empty param.receiveNo ? "a" : param.receiveNo}' + message + ipCut);
 			}
 			message = "";	//textarea 지움
 		}

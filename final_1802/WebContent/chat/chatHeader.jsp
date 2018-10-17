@@ -11,7 +11,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <c:choose>
-	<c:when test="${receiveStringNo eq 'a'}">
+	<c:when test="${receiveStringNo eq 'a' || empty receiveStringNo && empty receiveIntNo}">
 		<div class="col-md-1 col-xs-1 receiveBackground" id="allCircleBorder" onclick="setReceiver('a')">
 			<p>전체</p>
 		</div>
@@ -36,17 +36,11 @@
 			<c:if test="${i.table_no != tableNo}">
 				<c:choose>
 					<c:when test="${i.table_no eq receiveIntNo}">
-					${i.table_no }
-					${receiveStringNo }
-					${receiveIntNo }
 						<div class="col-md-2 col-xs-2 circleBorder receiveBackground" id="circleBorder" onclick="setReceiver(${i.table_no })">
 							<p>No. ${i.table_no}</p>
 						</div>
 					</c:when>
 					<c:otherwise>
-					${i.table_no}
-					${receiveStringNo }
-					${receiveIntNo }
 						<div class="col-md-2 col-xs-2 circleBorder" id="circleBorder" onclick="setReceiver(${i.table_no })">
 							<p>No. ${i.table_no}</p>
 						</div>
@@ -67,7 +61,7 @@
 <script>
 	
 	function movePage(nowPage) {
-		var param = "&ip=" + "${ip}" + "&nowPage=" + nowPage + "&receiveNo=" + '${receiveNo}';
+		var param = "&ip=${ip}&nowPage=" + nowPage + "&receiveNo=${receiveIntNo}";
 		$("#chatHeader").load("header.chat", param);
 	}
 	
@@ -78,6 +72,7 @@
 		var circleBorderClass = document.getElementsByClassName('circleBorder');
 		console.log("receiveNo : " + receiveNo);
 		
+		console.log("chatHeader 클릭 시 메세지들 호출 : " + reqAttrMyNo + receiveNo);
 		$('#chatContent').load("content.chat", "msg=" + reqAttrMyNo + receiveNo);
 		$('#chatHeader').load("header.chat", "ip=" + ip + "&nowPage=" + ${chatDao.nowPage} + "&receiveNo=" + receiveNo);
 	}

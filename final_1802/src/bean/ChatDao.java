@@ -37,9 +37,9 @@ public class ChatDao {
 		}
 	}
 	
-	public List<TotalChatListVo> oneToOneChatList(String sender) {
+	public List<TotalChatListVo> oneToOneChatList(ChatVo vo) {
 		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
-		list = sqlSession.selectList("chat.chat_one_to_one_list", sender);
+		list = sqlSession.selectList("chat.chat_one_to_one_list", vo);
 		return list;
 	}
 	

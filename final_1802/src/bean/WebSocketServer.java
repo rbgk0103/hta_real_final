@@ -22,11 +22,10 @@ public class WebSocketServer {
 	
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {
-		
 		if(msg.length() > 4) {
 			for(Session sess : clients) {
 				sess.getBasicRemote().sendText(msg);
-				System.out.println(sess.getBasicRemote().hashCode());
+				System.out.println("msg : " + msg);
 			}
 		} else {
 			System.out.println("msg : " + msg);

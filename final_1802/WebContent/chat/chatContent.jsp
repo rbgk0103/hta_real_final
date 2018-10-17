@@ -57,3 +57,8 @@
 		</div>
 	</c:forEach>
 </c:if>
+<script>
+	$(function() {
+		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+	})
+</script>
