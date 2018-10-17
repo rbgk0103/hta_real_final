@@ -61,7 +61,8 @@
 <script>
 	
 	function movePage(nowPage) {
-		var param = "&ip=${ip}&nowPage=" + nowPage + "&receiveNo=${receiveIntNo}";
+		var param = "&ip=${ip}&nowPage=" + nowPage + "&receiveNo=${empty receiveIntNo ? 'a' : receiveIntNo}";
+		console.log("movePage param : " + param);
 		$("#chatHeader").load("header.chat", param);
 	}
 	
@@ -72,7 +73,7 @@
 		var circleBorderClass = document.getElementsByClassName('circleBorder');
 		console.log("receiveNo : " + receiveNo);
 		
-		console.log("chatHeader 클릭 시 메세지들 호출 : " + reqAttrMyNo + receiveNo);
+		console.log("serReceiver param : " + "ip=" + ip + "&nowPage=" + ${chatDao.nowPage} + "&receiveNo=" + receiveNo);
 		$('#chatContent').load("content.chat", "msg=" + reqAttrMyNo + receiveNo);
 		$('#chatHeader').load("header.chat", "ip=" + ip + "&nowPage=" + ${chatDao.nowPage} + "&receiveNo=" + receiveNo);
 	}

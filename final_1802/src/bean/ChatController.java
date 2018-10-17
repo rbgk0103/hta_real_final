@@ -78,6 +78,7 @@ public class ChatController {
 	
 	@RequestMapping(value="getIp.chat")
 	public ModelAndView onOpen(HttpServletRequest req) {
+		System.out.println("ㅅㅂ");
 		ModelAndView modelAndView = new ModelAndView();
 		String url = "";
 		String ip = req.getParameter("ip");
