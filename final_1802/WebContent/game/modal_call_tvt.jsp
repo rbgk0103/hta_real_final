@@ -9,7 +9,7 @@
 		<div class="modal-content">
 			<div class="modal-header" id ='modal_call_tvt_header'>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">테이블vs테이블 게임요청 </h4>
+				<h4 class="modal-title" id="myModalLabel" style='color:black; background-color: green'>테이블vs테이블 게임요청 </h4>
 			</div>
 			<div class="modal-body">
 			
@@ -24,11 +24,12 @@
 				</div>
 				<div id='modal_call_tvt_gt_and_menu'>
 					<div id='modal_call_tvt_gt'>
-						<div id='modal_call_tvt_gt_image'>
-							<img src='./img/game_img/${gtVo.gtImage}'/>
-						</div>
+						<img src='./img/game_img/${gtVo.gtImage}'/>
+						<h3>${gtVo.gtName }</h3>
 					</div>
 					<div id='modal_call_tvt_menu'>
+						<img src='./admin/menu/menuImg/${menuVo.menu_image}'/>
+						<h3>${menuVo.menu_name}</h3>
 					</div>
 					
 				</div>
