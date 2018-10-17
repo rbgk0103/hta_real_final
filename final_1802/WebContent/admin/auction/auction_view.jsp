@@ -2,11 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel='stylesheet' type='text/css' href='./css/auction.css'   />
-<style>
-#frm_auction #button .button{
-	
-}
-</style>
+
 <script>
 $().ready(function(){
 	$("#btnClose").click(function(){
@@ -36,6 +32,9 @@ $().ready(function(){
 					<h1>
 						<label class='auction_header'>A U C T I O N</label>
 					</h1>
+				</div>
+				<div id='auction_menu'>
+					<img src='./auction/images/${m_vo.menu_image }' width='280px' height='280px'/>
 				</div>	
 			<div id='win_ment'>
 			<!-- INT 값은 value 에 '' 나 "" 를 붙이지 않는다. -->

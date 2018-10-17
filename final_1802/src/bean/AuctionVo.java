@@ -10,6 +10,8 @@ public class AuctionVo {
 	int  ae_cost;
 	int  ae_pct_min;
 	int  ae_win_table;
+	int startNo;
+	int endNo;
 	
 	
 	public int getAe_no() {
@@ -60,5 +62,18 @@ public class AuctionVo {
 	public void setAe_win_table(int ae_win_table) {
 		this.ae_win_table = ae_win_table;
 	}
+	public int getStartNo() {
+		return startNo;
+	}
+	public void setStartNo(int startNo) {
+		this.startNo = startNo;
+	}
+	public int getEndNo() {
+		return endNo;
+	}
+	public void setEndNo(int endNo) {
+		this.endNo = endNo;
+	}
+	
 		
 }

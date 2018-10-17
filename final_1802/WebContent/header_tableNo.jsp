@@ -1,3 +1,6 @@
+<%@page import="bean.AuctionVo"%>
+<%@page import="bean.AuctionDao"%>
+<%@page import="java.util.List"%>
 <%@page import="java.net.InetAddress"%>
 <%@page import="bean.TblVo"%>
 <%@page import="bean.IPDao"%>
@@ -24,8 +27,20 @@ TblVo tblVo = ipDao.tblVoSelectOne(tblIp);
 
 request.setAttribute("tblIp", tblIp);
 request.setAttribute("tblVo", tblVo);
+
 %>
 
+
+<!-- 규하가 쓸 거야 -->
+<% 
+AuctionDao aDao = new AuctionDao();
+List<AuctionVo> auctionList = aDao.list();
+
+int length = auctionList.size();
+
+request.setAttribute("length", length);
+request.setAttribute("auctionList", auctionList);
+%>
 
 <div class='col-md-1' id = 'header_tableNo'>
 	<a>No.0${tblVo.tbl_no}</a>

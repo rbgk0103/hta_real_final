@@ -24,13 +24,14 @@ function view(ae_no){
 	$(".skin-black").load("./auction_view.auc",param); 
 
 }
+
 </script>
 <body>
 <!-- 성공,실패 확인 메세지  -->
 ${msg }
 <div class="wrap">
    <form name = 'frm_auc' id = 'frm_auc' method = 'post'>
-   		<input type = 'text'  id = 'ae_no'   name = 'ae_no'/>
+   		<input type = 'hidden' id = 'ae_no'   name = 'ae_no'/>
    		<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
    </form>
    <div id='menu_div' class='menu_div' class="tbList paginated">
@@ -46,7 +47,7 @@ ${msg }
             </tr>
          </thead>
          
-       <c:forEach var='auc' items='${list }'>   
+       <c:forEach var='auc' items='${auctionList }'>   
          <tbody>
             <tr>
                <td><span>${auc.ae_no}</span></td>

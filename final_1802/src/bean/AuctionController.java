@@ -26,10 +26,22 @@ public class AuctionController {
       ModelAndView mv = new ModelAndView();      
       List<AuctionVo> list = dao.list();
       
-      mv.addObject("list",list);
+      mv.addObject("auctionList",list);
       mv.setViewName("auction/auction_list");
       return mv;
    }
+   
+//   @RequestMapping(value="auction_client.auc")
+//   public ModelAndView auctionClient() {
+//      System.out.println("con_client 입장");
+//      
+//      ModelAndView mv = new ModelAndView();      
+//      List<AuctionVo> list = dao.list();
+//      
+//      mv.addObject("list",list);
+//      mv.setViewName("auction/auctionClient");
+//      return mv;
+//   }
    
    //관리자 insert
    @RequestMapping(value="auction_input.auc")

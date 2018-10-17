@@ -35,7 +35,6 @@
 		update auction_events 
 		set ae_price = #{ae_price}, ae_pct_max = #{ae_pct_max}, ae_pct_min = #{ae_pct_min}
 		where ae_no = #{ae_no}
-	</update>
-	
+	</update>	
 	
 </mapper>

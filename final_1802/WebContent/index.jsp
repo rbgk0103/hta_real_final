@@ -178,7 +178,30 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./members/modal_call_members_findInfo.jsp" %>
 <%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
+window.onload = function(){
+	var stDate = new Date().toLocaleString();
+	
+	setInterval(function() {
+		for(var i=0 ; i < ${length} ; i++){
+			if (stDate == '${auctionList.get(i).ae_date}'){
+				alert("경매시작시간");
+			} else {
+				/* alert(stDate); */
+			}
+		}
+	}, 1000); 
 
+//	if(stDate ){
+	
+//	}else{
+	
+//	}
+//	for( i = 0; i <= ${list} ;i++){
+//     alert(${i.ae_date } );
+//	} 
+
+
+}
 
 
 $("#mbr_logout").click(function(){
