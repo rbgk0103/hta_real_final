@@ -44,7 +44,7 @@
 					<button type="button" class="btn btn-success btn-lg" name="btn_mbr_login" id="btn_mbr_login">LOGIN</button>
 				</div>
 				<div class="col-sm-2">
-					<button type="button" class="btn btn-primary btn-lg" name="btn_close" data-dismiss="modal">CANCEL</button>
+					<button type="button" class="btn btn-primary btn-lg" name="btn_close" id="btn_modal_close" data-dismiss="modal">CANCEL</button>
 				</div>
 				<div class="col-sm-4">
 					<div class="col-sm-12 form-inline">
@@ -66,5 +66,8 @@
 	$("#btn_mbr_login").click(function(){
 		var param = $("#frm_mbr_login").serialize();
 		$("#mbr_login_result").load("./login.mbr", param);
-	})	
+	})
+	$("#btn_modal_close").click(function(){
+		window.location.reload();
+	})
 </script>

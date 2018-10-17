@@ -58,7 +58,8 @@ text-shadow:
 #modal_call_employee_footer{}
 #modal_call_employee_footer_commit{background-color:#282832;}
 #header_mbr{line-height: 2.9; position: absolute; right: 15%; top: 30%; outline: none;}
-.glyphicon {color: #fff; font-size: 50px; cursor: pointer;}
+.glyphicon {color: #FF8000; font-size: 50px; cursor: pointer;}
+.dropdown-menu li {cursor: pointer;}
 .dropdown-menu li > a:hover {color: black;}
 </style>
 <title>중앙 포차</title>
@@ -101,7 +102,7 @@ if(request.getParameter("content") !=null){
 			
 			<button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
 				<div class="dropdown">
-				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 				</div>
 			</button>
 			

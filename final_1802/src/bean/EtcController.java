@@ -33,7 +33,8 @@ public class EtcController {
 			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
 		}
 		
-		
+		System.out.println("리스트 컨트롤에서 findStr : " + findStr);
+		System.out.println("리스트 컨트롤러 nowPage : " + nowPage);
 		page.setNowPage(nowPage);
 		List<MembersVo> list = dao.list(findStr);
 		
@@ -90,32 +91,9 @@ public class EtcController {
 		
 		int mbrNo = Integer.parseInt(req.getParameter("mbrNo"));
 		
-		String findStr = "";
-		
-		if(req.getParameter("mbr_findStr") != null) {
-			findStr = req.getParameter("mbr_findStr");
-		}
-		
-		int nowPage = 1;
-		
-		if(req.getParameter("mbr_nowPage") != null) {
-			nowPage = Integer.parseInt(req.getParameter("mbr_nowPage"));
-		}
-		
 		boolean b = dao.delete(mbrNo);
 		
-		page.setNowPage(nowPage);
-		List<MembersVo> list = dao.list(findStr);
-		
-		if(b) {
-			
-			mv.addObject("mbr_findStr", findStr);
-			mv.addObject("mbr_nowPage", nowPage);
-			mv.addObject("page", page);
-			mv.addObject("list", list);
-			
-			mv.setViewName("members_manage/mbr_list");
-		}
+		mv.setViewName("forward:/mbr_list.etc");
 		
 		return mv;
 	}

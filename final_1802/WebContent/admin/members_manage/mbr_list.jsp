@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <style>
+a {color: black; text-decoration: none;}
 li {list-style: none;}
 #section_mbr_list {margin: 0; auto; margin-top: 5%;}
 .findZone #frm_mbr_list {text-align: right;}
@@ -15,7 +16,11 @@ li {list-style: none;}
 </style>
 <div class="col-sm-1"></div>
 <div id="section_mbr_list" class="col-sm-10">
-	<h3>Members List</h3>
+	<h3>
+		<a href="./mbr_list.etc">
+			<span>Members List</span>
+		</a>
+	</h3>
 	<br/>
 	<div class="col-sm-4"></div>
 	<div class="form-group col-sm-8 findZone">
@@ -122,7 +127,7 @@ $("#btn_mbr_find").click(function(){
 	location.href='mbr_list.etc?'+param;
 });
 function movePage(nowPage){
-	$("#nowPage").val(nowPage);
+	$("#mbr_nowPage").val(nowPage);
 	var param = $("#frm_mbr_list").serialize();
 	location.href='mbr_list.etc?'+param;
 }
@@ -144,7 +149,11 @@ function mbrModify(mbrNo, mbrId, mbrPwd, mbrName, mbrPhone, mbrBirth, mbrGender,
 }
 function mbrDelete(mbrNo){
 	$("#mbrNo").val(mbrNo);
-	var param = $("#frm_mbr_list").serialize();
-	location.href='mbr_delete.etc?'+param;
+	
+	var frm = $("#frm_mbr_list")[0];
+	
+	frm.setAttribute("method", "post");
+	frm.setAttribute("action", "mbr_delete.etc")
+	frm.submit();
 }
 </script>
