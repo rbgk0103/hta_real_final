@@ -30,8 +30,6 @@ public class WebSocketTvTServer {
 	public void onOpen(Session s) {
 		System.out.println("session open : " + s);
 		clients.add(s);
-		System.out.println("현재 접속한 사용자 수: " + clients.size());
-		
 	}
 
 	@OnClose

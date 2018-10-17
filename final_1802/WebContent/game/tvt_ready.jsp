@@ -20,8 +20,9 @@ $(document).ready(function(){
 
 	// 보내는 메시지
 	$('#tvt_ready_wrap #btn_req').click(function() {
-		
-	   tvtWebSocket.send('${tblVo.tbl_no}' + ',' + '${tbl_u}' + ',' + '${gtVo.gtName}' + ',' + '${gtVo.gtImage}');
+		// 내 테이블번호,상대 테이블번호,게임타이틀번호,음식번호
+		tvtMsg = '${tblVo.tbl_no}' + ',' + '${tbl_u}' + ',' + '${gtVo.gtNo}' + ','  + '${menuVo.menu_no}';		
+	   tvtWebSocket.send(tvtMsg);
 	})	
 });
 
