@@ -58,7 +58,7 @@
 	            </a>
          	</li>
             <li class="#">
-                <a href="simple.html">
+                <a href="./adj_list.adj">
                 	<span>정산</span>
                 </a>
             </li>
