@@ -28,13 +28,11 @@ public class WebSocketTvTServer {
 
 	@OnOpen
 	public void onOpen(Session s) {
-		System.out.println("session open : " + s);
 		clients.add(s);
 	}
 
 	@OnClose
 	public void onClose(Session s) {
-		System.out.println("session close : " + s);
 		clients.remove(s);
 	}
 	

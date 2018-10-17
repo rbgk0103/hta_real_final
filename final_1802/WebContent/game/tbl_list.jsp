@@ -28,6 +28,8 @@
 						
 							<c:when test="${i.tbl_no eq tblVo.tbl_no}">
 								<span>여기는 나의 테이블</span>
+								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
+						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" />
 						 	</c:when>
 						 	<c:otherwise>
 								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
@@ -66,7 +68,7 @@ function go_main_ord(tbl_no) {
 	f.tbl_u.value = tbl_no;		// 대적할 상대의 테이블번호
 	
 	f.method = 'POST';
-	f.action = 'index.jsp?content=main.ord';
+	f.action = 'main.ord';
 	f.submit();
 } 
 </script>

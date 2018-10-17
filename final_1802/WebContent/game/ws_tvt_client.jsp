@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file='/game/modal_call_tvt_req.jsp' %>
+<%@ include file='/game/modal_call_tvt.jsp' %>
 
 
 <style>
@@ -33,7 +33,7 @@ $(document).ready(function(){
 			var tbl_noB = msg.data.substring(2,3);	// 대전신청받은 테이블번호
 			
 			if (tbl_noB === '${tblVo.tbl_no}') {	// 자기 테이블 번호에게 대전신청이 들어오면
-				alert(tbl_noA + '번 테이블에서 나(' + '${tblVo.tbl_no}' + '에게 대전신청했음');
+				$('#btn_tvt_modal').click();
 			}
 		
 		}
@@ -51,6 +51,8 @@ $(document).ready(function(){
 	
 	/* 모달 */
 	$('#btn_tvt_modal').click(function(){
+
+		
 	})
 	
 	
@@ -65,7 +67,7 @@ $(document).ready(function(){
 		<input type='text' id='msg' /> 
 		<input type='button' value='send' id='btnSend' />
 		
-		<a href='#' data-toggle='modal' data-target='#modal_call_tvt_req'>
+		<a href='#' data-toggle='modal' data-target='#modal_call_tvt'>
 			<input type='button' value='모달띄우기' id='btn_tvt_modal' />
 		</a>
 		
