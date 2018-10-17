@@ -20,8 +20,13 @@ $(document).ready(function(){
 
 	// 보내는 메시지
 	$('#tvt_ready_wrap #btn_req').click(function() {
-		// 내 테이블번호,상대 테이블번호,게임타이틀번호,음식번호
-		tvtMsg = '${tblVo.tbl_no}' + ',' + '${tbl_u}' + ',' + '${gtVo.gtNo}' + ','  + '${menuVo.menu_no}';		
+		// 내 테이블번호,상대 테이블번호,게임타이틀이미지,게임타이틀이름, 메뉴이미지, 메뉴이름
+		tvtMsg = '${tblVo.tbl_no},'				// 내 테이블번호
+		 	   + '${tbl_u},'	 				// 상대 테이블번호
+		 	   + '${gtVo.gtImage},'				// 게임타이틀이미지	
+		 	   + '${gtVo.gtName},'				// 게임타이틀이름
+		 	   + '${menuVo.menu_image},'			// 메뉴이미지
+		 	   + '${menuVo.menu_name}';			// 메뉴이름
 	   tvtWebSocket.send(tvtMsg);
 	})	
 });

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ include file='/game/modal_call_tvt.jsp' %>
+
 
 
 <style>
@@ -16,8 +16,14 @@
 </style>
 
 <script>
+var tvtMsgArr;
+
 $(document).ready(function(){
 	
+	
+	/*
+	1,1,gt_pacman.png,팩맨,fury_2.jpg,치즈콘비엔날레
+	*/
 	/* 웹소켓 */
 	var tvtWebSocket = new WebSocket(
 		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
@@ -29,10 +35,21 @@ $(document).ready(function(){
 
 		tvtWebSocket.onmessage = function(msg) {
 			
-			var tbl_noA = msg.data.substring(0,1);	// 대전신청한 테이블번호
-			var tbl_noB = msg.data.substring(2,3);	// 대전신청받은 테이블번호
+			// 도전자 테이블번호, 도전받는 테이블번호,게임타이틀이미지,게임타이틀이름, 메뉴이미지, 메뉴이름 
+			tvtMsgArr = msg.data.split(',');	
 			
-			if (tbl_noB === '${tblVo.tbl_no}') {	// 자기 테이블 번호에게 대전신청이 들어오면
+			if (tvtMsgArr[1] === '${tblVo.tbl_no}') {	// 자기 테이블 번호에게 대전신청이 들어오면
+				
+				$('#modal_tvt_tblNoA').text(tvtMsgArr[0]);	
+			
+				$('#modal_tvt_gt_img').attr("src", './img/game_img/' + tvtMsgArr[2]);
+				$('#modal_tvt_gtName').text(tvtMsgArr[3]);
+				
+				$('#modal_tvt_menu_img').attr("src", './admin/menu/menuImg/' + tvtMsgArr[4]);
+				$('#modal_tvt_menuName').text(tvtMsgArr[5]);
+				
+			
+				// 모달을 띄운다
 				$('#btn_tvt_modal').click();
 			}
 		
@@ -64,13 +81,14 @@ $(document).ready(function(){
 	<div id='ws_tvt_client'>
 		<span>이 컴퓨터 IP끝자리: ${tblIp}</span>
 		
-		<input type='text' id='msg' /> 
-		<input type='button' value='send' id='btnSend' />
+		<input type='text' id='msg' style='display:hidden' /> 
+		<input type='button' value='send' id='btnSend' style='display:hidden' />
 		
 		<a href='#' data-toggle='modal' data-target='#modal_call_tvt'>
-			<input type='button' value='모달띄우기' id='btn_tvt_modal' />
+			<input type='button' value='모달띄우기' id='btn_tvt_modal' style='display:hidden' />
 		</a>
 		
-		<div id='result'></div>
-
 	</div>
+	
+	<%@ include file='/game/modal_call_tvt.jsp' %>
+	<!-- 이 밑으로는 modal_call_tvt -->
