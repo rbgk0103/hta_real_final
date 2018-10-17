@@ -9,7 +9,8 @@
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
-
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <!-- bootstrap 3.0.2 -->
 <link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- google font -->
