@@ -83,9 +83,12 @@ function appendMenu(no, name, price){
 			document.getElementsByClassName("spanCnt")[index].innerHTML
 			 = Number(document.getElementsByClassName("spanCnt")[index].innerHTML) +1;
 			document.getElementsByName("os_price")[index].value
-			= (document.getElementsByName("os_price")[index].value) *
-			  (document.getElementsByClassName("spanCnt")[index].innerHTML);
-			alert(document.getElementsByName("os_price")[index].value);
+			= (price) *
+			  Number(document.getElementsByClassName("spanCnt")[index].innerHTML);
+			document.getElementsByName("os_qty")[index].value
+			= document.getElementsByClassName("spanCnt")[index].innerHTML
+			
+			alert(document.getElementsByName("os_qty")[index].value + "개와     " + document.getElementsByName("os_price")[index].value);
 			
 	}
 }

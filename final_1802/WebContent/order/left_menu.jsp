@@ -18,6 +18,8 @@
 function leftMenu(menu_type){
 	$('#leftMenu #findStr').val(menu_type);
 	var param = $('#leftMenu').serialize();
-	$('#menu_list').load('center.ord', param);
+	$('#c_menu').load('center.ord', param);
 }
+
+
 </script>
