@@ -39,11 +39,9 @@ public class WebSocketServer {
 				System.out.println("전체채팅 보냄~");
 			} else {
 				if(client.get(receiverNo) != null) {
+					client.get(senderNo).getBasicRemote().sendText(msg);
 					client.get(receiverNo).getBasicRemote().sendText(msg);
 					System.out.println("접속사람에게 1대1 채팅 보냄~");
-				} else {
-					client.get(senderNo).getBasicRemote().sendText(msg);
-					System.out.println("부재중 메세지");
 				}
 			}
 		}

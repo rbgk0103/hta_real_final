@@ -55,7 +55,7 @@
 		$('#call_employee').click(function(){
 			window.open("", "message", "_blank", 'width=120, height=400');
 			var df = document.message_form;
-			df.action="./admin/admin_call_employee.jsp";
+			df.action="./admin/admin_call_employee.jsp?msg=asdf";
 			df.submit();
 		})
 	});

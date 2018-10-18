@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id = "call_employee">
-	
+		${param.msg }
 	</div>
 </body>
 </html>

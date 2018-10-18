@@ -96,16 +96,6 @@ public class ChatController {
 		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
 		List<GuestVo> sessionOpenAllTableList = chatDao.sessionOpenAllTableList();
 		List<TotalChatListVo> totalChatList = chatDao.totalChatList();
-		/*if(req.getParameter("nowPage") != null) {
-			url = "chat/chatHeader";
-		} else {
-			url = "chatClientIndex";
-		}*/
-		Iterator<TotalChatListVo> iterator = totalChatList.iterator();
-		while(iterator.hasNext()) {
-			TotalChatListVo vo = iterator.next();
-			System.out.println("getIp 메소드 : " + vo.getGuest_gender());
-		}
 		
 		modelAndView.addObject("totalChatList", totalChatList);
 		modelAndView.addObject("ip", ip);

@@ -52,7 +52,7 @@ public class WebSocketServerRequest {
 			while(iterator.hasNext()){
 				  String key = (String)iterator.next();
 				  
-				  if (Integer.parseInt(key) == 4) {
+				  if (Integer.parseInt(key) == 6) {
 					  session.getBasicRemote().sendText(msg);
 					  System.out.println(msg);
 				  }

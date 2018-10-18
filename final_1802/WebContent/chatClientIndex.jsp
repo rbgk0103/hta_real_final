@@ -149,7 +149,6 @@
 			}
 			
 			$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-			$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
 		}
 	
 		webSocket.onclose = function() {
@@ -167,6 +166,7 @@
 			var message = document.getElementById('msg').value;
 			var receiveNo = document.getElementById('receiverNo').value;
 			console.log("sendMessage receiveNo : " + receiveNo);
+			$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
 			if ($.trim(message) !== "") {
 				webSocket.send(reqAttrMyNo + receiveNo + message + ipCut);
 				document.getElementById('msg').value = "";	//textarea 지움
