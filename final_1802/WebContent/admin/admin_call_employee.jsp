@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id = "call_employee_new">
-		/////
+	<div id = "call_employee">
+		${param.msg }
 	</div>
 </body>
 </html>

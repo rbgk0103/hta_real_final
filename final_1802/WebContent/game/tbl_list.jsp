@@ -43,11 +43,11 @@
 
 			<!-- 값 확인용 -->
 			<div>
-				<input class='input_text' type='text' name='page' value='${param.page}' /><br/>
-				<input class='input_text' type='text' name='gt_with' value='${param.gt_with}'  /><br/>
-				<input class='input_text' type='text' name='gt_no' value='${param.gt_no}' /><br/>
-				<input class='input_text' type='text' name='tbl_i' value='1' /><br/>
-				<input class='input_text' type='text' name='tbl_u' />
+				<input class='input_text' type='hidden' name='page' value='${param.page}' /><br/>
+				<input class='input_text' type='hidden' name='gt_with' value='${param.gt_with}'  /><br/>
+				<input class='input_text' type='hidden' name='gt_no' value='${param.gt_no}' /><br/>
+				<input class='input_text' type='hidden' name='tbl_i' value='1' /><br/>
+				<input class='input_text' type='hidden' name='tbl_u' />
 				 
 			</div>
 		</div>

@@ -78,6 +78,7 @@ public class ChatController {
 	
 	@RequestMapping(value="getIp.chat")
 	public ModelAndView onOpen(HttpServletRequest req) {
+		System.out.println("ㅅㅂ");
 		ModelAndView modelAndView = new ModelAndView();
 		String url = "";
 		String ip = req.getParameter("ip");
@@ -95,16 +96,6 @@ public class ChatController {
 		List<GuestVo> openTableList = chatDao.openTableList(tableNo);
 		List<GuestVo> sessionOpenAllTableList = chatDao.sessionOpenAllTableList();
 		List<TotalChatListVo> totalChatList = chatDao.totalChatList();
-		/*if(req.getParameter("nowPage") != null) {
-			url = "chat/chatHeader";
-		} else {
-			url = "chatClientIndex";
-		}*/
-		Iterator<TotalChatListVo> iterator = totalChatList.iterator();
-		while(iterator.hasNext()) {
-			TotalChatListVo vo = iterator.next();
-			System.out.println("getIp 메소드 : " + vo.getGuest_gender());
-		}
 		
 		modelAndView.addObject("totalChatList", totalChatList);
 		modelAndView.addObject("ip", ip);

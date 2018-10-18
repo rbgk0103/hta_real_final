@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <title>**채팅방**</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet"
@@ -73,8 +72,8 @@
 		console.log("ipCut : " + ipCut);
 		var list = "${allTableList}";
 		
-		$('#chatContent').load("content.chat", "msg=" + reqAttrMyNo + "a");
-		$('#chatHeader').load("header.chat", "ip=" + ip + "&nowPage=1&receiveNo=a");
+		//$('#chatContent').load("content.chat", "msg=" + reqAttrMyNo + "a");
+		//$('#chatHeader').load("header.chat", "ip=" + ip + "&nowPage=1&receiveNo=a");
 		
 		webSocket.onopen = function() {
 			webSocket.send(reqAttrMyNo + "a" + ipCut);	//4자리
@@ -82,71 +81,74 @@
 		
 		webSocket.onmessage = function(msg) {
 			var msgSenderNo = msg.data.substring(0, 1);
+			var msgReceiverNo = msg.data.substring(1, 2);
 			var msgGetGender = document.getElementById(msgSenderNo).value;
 			var msgData = msg.data.substring(2, msg.data.length-2);
-			
-			if (msgSenderNo === reqAttrMyNo) {
-				switch (msgGetGender) {
-				case "man" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="send">'
-					+ '<h6>No. ' + reqAttrMyNo + '</h6>'
-					+ '<div class="chatManBox">'
-					+ msgData + '</div></div></div>');
-					
-				case "woman" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="send">'
-					+ '<h6>No. ' + reqAttrMyNo + '</h6>'
-					+ '<div class="chatWomanBox">'
-					+ msgData + '</div></div></div>');
-					
-				case "seam" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="send">'
-					+ '<h6>No. ' + reqAttrMyNo + '</h6>'
-					+ '<div class="chatSeamBox">'
-					+ msgData + '</div></div></div>');
-				}
-			} else {
-				$('#chatContent').append
-				( '<div class="textBlock col-md-12 col-xs-12">'
-				+ '<div class="receive">'
-				+ '<h6>No. ' + msgSenderNo + '</h6>'
-				+ msgData + '</div></div></div>');
-				
-				switch (msgGetGender) {
-				case "man" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="receive">'
-					+ '<h6>No. ' + msgSenderNo + '</h6>'
-					+ '<div class="chatManBox">'
-					+ + msgData + '</div></div></div>');
-					
-				case "woman" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="receive">'
-					+ '<h6>No. ' + msgSenderNo + '</h6>'
-					+ '<div class="chatWomanBox">'
-					+ + msgData + '</div></div></div>');
-					
-				case "seam" : 
-					$('#chatContent').append
-					( '<div class="textBlock col-md-12 col-xs-12">'
-					+ '<div class="receive">'
-					+ '<h6>No. ' + msgSenderNo + '</h6>'
-					+ '<div class="chatSeamBox">'
-					+ + msgData + '</div></div></div>');
+			var idReceiveNoValue = document.getElementById('receiverNo').value;
+			console.log("msg : " + msgData);
+			if(idReceiveNoValue === msgReceiverNo) {
+				if (msgSenderNo === reqAttrMyNo) {
+					switch (msgGetGender) {
+					case "man" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="send">'
+						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
+						+ '<div class="chatManBox">'
+						+ msgData + '</div></div></div>');
+						break;
+						
+					case "woman" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="send">'
+						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
+						+ '<div class="chatWomanBox">'
+						+ msgData + '</div></div></div>');
+						break;
+						
+					case "seam" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="send">'
+						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
+						+ '<div class="chatSeamBox">'
+						+ msgData + '</div></div></div>');
+						break;
+					}
+				} else {
+					switch (msgGetGender) {
+					case "man" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="receive">'
+						+ '<h6>No. ' + msgSenderNo + '</h6>'
+						+ '<div class="chatManBox">'
+						+ + msgData + '</div></div></div>');
+						break;
+						
+					case "woman" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="receive">'
+						+ '<h6>No. ' + msgSenderNo + '</h6>'
+						+ '<div class="chatWomanBox">'
+						+ + msgData + '</div></div></div>');
+						break;
+						
+					case "seam" : 
+						$('#chatContent').append
+						( '<div class="textBlock col-md-12 col-xs-12">'
+						+ '<div class="receive">'
+						+ '<h6>No. ' + msgSenderNo + '</h6>'
+						+ '<div class="chatSeamBox">'
+						+ + msgData + '</div></div></div>');
+						break;
+					}
 				}
 			}
 			
 			$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-			$('#model').load("insert.chat", "&msg=" + msg.data);	//메세지 DB 저장용
 		}
 	
 		webSocket.onclose = function() {
@@ -162,10 +164,13 @@
 	
 		function sendMessage() {
 			var message = document.getElementById('msg').value;
+			var receiveNo = document.getElementById('receiverNo').value;
+			console.log("sendMessage receiveNo : " + receiveNo);
+			$('#model').load("insert.chat", "msg=" + msg.data);	//메세지 DB 저장용
 			if ($.trim(message) !== "") {
-				webSocket.send(reqAttrMyNo + '${empty param.receiveNo ? "a" : param.receiveNo}' + message + ipCut);
+				webSocket.send(reqAttrMyNo + receiveNo + message + ipCut);
+				document.getElementById('msg').value = "";	//textarea 지움
 			}
-			message = "";	//textarea 지움
 		}
 	</script>
 </body>

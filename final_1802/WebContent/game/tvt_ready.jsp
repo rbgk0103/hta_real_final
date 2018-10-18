@@ -41,6 +41,13 @@ var timerId = 0;
 			console.log('이봉기');
 			count--;
 			$('#timer_text').val(count);
+			
+			// 남은시간 0초 되면
+			if (count === 0) {
+				clearInterval(timerId);
+			}
+			
+			
 		}, 1000);
 	   	
 	   	
@@ -98,8 +105,6 @@ var timerId = 0;
 			
 			<div id='tvt_req'>
 				<input type='button' id='btn_req' name='btn_req' value='대전신청' />
-				<input type='button' id='btn_timer_start' value='타이머시작' />
-				<input type='button' id='btn_timer_stop' value='타이머종료' />
 				<input type='button' id='btn_req' name='btn_cancel' value='취소' />
 			</div>
 			
@@ -108,8 +113,6 @@ var timerId = 0;
 			<input type='text' id='timer_text' />
 			</div>
 			
-			<div id='result'></div>
-			<textarea></textarea>
 			
 		</div>
 	</form>
