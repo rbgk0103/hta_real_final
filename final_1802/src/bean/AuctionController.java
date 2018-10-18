@@ -69,6 +69,19 @@ public class AuctionController {
 		
     	return mv;
     }
+    @RequestMapping(value="auction_confirm.auc")
+    public ModelAndView auctionConfirm(HttpServletRequest req) {
+    	
+    	ModelAndView mv = new ModelAndView();
+    	System.out.println("con_confirm 입장");
+    	System.out.println("? : " + req.getParameter("hh"));
+
+    	System.out.println("? : " + Integer.parseInt(req.getParameter("hh")));
+    	dao.confirm(Integer.parseInt(req.getParameter("hh")));
+ 	   System.out.println("con4");
+
+    	return mv;
+    }
     
     //관리자 delete
     @RequestMapping(value="auction_delete.auc")

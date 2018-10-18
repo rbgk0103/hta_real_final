@@ -29,7 +29,7 @@ if(localIp.length() == 11){
 IPDao ipDao = new IPDao();
 TblVo tblVo = ipDao.tblVoSelectOne(auctionIp);
 
-	request.setAttribute("auctionIp", auctionIp);
+/* 	request.setAttribute("auctionIp", auctionIp); */
 	request.setAttribute("tblVo", tblVo);
 %>
 

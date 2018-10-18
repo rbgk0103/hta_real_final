@@ -14,6 +14,12 @@
  }
 %>
 <script>
+$().ready(function(){
+	ae_view($('#ae_no').val());
+})
+function ae_view(ae_no){
+	$('body').load("./auction_confirm.auc", ae_no);
+}
 window.onload=function(){ 
 // 	$('#auction').load('auction_client.auc');	
 
@@ -23,27 +29,12 @@ window.onload=function(){
 
 	//socket open 시 호출되는 event
 	webSocketAuc.onopen = function(){
-		setInterval(function() {
-				po=a
-			}, 1000);
 		
-// 		if(stDate ){
-			
-// 		}else{
-			
-// 		}
-// 		for( i = 0; i <= ${list} ;i++){
-//             alert(${i.ae_date } );
-// 		} 
-		
-		
-		alert("open 성공");	
 	}
 	
 	//socket send(입찰) 시 호출되는 event
 	webSocketAuc.onmessage = function(msg){
-		/*  $('#result').append('<div>' + msg.data + '</div>');  */
-		
+		$("#now_price").val(msg.data());
 	}
 	
 	//socket close 시 호출되는 event
@@ -51,8 +42,15 @@ window.onload=function(){
 		webSocketAuc.onclose(alert("Auction 연결종료"));
 	})
 	
-	$('#btnSend').click(function(){
-		webSocketAuc.send($('#msg').val());
+	$('#btnBat_one').click(function(){
+		$("#now_price").val($("#now_price").val() + $("#ae_max").val());
+		
+		webSocketAuc.send($("#now_price").val());
+	})
+	$('#btnBat_two').click(function(){
+		$("#now_price").val($("#now_price").val() + $("#ae_min").val());
+		
+		webSocketAuc.send($("#now_price").val());
 	})
 	
 }
@@ -64,15 +62,17 @@ window.onload=function(){
 	<div id ='header'>
 		<h1><label class = 'auction_header'>A U C T I O N</label></h1>
 		<jsp:include page= "./auctionHeader.jsp" />
-		<span>IP 주소 : ${auctionIp }</span>
 	</div>
 	<div id='auction_menu'>
 		<img src='' width='280px' height='280px'/>
 	</div>
-		<label class='menu_name'>첨처럼</label><br/>
-		<label class='now_price' >현재가 : 10,000</label><br/>
-		<strong><label class='start_price'>시작가 : 4,000</label></strong>
+		<label class='menu_name'></label><br/>
+		<label class='now_price' >현재가 : </label><br/>
+		<strong><label class='start_price'>시작가 : </label></strong>
 			<p/>
+			<input type = 'text' id ='ae_max' name = 'ae_max'/>
+			<input type = 'text' id ='ae_min' name = 'ae_min'/>
+			<input type = 'text' id ='ae_price' name = 'ae_price'/>
 			<input type='button' id='btnBat_one' value='+pct1' class='btn'/><br/> <!-- 송신버튼 1 -->
 			<input type='button' id='btnBat_two' value='+pct2' class='btn'/>	  <!-- 송신버튼2 -->
 			<p/> 

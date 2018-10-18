@@ -23,7 +23,7 @@
 			<label> <span class = 'ment'>7</span> 번 테이블이</label><br/>
 			<label> <span class = 'ment'>12,000</span> 원의 가격에</label><br/>
 			<label> <span class = 'ment' >처음처럼</span> 을 획득하셨습니다.</label><br/>
-			<input type = 'button' name = 'btnClose' id = 'btnClose' value = 'C L O S E' data-dismiss ='modal'/>
+			<input type = 'button' class = 'btn' name = 'btnClose' id = 'btnClose' value = 'C L O S E' data-dismiss ='modal'/>
 	</div>
 </form>
 </body>

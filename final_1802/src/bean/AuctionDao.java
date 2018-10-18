@@ -30,6 +30,7 @@ public class AuctionDao {
    //관리자 insert
    public String insert(HttpServletRequest req) {
 	  AuctionVo vo = new AuctionVo();
+	  System.out.println("dao_ins 입장");
 	  String msg = "";
 	  
 	  int cnt = 0;
@@ -59,6 +60,22 @@ public class AuctionDao {
 	   AuctionVo vo = new AuctionVo();
 	   vo = s.selectOne("auc.view",ae_no);
 	   return vo;
+   }
+   
+   //사용자 confirm
+   public void confirm(int ae_no) {
+	   int cnt = 0;
+	   System.out.println("con1");
+	   cnt = s.update("auc.auction_confirm", ae_no);
+	   System.out.println("con2");
+
+	   if(cnt > 0) {
+		   System.out.println("con3");
+
+		   s.commit();
+	   }else {
+		   s.rollback();
+	   }
    }
    
    //관리자 delete
