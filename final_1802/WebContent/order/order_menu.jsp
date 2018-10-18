@@ -15,20 +15,20 @@
 		</div>
 	</div>
 	<div id='l_menu'>
-<%-- 		<%@include file="left_menu.jsp" %> --%>
-		<div id='menu'>
-			<form id='leftMenu' method='post'>
-				<input type='hidden' name='findStr' id='findStr'/>
-			</form>
-			<ul>
-				<li onclick='leftMenu("best")'> Best메뉴</li>
-				<li onclick='leftMenu("fury")'> 치즈&후라이</li>
-				<li onclick='leftMenu("grill")'>볶음&그릴</li>
-				<li onclick='leftMenu("salad")'>샐러드&떡볶이</li>
-				<li onclick='leftMenu("stew")'> 탕&전골</li>
-				<li onclick='leftMenu("drink")'>주류</li>
-			</ul>
-		</div>
+		<%@include file="left_menu.jsp" %>
+<!-- 		<div id='menu'> -->
+<!-- 			<form id='leftMenu' method='post'> -->
+<!-- 				<input type='hidden' name='findStr' id='findStr'/> -->
+<!-- 			</form> -->
+<!-- 			<ul> -->
+<!-- 				<li onclick='leftMenu("best")'> Best메뉴</li> -->
+<!-- 				<li onclick='leftMenu("fury")'> 치즈&후라이</li> -->
+<!-- 				<li onclick='leftMenu("grill")'>볶음&그릴</li> -->
+<!-- 				<li onclick='leftMenu("salad")'>샐러드&떡볶이</li> -->
+<!-- 				<li onclick='leftMenu("stew")'> 탕&전골</li> -->
+<!-- 				<li onclick='leftMenu("drink")'>주류</li> -->
+<!-- 			</ul> -->
+<!-- 		</div> -->
 		
 	</div>
 	<div id='c_menu'>
@@ -99,11 +99,10 @@
 			<div id='all_order'>
 				<span id='previous'>총 주문 내역</span>
 			</div>
-		<!-- 	<div id='now_order'> -->
-		<!-- 		<span id='now'>주문 금액</span> -->
-		<!-- 		<span id='now_price'>7,900원</span>	 -->
-		<!-- 	</div> -->
 			<div id='to_order' onclick='append_data_modal()' data-toggle="modal" data-target="#myModal" >주문하기</div>
+			<div id='now_order'>
+				<span id='now'>결제하기</span>
+			</div>
 		</div>
 		
 		<!-- Modal -->
@@ -332,8 +331,15 @@ $('#all_order').click(function(){
 // 	$('#listZone').load('viewList.ord', param);
     $('div.hey123').modal({remote : 'viewList.ord?tbl_no='+${tblVo.tbl_no}+'&g_no='+${tblVo.guest_no}, backdrop: 'static'});
  
-})
+});
 
+$('#now_order').click(function(){
+	var ment = '결제하기를 선택하시면 태블릿 서비스 이용이 제한됩니다. \n 결제하시겠습니까?'
+	if(confirm(ment)){
+		$('#header_menu').css('display', 'none');
+		$('#content').load('./order/to_want_to_pay.jsp');
+	}
+});
 
 
 

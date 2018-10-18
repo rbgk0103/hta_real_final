@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${msg }
+<div id='order_result'>
+	${msg }
+</div>
 </body>
 </html>

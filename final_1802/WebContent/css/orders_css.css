@@ -169,7 +169,7 @@
 }
 
 #order_status {
-	height: 60%;
+	height: 61%;
 	overflow-y: scroll; 
 }
 
@@ -219,11 +219,13 @@
 
 #now_order {
 	height: 10%;
-	color: #424242;
-}
-
-#now_order #now {
-	float: left;
+    color: white;
+    background: #3339;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #now_order #now_price {
@@ -235,8 +237,8 @@
     font-weight: bold;
     font-size: 17px;
     background: #9999;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #to_order {
@@ -282,3 +284,21 @@
 	color: black;
 }
 
+/* order_result.jsp의 css */
+
+#order_result {
+	font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 15;
+}
+
+
+/* to_want_to_pay.jsp의 css */
+
+#to_want_to_pay {
+	font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 15;
+}

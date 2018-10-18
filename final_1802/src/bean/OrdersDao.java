@@ -30,9 +30,8 @@ public class OrdersDao {
    /* 주문 추가할 목록 */
    public String addList(String nos[], String qtys[], String prices[], int tblNo, int g_no){
       ArrayList<ArrayList<String>> stuff = new ArrayList<ArrayList<String>>();
-      String msg = "주문 ㅎㅎ";
+      String msg = "주문이 완료되었습니다.";
       int size = nos.length;
-      System.out.println("주문서 목록: " + size);
       
       OrdersVo vo = new OrdersVo();
       
@@ -43,10 +42,6 @@ public class OrdersDao {
          
          String[] s = {nos[k], qtys[k], prices[k]};
          stuff.add(new ArrayList<String>(Arrays.asList(s)));
-         
-         System.out.print(stuff.get(k).get(0) + " ");
-         System.out.print(stuff.get(k).get(1) + " ");
-         System.out.println(stuff.get(k).get(2));
       }
       
       vo.setStuff(stuff);
