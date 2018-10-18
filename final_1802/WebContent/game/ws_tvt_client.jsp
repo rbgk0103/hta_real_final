@@ -16,7 +16,8 @@
 </style>
 
 <script>
-var tvtMsgArr;
+var tvtMsg;					// 대전신청시 사용
+var tvtMsgArr;				// 대전신청 사용(쪼갠 배열)
 
 $(document).ready(function(){
 
@@ -32,13 +33,17 @@ var timerId = 0;
 		$('#result').html("연결 성공!!!!");
 
 		}
-
+	
+		
+		// webSocket으로 msg 받으면
 		tvtWebSocket.onmessage = function(msg) {
 			
-			// 도전자 테이블번호, 도전받는 테이블번호,게임타이틀이미지,게임타이틀이름, 메뉴이미지, 메뉴이름 
-			tvtMsgArr = msg.data.split(',');	
+			// 도전자 테이블번호, 도전받는 테이블번호,게임타이틀이미지,게임타이틀이름, 메뉴이미지, 메뉴이름, 수락여부('accept')
+			tvtMsg = msg.data;
+			tvtMsgArr = msg.data.split(',');
 			
-			if (tvtMsgArr[1] === '${tblVo.tbl_no}') {	// 자기 테이블 번호에게 대전신청이 들어오면
+			// 자기 테이블 번호에게 대전신청이 들어오면
+			if (tvtMsgArr[1] == '${tblVo.tbl_no}' && tvtMsgArr[6] != 'accept') {	
 				
 				$('#modal_tvt_tblNoA').text(tvtMsgArr[0]);	
 			
@@ -63,25 +68,29 @@ var timerId = 0;
 							$('#modal_call_tvt_footer_cancel').click();
 						}
 						
-						
 					}, 1000);
+					
 			}
+			
+			
 		}
 	
+		
 		tvtWebSocket.onclose = function() {
-		$('#result').html("연결 종료");
-
-	}
-
-	$('#btnSend').click(function() {
-		tvtWebSocket.send('${thisIP}: ' +   $('#msg').val());
-
-	})
+			$('#result').html("연결 종료");
+		}
+		
+				
 	
-	
-	
+	// [도전수락]버튼을 눌렀을 때
+	$('#modal_call_tvt_footer_accept').click(function(){
+		var tvtAcceptMsg = tvtMsg + ',accept';
+		tvtWebSocket.send(tvtAcceptMsg);
+	});
+		
+		
+		
 	/* 타이머 */
-	
 	// textarea에 포거스가 되면 타이머 작동
 	$('#btn_timer_start').click(function() {
 		timerId = setInterval(function() {
@@ -95,8 +104,6 @@ var timerId = 0;
 	});
 	
 	
-	
-	
 });	// End of jQuery
 	
 	
@@ -105,11 +112,11 @@ var timerId = 0;
 	<div id='ws_tvt_client'>
 		<span>이 컴퓨터 IP끝자리: ${tblIp}</span>
 		
-		<input type='text' id='msg' style='display:hidden' /> 
-		<input type='button' value='send' id='btnSend' style='display:hidden' />
+		<input type='hidden' id='msg'  /> 
+		<input type='button' value='send' id='btnSend' style='visibility:hidden' />
 		
 		<a href='#' data-toggle='modal' data-target='#modal_call_tvt'>
-			<input type='button' value='모달띄우기' id='btn_tvt_modal' style='display:hidden' />
+			<input type='button' value='모달띄우기' id='btn_tvt_modal' style='visibility:hidden' />
 		</a>
 		
 	</div>

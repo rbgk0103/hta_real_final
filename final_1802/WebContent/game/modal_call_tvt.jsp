@@ -35,7 +35,7 @@
 			<div class="modal-footer" id ="modal_call_tvt_footer">
 				<div id='modal_call_tvt_timer_area'>
 				</div>
-				<button type="button" class="btn btn-primary" id='modal_call_tvt_footer_commit'>도전 수락</button>
+				<button type="button" class="btn btn-primary" id='modal_call_tvt_footer_accept'>도전 수락</button>
 				<button type="button" class="btn btn-default" id='modal_call_tvt_footer_cancel' data-dismiss="modal">취소</button>
 			</div>
 		</div>

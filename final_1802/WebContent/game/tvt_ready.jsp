@@ -17,14 +17,18 @@ var timerId = 0;
 	}
 
 	tvtWebSocket.onmessage = function(msg) {
-		$('#tvt_ready_wrap #result').append('<div>' + msg.data + '</div>');
+		var tvtAcceptMsgArr = msg.data.split(',');
+		if (tvtAcceptMsgArr[0] == '${tblVo.tbl_no}' && tvtAcceptMsgArr[6] == 'accept') {
+			alert(tvtAcceptMsgArr[1] + '번 테이블로부터  수락을 받앗다');
+		}
 	}
 
 	tvtWebSocket.onclose = function() {
 		$('#tvt_ready_wrap #result').html("연결 종료");
 	}
 
-	// 보내는 메시지
+	
+	// [대전신청] 버튼을 누르면
 	$('#tvt_ready_wrap #btn_req').click(function() {
 		// 내 테이블번호,상대 테이블번호,게임타이틀이미지,게임타이틀이름, 메뉴이미지, 메뉴이름
 		tvtMsg = '${tblVo.tbl_no},'				// 내 테이블번호
