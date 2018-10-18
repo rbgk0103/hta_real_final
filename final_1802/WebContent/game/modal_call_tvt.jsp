@@ -15,11 +15,8 @@
 			
 			
 				<div id ='modal_call_tvt_text' style='color:red'>
-					<ul>
-						<li>도전자의 테이블번호: 
-							<span id='modal_tvt_tblNoA'></span>
-						</li>
-					</ul>
+							<span id='modal_tvt_tblNoA'></span>번 테이블로부터의 도전을 수락하시겠습니까?<br/>
+							남은 시간: <span id='modal_tvt_timer_area'></span>초
 				</div>
 				<div id='modal_call_tvt_gt_and_menu' style='border:1px solid gray; text-align:center'>
 					<div id='modal_call_tvt_gt' style='display: inline-block; width: 46%'>
@@ -36,8 +33,10 @@
 				
 			</div>
 			<div class="modal-footer" id ="modal_call_tvt_footer">
+				<div id='modal_call_tvt_timer_area'>
+				</div>
 				<button type="button" class="btn btn-primary" id='modal_call_tvt_footer_commit'>도전 수락</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+				<button type="button" class="btn btn-default" id='modal_call_tvt_footer_cancel' data-dismiss="modal">취소</button>
 			</div>
 		</div>
   </div>

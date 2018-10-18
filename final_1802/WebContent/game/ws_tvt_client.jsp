@@ -19,11 +19,11 @@
 var tvtMsgArr;
 
 $(document).ready(function(){
-	
-	
-	/*
-	1,1,gt_pacman.png,팩맨,fury_2.jpg,치즈콘비엔날레
-	*/
+
+// 타이머용
+var count = 30;
+var timerId = 0;
+
 	/* 웹소켓 */
 	var tvtWebSocket = new WebSocket(
 		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
@@ -47,12 +47,25 @@ $(document).ready(function(){
 				
 				$('#modal_tvt_menu_img').attr("src", './admin/menu/menuImg/' + tvtMsgArr[4]);
 				$('#modal_tvt_menuName').text(tvtMsgArr[5]);
-				
 			
 				// 모달을 띄운다
 				$('#btn_tvt_modal').click();
+				
+					//타이머 가동
+					timerId = setInterval(function() {
+						console.log('이봉기');
+						count--;
+						$('#modal_tvt_timer_area').text(count);
+						
+						// 남은시간 0초 되면
+						if (count === 0) {
+							clearInterval(timerId);
+							$('#modal_call_tvt_footer_cancel').click();
+						}
+						
+						
+					}, 1000);
 			}
-		
 		}
 	
 		tvtWebSocket.onclose = function() {
@@ -66,11 +79,22 @@ $(document).ready(function(){
 	})
 	
 	
-	/* 모달 */
-	$('#btn_tvt_modal').click(function(){
+	
+	/* 타이머 */
+	
+	// textarea에 포거스가 되면 타이머 작동
+	$('#btn_timer_start').click(function() {
+		timerId = setInterval(function() {
+			console.log('이봉기');
+		}, 1000);
+	});
 
-		
-	})
+	// textarea에서 포커스를 잃으면 타이머 중지
+	$('#btn_timer_stop').click(function() {
+		clearInterval(timerId);
+	});
+	
+	
 	
 	
 });	// End of jQuery
