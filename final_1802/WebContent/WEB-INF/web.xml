@@ -110,16 +110,6 @@
 		<servlet-name>modal</servlet-name>
 		<url-pattern>*.modal</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>adjust</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>adjust</servlet-name>
-		<url-pattern>*.adj</url-pattern>
-	</servlet-mapping>
    
 </web-app>
 

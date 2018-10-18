@@ -57,11 +57,6 @@
 	               <span>회원 관리</span>
 	            </a>
          	</li>
-            <li>
-                <a href="./adj_list.adj">
-                	<span>정산</span>
-                </a>
-            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

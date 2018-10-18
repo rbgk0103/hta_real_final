@@ -6,7 +6,7 @@
 <style>
 a {color: black; text-decoration: none;}
 li {list-style: none;}
-#section_mbr_list {margin: 0; auto; margin-top: 5%;}
+.section_mbr_list {margin: 0; auto; margin-top: 5%;}
 .findZone #frm_mbr_list {text-align: right;}
 .list-group-item-info, .list-group-item-success {margin: 0;}
 .mbr_list_head {font-size: larger;}
@@ -15,7 +15,7 @@ li {list-style: none;}
 .btnZone {text-align: center;}
 </style>
 <div class="col-sm-1"></div>
-<div id="section_mbr_list" class="col-sm-10">
+<div class="col-sm-10 section_mbr_list">
 	<h3>
 		<a href="./mbr_list.etc">
 			<span>Members List</span>
@@ -115,8 +115,10 @@ li {list-style: none;}
 								onclick = 'movePage(${page.totPage})' id='btnLast' class="btn btn-link btn-sm"/>
 			</c:if>
 		</div>
+		
 	</div>
 </div>
+
 <div class="col-sm-1"></div>
 
 <%@ include file = "./modal_call_admin_members_modify.jsp" %>
