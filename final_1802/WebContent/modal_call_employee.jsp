@@ -36,24 +36,27 @@
 
 
 <script>
-window.onload = function() {
+
+$().ready(function(){
 	var req = '';
 	var tableNo = ${tblVo.tbl_no};
 	var tableIp = ${tblIp};
+	var delete_row = 0;
 	console.log("테이블: " + tableNo);
-	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
 	
+	var webSocket_request = new WebSocket('ws://192.168.0.21:7080/final_1802/request');
 	
 	webSocket_request.onopen = function() {
 // 		$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
+	
 		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
 
 	webSocket_request.onmessage = function(msg) {
 		//msg.data.substring(0, 1) : 자신의 table 번호
 		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
-		alert(msg.data);
-		$('#call_employee_new').append(msg.data);
+		
+		$('#call_employee').append(msg.data);
 		//메세지 오면 스크롤 아래로
 // 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
 	}
@@ -65,26 +68,26 @@ window.onload = function() {
 	
 	
 	function sendMessage() {
-		var message = "<li class = 'hi'>테이블 "+tableNo+" : "+ req +"</li>";
+		delete_row++;
+		var message = "<li class = 'call_employee_row"+delete_row+"' onclick='delete_row("+delete_row+")'><label>[ TABLE NO."+tableNo+" ]</label><span>"+ req +"요청</span></li>";
 		if ($.trim(message) !== "") {
 			webSocket_request.send(message);
 		}
-// 		alert(message);
+ 		console.log(message);
 	}
 
 	$('#modal_call_employee_footer_commit').click(function(){
 		var chkbox = document.getElementsByName("request");
-		alert('야');
 		req = '';
 		for (var i=0 ; i<chkbox.length ; i++){
 			if (chkbox[i].checked){
-				req += chkbox[i].value + ' ';
+				req += chkbox[i].value + '  ';
 			}
 		}
+
 		sendMessage();
 	});
-}
-	
+
 // window.onload = function() {
 	
 // 	console.log("스크립틀릿의 ip : " + $('#ip').val());
@@ -110,4 +113,7 @@ window.onload = function() {
 // 		$('#msg').val("");	//textarea 지움
 // 	}
 // }
+})
+
+	
 </script>

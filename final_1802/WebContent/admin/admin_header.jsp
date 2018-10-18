@@ -31,32 +31,10 @@
 	</div>
 </form>
 <script>
-	$().ready(function(){
-		var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
-		
-		webSocket_request.onopen = function() {
-			console.log("오픈임");
-		}
-		webSocket_request.onmessage = function(msg) {
-			console.log("msg : " + msg.data);
-			$('#message_form').append("<input type='hidden' class='order_message' value=" + msg.data + " />")
-			document.getElementById('order_message').value = msg.data
-			if(document.getElementsByClassName('label-success')[0].innerHTML == "") {
-				document.getElementsByClassName('label-success')[0].innerHTML = 0;
-				document.getElementsByClassName('label-success')[0].innerHTML += 1;
-			} else {
-				document.getElementsByClassName('label-success')[0].innerHTML += 1;
-			}
-		}
-		webSocket_request.onclose = function() {
-			console.log("소켓 꺼짐");
-		}
-		
-		$('#call_employee').click(function(){
-			window.open("", "message", "_blank", 'width=120, height=400');
-			var df = document.message_form;
-			df.action="./admin/admin_call_employee.jsp?msg=asdf";
-			df.submit();
-		})
-	});
+
+	$('#call_employee').click(function(){
+		window.open("./admin/admin_call_employee.jsp", "", "_blank", 'width=120, height=400');
+
+	})
+
 </script>
