@@ -28,18 +28,13 @@
 			</c:when>
 			<c:when test="${msg eq 'reg_success' }">
 				<p class="form-control-static">회원 가입 성공</p>
-				<script>
-					window.location.reload();
-// 					setInterval(function() {
-// 						$("#modal_call_members_register").modal("hide");
-// 						$("#modal_call_members_login").modal("show");
-// 					}, 1500)
-				</script>
+				<script>window.location.reload();</script>
 			</c:when>
 			<c:when test="${msg eq 'reg_false' }">
 				<p class="form-control-static">회원 가입 실패</p>
 			</c:when>
 			<c:when test="${msg eq 'mody_success' }">
+				<p class="form-control-static">회원 수정 성공</p>
 				<script>window.location.reload()</script>
 			</c:when>
 			<c:when test="${msg eq 'mody_false' }">
