@@ -8,7 +8,6 @@ $(document).ready(function(){
 var count = 30;
 var timerId = 0;
 	
-	
 	var tvtWebSocket = new WebSocket(
 	'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
 
@@ -20,6 +19,7 @@ var timerId = 0;
 		var tvtAcceptMsgArr = msg.data.split(',');
 		if (tvtAcceptMsgArr[0] == '${tblVo.tbl_no}' && tvtAcceptMsgArr[6] == 'accept') {
 			alert(tvtAcceptMsgArr[1] + '번 테이블로부터  수락을 받앗다');
+			location.href = './tvtPlay.game';
 		}
 	}
 
@@ -117,9 +117,6 @@ var timerId = 0;
 			<input type='text' id='timer_text' />
 			</div>
 			
-			
 		</div>
 	</form>
 </div>
-
-

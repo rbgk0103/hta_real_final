@@ -86,6 +86,8 @@ var timerId = 0;
 	$('#modal_call_tvt_footer_accept').click(function(){
 		var tvtAcceptMsg = tvtMsg + ',accept';
 		tvtWebSocket.send(tvtAcceptMsg);
+		alert('수락하셨습니다');
+		location.href='./tvtPlay.game';
 	});
 		
 		

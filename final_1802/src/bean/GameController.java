@@ -102,4 +102,15 @@ public class GameController {
 		
 		return mv;
 	}
+	
+	// [tvtPlay] 
+	@RequestMapping(value = "/tvtPlay.game")
+	public ModelAndView tvtPlay(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		mv.setViewName("tvt_play"); // tbl_list.jsp
+		
+		return mv;
+	}
 }
