@@ -2911,7 +2911,8 @@ vertical-align: top;
 }
 .skin-black .navbar .nav a {
   color: #333333;
-  
+	font-size: 35px;
+    margin-top: 15px;
 }
 .skin-black .navbar .nav > li > a:hover,
 .skin-black .navbar .nav > li > a:active,
