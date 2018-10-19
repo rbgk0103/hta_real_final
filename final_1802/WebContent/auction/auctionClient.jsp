@@ -15,7 +15,7 @@ $().ready(function(){
 function ae_view(ae_no){
 	$('body').load("./auction_confirm.auc", ae_no);
 }
-window.onload=function(){ 
+window.onload=function(){  
 // 	$('#auction').load('auction_client.auc');	
 
 	//웹 소켓 생성 주소

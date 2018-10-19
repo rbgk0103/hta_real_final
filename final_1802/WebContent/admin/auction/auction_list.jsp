@@ -46,7 +46,7 @@ function view(ae_no){
 	var param = $("#frm_auc").serialize();
 	$(".skin-black").load("./auction_view.auc",param);
 }
-
+ 
 function ae_start(ae_no, ae_price, ae_max, ae_min){
 	$("#ae_no").val(ae_no)
 	var param = $("#frm_auc").serialize();

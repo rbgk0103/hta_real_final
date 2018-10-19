@@ -4,7 +4,7 @@
 <link rel='stylesheet' type='text/css' href='./css/auction.css'   />
 
 <script>
-$().ready(function(){
+$().ready(function(){ 
 	$("#btnClose").click(function(){
 		$(".skin-black").load("./auction_list.auc");
 	})

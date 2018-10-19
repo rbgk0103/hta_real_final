@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-</head>
+</head> 
 <body>
 <form name = 'frm_auction' id = 'frm_auction' method = 'post'>
    <div id = 'auction'>
