@@ -41,9 +41,7 @@ public class MembersDao {
 			params.clear();
 			params.put("mbrNo", mvo.getMbrNo());
 			params.put("tblNo", tbl_no);
-			
 			cnt = s.update("mbr.engrave", params);
-			
 			if(cnt > 0) {
 				s.commit();
 			}else {

@@ -13,7 +13,7 @@
 	</select>
 	
 	<update id="engrave" parameterType="java.util.HashMap">
-		update guest set mbr_no = #{mbrNo} where guest_no = #{tblNo} 
+		update guest set mbr_no = #{mbrNo} where table_no = #{tblNo} 
 	</update>
 	
 	<select id="checkId" parameterType="String" resultType="int">
