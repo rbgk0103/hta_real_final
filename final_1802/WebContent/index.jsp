@@ -25,6 +25,7 @@
 <link href="./css/admin_css.css" rel="stylesheet" type="text/css" />
 <link href="./css/orders_css.css" rel="stylesheet" type="text/css" />
 <link href="./css/game.css" rel="stylesheet" type="text/css" />
+<link href="./css/auction.css" rel="stylesheet" type="text/css" />
 <!-- jQuery 2.0.2 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <!-- Bootstrap -->
@@ -196,14 +197,10 @@ window.onload = function(){
    
 }
 
-//경매 이벤트
-function auc(){	
-	
-}
 
 
 function mbrLogin(tblNo){
-   $(".modal-body #mbr_tbl_no").val(tblNo)
+   $(".modal-body #mbr_tbl_no").val(tblNo);
    $("#modal_call_members_login").modal("show");
 }
 $("#mbr_logout").click(function(){

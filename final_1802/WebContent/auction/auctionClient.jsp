@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text /html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel='stylesheet' type='text/css' href='../css/auction.css'	/>
-<title>Insert title here</title>
+
 <%
  if(request.getParameter("tblIp") != null){
 	 request.setAttribute("tblIp", (String)request.getParameter("tblIp"));
@@ -15,7 +10,7 @@
 %>
 <script>
 $().ready(function(){
-	ae_view($('#ae_no').val());
+// 	ae_view($('#ae_no').val());
 })
 /* function ae_view(ae_no){
 	$('body').load("./auction_confirm.auc", ae_no);
@@ -55,8 +50,7 @@ window.onload=function(){
 	
 }
 </script>
-</head>
-<body>
+
 <div id = 'auction'>
 	<input type = 'hidden' id = 'auction' />
 	<input type = 'button' value = 'send' id = 'btnSendAuc' style = 'visibility: hidden' />
@@ -64,5 +58,3 @@ window.onload=function(){
 	<!-- <input type = 'button' value = '모달 업' id = 'btn_auction_modal' /> -->
 	</a>
 </div>
-</body>
-</html>

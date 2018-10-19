@@ -63,6 +63,7 @@
    height: 700px;
    overflow-y: scroll;
 }
+#menu_list::-webkit-scrollbar{width: 0px;}
 /* #menu_list */
 
 #menu_list .item {
@@ -195,6 +196,7 @@
 	height: 61%;
 	overflow-y: scroll; 
 }
+#order_status::-webkit-scrollbar{width: 0px;}
 
 #order_status #tableZone {
 	height: 200px;

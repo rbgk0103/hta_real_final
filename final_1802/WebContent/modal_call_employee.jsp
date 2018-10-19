@@ -44,12 +44,9 @@ $().ready(function(){
 	var delete_row = 0;
 	console.log("테이블: " + tableNo);
 	
-	if(tableIp)
-	
-	var webSocket_request = new WebSocket('ws://192.168.0.21:7080/final_1802/request');
+	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
 	
 	webSocket_request.onopen = function() {
-// 		$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);
 	
 		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
@@ -64,7 +61,6 @@ $().ready(function(){
 	}
 
 	webSocket_request.onclose = function() {
-// 		$('#chatContent').append("연결 종료");
 		console.log("연결종료");
 	}
 	
