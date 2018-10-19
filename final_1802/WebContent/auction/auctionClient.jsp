@@ -17,9 +17,9 @@
 $().ready(function(){
 	ae_view($('#ae_no').val());
 })
-function ae_view(ae_no){
+/* function ae_view(ae_no){
 	$('body').load("./auction_confirm.auc", ae_no);
-}
+} */
 window.onload=function(){ 
 // 	$('#auction').load('auction_client.auc');	
 
