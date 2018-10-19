@@ -152,7 +152,7 @@ ${msg }
 						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
 						<c:choose>
 							<c:when test="${a.menu_image eq null }">
-								<img src = './admin/menu/menuImg/gong.jpg'>
+								<img src = './admin/menu/menuImg/gong.png'>
 							</c:when>
 							<c:otherwise>
 								<img src='./admin/menu/menuImg/${a.menu_image }'>

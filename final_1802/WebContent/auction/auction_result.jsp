@@ -16,7 +16,7 @@
 			<h1><label class = 'auction_header'>A U C T I O N</label></h1>
 		</div>
 		<div id='auction_menu'>
-				<img src='./auction/images/소주.PNG' width='280px' height='280px'/>		
+				<img src='../admin/menu/menuImg/fury_1.png' width='280px' height='280px'/>		
 		</div>
 	</div>
 	<div id = 'win_ment'>

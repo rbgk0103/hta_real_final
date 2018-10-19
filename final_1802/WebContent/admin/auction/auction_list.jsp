@@ -15,7 +15,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header" style = 'text-align: center;'>
-    	<h1><strong style = 'text-align: center; '>현제 시작중인 경매</strong></h1>
+    	<h1><strong style = 'text-align: center; '>현제 진행중인 경매</strong></h1>
     	<hr/>
     	<div class="modal-body">
       		<c:forEach var='auc' items='${auctionList }'>
@@ -44,13 +44,15 @@ $().ready(function(){
 function view(ae_no){
  	$("#ae_no").val(ae_no);
 	var param = $("#frm_auc").serialize();
-	$(".skin-black").load("./auction_view.auc",param); 
+	$(".skin-black").load("./auction_view.auc",param);
 }
+
 function ae_start(ae_no, ae_price, ae_max, ae_min){
+	$("#ae_no").val(ae_no)
+	var param = $("#frm_auc").serialize();
 	var prom = confirm("경매번호 " + ae_no + " \n시작가 " + ae_price + "\nMAX" + ae_max + "\nMIN" + ae_min + "\n\n 시작 하시겠습니까?");
-	if(prom){
-		alert("확인");
-		ws.send(ae_no);
+	if(prom){ //확인 눌렀을때		
+		$(".skin-black").load("./auction_start.auc", param);
 	}else{
 		alert("취소");
 	}
@@ -96,6 +98,7 @@ ${msg }
          </c:if>
          </c:forEach>
       </table>
+      <br/>
       	<input type = 'button'  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#auction_list_modal" style = 'position: absolute;right:0;'value = '현재 진행중인 경매'/>
 		<input type = 'button'  class="btn btn-primary btn-lg" value = '등 록'  id = 'btnInput' name = 'btnInput'/>
 	</div>

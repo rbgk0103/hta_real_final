@@ -27,6 +27,7 @@ public class AuctionController {
       mv.setViewName("auction/auction_list");
       return mv;
    }
+   
    //관리자 history
    @RequestMapping(value="auction_history.auc")
    public ModelAndView auctionHistory() {
@@ -40,6 +41,15 @@ public class AuctionController {
       return mv;
    }
    
+   //관리자 list
+   @RequestMapping(value="auction_start.auc")
+   public ModelAndView auctionStart(HttpServletRequest req) {
+      ModelAndView mv = new ModelAndView();      
+      String msg = dao.auc_start(Integer.parseInt(req.getParameter("ae_no")));
+      mv.addObject("msg",msg);
+      mv.setViewName("auction/auction_list");
+      return mv;
+   }
    
 //   @RequestMapping(value="auction_client.auc")
 //   public ModelAndView auctionClient() {

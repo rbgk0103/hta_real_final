@@ -11,38 +11,36 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/WebSocketAuction")
+@ServerEndpoint("/auction/auctionClient")
 public class WebSocketServerAuc {
 
-		private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
-		
-		@OnMessage //메세지(입찰)가 보내졌을때 호출되는 이벤트
-		public void onMessage(String msg,Session session) throws Exception{	
-		
-			System.out.println("messag : " + msg);
-			
-				for(Session sess : clients) {
-					sess.getBasicRemote().sendText(msg);
-					System.out.println("Auc_sess" + sess.getBasicRemote().hashCode());
-				}
-					
+	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+
+	@OnMessage // 메세지(입찰)가 보내졌을때 호출되는 이벤트
+	public void onMessage(String msg, Session session) throws Exception {
+
+		System.out.println("messag : " + msg);
+		for (Session sess : clients) {
+			sess.getBasicRemote().sendText(msg);
+			System.out.println("Auc_sess" + sess.getBasicRemote().hashCode());
 		}
-		
-		@OnOpen // WebSocket이 실행되면 호출되는 이벤트
-		public void onOpen(Session session) {
-			System.out.println("onpen : "  + session);
-			clients.add(session);
-		}
-		
-		@OnClose // WebSocket이 닫혔을때 호출되는 이벤트
-		public void onClose(Session session) {
-			System.out.println("Auc_close : " + session);
-			clients.remove(session);
-		}
-		
-		@OnError // WebSocket에 에러가 떴을때 호출되는 이벤트
-		public void onError(Session session, Throwable throwable) {
-			throwable.printStackTrace();
-		}
-	
+	}
+
+	@OnOpen // WebSocket이 실행되면 호출되는 이벤트
+	public void onOpen(Session session) {
+		System.out.println("onpen : " + session);
+		clients.add(session);
+	}
+
+	@OnClose // WebSocket이 닫혔을때 호출되는 이벤트
+	public void onClose(Session session) {
+		System.out.println("Auc_close : " + session);
+		clients.remove(session);
+	}
+
+	@OnError // WebSocket에 에러가 떴을때 호출되는 이벤트
+	public void onError(Session session, Throwable throwable) {
+		throwable.printStackTrace();
+	}
+
 }

@@ -191,7 +191,7 @@ $().ready(function(){
 		<hr class = 'my_hr'/>
 		<c:choose>
 			<c:when test="${vo.menu_image eq null }">
-				<img src = "./admin/menu/menuImg/gong.jpg" id = 'img' name = 'img'/>
+				<img src = "./admin/menu/menuImg/gong.png" id = 'img' name = 'img'/>
 			</c:when>
 			<c:otherwise>
 				<img src = './admin/menu/menuImg/${vo.menu_image }' id = 'img' name = 'img'/>

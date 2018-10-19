@@ -63,6 +63,22 @@ public class AuctionDao {
 	   return vo;
    }
    
+   //관리자 경매 start
+   public String auc_start(int ae_no) {
+	   String msg = "";
+	   int cnt = 0;
+	   cnt = s.update("auc.start",ae_no);
+	   if(cnt > 0) {
+		   s.commit();
+		   msg = "<script>alert('경매가 진행됩니다.')</script>";
+	   }else {
+		   s.rollback();
+		   msg = "<script>alert('경매중 오류')</script>";
+	   }
+	   
+	   return msg;
+   }
+   
    //사용자 confirm
    public void confirm(int ae_no) {
 	   int cnt = 0;
