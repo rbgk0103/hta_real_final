@@ -635,12 +635,13 @@ Gradient Background colors
 -------------------------------------------------
 */
 body > .header {
+  height:100px;
   position: relative;
   max-height: 100px;
   z-index: 1030;
 }
 body > .header .navbar {
-  height: 50px;
+  height: 100%;
   margin-bottom: 0;
   margin-left: 300px;
 }
@@ -707,7 +708,7 @@ body > .header .logo {
   width: 300px;
   font-family: 'Kaushan Script', cursive;
   font-weight: 500;
-  height: 50px;
+  height: 100%;
   display: block;
 }
 body > .header .logo .icon {
@@ -880,6 +881,7 @@ content: '';
   padding-left: 30px;
 }
 #submenu_game{display:none;}
+#submenu_auction{display:none;}
 
 .sidebar .sidebar-menu > li > a > .fa,
 .sidebar .sidebar-menu > li > a > .glyphicon,
@@ -2909,6 +2911,7 @@ vertical-align: top;
 }
 .skin-black .navbar .nav a {
   color: #333333;
+  
 }
 .skin-black .navbar .nav > li > a:hover,
 .skin-black .navbar .nav > li > a:active,
