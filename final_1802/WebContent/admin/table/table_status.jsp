@@ -14,7 +14,6 @@
 				  <input type='hidden' id ='tbl_no' value="${item.tbl_no }">
 			      <header class="panel-heading">
 			            Table No.${item.tbl_no } 
-			            안녕
 			        </header>
 			        <div class="panel-body">
 			            <table class="table table-bordered">
@@ -39,9 +38,14 @@
 					<input type='hidden' id ='tbl_no' value="${item.tbl_no }">
 					<input type='hidden' id ='guest_no' value="${item.guest_no }">
 			        <header class="panel-heading">
-			            <span>Table No.${item.tbl_no }</span>
+			            <span>
+			            	Table No.${item.tbl_no }
+			            	<c:if test="${item.mbr_no  ne 0}">
+			            	(회원)
+			            	</c:if> 
+			            </span>
 			            <span class ='table_gender'>
-			            	<c:choose>
+			             	<c:choose>
 			            		<c:when test="${item.guest_gender eq 'woman'}">
 			            			<label class = 'table_gender_woman'>여자</label>
 			            		</c:when>

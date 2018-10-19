@@ -4,7 +4,7 @@
 <mapper namespace='adm'>
 	<select id = 'select_table' resultType="bean.TblVo"> <!-- 리스트 검색(select) -->
 		select table_status.* , 
-		guest.guest_gender , guest.guest_cnt , guest.guest_no , guest.guest_status
+		guest.guest_gender , guest.guest_cnt , guest.guest_no , guest.guest_status , guest.mbr_no
 		from table_status table_status 
 		left outer join guest guest 
 		on guest.table_no = table_status.tbl_no
@@ -43,6 +43,11 @@
 	<insert id="insert_table_pay" parameterType="bean.PayVo">
 		insert into pay values(seq_pay.nextval , (select pc_no from pay_code where PC_TYPE = #{pc_type}) , sysdate , #{pay_tot_price} , ${guest_no})
 	</insert>
+
+	
+	<update id="mbr_add_point" parameterType="bean.PayVo">
+		update members set mbr_point = (mbr_point + (${pay_tot_price}*0.01) ) where mbr_no = (select mbr_no from guest where guest_no = ${guest_no} and table_no = #{table_no})
+	</update>
 	
 	<insert id="guest_insert" parameterType="bean.GuestVo">
 		insert into guest values(seq_guest.nextval , #{table_no} , #{guest_gender} , #{guest_cnt} , 1 , 0 )

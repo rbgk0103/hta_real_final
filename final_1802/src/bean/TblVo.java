@@ -9,6 +9,15 @@ public class TblVo {
 	int guest_cnt;
 	int guest_no;
 	int guest_status;
+	int mbr_no;
+	
+	public int getMbr_no() {
+		return mbr_no;
+	}
+
+	public void setMbr_no(int mbr_no) {
+		this.mbr_no = mbr_no;
+	}
 
 	public int getGuest_no() {
 		return guest_no;

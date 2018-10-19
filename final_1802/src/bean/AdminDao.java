@@ -130,8 +130,8 @@ public class AdminDao {
 		}
 		return msg;
 	}
-	
-	
+
+
 	
 	public String insert_table_pay(HttpServletRequest req) {
 		
@@ -144,8 +144,22 @@ public class AdminDao {
 		pVo.setPay_tot_price(tot_price);
 		pVo.setPc_type(pay_type);
 		pVo.setGuest_no(guest_no);
-	
+		pVo.setTable_no(tbl_no);
+		System.out.println(":insert_table_pay");
+		//결제시 mbr_point 추가
+		int insert_mbr_point = s.update("adm.mbr_add_point", pVo);
+		if(insert_mbr_point > 0) {
+			msg = pVo.getPay_tot_price()+" 포인트 추가 완료";
+			s.commit();
+		}else {
+			msg = "포인트 추가 실패";
+			s.rollback();
+		}
+		System.out.println("insert_mbr_point"+insert_mbr_point);
+		
 		int cnt = s.update("adm.insert_table_pay", pVo);
+		System.out.println("cnt"+cnt);
+
 		if(cnt > 0) {
 			msg = "테이블 테이블 수정완료";
 			s.commit();
@@ -153,6 +167,9 @@ public class AdminDao {
 			msg = "테이블 테이블 수정실패";
 			s.rollback();
 		}
+		
+		
+		
 		return msg;
 	}
 

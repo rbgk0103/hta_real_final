@@ -63,6 +63,12 @@ public class AdminController {
 		String guest_msg = admin_dao.guest_status_update_pay(req);
 		String table_msg = admin_dao.set_table_off(req);
 		
+		System.out.println(table_pay);
+		System.out.println(guest_msg);
+		System.out.println(table_msg);
+		
+		
+		
 		mv.addObject("table_msg",table_msg);
 		mv.addObject("table_pay",table_pay);
 		mv.addObject("guest_msg",guest_msg);

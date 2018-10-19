@@ -7,7 +7,14 @@ public class PayVo {
 	int guest_no;
 	int pc_no;
 	String pc_type;
+	int table_no;
 	
+	public int getTable_no() {
+		return table_no;
+	}
+	public void setTable_no(int table_no) {
+		this.table_no = table_no;
+	}
 	public int getPay_no() {
 		return pay_no;
 	}
