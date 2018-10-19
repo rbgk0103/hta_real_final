@@ -22,9 +22,16 @@ function view(ae_no){
  	$("#ae_no").val(ae_no);
 	var param = $("#frm_auc").serialize();
 	$(".skin-black").load("./auction_view.auc",param); 
-
 }
-
+function ae_start(ae_no, ae_price, ae_max, ae_min){
+	var prom = confirm("경매번호 " + ae_no + " \n시작가 " + ae_price + "\nMAX" + ae_max + "\nMIN" + ae_min + "\n\n 시작 하시겠습니까?");
+	if(prom){
+		alert("확인");
+		ws.send(ae_no);
+	}else{
+		alert("취소");
+	}
+}
 </script>
 <body>
 <!-- 성공,실패 확인 메세지  -->
@@ -44,6 +51,7 @@ ${msg }
                <th>MAX</th>
                <th>MIN</th>
                <th>View</th>
+               <th>START</th>
             </tr>
          </thead>
          
@@ -55,7 +63,8 @@ ${msg }
                <td><span>${auc.ae_price }</span></td> 
                <td><span>${auc.ae_pct_max }</span></td> 
                <td><span>${auc.ae_pct_min }</span></td>
-               <td><span onclick="view(${auc.ae_no})">Button</span></td> 
+               <td><span onclick = "view(${auc.ae_no})">Button</span></td>
+               <td><span onclick = "ae_start(${auc.ae_no}, ${auc.ae_price }, ${auc.ae_pct_max }, ${auc.ae_pct_min })">Start</span></td>
             </tr>
          </tbody>
          </c:forEach>

@@ -146,6 +146,9 @@ ${msg }
 			<div id = 'menu_read'>
 				<c:forEach var = 'a' items = '${list }'>
 					<div id='menu_div' class='menu_div' onclick='go_view(${a.menu_no})'>
+						<c:if test="${a.menu_day eq 'yes'}">
+							<Strong style = 'color: yellow'>※ 오늘의 메뉴 ※ - </Strong>
+						</c:if>
 						<span><strong>${a.menu_name }</strong></span><br/><span><strong>${a.menu_price } 원</strong></span><br/>
 						<c:choose>
 							<c:when test="${a.menu_image eq null }">
