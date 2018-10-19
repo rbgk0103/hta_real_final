@@ -4,9 +4,9 @@
 <mapper namespace='auc'>
    <!-- menu_histoty -->
    <select id='auction_list' resultType='bean.AuctionVo'>
-    select ae_no, menu_no, ae_date, ae_price, ae_pct_max,
-      ae_cost,ae_pct_min, ae_win_table, ae_confirm
-      from auction_events 
+    select ae_no, a.menu_no menu_no, ae_date, ae_price, ae_pct_max,
+      ae_cost,ae_pct_min, ae_win_table, ae_confirm, m.menu_name menu_name, m.menu_image menu_image
+      from auction_events a join menu m on a.menu_no = m.menu_no
       order by ae_no ASC
    </select>
    
@@ -23,8 +23,8 @@
    
 	<!-- menu_view -->
 	<select id="view" parameterType = "int" resultType="bean.AuctionVo">
-		select *
-		from auction_events
+		select ae_no, ae_price, ae_pct_max, ae_pct_min, menu_name, menu_image
+		from auction_events a join menu m on a.menu_no = m.menu_no
 		where ae_no = #{ae_no}
 	</select>
 	

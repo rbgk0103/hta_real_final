@@ -46,6 +46,7 @@ ${msg }
          <thead>
             <tr>
                <th>No</th>
+               <th>Products</th>
                <th>Time</th>
                <th>PRICE</th>
                <th>MAX</th>
@@ -60,6 +61,7 @@ ${msg }
          <tbody>
             <tr>
                <td><span>${auc.ae_no}</span></td>
+               <td><span>${auc.menu_name }</span></td>
                <td><span>${auc.ae_date }</span></td> 
                <td><span>${auc.ae_price }</span></td> 
                <td><span>${auc.ae_pct_max }</span></td> 

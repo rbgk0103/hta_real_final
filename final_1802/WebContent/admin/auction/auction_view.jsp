@@ -32,9 +32,11 @@ $().ready(function(){
 					<h1>
 						<label class='auction_header'>A U C T I O N</label>
 					</h1>
+					<h3><Strong style = 'color: yellow'>${vo.menu_name }</Strong></h3>
 				</div>
+				
 				<div id='auction_menu'>
-					<img src='./auction/images/${m_vo.menu_image }' width='280px' height='280px'/>
+					<img src='./admin/menu/menuImg/${vo.menu_image }' width='280px' height='280px'/>
 				</div>	
 			<div id='win_ment'>
 			<!-- INT 값은 value 에 '' 나 "" 를 붙이지 않는다. -->

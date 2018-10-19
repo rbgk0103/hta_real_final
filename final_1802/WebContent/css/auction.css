@@ -123,7 +123,9 @@
     color: #ffffff;
     background-color: #000000; 
 }
-
+#auction_menu img{
+	border-radius: 50%;
+}
 #frm_auction .btnInput {
 	padding : 10px 20px;
 	margin: 25px 0 0 55px;	/* ╩С ©Л го аб */

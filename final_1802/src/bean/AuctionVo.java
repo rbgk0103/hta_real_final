@@ -13,8 +13,22 @@ public class AuctionVo {
 	int  ae_win_table;
 	int startNo;
 	int endNo;
+	String menu_name;
+	String menu_image;
 	
 	
+	public String getMenu_image() {
+		return menu_image;
+	}
+	public void setMenu_image(String menu_image) {
+		this.menu_image = menu_image;
+	}
+	public String getMenu_name() {
+		return menu_name;
+	}
+	public void setMenu_name(String menu_name) {
+		this.menu_name = menu_name;
+	}
 	public int getAe_confirm() {
 		return ae_confirm;
 	}

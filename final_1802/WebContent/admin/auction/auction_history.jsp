@@ -25,7 +25,7 @@ function auc_delete(ae_no){
 		var url   = './auction_delete.auc';
 		$('.skin-black').load(url,param);
 	}else{
-		alert("취소.");
+		alert("취소");
 	}
 }
 </script>
@@ -40,6 +40,7 @@ function auc_delete(ae_no){
          <thead>
             <tr>
                <th>No</th>
+               <th>Products</th>
                <th>PRICE</th>
                <th>MAX</th>
                <th>MIN</th>
@@ -54,6 +55,7 @@ function auc_delete(ae_no){
          <tbody>
             <tr>
                <td><span>${auc.ae_no}</span></td>
+               <td><span>${auc.menu_name }</span></td>
                <td><span>${auc.ae_price }</span></td> 
                <td><span>${auc.ae_pct_max }</span></td> 
                <td><span>${auc.ae_pct_min }</span></td>
