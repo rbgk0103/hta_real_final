@@ -20,8 +20,8 @@ text-align:center;
 }
 #table_detail_pay_type label input:checked+span{    
     display: inline-block;
-    border: 1px solid #911;
-    background-color: #911;
+    border: 1px solid #39435C;
+    background-color: #39435C;
     color: #fff;
     font-size: 20px;
     border-radius: 7px;
@@ -31,6 +31,7 @@ text-align:center;
     line-height: 45px;
 }
 
+#btn_submit{background-color: #39435C;}
 </style>
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -70,9 +71,9 @@ text-align:center;
 		</div>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-primary" id = 'btn_delete'>삭제하기</button>
+		<button type="button" class="btn btn-default" id = 'btn_delete'>삭제하기</button>
 		<button type="button" class="btn btn-primary" id = 'btn_submit'>결제하기</button>
-		<button type="button" class="btn btn-default" id ='modal_cancel' data-dismiss="modal">Close</button>
+		<button type="button" class="btn btn-default" id ='modal_cancel' data-dismiss="modal">취소</button>
 	</div>
 	
 	<input type='hidden' id = 'tbl_no' name ='tbl_no' value = '${param.tbl_no }'>

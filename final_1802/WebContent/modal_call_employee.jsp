@@ -44,7 +44,9 @@ $().ready(function(){
 	var delete_row = 0;
 	console.log("테이블: " + tableNo);
 	
-	var webSocket_request = new WebSocket('ws://192.168.0.21:7080/final_1802/request');
+	if(tableIp)
+	
+	var webSocket_request = new WebSocket('ws://192.168.0.'+${tblIp}+':7080/final_1802/request');
 	
 	webSocket_request.onopen = function() {
 // 		$('#chatContent').append("연결 성공!!!!, tableNo : " + tableNo + " ipCut : " + ipCut);

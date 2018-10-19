@@ -25,9 +25,9 @@ if (localIp.length() == 11) {
 IPDao ipDao = new IPDao();
 TblVo tblVo = ipDao.tblVoSelectOne(tblIp);
 
+System.out.println(tblIp);
 request.setAttribute("tblIp", tblIp);
 request.setAttribute("tblVo", tblVo);
-
 %>
 
 
