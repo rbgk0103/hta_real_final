@@ -53,18 +53,26 @@
 
 /* tbl_list.jsp */
 #tbl_list_wrap {
-	border: 1px solid gray;
 	text-align: center;
 }
 #tbl_list_wrap h3 {
 	text-align: center;
 }
-#tbl_list_wrap div {
-	border: 1px solid gray;
-}
 #tbl_list_wrap .tbl_item {
+	margin: 0.5%;
+	background-color: #655643;
+	border: 1px solid gray;
 	display:inline-block;
 	width: 30%;
+}
+
+#tbl_list_wrap .tbl_info {
+	height: 60px;
+}
+
+#tbl_list_wrap .tbl_btn_area {
+	height: 30px;
+	background-color: #E6AC27;
 }
 
 #tbl_list_wrap input {
@@ -83,7 +91,6 @@
 
 #tvt_ready_wrap #tvt_ready_view {
 	display: inline-block;
-	border: 1px solid gray;
 	width: 80%;
 }
 

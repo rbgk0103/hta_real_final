@@ -44,7 +44,7 @@ var timerId = 0;
 		timerId = setInterval(function() {
 			console.log('이봉기');
 			count--;
-			$('#timer_text').val(count);
+			$('#timer_text').text(count +'초');
 			
 			// 남은시간 0초 되면
 			if (count === 0) {
@@ -79,29 +79,21 @@ var timerId = 0;
 
 
 <div id='tvt_ready_wrap'>
-	<h3>tvt_ready</h3>
+	<h3>대전신청할 준비가 되었습니다</h3>
 	
 	<form id='frm_tvt_ready' name='frm_tvt_ready'>
 		<div id='tvt_ready_view'>
 			<div id='tvt_info_tbl'>
-				<ul>
-					<li>내 테이블번호: ${tblVo.tbl_no}</li>
-					<li>상대 테이블번호: ${tbl_u}</li>
-				</ul>
+					<h3>${tbl_u}번 테이블에 대전신청 하시겠습니까?</h3>
 			</div>
 			<div id='tvt_info_gt_and_menu'>
 				<div id='tvt_info_gt'>
-					<ul>
-						<li>게임타이틀명: ${gtVo.gtName}</li>
-					</ul>
-					<img src='img/game_img/${gtVo.gtImage}' />
+					<img src='img/game_img/${gtVo.gtImage}' width='400' height='400' />
+					<h4>${gtVo.gtName}</h4>
 				</div>
 				<div id='tvt_info_menu'>
-					<ul>
-						<li>메뉴명: ${menuVo.menu_name}</li>
-					</ul>
 					<img src='admin/menu/menuImg/${menuVo.menu_image}' />
-				
+					<h4>${menuVo.menu_name}</h4>
 				</div>
 			</div>
 			<div id='tvt_info_notice'>
@@ -112,9 +104,8 @@ var timerId = 0;
 				<input type='button' id='btn_req' name='btn_cancel' value='취소' />
 			</div>
 			
-			<div id='timer_area'>
-			<label>${tbl_u}로부터 응답을 기다리는 중...(30초 제한)</label>&nbsp;
-			<input type='text' id='timer_text' />
+			<div id='timer_area'><p/>
+			<h4>${tbl_u}번 테이블로부터 수락여부를 기다리는 중...&nbsp;<span id='timer_text'></span></h4>
 			</div>
 			
 		</div>

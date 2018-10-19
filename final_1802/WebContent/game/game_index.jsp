@@ -3,7 +3,9 @@
 
     
 <div id='gi_wrap'>
-	<h3>게임 인덱스페이지</h3>
+	
+	<h3>게임 형식을 고르세요</h3>
+
 	<div id='game_widths'>
 	
 		<form id='frm_widths' name='frm_widths'>	

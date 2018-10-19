@@ -112,7 +112,6 @@ var timerId = 0;
 </script>
 
 	<div id='ws_tvt_client'>
-		<span>이 컴퓨터 IP끝자리: ${tblIp}</span>
 		
 		<input type='hidden' id='msg'  /> 
 		<input type='button' value='send' id='btnSend' style='visibility:hidden' />

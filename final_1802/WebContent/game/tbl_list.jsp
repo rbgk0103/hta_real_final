@@ -4,7 +4,7 @@
 
 
 <div id='tbl_list_wrap'>
-	<h3>테이블 목록 - 맞짱뜰 상대 테이블을 고르세요 ${tblVo.tbl_no }</h3>
+	<h3>테이블 목록 - 대전신청할 테이블을 선택하세요.</h3>
 
 	<form id='frm_tbl_list' name='frm_tbl_list'>
 		<div id='tbl_list_area'>
@@ -12,24 +12,17 @@
 			<!-- 테이블 목록 -->
 			<c:forEach var='i' items='${tblList }'>			
 				<div class='tbl_item'>
-					<div id='tbl_info'>
-						<span class='tbl_no1'>테이블번호: </span>
-						<span class='tbl_no2'>${i.tbl_no} </span><br/>
-						
-						<span class='tbl_ip1'>테이블IP: </span>
-						<span class='tbl_ip2'>${i.tbl_ip }</span><br/>
-						
-						<span class='tbl_status1'>테이블상태: </span>
-						<span class='tbl_status2'>${i.tbl_status }</span><br/>
+					<div class='tbl_info' >
+						<h3 class='tbl_no2'>${i.tbl_no}번 테이블 </h3>
 						
 					</div>
-					<div id='tbl_btn_area'>
+					<div class='tbl_btn_area' >
 						<c:choose>
 						
 							<c:when test="${i.tbl_no eq tblVo.tbl_no}">
-								<span>여기는 나의 테이블</span>
+								<span>본인 테이블입니다</span>
 								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
-						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" />
+						 		value='대적할 테이블로 선택'	onclick="go_main_ord('${i.tbl_no}')" style='visibility:hidden;width:0' />
 						 	</c:when>
 						 	<c:otherwise>
 								<input type='button' name='btn_tbl_choose' id='btn_tbl_choose'
