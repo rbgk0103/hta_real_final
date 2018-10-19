@@ -22,8 +22,9 @@ public class MembersController {
 		
 		String id = req.getParameter("mbr_id");
 		String pwd = req.getParameter("mbr_pwd");
+		int tblNo = Integer.parseInt(req.getParameter("tbl_no"));
 		
-		MembersVo mvo = dao.login(id, pwd);
+		MembersVo mvo = dao.login(id, pwd, tblNo);
 		String msg = "";
 		
 		if(mvo != null) {

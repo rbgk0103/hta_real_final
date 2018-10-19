@@ -12,6 +12,10 @@
 		where mbr_id = #{id} and mbr_pwd = #{pwd}
 	</select>
 	
+	<update id="engrave" parameterType="java.util.HashMap">
+		update guest set mbr_no = #{mbrNo} where guest_no = #{tblNo} 
+	</update>
+	
 	<select id="checkId" parameterType="String" resultType="int">
 		select count(mbr_id) cnt
 		from members

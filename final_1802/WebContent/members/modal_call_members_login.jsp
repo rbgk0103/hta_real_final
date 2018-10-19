@@ -34,6 +34,7 @@
 							<input type="password" name="mbr_pwd" id="mbr_login_pwd" class="form-control" value="" autocomplete="off" placeholder="">
 						</div>
 					</div>
+					<input type="hidden" name="tbl_no" id="mbr_tbl_no" class="form-control" value="" autocomplete="off" placeholder=""/>
 				</form>
 				<div id="mbr_login_result"></div>
 			</div>
@@ -46,16 +47,7 @@
 				<div class="col-sm-2">
 					<button type="button" class="btn btn-primary btn-lg" name="btn_close" id="btn_modal_close" data-dismiss="modal">CANCEL</button>
 				</div>
-				<div class="col-sm-4">
-					<div class="col-sm-12 form-inline">
-						<div class="col-sm-12">
-							<a href="#."><i class="fa fa-facebook"></i>네이버 로그인</a>
-						</div>
-						<div class="col-sm-12">
-							<a href="#."><i class="fa fa-google"></i>카카오 로그인</a>
-						</div>
-					</div>
-				</div>
+				<div class="col-sm-4"></div>
 			</div>
 			
 		</div>

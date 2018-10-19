@@ -26,7 +26,7 @@ public class MembersDao {
 		this.page = page;
 	}
 	
-	public MembersVo login(String id, String pwd) {
+	public MembersVo login(String id, String pwd, int tbl_no) {
 		mvo = null;
 		
 		Map<String, Object> params = new HashMap<String, Object>();
@@ -37,6 +37,18 @@ public class MembersDao {
 		
 		if(cnt > 0) {
 			mvo = s.selectOne("mbr.findInfo", params);
+			
+			params.clear();
+			params.put("mbrNo", mvo.getMbrNo());
+			params.put("tblNo", tbl_no);
+			
+			cnt = s.update("mbr.engrave", params);
+			
+			if(cnt > 0) {
+				s.commit();
+			}else {
+				s.rollback();
+			}
 		}
 		return mvo;
 	}

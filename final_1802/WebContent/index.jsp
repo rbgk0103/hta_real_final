@@ -111,7 +111,9 @@ if(request.getParameter("content") !=null){
 				<c:choose>
 					<c:when test="${session_mbr == null }">
 						<li role="presentation">
-							<a role="menuitem" tabindex="-1" data-toggle="modal" data-target="#modal_call_members_login">
+							<a role="menuitem" tabindex="-1" 
+								onclick="mbrLogin('${tblVo.tbl_no}')">
+<!-- 							data-toggle="modal" data-target="#modal_call_members_login"> -->
 								로그인
 							</a>
 						</li>
@@ -203,7 +205,10 @@ window.onload = function(){
 
 }
 
-
+function mbrLogin(tblNo){
+	$(".modal-body #mbr_tbl_no").val(tblNo)
+	$("#modal_call_members_login").modal("show");
+}
 $("#mbr_logout").click(function(){
 	location.href="./logout.mbr";
 })
