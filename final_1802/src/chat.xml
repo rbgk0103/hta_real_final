@@ -17,6 +17,7 @@
 		select count(guest_status)-1 from guest where guest_status = 1
 	</select>
 	<select id="chat_open_list" resultType="bean.GuestVo" parameterType="bean.ChatDao">
+	<!-- chatHeader에 띄울 접속한 테이블의 번호 목록, listSize가 3이므로 3개만 불러옴 -->
 		select * from (
 			select rownum num, g.* from (
 				select table_no, guest_status, guest_gender
@@ -74,6 +75,14 @@
 	<insert id="chat_insert" parameterType="bean.ChatVo">
 		insert into chat values (
 			sysdate, #{chat_text}, #{chat_sender}, #{chat_receiver}
+		)
+	</insert>
+	<select id='chat_notice' resultType="String">
+		select notice_text from (select notice_text from notice order by notice_date desc) where rownum = 1
+	</select>
+	<insert id='notice_insert' parameterType="String">
+		insert into notice values (
+			sysdate, #{noticeText}
 		)
 	</insert>
 </mapper>

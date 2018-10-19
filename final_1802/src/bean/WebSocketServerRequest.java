@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 public class WebSocketServerRequest {
 	
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+	ChatDao dao = new ChatDao();
 		/* 클라이언트로부터 메시지가 도착했을 때 */
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {

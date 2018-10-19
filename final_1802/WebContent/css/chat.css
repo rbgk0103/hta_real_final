@@ -44,7 +44,7 @@
 	color: #000000;
 }
 
-#btnChatSend {
+.btnChatSend {
 	padding: 32px 12px;
 	border-radius: 11px;
 }
@@ -149,4 +149,20 @@
 	margin-top: 12px;
 	float: right;
 	cursor: pointer;
+}
+#btnNoticeSend {
+	padding: 10px 12px;
+	border-radius: 11px;
+	margin-bottom: 5px;
+}
+#btnChatSend {
+	padding: 10px 12px;
+	border-radius: 11px;
+}
+.btnNoNoticeChatSend {
+	padding: 32px 12px;
+	border-radius: 11px;
+}
+#chatFooterForm {
+	margin-top: 16px;
 }

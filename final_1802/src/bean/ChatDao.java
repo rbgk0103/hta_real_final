@@ -36,23 +36,46 @@ public class ChatDao {
 			ex.printStackTrace();
 		}
 	}
+	//공지 insert, sysdate와 매개변후를 notice테이블에 저장
+	public void noticeInsert(String noticeText) {
+		int result = 0;
+		try {
+			result = sqlSession.insert("chat.notice_insert", noticeText);
+			if(result < 1) {
+				sqlSession.rollback();
+			} else {
+				sqlSession.commit();
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			sqlSession.rollback();
+		}
+	}
 	
+	//notice select, 가장 최근에 등록한 공지 하나를 불러옴
+	public String notice() {
+		String noticeText = sqlSession.selectOne("chat.chat_notice");
+		return noticeText;
+	}
+	
+	
+	//orders 테이블의 주문 시간부터 sysdate까지, guest_status =1 이고 보내는 테이블과 받는 테이블이 서로 교차되어 같을 경우의 대화 목록을 불러옴
+	//1대1 대화 목록
 	public List<TotalChatListVo> oneToOneChatList(ChatVo vo) {
 		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
 		list = sqlSession.selectList("chat.chat_one_to_one_list", vo);
 		return list;
 	}
 	
-	//주문 날짜(guest.guest_status = 1)부터 현재 시간까지의 1대1 채팅, 또는 전체 채팅 목록을 불러옵니다.
+	//주문 날짜(guest.guest_status = 1)부터 현재 시간까지의 전체 채팅 목록을 불러옵니다.
 	public List<TotalChatListVo> totalChatList() {
 		List<TotalChatListVo> list = new ArrayList<TotalChatListVo>();
 		list = sqlSession.selectList("chat.chat_content_list");
 		return list;
 	}
 	
+	//client가 메세지를 전송할 때 메세지를 chat 테이블에 저장
 	public void inputMessage(ChatVo vo) {
-		System.out.println("input Message 메소드");
-		System.out.println("vo.gettext : " + vo.getChat_text());
 		int result;
 		try {
 			result = sqlSession.insert("chat.chat_insert", vo);
@@ -67,59 +90,38 @@ public class ChatDao {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			sqlSession.rollback();
-			
 		}
 		
 	}
 	
+	//ip 뒤 두 자리로 table_status 테이블을 조회한 테이블 번호를 가져옴
 	public int getTableNo(String ip) {
 		int result = 0;
-		System.out.println("ChatDao ip : " + ip);
-		if(sqlSession.selectOne("chat_table_no", ip) == null) {
-			System.out.println("널임");
-		} else {
+		if(sqlSession.selectOne("chat_table_no", ip) != null) {
 			result = sqlSession.selectOne("chat.chat_table_no", ip);
 		}
-		System.out.println("getTableNo : " + result);
 		return result;
 	}
 	
-	// tableNo, tableIp
 	//page Compute해서 전체 session이 아닌 3개의 세션만 가져옴
 	public List<GuestVo> openTableList(int tableNo) {
 		pageCompute();
 		setTableNo(tableNo);
 		List<GuestVo> openTableList = sqlSession.selectList("chat.chat_open_list", this);
 		
-		System.out.println("openTableList에 잘 들어갔는지 확인하자");
-		
-		// 콘솔 확인용//////////////////////
-		Iterator<GuestVo> iterator = openTableList.iterator();
-		while(iterator.hasNext()) {
-			GuestVo vo = iterator.next();
-			System.out.print("tbl_no : " + vo.getTable_no());
-			System.out.println("\tguest_gender : " + vo.getGuest_gender());
-		}
-		//////////////////////////////////////////
 		return openTableList;
 	}
 	
-	//guest_status = 1 테이블 목록을 가져옴
+	//guest_status = 1 테이블 목록을 가져옴, 손님이 자리아 앉은 후 관리자가 테이블에 성별, 인원을 입력했을 때,
+	//관리자가 성별, 인원을 입력한 테이블의 목록을 가져옴
 	public List<GuestVo> sessionOpenAllTableList() {
 		List<GuestVo> sessionOpenAllTableList = sqlSession.selectList("chat.chat_all_list");
-		// 콘솔 확인용//////////////////////
-		Iterator<GuestVo> iterator = sessionOpenAllTableList.iterator();
-		System.out.println("-------sessionOpenAllTableList--------");
-		while(iterator.hasNext()) {
-			GuestVo vo = iterator.next();
-			System.out.print("tbl_no : " + vo.getTable_no());
-			System.out.println("\tguest_gender : " + vo.getGuest_gender());
-		}
-		//////////////////////////////////////////
 		return sessionOpenAllTableList;
 	}
 	
+	//chatHeader 페이징 용
 	public void pageCompute() {
+		//자기 자신을 제외한 접속한 테이블(guest_status = 1)의 목록을 가져옴
 		totSize = sqlSession.selectOne("chat.chat_count");
 		
 		totPage = (int)Math.ceil(totSize/(double)listSize);
