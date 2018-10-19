@@ -25,11 +25,23 @@
                   	<span>테이블(메인페이지)</span>
                 </a>
             </li>
-            <li>
-                <a href="./auction_list.auc">
+            <li id = 'menu_auction'>
+            	<a>
                 	<span>경매</span>
                 </a>
             </li>
+            <div id = 'submenu_auction'>
+            	<li>
+            		<a href = './auction_list.auc'>
+            			<span>경매 등록</span>
+            		</a>
+            	</li>
+            	<li>
+            		<a href = './auction_history.auc'>
+            			<span>경매 기록</span>
+            		</a>
+            	</li>
+            </div>
             <li>
                 <a href="./menu_list.adm">
                 	<span>메뉴</span>
@@ -65,6 +77,11 @@
 $(document).ready(function(){
 	$("#menu_game").click(function(){
 	    $("#submenu_game").slideToggle();
+	});
+})
+$(document).ready(function(){
+	$("#menu_auction").click(function(){
+	    $("#submenu_auction").slideToggle();
 	});
 })
 </script>

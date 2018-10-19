@@ -8,12 +8,19 @@ public class AuctionVo {
 	int  ae_price;
 	int  ae_pct_max;
 	int  ae_cost;
+	int  ae_confirm;
 	int  ae_pct_min;
 	int  ae_win_table;
 	int startNo;
 	int endNo;
 	
 	
+	public int getAe_confirm() {
+		return ae_confirm;
+	}
+	public void setAe_confirm(int ae_confirm) {
+		this.ae_confirm = ae_confirm;
+	}
 	public int getAe_no() {
 		return ae_no;
 	}

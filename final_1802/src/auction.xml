@@ -6,7 +6,7 @@
    <select id='auction_list' resultType='bean.AuctionVo'>
     select ae_no, menu_no, ae_date, ae_price, ae_pct_max,
       ae_cost,ae_pct_min, ae_win_table, ae_confirm
-      from auction_events where ae_confirm = 0
+      from auction_events 
       order by ae_no ASC
    </select>
    

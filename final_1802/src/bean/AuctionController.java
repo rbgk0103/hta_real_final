@@ -21,8 +21,6 @@ public class AuctionController {
    //관리자 list
    @RequestMapping(value="auction_list.auc")
    public ModelAndView auctionList() {
-      System.out.println("con_list 입장");
-      
       ModelAndView mv = new ModelAndView();      
       List<AuctionVo> list = dao.list();
       
@@ -30,6 +28,19 @@ public class AuctionController {
       mv.setViewName("auction/auction_list");
       return mv;
    }
+   //관리자 history
+   @RequestMapping(value="auction_history.auc")
+   public ModelAndView auctionHistory() {
+      System.out.println("con_history 입장");
+      
+      ModelAndView mv = new ModelAndView();      
+      List<AuctionVo> list = dao.list();
+      
+      mv.addObject("auctionList",list);
+      mv.setViewName("auction/auction_history");
+      return mv;
+   }
+   
    
 //   @RequestMapping(value="auction_client.auc")
 //   public ModelAndView auctionClient() {
