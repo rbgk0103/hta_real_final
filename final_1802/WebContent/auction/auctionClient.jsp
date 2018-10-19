@@ -64,6 +64,5 @@ window.onload=function(){
 	<!-- <input type = 'button' value = '모달 업' id = 'btn_auction_modal' /> -->
 	</a>
 </div>
-<%@include file = '/modal_auction.jsp' %>
 </body>
 </html>
