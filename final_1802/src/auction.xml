@@ -13,7 +13,7 @@
    <!-- menu_insert -->
    <!-- 약 1시간 뒤 등록 -->
    <insert id="auction_input" parameterType = "bean.AuctionVo" >
-   	  insert into auction_events values(seq_auction_events.nextval, 1, TO_CHAR(SYSDATE,'HH24:MI'), #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0, 0) 
+   	  insert into auction_events values(seq_auction_events.nextval, #{menu_no}, TO_CHAR(SYSDATE,'HH24:MI'), #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0, 0) 
    </insert>
    
    <!-- auction_confirm -->

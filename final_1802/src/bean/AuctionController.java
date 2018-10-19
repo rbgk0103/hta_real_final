@@ -23,7 +23,6 @@ public class AuctionController {
    public ModelAndView auctionList() {
       ModelAndView mv = new ModelAndView();      
       List<AuctionVo> list = dao.list();
-      
       mv.addObject("auctionList",list);
       mv.setViewName("auction/auction_list");
       return mv;

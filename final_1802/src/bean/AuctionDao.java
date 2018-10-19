@@ -36,6 +36,7 @@ public class AuctionDao {
 	  int cnt = 0;
 	   
 	  // java class 는 " " , ' ' 는 char  
+	  	vo.setMenu_no(Integer.parseInt(req.getParameter("menu_no")));
 	  	vo.setAe_price(Integer.parseInt(req.getParameter("ae_price")) / 2); // 5000
 	  	vo.setAe_pct_max(Integer.parseInt(req.getParameter("ae_pct_max")) / 20); // 500
 	  	vo.setAe_pct_min(Integer.parseInt(req.getParameter("ae_pct_min")) / 25); // 400

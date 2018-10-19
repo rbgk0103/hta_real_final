@@ -163,9 +163,6 @@ $().ready(function(){
 	<input type = 'button' class = 'button' name = 'btn_G' id = 'btn_G' value = 'GAME 등록' /><br/><br/>
 	<input type = 'button' id = 'btnAuction' name = 'btnAuction'value = 'AUCTION 등록' class = 'button'/>
 </div>
-<div class="modal fade" id="auction_detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<jsp:include page="../auction/auction_input.jsp" />
-</div>
 	<br/>
 	<c:choose>
 	<c:when test="${vo.menu_day eq 'yes'}">
@@ -207,6 +204,7 @@ $().ready(function(){
 		<input type = 'button' value = '취 소' id = 'btn_cancel' class = 'menu_btn' name = 'btn_cancel'/>
 	</form>
 	<form id = 'frm_auc_input' name = 'frm_auc_input' method = 'post' >
+		<input type = 'hidden' id = 'menu_no' name = 'menu_no' value = ${vo.menu_no }>
 		<input type ='hidden' id = 'ae_price'   name = 'ae_price' value = ${vo.menu_price } >
 		<input type ='hidden' id = 'ae_pct_min' name = 'ae_pct_min' value = ${vo.menu_price } >
 		<input type ='hidden' id = 'ae_pct_max' name = 'ae_pct_max' value = ${vo.menu_price } >

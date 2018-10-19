@@ -11,6 +11,29 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 </head>
+<div class="modal fade" id ='auction_list_modal' tabindex="-1" aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header" style = 'text-align: center;'>
+    	<h1><strong style = 'text-align: center; '>현제 시작중인 경매</strong></h1>
+    	<hr/>
+    	<div class="modal-body">
+      		<c:forEach var='auc' items='${auctionList }'>
+       			<c:if test="${auc.ae_confirm eq 2 }">
+					<h2><span>경매번호 - ${auc.ae_no}</span></h2>
+    				<h2><span>물품명 - ${auc.menu_name }</span></h2>
+					<h2><span>시작가 - ${auc.ae_price }</span></h2>
+					<img src = './admin/menu/menuImg/${auc.menu_image }'/>
+				</c:if>
+			</c:forEach>
+			<hr/>
+			 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			
+		</div>
+		</div>
+    </div>
+</div>
+</div>
 <script>
 $().ready(function(){
 	$("#btnInput").click(function(){
@@ -73,7 +96,8 @@ ${msg }
          </c:if>
          </c:forEach>
       </table>
-		<input type = 'button' value = '등 록'  id = 'btnInput' name = 'btnInput'/>
+      	<input type = 'button'  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#auction_list_modal" style = 'position: absolute;right:0;'value = '현재 진행중인 경매'/>
+		<input type = 'button'  class="btn btn-primary btn-lg" value = '등 록'  id = 'btnInput' name = 'btnInput'/>
 	</div>
 </div>
 </body>
