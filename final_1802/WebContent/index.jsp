@@ -67,7 +67,7 @@ text-shadow:
 </head>
 <body>
 <%
-String content = "order/order_menu.jsp";
+String content = "main.ord";
 String ip = request.getRemoteAddr();
 request.setAttribute("ip", ip);
 System.out.println("index에서 ip 주소(remoteAddr) : " + ip);
