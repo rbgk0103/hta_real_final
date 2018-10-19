@@ -13,7 +13,7 @@ $(document).ready(function(){
 
 
 <div id='tvt_play_wrap'>
-여기는 tvtPlay
+	
 </div>
 
 

@@ -114,10 +114,10 @@ var timerId = 0;
 	<div id='ws_tvt_client'>
 		
 		<input type='hidden' id='msg'  /> 
-		<input type='button' value='send' id='btnSend' style='visibility:hidden' />
+		<input type='hidden' value='send' id='btnSend' />
 		
 		<a href='#' data-toggle='modal' data-target='#modal_call_tvt'>
-			<input type='button' value='모달띄우기' id='btn_tvt_modal' style='visibility:hidden' />
+			<input type='hidden' value='모달띄우기' id='btn_tvt_modal' />
 		</a>
 		
 	</div>
