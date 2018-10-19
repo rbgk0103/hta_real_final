@@ -20,6 +20,4 @@ function leftMenu(menu_type){
 	var param = $('#leftMenu').serialize();
 	$('#c_menu').load('center.ord', param);
 }
-
-
 </script>

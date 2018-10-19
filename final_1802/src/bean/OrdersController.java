@@ -34,10 +34,9 @@ public class OrdersController {
 		ModelAndView mv = new ModelAndView();
 		findStr = req.getParameter("findStr");
 		List<MenuVo> list = dao.menuSelect(findStr);
-		System.out.println("우리모두 하하하");
-		
+	
 		mv.addObject("list", list);
-		mv.setViewName("order_menu");
+		mv.setViewName("center_menu");
 		return mv;
 	}
 	

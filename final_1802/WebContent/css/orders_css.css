@@ -58,7 +58,7 @@
 
 
 #menu_list {
-   background: white;
+   background: #9999;
    width: 100%;
    height: 700px;
    overflow-y: scroll;
@@ -66,15 +66,21 @@
 /* #menu_list */
 
 #menu_list .item {
-   margin-top: 5px;
-   margin-bottom: 50px;
-   position: relative;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    background: #3337;
+    border-radius: 20px;
+    padding-bottom: 10px;
+}
+    
 }
 
 #menu_list .item:hover {
-   margin-top: 5px;
-   margin-bottom: 50px;
+   margin-top: 15px;
+   margin-bottom: 20px;
    position: relative;
+   background: #3337;
    text-decoration: underline;
    text-shadow: 0 0 10px #fff,
 		 0 0 20px #ff1114,
@@ -84,6 +90,7 @@
 #menu_list  .item-img {
    position: relative;
    overflow: hidden;
+   text-align: center;
 }
 
 #menu_list .item img {
@@ -93,6 +100,22 @@
    top: 0px;
    left: 0px;
    position: relative;
+   border-radius: 19px;
+}
+
+#menu_list .item input {
+	text-align: center;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    width: 150px;
+    height: 35px;
+    background: #010109;
+    border: none;
+    box-shadow: 2px 2px #9112;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #menu_list .item-name {
@@ -104,7 +127,7 @@
    font-size: 22px;
    font-weight: bold;
    letter-spacing: 3px;
-   color: #2d3a4b;
+   color: ivory;
    text-transform: uppercase;
 }
 
@@ -116,7 +139,7 @@
    width: 100%;
    text-align: center;
    margin-top: 20px;
-   color: #2d3a4b;
+   color: ivory;
 }
 
 

@@ -4,7 +4,7 @@
 
 <div class="modal-body">
 	<div id ='modal_show_order_list_text' style='color:black'>
-		주문 내역뽜뽜
+		주문 내역
 	</div>
 		<table class='table'>
 			<tbody id='listZone' style='color:black'>

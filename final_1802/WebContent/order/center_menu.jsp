@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <div id='menu_list'>
 	
 	<form name='menu_frm' id='menu_frm' method='post'>
@@ -17,11 +16,8 @@
 			 <c:choose>
 			 <c:when test='${param.page eq "game" }'>
 				 <div class="item">
-				   <!-- Item img -->
 			        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
-			        <!-- Item Name -->
 			        <div class="item-name"><a>${list.menu_name }</a></div>
-			        <!-- Price --> 
 			        <span class="price">${list.menu_price }</span>
 			        <c:if test='${param.page eq "game" }'>
 			       		<input type='button' name='btnToGame' value='to게임'
@@ -32,11 +28,8 @@
 			 </c:when>
 			 <c:otherwise>
 				<div class="item" onclick='appendMenu("${list.menu_no}", "${list.menu_name }", "${list.menu_price }")'> 
-			 	  <!-- Item img -->
 			        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
-			        <!-- Item Name -->
 			        <div class="item-name"><a>${list.menu_name }</a></div>
-			        <!-- Price --> 
 			        <span class="price">${list.menu_price }</span>
 			        <c:if test='${param.page eq "game" }'>
 			       		<input type='button' value='to게임'/>
@@ -49,6 +42,7 @@
 	</form>
 	
 </div>
+
 
 <script>
 var tableZone; // right_order.jsp에서 tableZone은 tbody영역
