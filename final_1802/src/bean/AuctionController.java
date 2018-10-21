@@ -89,6 +89,20 @@ public class AuctionController {
 		
     	return mv;
     }
+    
+    
+    //사용자 auction
+    @RequestMapping(value="auctiona.auc")
+    public ModelAndView auction(HttpServletRequest req) {
+    	ModelAndView mv = new ModelAndView();
+    	AuctionVo vo = dao.view(Integer.parseInt(req.getParameter("ae_no")));
+    	
+    	mv.addObject("vo",vo);
+    	mv.setViewName("auction/auction");
+    	
+    	return mv;
+    }
+    
     @RequestMapping(value="auction_confirm.auc")
     public ModelAndView auctionConfirm(HttpServletRequest req) {
     	
@@ -116,6 +130,22 @@ public class AuctionController {
     	msg = dao.delete(Integer.parseInt(req.getParameter("ae_no")));
     	mv.addObject("msg",msg);
     	mv.setViewName("auction/auction_list");
+    	
+    	return mv;
+    }
+    
+    @RequestMapping(value="auctionClient.auc")
+    public ModelAndView auctionClient(HttpServletRequest req) {
+    	System.out.println(req.getParameter("ae_no"));
+    	System.out.println(req.getParameter("ae_max"));
+    	System.out.println(req.getParameter("ae_min"));
+    	System.out.println(req.getParameter("ae_price"));
+    	ModelAndView mv = new ModelAndView();
+    	mv.addObject("ae_no",req.getParameter("ae_no"));
+    	mv.addObject("ae_max",req.getParameter("ae_max"));
+    	mv.addObject("ae_min",req.getParameter("ae_min"));
+    	mv.addObject("ae_price",req.getParameter("ae_price"));
+    	mv.setViewName("auction/auction");
     	
     	return mv;
     }

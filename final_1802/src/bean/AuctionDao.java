@@ -63,6 +63,14 @@ public class AuctionDao {
 	   return vo;
    }
    
+   //사용자 auction
+   
+   public AuctionVo auction(int ae_no) {
+	   AuctionVo vo = new AuctionVo();
+	   vo = s.selectOne("auc.auction",ae_no);
+	   return vo;
+   }
+   
    //관리자 경매 start
    public String auc_start(int ae_no) {
 	   String msg = "";

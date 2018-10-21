@@ -92,12 +92,12 @@ if(request.getParameter("content") !=null){
          <a href ="index.game">게임</a>
          <a href ="#" onclick ="goChat('${ip}')">채팅</a>
          <a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
-         <a href ="#" onclick ="auc()" style="visibility:hidden; color:green;" >경매</a>	<!-- 경매등록시나타남 -->
+         <a href ="#" onclick ="auc()" style="visibility:hidden" >경매</a>	<!-- 경매등록시나타남 -->
       </div>
       
   	  <%@ include file = "./header_tableNo.jsp" %> 
       <%@ include file = "./game/ws_tvt_client.jsp" %>
-      <%@ include file = "./auction/auctionClient.jsp" %>
+      <%-- <%@ include file = "./auction/auctionClient.jsp" %>  --%>
 
          
       <div id="header_mbr">
@@ -182,20 +182,19 @@ if(request.getParameter("content") !=null){
 <%@ include file = "./members/modal_call_members_findInfo.jsp" %>
 <%@ include file = "./members/modal_call_members_modify.jsp" %>
 <script>
-window.onload = function(){
+
+/* window.onload = function(){
    var stDate = new Date().toLocaleString();
    
    setInterval(function() {
       for(var i=0 ; i < ${length} ; i++){
          if (stDate == '${auctionList.get(i).ae_date}'){
             alert("경매시작시간");
-         } else {
-            /* alert(stDate); */
          }
       }
    }, 1000); 
    
-}
+} */
 
 
 
@@ -227,6 +226,30 @@ function goChat(ip) {
    df.action = "getIp.chat?ip=" + ip;
    df.submit();
 }
+function auc(){
+	var aeOpen = window.open("auction/auction.jsp", "auction", "_blank", "width=570, height=700");
+}
+
+$(function(){
+	var websocket = new WebSocket("ws://172.30.1.48:7080/final_1802/auction");
+	
+	websocket.onopen = function() {
+		var tableNo = "${tblVo.tbl_no}";
+		console.log("tableNo aucwebsocketㅎㅎ : " + tableNo);
+		console.log("연결 오키");
+	}
+	
+	websocket.onmessage = function(msg) {
+		
+		 window.open("./index.jsp?msg="+msg.data);  
+		 console.log("연결 메세지");
+	
+	}
+	websocket.onclose = function () {
+		console.log("연결끝");
+	}
+	
+});
 </script>
 </body>
 </html>

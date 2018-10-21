@@ -49,14 +49,27 @@ function view(ae_no){
  
 function ae_start(ae_no, ae_price, ae_max, ae_min){
 	$("#ae_no").val(ae_no)
-	var param = $("#frm_auc").serialize();
 	var prom = confirm("경매번호 " + ae_no + " \n시작가 " + ae_price + "\nMAX" + ae_max + "\nMIN" + ae_min + "\n\n 시작 하시겠습니까?");
 	if(prom){ //확인 눌렀을때		
-		$(".skin-black").load("./auction_start.auc", param);
+	   var open = window.open("", "auc", "_blank", "width=570, height=810");
+	   var df = document.frm_auc;
+	   df.action = "auctionClient.auc?ae_no="+ae_no+"&ae_price="+ae_price+"&ae_max="+ae_max+"&ae_min="+ae_min;
+	   df.target = "auc";
+	   df.submit();
+/* 	   $(".skin-black").load("./auction_start.auc", param); */
 	}else{
 		alert("취소");
 	}
 }
+
+function auction(ae_no){
+	$("#ae_no").val(ae_no);
+	var param = $("#frm_auc").serialize();
+	$(".skin-black").load("./auction.auc",param);
+}
+
+
+
 </script>
 <body>
 <!-- 성공,실패 확인 메세지  -->
