@@ -65,6 +65,7 @@ $(document).ready(function(){
 					<h4><span id='user1_tblNo'></span>번 테이블</h4>
 				</div>
 				<div class='tp_user_game'>
+					<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
 				</div>
 				<div class='tp_user_status'>
 				</div>
