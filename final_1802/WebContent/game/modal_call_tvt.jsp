@@ -38,6 +38,7 @@
 				<button type="button" class="btn btn-primary" id='modal_call_tvt_footer_accept'>도전 수락</button>
 				<button type="button" class="btn btn-default" id='modal_call_tvt_footer_cancel' data-dismiss="modal">취소</button>
 			</div>
+			
 		</div>
   </div>
 

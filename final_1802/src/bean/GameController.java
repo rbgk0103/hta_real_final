@@ -108,8 +108,26 @@ public class GameController {
 	public ModelAndView tvtPlay(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		
+		String tvtAcceptMsg = req.getParameter("tvtAcceptMsg");
 		
-		mv.setViewName("tvt_play"); // tbl_list.jsp
+		
+		mv.addObject("tvtAcceptMsg", tvtAcceptMsg);
+		
+		mv.setViewName("tvt_play"); // tvt_play.jsp
+		
+		return mv;
+	}
+	
+	// [tvtPlay2] 
+	@RequestMapping(value = "/tvtPlay2.game")
+	public ModelAndView tvtPlay2(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		String tvtAcceptMsg = req.getParameter("tvtAcceptMsg");
+		
+		
+		mv.addObject("tvtAcceptMsg", tvtAcceptMsg);
+		mv.setViewName("tvt_play2"); // tvt_play2.jsp
 		
 		return mv;
 	}

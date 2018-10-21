@@ -2,14 +2,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-// 타이머용 시간 설정
 
 $(document).ready(function(){
-var count = 30;
+var ftr = document.frm_tvt_ready;
+
+// 타이머용 시간 설정
+var count = 30;		
 var timerId = 0;
+
 	
 	var tvtWebSocket = new WebSocket(
-	'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
+	'ws://192.168.0.3:7080/final_1802/gameBroadcasting');
 
 	tvtWebSocket.onopen = function() {
 		$('#tvt_ready_wrap #result').html("연결 성공!!!!");
@@ -17,9 +20,14 @@ var timerId = 0;
 
 	tvtWebSocket.onmessage = function(msg) {
 		var tvtAcceptMsgArr = msg.data.split(',');
+		
+		// 상대로부터 [도전수락] 받은 경우
 		if (tvtAcceptMsgArr[0] == '${tblVo.tbl_no}' && tvtAcceptMsgArr[6] == 'accept') {
-			alert(tvtAcceptMsgArr[1] + '번 테이블로부터  수락을 받앗다');
-			location.href = './tvtPlay.game';
+			
+			ftr.tvtAcceptMsg.value = msg.data;
+			ftr.method = 'GET';
+		    ftr.action = './tvtPlay.game';
+		    ftr.submit();
 		}
 	}
 
@@ -44,7 +52,7 @@ var timerId = 0;
 		timerId = setInterval(function() {
 			console.log('이봉기');
 			count--;
-			$('#timer_text').text(count +'초');
+			$('#timer_text').text('${tbl_u}번 테이블로부터 수락여부를 기다리는 중... ' + count +'초');
 			
 			// 남은시간 0초 되면
 			if (count === 0) {
@@ -105,9 +113,13 @@ var timerId = 0;
 			</div>
 			
 			<div id='timer_area'><p/>
-			<h4>${tbl_u}번 테이블로부터 수락여부를 기다리는 중...&nbsp;<span id='timer_text'></span></h4>
+			<h4><span id='timer_text'></span></h4>
 			</div>
 			
+			<div>
+				<input type='hidden' name='tvtAcceptMsg' />
+			</div>
+						
 		</div>
 	</form>
 </div>

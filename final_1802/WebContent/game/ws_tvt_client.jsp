@@ -20,6 +20,7 @@ var tvtMsg;					// 대전신청시 사용
 var tvtMsgArr;				// 대전신청 사용(쪼갠 배열)
 
 $(document).ready(function(){
+var ftc = document.frm_tvt_client;
 
 // 타이머용
 var count = 30;
@@ -27,7 +28,7 @@ var timerId = 0;
 
 	/* 웹소켓 */
 	var tvtWebSocket = new WebSocket(
-		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
+		'ws://192.168.0.3:7080/final_1802/gameBroadcasting');
 
 		tvtWebSocket.onopen = function() {
 		$('#result').html("연결 성공!!!!");
@@ -85,9 +86,14 @@ var timerId = 0;
 	// [도전수락]버튼을 눌렀을 때
 	$('#modal_call_tvt_footer_accept').click(function(){
 		var tvtAcceptMsg = tvtMsg + ',accept';
+		
 		tvtWebSocket.send(tvtAcceptMsg);
-		alert('수락하셨습니다');
-		location.href='./tvtPlay.game';
+		
+		ftc.tvtAcceptMsg.value = tvtAcceptMsg;
+		ftc.method = 'GET';
+		ftc.action = './tvtPlay2.game';
+		ftc.submit();
+		
 	});
 		
 		
@@ -120,6 +126,10 @@ var timerId = 0;
 			<input type='hidden' value='모달띄우기' id='btn_tvt_modal' />
 		</a>
 		
+		<form name='frm_tvt_client'>
+			<input type='hidden' name='tvtAcceptMsg'>
+		</form>
+			
 	</div>
 	
 	<%@ include file='/game/modal_call_tvt.jsp' %>
