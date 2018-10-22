@@ -131,6 +131,7 @@ public class ChatController {
 		}
 		} catch (NumberFormatException ex) {
 			System.out.println("넘포익");
+			ex.printStackTrace();
 		}
 		
 		modelAndView.addObject("ip", req.getParameter("ip"));

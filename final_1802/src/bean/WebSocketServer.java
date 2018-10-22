@@ -59,7 +59,7 @@ public class WebSocketServer {
 	
 	@OnClose
 	public void onClose(Session session) {	//세션이 종료된 경우
-		System.out.println("session close : " + session);
+		System.out.println("java의 onClose 메소드");
 		client.values().removeAll(Collections.singleton(session));	//접속한 세션 map 목록에서 삭제
 	}
 	

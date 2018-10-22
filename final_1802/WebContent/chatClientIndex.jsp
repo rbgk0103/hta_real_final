@@ -78,7 +78,7 @@
 			var msgData = msg.data.substring(2, msg.data.length-2);
 			var idReceiveNoValue = document.getElementById('receiverNo').value;
 			console.log("msg : " + msgData);
-			console.log("idReceiveNoValue" + idReceiveNoValue);
+			console.log("idReceiveNoValue : " + idReceiveNoValue);
 				if (msgSenderNo === reqAttrMyNo) {
 					switch (msgGetGender) {
 					case "man" : 
@@ -87,7 +87,7 @@
 						+ '<div class="send">'
 						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
 						+ '<div class="chatManBox">'
-						+ msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 						
 					case "woman" : 
@@ -96,7 +96,7 @@
 						+ '<div class="send">'
 						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
 						+ '<div class="chatWomanBox">'
-						+ msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 						
 					case "seam" : 
@@ -105,7 +105,7 @@
 						+ '<div class="send">'
 						+ '<h6>No. ' + reqAttrMyNo + '</h6>'
 						+ '<div class="chatSeamBox">'
-						+ msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 					}
 				} else {
@@ -116,7 +116,7 @@
 						+ '<div class="receive">'
 						+ '<h6>No. ' + msgSenderNo + '</h6>'
 						+ '<div class="chatManBox">'
-						+ + msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 						
 					case "woman" : 
@@ -125,7 +125,7 @@
 						+ '<div class="receive">'
 						+ '<h6>No. ' + msgSenderNo + '</h6>'
 						+ '<div class="chatWomanBox">'
-						+ + msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 						
 					case "seam" : 
@@ -134,7 +134,7 @@
 						+ '<div class="receive">'
 						+ '<h6>No. ' + msgSenderNo + '</h6>'
 						+ '<div class="chatSeamBox">'
-						+ + msgData + '</div></div></div>');
+						+ msg.data.substring(2, msg.data.length-2) + '</div></div></div>');
 						break;
 					}
 				}
