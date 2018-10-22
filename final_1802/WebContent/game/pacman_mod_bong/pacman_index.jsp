@@ -12,7 +12,7 @@
       #pacman {
         height:450px;
         width:342px;
-        margin:20px auto;
+        margin:0;
       }
       #shim { 
         font-family: BDCartoonShoutRegular; 
@@ -48,8 +48,8 @@
   <!-- added by bong -->
   <div>
   	<form name='frm_pacman_user1'>
-  		<input type='hidden' id='nowScore' name='nowScore' readonly  style='color:black' /><br/>
-  		<input type='hidden' id='finalScore'  name='finalScore' readonly style='color:black' />
+  		<input type='hidden' id='nowScore' name='nowScore' readonly  style='color:black; visibility:none' /><br/>
+  		<input type='hidden' id='finalScore'  name='finalScore' readonly style='color:black; visibility:none' />
   		
   		<input type='hidden' id='gameFlag'  value='playing'/>
   	</form>

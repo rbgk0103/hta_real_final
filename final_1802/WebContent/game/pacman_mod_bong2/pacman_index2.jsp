@@ -12,7 +12,7 @@
       #pacman {
         height:450px;
         width:342px;
-        margin:20px auto;
+        margin:0;
       }
       #shim { 
         font-family: BDCartoonShoutRegular; 

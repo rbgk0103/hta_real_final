@@ -7,7 +7,6 @@
 }
 
 #tp_wrap div{
-	border: 1px solid gray;
 }
 
 #tp_wrap #tp_ground {
@@ -28,7 +27,6 @@
 
 #tp_wrap .tp_user_game {
 	display: inline-block;
-	height: 550px;
 }
 
 </style>
@@ -101,7 +99,7 @@ $(document).ready(function(){
 				<div class='tp_user_title'>
 					<h4><span id='user1_tblNo'></span>번 테이블(도전 신청자)</h4>
 				</div>
-				<div class='tp_user_game'>
+				<div class='tp_user_game' >
 					<div id='tp_user1_game_real'>
 						<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
 					</div>
@@ -110,9 +108,10 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class='tp_user_status'>
-					<h3>점수: <span id='tp_user1_final_score'></span></h3>
+					<h3><span id='tp_user1_final_score'></span></h3>
 				</div>
 			</div>
+			
 			<div id='tp_user2'>
 				<div class='tp_user_title'>
 					<h4><span id='user2_tblNo'></span>번 테이블(도전 수락자)</h4>
@@ -121,11 +120,9 @@ $(document).ready(function(){
 					<img id='tp_img_user2' src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
-					<h3>점수: <span id='tp_user2_final_score'></span></h3>
+					<h3><span id='tp_user2_final_score'></span></h3>
 				</div>
 			</div>
-		</div>
-		<div id='tp_bottom'>
 		</div>
 	</div>
 </div>
