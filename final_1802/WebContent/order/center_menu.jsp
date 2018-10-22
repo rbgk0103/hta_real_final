@@ -82,8 +82,6 @@ function appendMenu(no, name, price){
 			document.getElementsByName("os_qty")[index].value
 			= document.getElementsByClassName("spanCnt")[index].innerHTML
 			
-			alert(document.getElementsByName("os_qty")[index].value + "개와     " + document.getElementsByName("os_price")[index].value);
-			
 	}
 }
 

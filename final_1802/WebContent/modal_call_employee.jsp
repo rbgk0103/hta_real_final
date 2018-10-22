@@ -28,7 +28,7 @@
 				
 			</div>
 			<div class="modal-footer" id ="modal_call_employee_footer">
-				<button type="button" class="btn btn-primary" id='modal_call_employee_footer_commit'>호출하기</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" id='modal_call_employee_footer_commit'>호출하기</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
 			</div>
 		</div>
