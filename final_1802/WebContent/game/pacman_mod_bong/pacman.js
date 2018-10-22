@@ -906,13 +906,14 @@ var PACMAN = (function () {
         
         
         /* added by bong */
-        document.frm.nowScore.value = user.theScore();
-        document.frm.finalScore.value = user.theScore();
+        document.frm_pacman_user1.nowScore.value = user.theScore();
+        document.frm_pacman_user1.finalScore.value = user.theScore();
         
-        if (user.getLives() == 0 && document.frm.gameFlag.value == 'playing') {
+        if (user.getLives() == 0 && document.frm_pacman_user1.gameFlag.value == 'playing') {
         	$('#gameFlag').val('end');
         	
         	tvtPlayWebSocket.send('user1,'+ user.theScore());
+        	alert('보낸메시지: ' + 'user1,'+ user.theScore())
         }
         
     }

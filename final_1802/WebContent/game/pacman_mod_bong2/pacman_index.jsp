@@ -47,7 +47,7 @@
   
   <!-- added by bong -->
   <div>
-  	<form name='frm'>
+  	<form name='frm_pacman_user2'>
   		<label>현재점수: </label>
   		<input type='text' id='nowScore' name='nowScore' readonly  style='color:black' /><br/>
   		<label>최종점수: </label>

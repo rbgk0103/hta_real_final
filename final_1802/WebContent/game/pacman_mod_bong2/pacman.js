@@ -906,13 +906,14 @@ var PACMAN = (function () {
         
         
         /* added by bong */
-        document.frm.nowScore.value = user.theScore();
-        document.frm.finalScore.value = user.theScore();
+        document.frm_pacman_user2.nowScore.value = user.theScore();
+        document.frm_pacman_user2.finalScore.value = user.theScore();
         
-        if (user.getLives() == 0 && document.frm.gameFlag.value == 'playing') {
+        if (user.getLives() == 0 && document.frm_pacman_user2.gameFlag.value == 'playing') {
         	$('#gameFlag').val('end');
         	
         	tvtPlayWebSocket.send('user2,'+ user.theScore());
+        	alert('보낸메시지: ' + 'user2,'+ user.theScore())
         }
         
     }
@@ -1073,12 +1074,12 @@ var PACMAN = (function () {
         var extension = Modernizr.audio.ogg ? 'ogg' : 'mp3';
 
         var audio_files = [
-            ["start", root + "./game/pacman_mod_bong/audio/opening_song." + extension],
-            ["die", root + "./game/pacman_mod_bong/audio/die." + extension],
-            ["eatghost", root + "./game/pacman_mod_bong/audio/eatghost." + extension],
-            ["eatpill", root + "./game/pacman_mod_bong/audio/eatpill." + extension],
-            ["eating", root + "./game/pacman_mod_bong/audio/eating.short." + extension],
-            ["eating2", root + "./game/pacman_mod_bong/audio/eating.short." + extension]
+            ["start", root + "./game/pacman_mod_bong2/audio/opening_song." + extension],
+            ["die", root + "./game/pacman_mod_bong2/audio/die." + extension],
+            ["eatghost", root + "./game/pacman_mod_bong2/audio/eatghost." + extension],
+            ["eatpill", root + "./game/pacman_mod_bong2/audio/eatpill." + extension],
+            ["eating", root + "./game/pacman_mod_bong2/audio/eating.short." + extension],
+            ["eating2", root + "./game/pacman_mod_bong2/audio/eating.short." + extension]
         ];
 
         load(audio_files, function() { loaded(); });
