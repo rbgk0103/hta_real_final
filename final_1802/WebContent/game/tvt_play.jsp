@@ -35,20 +35,29 @@
 
 <script>
 var tpInfoArr = '${tvtAcceptMsg}'.split(','); 
+var tvtPlayWebSocket;
 
 $(document).ready(function(){
+	$('#tp_user_game_real').show();
+	$('#tp_user_game_img').hide();
+	
+	
 	
 	$('#user1_tblNo').text(tpInfoArr[0]);
 	$('#user2_tblNo').text(tpInfoArr[1]);
 	
 	
- 	var tvtPlayWebSocket = new WebSocket(
+ 	tvtPlayWebSocket = new WebSocket(
 		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
 
 	tvtPlayWebSocket.onopen = function() {
 	}
 	
 	tvtPlayWebSocket.onmessage = function(msg) {
+		$('#tp_user_game_real').hide();
+		$('#tp_user_game_img').show();
+		
+		
 	}
 	
 	tvtPlayWebSocket.onclose = function() {
@@ -75,7 +84,12 @@ $(document).ready(function(){
 					<h4><span id='user1_tblNo'></span>번 테이블</h4>
 				</div>
 				<div class='tp_user_game'>
-					<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
+					<div id='tp_user_game_real'>
+						<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
+					</div>
+					<div id='tp_user_game_img'>
+						<img src='img/game_img/pacman_end.png'/>
+					</div>
 				</div>
 				<div class='tp_user_status'>
 				</div>
