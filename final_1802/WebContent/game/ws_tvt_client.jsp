@@ -28,7 +28,7 @@ var timerId = 0;
 
 	/* 웹소켓 */
 	var tvtWebSocket = new WebSocket(
-		'ws://192.168.0.3:7080/final_1802/gameBroadcasting');
+		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
 
 		tvtWebSocket.onopen = function() {
 		$('#result').html("연결 성공!!!!");
