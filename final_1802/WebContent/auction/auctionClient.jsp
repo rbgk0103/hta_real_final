@@ -18,7 +18,7 @@ window.onload=function(){
 // 	$('#auction').load('auction_client.auc');	
 
 	//웹 소켓 생성 주소
-	var webSocketAuc = new WebSocket('ws://172.30.1.48:7080/final_1802/WebSocketAuction'); 
+	var webSocketAuc = new WebSocket('ws://192.168.0.29:7080/final_1802/WebSocketAuction'); 
 	var stDate = new Date().toLocaleTimeString();
 
 	//socket open 시 호출되는 event
