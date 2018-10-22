@@ -158,7 +158,7 @@
 			var receiveNo = document.getElementById('receiverNo').value;
 			console.log("sendMessage receiveNo : " + receiveNo);
 			$('#model').load("insert.chat", "msg=" + reqAttrMyNo + receiveNo + message + ipCut);	//메세지 DB 저장용
-			console.log(">? " + message + " ???");
+			console.log("메세지 : " + message);
 			if ($.trim(message) !== "") {
 				webSocket.send(reqAttrMyNo + receiveNo + message + ipCut);
 				document.getElementById('msg').value = "";	//textarea 지움

@@ -37,13 +37,7 @@
 		on g.table_no = ts.tbl_no 
 		right outer join chat c 
 		on g.table_no = c.chat_sender 
-		where g.guest_status = 1 
-		and to_char(c.chat_date, 'YY/MM/DD') between (
-			select min(o.ord_date) 
-			from guest g join orders o 
-			on g.guest_no = o.guest_no 
-			where g.guest_status = '1') 
-		and to_char(sysdate, 'YY/MM/DD') 
+		where g.guest_status = 1
 		and c.chat_receiver = 'a' 
 		order by c.chat_date asc
 	</select>
@@ -54,13 +48,6 @@
 		right outer join chat c 
 		on g.table_no = c.chat_sender 
 		where g.guest_status = 1 
-		and to_char(c.chat_date, 'YY/MM/DD') between (
-			select min(o.ord_date) 
-			from guest g join orders o 
-			on g.guest_no = o.guest_no 
-			where g.guest_status = '1') 
-		and to_char(sysdate, 'YY/MM/DD') 
-		and c.chat_receiver != 'a' 
 		and ( (
 				c.chat_sender = #{chat_sender} 
 				and c.chat_receiver = #{chat_receiver}) 

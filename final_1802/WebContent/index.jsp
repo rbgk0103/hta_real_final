@@ -79,7 +79,7 @@ if(request.getParameter("content") !=null){
 
 
 <form name='ipForm' method='post' target="chat">
-   <input type='hidden' id="ip" value='${ip }' />
+   <input type='hidden' id="ip" value='${tblIp}' />
 </form>
 <div id = 'wrap'>
    <div id = 'header'>
@@ -97,7 +97,7 @@ if(request.getParameter("content") !=null){
       <div class='col-md-7' id = 'header_menu'>
          <a href="index.jsp?content=main.ord">메뉴</a>
          <a href ="index.game">게임</a>
-         <a href ="#" onclick ="goChat('${ip}')">채팅</a>
+         <a href ="#" onclick ="goChat('${tblIp}')">채팅</a>
          <a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
          <a href ="#" onclick ="auc()" style="visibility:hidden" >경매</a>	<!-- 경매등록시나타남 -->
       </div>
@@ -235,7 +235,7 @@ function goOrderMenu(){
 function goChat(ip) {
    var open = window.open("", "chat", "_blank", "width=570, height=810");
    var df = document.ipForm;
-   df.action = "getIp.chat?ip=" + ip;
+   df.action = "getIp.chat?ip=" + "192.168.0." + ip;
    df.submit();
 }
 function auc(){
