@@ -909,9 +909,10 @@ var PACMAN = (function () {
         document.frm.nowScore.value = user.theScore();
         document.frm.finalScore.value = user.theScore();
         
-        if (user.getLives() == 0 && document.frm.nowScore.value != '-1') {
-        	tvtPlayWebSocket.send(user.theScore());
-        	document.frm.nowScore.value = '-1';
+        if (user.getLives() == 0 && document.frm.gameFlag.value == 'playing') {
+        	$('#gameFlag').val('end');
+        	
+        	tvtPlayWebSocket.send('user1,'+ user.theScore());
         }
         
     }

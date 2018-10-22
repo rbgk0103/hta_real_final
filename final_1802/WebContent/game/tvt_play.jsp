@@ -38,8 +38,8 @@ var tpInfoArr = '${tvtAcceptMsg}'.split(',');
 var tvtPlayWebSocket;
 
 $(document).ready(function(){
-	$('#tp_user_game_real').show();
-	$('#tp_user_game_img').hide();
+	$('#tp_user1_game_real').show();
+	$('#tp_user1_game_img').hide();
 	
 	
 	
@@ -58,6 +58,8 @@ $(document).ready(function(){
 		
 		if (msgArr[0] == 'user1') {
 			$('#tp_user1_final_score').text(msgArr[1]);
+			$('#tp_user1_game_real').hide();
+			$('#tp_user1_game_img').show();
 		}
 		
 		if (msgArr[0] == 'user2') {
@@ -66,8 +68,6 @@ $(document).ready(function(){
 		
 		
 		
-		$('#tp_user_game_real').hide();
-		$('#tp_user_game_img').show();
 		
 		
 	}
@@ -93,13 +93,13 @@ $(document).ready(function(){
 		<div id='tp_middle'>
 			<div id='tp_user1'>
 				<div class='tp_user_title'>
-					<h4><span id='user1_tblNo'></span>번 테이블</h4>
+					<h4><span id='user1_tblNo'></span>번 테이블(도전 신청자)</h4>
 				</div>
 				<div class='tp_user_game'>
-					<div id='tp_user_game_real'>
+					<div id='tp_user1_game_real'>
 						<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
 					</div>
-					<div id='tp_user_game_img'>
+					<div id='tp_user1_game_img'>
 						<img src='img/game_img/pacman_end.png'/>
 					</div>
 				</div>
@@ -109,7 +109,7 @@ $(document).ready(function(){
 			</div>
 			<div id='tp_user2'>
 				<div class='tp_user_title'>
-					<h4><span id='user2_tblNo'></span>번 테이블</h4>
+					<h4><span id='user2_tblNo'></span>번 테이블(도전 수락자)</h4>
 				</div>
 				<div class='tp_user_game'>
 					<img src='img/game_img/pacman_playing.png' />

@@ -15,10 +15,20 @@
 	width: 80%;
 }
 
+#tp_wrap #tp_middle {
+	overflow:hidden;
+}
+
 #tp_wrap #tp_user1, #tp_wrap #tp_user2 {
+	float: left;
 	display:inline-block;
 	width: 46%;
 	margin: 0.5%;
+}
+
+#tp_wrap .tp_user_game {
+	display: inline-block;
+	height: 550px;
 }
 
 </style>
@@ -28,8 +38,11 @@ var tpInfoArr = '${tvtAcceptMsg}'.split(',');
 var tvtPlayWebSocket;
 
 $(document).ready(function(){
-	$('#tp_user_game_real').show();
-	$('#tp_user_game_img').hide();
+	alert(tpInfoArr[0]);
+	
+	$('#tp_user2_game_real').show();
+	$('#tp_user2_game_img').hide();
+	
 	
 	
 	$('#user1_tblNo').text(tpInfoArr[0]);
@@ -43,8 +56,20 @@ $(document).ready(function(){
 	}
 	
 	tvtPlayWebSocket.onmessage = function(msg) {
-		$('#tp_user_game_real').hide();
-		$('#tp_user_game_img').show();
+		var msgArr = msg.data.split(',')
+		
+		if (msgArr[0] == 'user1') {
+			$('#tp_user1_final_score').text(msgArr[1]);
+			
+		}else (msgArr[0] == 'user2') {
+			$('#tp_user2_final_score').text(msgArr[1]);
+			$('#tp_user2_game_real').hide();
+			$('#tp_user2_game_img').show();
+		}
+		
+		
+		
+		
 		
 	}
 	
@@ -65,27 +90,29 @@ $(document).ready(function(){
 		<div id='tp_middle'>
 			<div id='tp_user1'>
 				<div class='tp_user_title'>
-					<h4><span id='user1_tblNo'></span>번 테이블</h4>
+					<h4><span id='user1_tblNo'></span>번 테이블(도전 신청자)</h4>
 				</div>
 				<div class='tp_user_game'>
 					<img src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
+					<h3>점수: <span id='tp_user1_final_score'></span></h3>
 				</div>
 			</div>
 			<div id='tp_user2'>
 				<div class='tp_user_title'>
-					<h4><span id='user2_tblNo'></span>번 테이블</h4>
+					<h4><span id='user2_tblNo'></span>번 테이블(도전 수락자)</h4>
 				</div>
 				<div class='tp_user_game'>
-					<div id='tp_user_game_real'>
+					<div id='tp_user2_game_real'>
 						<%@ include file='./pacman_mod_bong2/pacman_index.jsp' %>
 					</div>
-					<div id='tp_user_game_img'>
+					<div id='tp_user2_game_img'>
 						<img src='img/game_img/pacman_end.png'/>
 					</div>
 				</div>
 				<div class='tp_user_status'>
+					<h3>점수: <span id='tp_user2_final_score'></span></h3>
 				</div>
 			</div>
 		</div>
