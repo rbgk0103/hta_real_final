@@ -59,5 +59,5 @@ window.onload=function(){
 	</a> 
 </div>
 
-<!-- 경매 참여 여부 창 -->	
-<%@ include file = '/auction/modal_auction.jsp' %>	
+<%-- <!-- 경매 참여 여부 창 -->	
+<%@ include file = '/auction/modal_confirm.jsp' %>	 --%>

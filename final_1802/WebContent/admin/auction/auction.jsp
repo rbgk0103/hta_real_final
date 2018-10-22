@@ -15,7 +15,7 @@ ${ae_price }
 <input type = 'button' id = 'btnAucStart' value = '경매 시작' />
 <script>
 	$(function() {
-		var websocket = new WebSocket("ws://172.30.1.48:7080/final_1802/auction");
+		var websocket = new WebSocket("ws://192.168.0.29:7080/final_1802/auction");
 		
 		websocket.onopen = function() {
 			console.log("연결 ㅇㅋ");

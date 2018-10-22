@@ -196,8 +196,6 @@ if(request.getParameter("content") !=null){
    
 } */
 
-
-
 function mbrLogin(tblNo){
    $(".modal-body #mbr_tbl_no").val(tblNo);
    $("#modal_call_members_login").modal("show");
@@ -235,15 +233,19 @@ $(function(){
 	
 	websocket.onopen = function() {
 		var tableNo = "${tblVo.tbl_no}";
-		console.log("tableNo aucwebsocketㅎㅎ : " + tableNo);
+		websocket.send(tableNo);
+		console.log("tableNo aucwebsocketㅎㅎggg : " + tableNo);
 		console.log("연결 오키");
 	}
 	
-	websocket.onmessage = function(msg) {
-		
+	websocket.onmessage = function(msg) {	
+		 console.log(msg.data);
 		 window.open("./index.jsp?msg="+msg.data);  
 		 console.log("연결 메세지");
-	
+		 
+		 var aeOpen = window.open("./modal_auction.jsp", "auction", "_blank", "width=570, height=700");
+
+		 
 	}
 	websocket.onclose = function () {
 		console.log("연결끝");

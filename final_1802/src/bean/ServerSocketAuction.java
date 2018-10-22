@@ -23,6 +23,7 @@ public class ServerSocketAuction {
 	
 	@OnClose
 	public void onClose(Session session) {
+		aucClient.values().removeAll(Collections.singleton(session));
 		System.out.println("연결 실패임");
 	}
 	
@@ -31,7 +32,12 @@ public class ServerSocketAuction {
 		
 		String tableNo = msg.substring(0,  1);
 		if(msg.length() == 1) {
-			aucClient.put(tableNo, session);
+			if(aucClient.containsKey(tableNo) == false) {
+				
+				aucClient.put(tableNo, session);
+				System.out.println("클라이언트가 들어옴"+tableNo);
+		
+			}
 		} else {
 			try {
 				if(tableNo.equals("5")) {
@@ -47,4 +53,5 @@ public class ServerSocketAuction {
 			}
 		}
 	}
+	
 }
