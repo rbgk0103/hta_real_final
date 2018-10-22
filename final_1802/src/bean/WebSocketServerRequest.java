@@ -28,7 +28,6 @@ public class WebSocketServerRequest {
 			for(Session sess : clients) {
 					sess.getBasicRemote().sendText(msg);
 			}
-
 	}
 	
 	/* 클라이언트에서 서버로 접속할 때*/
@@ -41,7 +40,7 @@ public class WebSocketServerRequest {
 	/* 에러날 때 */
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		throwable.printStackTrace();
+		//throwable.printStackTrace();
 	}
 	
 	/* 접속이 끊겼을 때 */

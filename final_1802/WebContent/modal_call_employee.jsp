@@ -51,14 +51,14 @@ $().ready(function(){
 		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
 
-	webSocket_request.onmessage = function(msg) {
-		//msg.data.substring(0, 1) : 자신의 table 번호
-		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
-		
-		$('#call_employee').append(msg.data);
-		//메세지 오면 스크롤 아래로
-// 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-	}
+// 	webSocket_request.onmessage = function(msg) {
+// 		//msg.data.substring(0, 1) : 자신의 table 번호
+// 		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
+// 		alert(msg.data);
+// 		$('#call_employee').append(msg.data);
+// 		//메세지 오면 스크롤 아래로
+// // 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+// 	}
 
 	webSocket_request.onclose = function() {
 		console.log("연결종료");

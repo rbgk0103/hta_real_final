@@ -22,7 +22,6 @@ public class OrdersController {
 		ModelAndView mv = new ModelAndView();
 		findStr = "";
 		List<MenuVo> list = dao.menuSelect(findStr);
-		System.out.println("우리모두 하하하");
 		
 		mv.addObject("list", list);
 		mv.setViewName("order_menu");
@@ -60,10 +59,6 @@ public class OrdersController {
 	@RequestMapping(value = "/viewList.ord")
 	public ModelAndView viewList(HttpServletRequest req){
 		ModelAndView mv = new ModelAndView();
-		System.out.println("viewList안에");
-		System.out.println(req.getParameter("ord_tbl_no"));
-//		int tblNo = Integer.parseInt(req.getParameter("ord_tbl_no")); 
-//		int g_no = Integer.parseInt(req.getParameter("guest_no"));
 		
 		int tblNo = Integer.parseInt(req.getParameter("tbl_no")); 
 		int g_no = Integer.parseInt(req.getParameter("g_no"));

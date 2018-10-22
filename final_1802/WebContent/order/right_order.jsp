@@ -34,7 +34,7 @@
   	 	<table class="table" id='tableModal' style='color:black'></table>
       </div>
       <div class="modal-footer">
-        <button type="button"  class="btn btn-primary" data-dismiss="modal" onclick='orderMenu()'>주문하기</button>
+        <button type="button"  class="btn btn-primary" data-dismiss="modal" id='orderMenu'>주문하기</button>
         <button type="button"  class="btn btn-default" data-dismiss="modal">취소하기</button>
       </div>
     </div>
@@ -50,53 +50,68 @@
 <script>
 
 
-// $().ready(function(){
-// 	var wantToPay = '';
-// 	var tableNo = ${tblVo.tbl_no};
-// 	var tableIp = ${tblIp};
-// 	var delete_row = 0;
-// 	console.log("테이블: " + tableNo);
+$(document).ready(function(){
+	var ment = '';
+	var tableNo = ${tblVo.tbl_no};
+	var tableIp = ${tblIp};
+	var delete_row = 0;
+	console.log("테이블: " + tableNo);
 
-// 	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
 	
-// 	webSocket_request.onopen = function() {
+	webSocket_request.onopen = function() {
 	
-// 		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
-// 	}
-
-// 	webSocket_request.onmessage = function(msg) {
-// 		//msg.data.substring(0, 1) : 자신의 table 번호
-// 		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
-		
-// 		$('#call_employee').append(msg.data);
-// 		//메세지 오면 스크롤 아래로
-// // 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
-// 	}
-
-// 	webSocket_request.onclose = function() {
-// 		console.log("연결종료");
-// 	}
-	
-	
-// 	function sendMessage() {
-// 		delete_row++;
-// 		var message = "<li class = 'call_employee_row"+delete_row+"' onclick='delete_row("+delete_row+")'><label>[ TABLE NO."+tableNo+" ]</label><span>"+ wantToPay +"요청</span></li>";
-// 		if ($.trim(message) !== "") {
-// 			webSocket_request.send(message);
-// 		}
-//  		console.log(message);
-// 	}
-// }
-
-
-function orderMenu(){
-	var param = $('#right_frm').serialize();
-	if (param === ""){
-		alert("메뉴를 선택해주세요.");
-	} else{
-		$('#content').load('orderMenu.ord', param);
+		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
-}
+
+	webSocket_request.onmessage = function(msg) {
+		//msg.data.substring(0, 1) : 자신의 table 번호
+		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
+		
+		$('#call_employee').append(msg.data);
+		//메세지 오면 스크롤 아래로
+// 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
+	}
+
+	webSocket_request.onclose = function() {
+		console.log("연결종료");
+	}
+	
+	
+	function sendMessage() {
+		delete_row++;
+		var message = "<li class = 'call_employee_row"+delete_row+"' onclick='delete_row("+delete_row+")'><label>[ TABLE NO."+tableNo+" ]</label><span>"+ ment +"요청</span></li>";
+		if ($.trim(message) !== "") {
+			webSocket_request.send(message);
+		}
+ 		console.log(message);
+	}
+
+	// 결제요청
+	$('#now_order').click(function(){
+		var wantToPay = '결제하기를 선택하시면 태블릿 서비스 이용이 제한됩니다. \n 결제하시겠습니까?'
+		if(confirm(wantToPay)){
+			ment = '결제';
+			$('#header_menu').css('display', 'none');
+			sendMessage();
+			$('#content').load('./order/to_want_to_pay.jsp');
+		}
+	});
+	
+	// 주문요청
+	$('#orderMenu').click(function(){
+		var param = $('#right_frm').serialize();
+		if (param === ""){
+			alert("메뉴를 선택해주세요.");
+		} else{
+			ment = '주문';
+			sendMessage();
+			$('#content').load('orderMenu.ord', param);
+		}
+	});
+	
+});
+
 
 
 $('#all_order').click(function(){
@@ -106,14 +121,6 @@ $('#all_order').click(function(){
  
 });
 
-$('#now_order').click(function(){
-	var wantToPay = '결제하기를 선택하시면 태블릿 서비스 이용이 제한됩니다. \n 결제하시겠습니까?'
-	if(confirm(wantToPay)){
-		$('#header_menu').css('display', 'none');
-// 		sendMessage();
-		$('#content').load('./order/to_want_to_pay.jsp');
-	}
-});
 
 
 

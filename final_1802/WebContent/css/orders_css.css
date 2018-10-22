@@ -318,6 +318,10 @@
     line-height: 15;
 }
 
+#tableModal .tdCnt .glyphicon-minus:before, #tableModal .tdCnt .glyphicon-plus, #tableModal .glyphicon-remove {
+	display: none;
+}
+
 
 /* to_want_to_pay.jsp의 css */
 

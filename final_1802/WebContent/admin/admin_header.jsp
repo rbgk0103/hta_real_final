@@ -29,7 +29,7 @@
 <script>
 
 	$('#call_employee').click(function(){
-		window.open("./admin/admin_call_employee.jsp", "", "_blank", 'width=120, height=400');
+		window.open("./admin/admin_call_employee.jsp", "", "_blank", 'width=120px, height=400px');
 
 	})
 
