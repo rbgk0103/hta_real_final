@@ -7,6 +7,7 @@
 }
 
 #tp_wrap div{
+	border: 1px solid gray;
 }
 
 #tp_wrap #tp_ground {
@@ -27,6 +28,7 @@
 
 #tp_wrap .tp_user_game {
 	display: inline-block;
+	height: 550px;
 }
 
 </style>
@@ -64,14 +66,14 @@ $(document).ready(function(){
 			$('#tp_user1_game_img').show();
 			user1Flag = 1;
 			
-			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
-			
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
+			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
 			user2Flag = 1;
 			
-			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 		}
 		
 	}
@@ -92,14 +94,14 @@ $(document).ready(function(){
 
 	<div id='tp_ground'>
 		<div id='tp_top'>
-			<h3>테이블 대전 - 즐겜하세요!</h3>
+			<h3>테이블 대전 - 즐겜하세요! ${tvtAcceptMsg}</h3>
 		</div>
 		<div id='tp_middle'>
 			<div id='tp_user1'>
 				<div class='tp_user_title'>
 					<h4><span id='user1_tblNo'></span>번 테이블(도전 신청자)</h4>
 				</div>
-				<div class='tp_user_game' >
+				<div class='tp_user_game'>
 					<div id='tp_user1_game_real'>
 						<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
 					</div>
@@ -108,10 +110,9 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class='tp_user_status'>
-					<h3><span id='tp_user1_final_score'></span></h3>
+					<h3>점수: <span id='tp_user1_final_score'></span></h3>
 				</div>
 			</div>
-			
 			<div id='tp_user2'>
 				<div class='tp_user_title'>
 					<h4><span id='user2_tblNo'></span>번 테이블(도전 수락자)</h4>
@@ -120,9 +121,11 @@ $(document).ready(function(){
 					<img id='tp_img_user2' src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
-					<h3><span id='tp_user2_final_score'></span></h3>
+					<h3>점수: <span id='tp_user2_final_score'></span></h3>
 				</div>
 			</div>
+		</div>
+		<div id='tp_bottom'>
 		</div>
 	</div>
 </div>
