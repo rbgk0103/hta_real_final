@@ -58,9 +58,9 @@ $(document).ready(function(){
 		
 		if (msgArr[0] == 'user1') {
 			$('#tp_user1_final_score').text(msgArr[1]);
-			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
 			user1Flag = 1;
 			
+			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
 			
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
@@ -68,6 +68,7 @@ $(document).ready(function(){
 			$('#tp_user2_game_img').show();
 			user2Flag = 1;
 			
+			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
 		}
 		
 	}
@@ -110,7 +111,7 @@ $(document).ready(function(){
 						<%@ include file='./pacman_mod_bong2/pacman_index2.jsp' %>
 					</div>
 					<div id='tp_user2_game_img'>
-						<img src='img/game_img/pacman_end.png'/>
+						<img id='tp_img_user2' src='img/game_img/pacman_end.png'/>
 					</div>
 				</div>
 				<div class='tp_user_status'>
