@@ -32,6 +32,11 @@ public class AdminDao {
 		return list_orders;
 	}
 	
+	public String get_admin_ip(HttpServletRequest req) {
+		int tbl_no = Integer.parseInt(req.getParameter("tbl_no"));
+		String ip_cut = s.selectOne("adm.get_ip", tbl_no);
+		return ip_cut;
+	}
 	
 	public String set_table_on(HttpServletRequest req) {
 		int tbl_no = Integer.parseInt(req.getParameter("tbl_no"));

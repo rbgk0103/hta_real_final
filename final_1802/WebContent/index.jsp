@@ -270,14 +270,30 @@ $(function(){
 var indexWebSocket = new WebSocket("ws://192.168.0.26:7080/final_1802/index");
 indexWebSocket.onopen = function() {
 	console.log("indexWebsocket 오픈");
+	indexWebSocket.send(${tblIp});
 }
 indexWebSocket.onclose = function() {
 	console.log("indexWebSocket 클로즈");
 }
 indexWebSocket.onmessage = function(msg) {
+	alert("됨?");
+	/* var ip = ${empty tblIp ? '0' : tblIp};
+	
 	var data = msg.data;
+	
+	alert(ipCut);
 	alert(data);
-	location.reload();
+	if(ip !== '0') {
+		var ipCut = ip.substring(0, 2);
+		var data = msg.data;
+		
+		if(ip.substring(0, 2) === msg.data.substring(0, 2)) {
+			alert(data);
+			location.reload();
+		}else{
+			alert(data+"--------------------이프문못들감")
+		}
+	} */
 }
 
 </script>

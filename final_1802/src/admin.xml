@@ -31,6 +31,10 @@
 		on orders_set.menu_no = menu.menu_no
 		where orders.ord_tbl_no = #{table_no} and orders.guest_no = #{guest_no} 
 	</select>
+	
+	<select id='get_ip' parameterType="int" resultType='String'>
+		select tbl_ip from table_status where tbl_no = #{tbl_no}
+	</select>
 
 	<update id="table_status_on" parameterType="int">
 		update table_status set tbl_status = 1  where tbl_no = #{_parameter}

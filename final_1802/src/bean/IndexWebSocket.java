@@ -20,19 +20,35 @@ import org.springframework.stereotype.Controller;
 @ServerEndpoint("/index")
 public class IndexWebSocket {
 	
-	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
+	private static Map<String, Session> clients = Collections.synchronizedMap(new HashMap<String, Session>());
 	
 		/* 클라이언트로부터 메시지가 도착했을 때 */
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {
-		session.getBasicRemote().sendText(msg);
+		String ipCut = msg.substring(0,2);
+		System.out.println("indexWebSocket msg : " + msg);
+		
+		if(clients.containsKey(ipCut) == false) {
+			clients.put(ipCut, session);
+			System.out.println("클라이언트는 ? : "  + clients.get(ipCut).getId());
+		}
+		
+		if(msg.length() != 2) {
+			Set<String> keySet = clients.keySet();
+			for(String key : keySet) {
+				if(key.equals(msg.substring(0,2))) {
+					System.out.println("key : " + key);
+					System.out.println("msg substring 0 2 : " + msg.substring(0,2));
+					clients.get(key).getBasicRemote().sendText(msg);
+				}
+			}
+		}
 	}
 	
 	/* 클라이언트에서 서버로 접속할 때*/
 	@OnOpen
 	public void onOpen(Session s) {
 		System.out.println("session //open : " + s);
-		clients.add(s);
 	}
 	
 	/* 에러날 때 */
@@ -43,9 +59,9 @@ public class IndexWebSocket {
 	
 	/* 접속이 끊겼을 때 */
 	@OnClose
-	public void onClose(Session s) {
-		System.out.println("session //close : " + s);
-		clients.remove(s);
+	public void onClose(Session session) {
+		System.out.println("session //close : " + session);
+		clients.values().removeAll(Collections.singleton(session));
 	}
 	
 }

@@ -36,10 +36,12 @@ public class AdminController {
 	@RequestMapping(value="table_set.adm")
 	public ModelAndView table_set(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-	
-		String table_msg = admin_dao.set_table_on(req);
+		
+		String table_ip_cut = admin_dao.get_admin_ip(req);
+/*		String table_msg = admin_dao.set_table_on(req);
 		String guest_msg = admin_dao.set_guest(req);
-
+	*/	
+		mv.addObject("table_ip_cut", table_ip_cut);
 		mv.setViewName("table/table_set_result");
 		return mv;
 	}

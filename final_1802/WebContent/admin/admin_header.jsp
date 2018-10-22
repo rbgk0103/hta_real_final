@@ -39,7 +39,8 @@
 	}
 
 	AdminWebSocket.onmessage = function(msg) {
-		alert('님받음?');	
+		alert(msg.data);
+		
 	}
 
 	AdminWebSocket.onclose = function() {
