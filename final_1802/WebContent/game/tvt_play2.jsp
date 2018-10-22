@@ -38,7 +38,6 @@ var tpInfoArr = '${tvtAcceptMsg}'.split(',');
 var tvtPlayWebSocket;
 
 $(document).ready(function(){
-	alert(tpInfoArr[0]);
 	
 	$('#tp_user2_game_real').show();
 	$('#tp_user2_game_img').hide();
@@ -66,10 +65,6 @@ $(document).ready(function(){
 			$('#tp_user2_game_real').hide();
 			$('#tp_user2_game_img').show();
 		}
-		
-		
-		
-		
 		
 	}
 	
@@ -105,7 +100,7 @@ $(document).ready(function(){
 				</div>
 				<div class='tp_user_game'>
 					<div id='tp_user2_game_real'>
-						<%@ include file='./pacman_mod_bong2/pacman_index.jsp' %>
+						<%@ include file='./pacman_mod_bong2/pacman_index2.jsp' %>
 					</div>
 					<div id='tp_user2_game_img'>
 						<img src='img/game_img/pacman_end.png'/>

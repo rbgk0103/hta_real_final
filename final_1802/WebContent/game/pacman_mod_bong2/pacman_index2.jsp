@@ -29,8 +29,8 @@
 
 
   <div id="pacman"></div>
-  <script src="./game/pacman_mod_bong/pacman.js"></script>
-  <script src="./game/pacman_mod_bong//modernizr-1.5.min.js"></script>
+  <script src="./game/pacman_mod_bong2/pacman.js"></script>
+  <script src="./game/pacman_mod_bong2/modernizr-1.5.min.js"></script>
 
   <script>
 
