@@ -5,7 +5,6 @@
 		<input type='hidden' name='findStr' id='findStr'/>
 	</form>
 	<ul>
-		<li onclick='leftMenu("best")'> Best메뉴</li>
 		<li onclick='leftMenu("fury")'> 치즈&후라이</li>
 		<li onclick='leftMenu("grill")'>볶음&그릴</li>
 		<li onclick='leftMenu("salad")'>샐러드&떡볶이</li>
