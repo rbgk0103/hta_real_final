@@ -40,7 +40,7 @@ public class AdminController {
 		String table_ip_cut = admin_dao.get_admin_ip(req);
 		String table_msg = admin_dao.set_table_on(req);
 		String guest_msg = admin_dao.set_guest(req);
-		
+		System.out.println("table_ip_cut - controller : " + table_ip_cut);
 		mv.addObject("table_ip_cut", table_ip_cut);
 		mv.setViewName("table/table_set_result");
 		return mv;

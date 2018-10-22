@@ -269,11 +269,11 @@ $(function(){
 
 var indexWebSocket = new WebSocket("ws://192.168.0.26:7080/final_1802/index");
 indexWebSocket.onopen = function() {
-	var table_admin_ip = ${tblIp};	//2글자
-	console.log("table_admin_ip" + table_admin_ip);
+	var table_ip = ${tblIp};	//2글자
+	console.log("table_ip" + table_ip);
 	
 	console.log("indexWebsocket 오픈");
-	indexWebSocket.send(table_admin_ip);
+	indexWebSocket.send(table_ip);
 }
 indexWebSocket.onclose = function() {
 	console.log("indexWebSocket 클로즈");
