@@ -269,8 +269,10 @@ $(function(){
 
 var indexWebSocket = new WebSocket("ws://192.168.0.26:7080/final_1802/index");
 indexWebSocket.onopen = function() {
+	var table_admin_ip = ${tblIp};
+	var table_admin_ip_cut = table_admin_ip.substring(table_admin_ip.length-2, table_admin_ip.length);
 	console.log("indexWebsocket 오픈");
-	indexWebSocket.send(${tblIp});
+	indexWebSocket.send(table_admin_ip_cut);
 }
 indexWebSocket.onclose = function() {
 	console.log("indexWebSocket 클로즈");
