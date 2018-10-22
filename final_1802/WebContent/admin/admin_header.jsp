@@ -32,5 +32,20 @@
 		window.open("./admin/admin_call_employee.jsp", "", "_blank", 'width=120px, height=400px');
 
 	})
+	
+	var AdminWebSocket = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+	
+	AdminWebSocket.onopen = function() {
+	}
 
+	AdminWebSocket.onmessage = function(msg) {
+		alert('님받음?');	
+	}
+
+	AdminWebSocket.onclose = function() {
+		console.log("연결종료");
+	}
+
+
+	
 </script>

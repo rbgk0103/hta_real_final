@@ -57,14 +57,14 @@ $(document).ready(function(){
 	var delete_row = 0;
 	console.log("테이블: " + tableNo);
 
-	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+	var AdminWebSocket = new WebSocket('ws://192.168.0.26:7080/final_1802/index');
 	
-	webSocket_request.onopen = function() {
+	AdminWebSocket.onopen = function() {
 	
 		console.log(${tblIp} + "번이 " + ${tblVo.tbl_no} + "테이블에서  연결성공");
 	}
 
-	webSocket_request.onmessage = function(msg) {
+	AdminWebSocket.onmessage = function(msg) {
 		//msg.data.substring(0, 1) : 자신의 table 번호
 		//자기 자신이 보낸 메세지일 경우 div class=send, TableNo 사용
 		
@@ -73,16 +73,16 @@ $(document).ready(function(){
 // 		$("#chatContent").scrollTop($("#chatContent")[0].scrollHeight);
 	}
 
-	webSocket_request.onclose = function() {
+	AdminWebSocket.onclose = function() {
 		console.log("연결종료");
 	}
 	
 	
 	function sendMessage() {
-		delete_row++;
-		var message = "<li class = 'call_employee_row"+delete_row+"' onclick='delete_row("+delete_row+")'><label>[ TABLE NO."+tableNo+" ]</label><span>"+ ment +"요청</span></li>";
+
+		var message = ${tblVo.tbl_no}+ "번 테이블에서 주문이 들어왔습니다";
 		if ($.trim(message) !== "") {
-			webSocket_request.send(message);
+			AdminWebSocket.send(message);
 		}
  		console.log(message);
 	}
@@ -107,6 +107,7 @@ $(document).ready(function(){
 			ment = '주문';
 			sendMessage();
 			$('#content').load('orderMenu.ord', param);
+			alert('주문이 완료되었습니다.');
 		}
 	});
 	

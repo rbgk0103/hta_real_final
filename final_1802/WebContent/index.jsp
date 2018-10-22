@@ -10,6 +10,7 @@
 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <meta name="description" content="Developed By M Abdur Rokib Promy">
 <meta name="keywords" content="Admin, Bootstrap 3, Template, Theme, Responsive">
+<meta name="viewport" content="height=device-height"/>
 <!-- bootstrap 3.0.2 -->
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -31,7 +32,7 @@
 <!-- Bootstrap -->
 <script src="./lib/bootstrap.min.js" type="text/javascript"></script>
 <style>
-#wrap {background-image : url(./img/background-img.jpg);height:900px;width:100%;color:#fff;}
+#wrap {background-image : url(./img/background-img.jpg);width:100%;color:#fff;}
 #header{height:140px;position: relative;}
 #header_logo{height:100%;}
 #header_logo a >img{height:100%;cursor:pointer;}
@@ -87,6 +88,12 @@ if(request.getParameter("content") !=null){
             <img src ='./img/logo.png'>
          </a>
       </div>
+  	  <%@ include file = "./header_tableNo.jsp" %> 
+      <%@ include file = "./game/ws_tvt_client.jsp" %>
+      <c:choose>
+   			<c:when test ="${tblVo.tbl_no eq null}">
+   			</c:when>
+   			<c:otherwise>
       <div class='col-md-7' id = 'header_menu'>
          <a href="index.jsp?content=main.ord">메뉴</a>
          <a href ="index.game">게임</a>
@@ -94,12 +101,10 @@ if(request.getParameter("content") !=null){
          <a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
          <a href ="#" onclick ="auc()" style="visibility:hidden" >경매</a>	<!-- 경매등록시나타남 -->
       </div>
-      
-  	  <%@ include file = "./header_tableNo.jsp" %> 
-      <%@ include file = "./game/ws_tvt_client.jsp" %>
+
       <%-- <%@ include file = "./auction/auctionClient.jsp" %>  --%>
 
-         
+
       <div id="header_mbr">
          
          <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
@@ -168,12 +173,21 @@ if(request.getParameter("content") !=null){
       
       
       </div>
+     </c:otherwise>
+</c:choose>
    </div>
    
    
    
    <div id ='content'>
-      <jsp:include page="<%=content %>"/>
+   		<c:choose>
+   			<c:when test ="${tblVo.tbl_no eq null}">
+				<%@ include file = "./error_page.jsp" %>
+   			</c:when>
+   			<c:otherwise>
+   				<jsp:include page="<%=content %>"/>
+   			</c:otherwise>
+   		</c:choose>
    </div>
 </div>
 <%@ include file = "./modal_call_employee.jsp" %>
@@ -252,6 +266,20 @@ $(function(){
 	}
 	
 });
+
+var indexWebSocket = new WebSocket("ws://192.168.0.26:7080/final_1802/index");
+indexWebSocket.onopen = function() {
+	console.log("indexWebsocket 오픈");
+}
+indexWebSocket.onclose = function() {
+	console.log("indexWebSocket 클로즈");
+}
+indexWebSocket.onmessage = function(msg) {
+	var data = msg.data;
+	alert(data);
+	location.reload();
+}
+
 </script>
 </body>
 </html>

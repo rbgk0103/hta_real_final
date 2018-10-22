@@ -1,6 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.net.InetAddress"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <div class="modal fade" id="modal_call_employee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -33,13 +35,17 @@
   </div>
 
 </div>
-
+<c:choose>
+<c:when test = "${tblVo.tbl_no eq 0}"></c:when>
+<c:otherwise></c:otherwise>
+</c:choose>
 
 <script>
 
 $().ready(function(){
 	var req = '';
-	var tableNo = ${tblVo.tbl_no};
+	
+	var tableNo = ${empty tblVo.tbl_no ? 0 : tblVo.tbl_no};
 	var tableIp = ${tblIp};
 	var delete_row = 0;
 	console.log("테이블: " + tableNo);
