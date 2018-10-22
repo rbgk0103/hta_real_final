@@ -166,7 +166,7 @@ public class AdminDao {
 		System.out.println("cnt"+cnt);
 
 		if(cnt > 0) {
-			msg = "테이블 테이블 수정완료";
+			msg = "결제가 완료되었습니다.";
 			s.commit();
 		}else {
 			msg = "테이블 테이블 수정실패";

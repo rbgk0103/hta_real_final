@@ -85,13 +85,11 @@ text-align:center;
 <script>
 $('#btn_submit').click(function(){
 	var param = $('#frm_table_detail').serialize();
-	alert("param = " + param);
 	$("#frm_table_detail").attr("action","table_pay.adm?"+param).submit();
 });
 
 $('#btn_delete').click(function(){
 	var param = $('#frm_table_detail').serialize();
-	alert("param = " + param);
 	$("#frm_table_detail").attr("action","table_set_delete.adm?"+param).submit();
 });
 
