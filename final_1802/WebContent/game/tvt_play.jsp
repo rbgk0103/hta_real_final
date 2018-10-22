@@ -15,10 +15,20 @@
 	width: 80%;
 }
 
+#tp_wrap #tp_middle {
+	overflow:hidden;
+}
+
 #tp_wrap #tp_user1, #tp_wrap #tp_user2 {
+	float: left;
 	display:inline-block;
 	width: 46%;
 	margin: 0.5%;
+}
+
+#tp_wrap .tp_user_game {
+	display: inline-block;
+	height: 550px;
 }
 
 </style>
@@ -75,6 +85,7 @@ $(document).ready(function(){
 					<h4><span id='user2_tblNo'></span>번 테이블</h4>
 				</div>
 				<div class='tp_user_game'>
+					<img src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
 				</div>

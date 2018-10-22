@@ -48,9 +48,9 @@
   <div>
   	<form name='frm'>
   		<label>현재점수: </label>
-  		<input type='text' name='nowScore' readonly /><br/>
+  		<input type='text' name='nowScore' readonly style='color:black'/><br/>
   		<label>최종점수: </label>
-  		<input type='text' name='finalScore' readonly />
+  		<input type='text' name='finalScore' readonly style='color:black' />
   	</form>
   </div>
 

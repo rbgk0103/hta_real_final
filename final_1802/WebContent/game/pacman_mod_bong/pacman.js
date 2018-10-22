@@ -911,6 +911,7 @@ var PACMAN = (function () {
         
         if (user.getLives() == 0) {
         	document.frm.nowScore.value = '';
+        	alert(user.theScore());
         }
         
     }
