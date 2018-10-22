@@ -63,7 +63,6 @@ $(document).ready(function(){
 			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
 			user1Flag = 1;
 			
-			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 			
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
@@ -71,7 +70,6 @@ $(document).ready(function(){
 			$('#tp_user2_game_img').show();
 			user2Flag = 1;
 			
-			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 		}
 		
 	}
