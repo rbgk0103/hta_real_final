@@ -25,10 +25,12 @@ public class IndexWebSocket {
 		/* 클라이언트로부터 메시지가 도착했을 때 */
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {
-		String ipCut = msg.substring(0,1);
+		String ipCut = msg.substring(0,2);
 		System.out.println("indexWebSocket msg : " + msg);
+		System.out.println("ipCut 0, 2: " + ipCut);
 		if(ipCut.length() == 3) {
-			ipCut = msg.substring(1,2);
+			ipCut = msg.substring(1,3);
+			System.out.println("length 3일 때 substring 1, 3 : " + ipCut);
 		}
 		if(msg.length() == 2 || msg.length() == 3) {
 			if(clients.containsKey(ipCut) == false) {
@@ -36,14 +38,14 @@ public class IndexWebSocket {
 				System.out.println("클라이언트는 ? : "  + clients.get(ipCut).getId());
 			}
 		} else {
-			if(clients.containsKey(msg.substring(0, 2)) == false ){
-				clients.put(msg.substring(0, 2), session);
+			if(clients.containsKey(ipCut) == false ){
+				clients.put(ipCut, session);
 			}
 			Set<String> keySet = clients.keySet();
 			for(String key : keySet) {
-				if(key.equals(msg.substring(0,2))) {
+				if(key.equals(ipCut)) {
 					System.out.println("key : " + key);
-					System.out.println("msg substring 0 2 : " + msg.substring(0,2));
+					System.out.println("msg substring 0 2 : " + ipCut);
 					clients.get(key).getBasicRemote().sendText(msg);
 					break;
 				}
