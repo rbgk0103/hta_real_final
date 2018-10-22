@@ -37,16 +37,17 @@
 var tpInfoArr = '${tvtAcceptMsg}'.split(','); 
 var tvtPlayWebSocket;
 
+var user1Flag = 0;
+var user2Flag = 0;
+
 $(document).ready(function(){
 	
 	$('#tp_user2_game_real').show();
 	$('#tp_user2_game_img').hide();
 	
 	
-	
 	$('#user1_tblNo').text(tpInfoArr[0]);
 	$('#user2_tblNo').text(tpInfoArr[1]);
-	
 	
  	tvtPlayWebSocket = new WebSocket(
 		'ws://192.168.0.7:7080/final_1802/gameBroadcasting');
@@ -60,12 +61,17 @@ $(document).ready(function(){
 		if (msgArr[0] == 'user1') {
 			$('#tp_user1_final_score').text(msgArr[1]);
 			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
+			user1Flag = 1;
+			
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 			
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_user2_game_real').hide();
 			$('#tp_user2_game_img').show();
+			user2Flag = 1;
 			
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 		}
 		
 	}

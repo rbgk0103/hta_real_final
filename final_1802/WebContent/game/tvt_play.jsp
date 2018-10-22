@@ -33,9 +33,13 @@
 
 </style>
 
+
 <script>
 var tpInfoArr = '${tvtAcceptMsg}'.split(','); 
 var tvtPlayWebSocket;
+
+var user1Flag = 0;
+var user2Flag = 0;
 
 $(document).ready(function(){
 	$('#tp_user1_game_real').show();
@@ -56,18 +60,21 @@ $(document).ready(function(){
 		var msgArr = msg.data.split(',')
 		
 		if (msgArr[0] == 'user1') {
+			
 			$('#tp_user1_final_score').text(msgArr[1]);
 			$('#tp_user1_game_real').hide();
 			$('#tp_user1_game_img').show();
+			user1Flag = 1;
+			
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
-			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png')
+			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
+			user2Flag = 1;
+			
+			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
 		}
-		
-		
-		
-		
 		
 	}
 	

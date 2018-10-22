@@ -131,4 +131,14 @@ public class GameController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "/tvtResult.game")
+	public ModelAndView tvtResult(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		
+		mv.setViewName("tvt_result"); // tvt_play2.jsp
+		
+		return mv;
+	}
 }
