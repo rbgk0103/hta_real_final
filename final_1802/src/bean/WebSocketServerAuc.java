@@ -11,7 +11,7 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/auction/auctionClient")
+@ServerEndpoint("/Web")
 public class WebSocketServerAuc {
 
 	private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
@@ -21,6 +21,7 @@ public class WebSocketServerAuc {
 
 		System.out.println("messag : " + msg);
 		for (Session sess : clients) {
+			msg = session.getId() + " 번 테이블\r" + msg + "원";
 			sess.getBasicRemote().sendText(msg);
 			System.out.println("Auc_sess" + sess.getBasicRemote().hashCode());
 		}
