@@ -25,12 +25,7 @@ public class IndexWebSocket {
 		/* 클라이언트로부터 메시지가 도착했을 때 */
 	@OnMessage	//msg글자 중 첫 번째 자리는 테이블 번호, 마지막 두 자리는 ip주소입니다.
 	public void onMessage(String msg, Session session) throws Exception {
-		
-			
-		for(Session sess : clients) {
-			sess.getBasicRemote().sendText(msg);
-		}
-			
+		session.getBasicRemote().sendText(msg);
 	}
 	
 	/* 클라이언트에서 서버로 접속할 때*/
