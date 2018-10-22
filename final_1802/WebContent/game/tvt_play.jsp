@@ -54,6 +54,18 @@ $(document).ready(function(){
 	}
 	
 	tvtPlayWebSocket.onmessage = function(msg) {
+		var msgArr = msg.data.split(',')
+		
+		if (msgArr[0] == 'user1') {
+			$('#tp_user1_final_score').text(msgArr[1]);
+		}
+		
+		if (msgArr[0] == 'user2') {
+			$('#tp_user2_final_score').text(msgArr[1]);
+		}
+		
+		
+		
 		$('#tp_user_game_real').hide();
 		$('#tp_user_game_img').show();
 		
@@ -92,6 +104,7 @@ $(document).ready(function(){
 					</div>
 				</div>
 				<div class='tp_user_status'>
+					<h3>점수: <span id='tp_user1_final_score'></span></h3>
 				</div>
 			</div>
 			<div id='tp_user2'>
@@ -102,6 +115,7 @@ $(document).ready(function(){
 					<img src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
+					<h3>점수: <span id='tp_user2_final_score'></span></h3>
 				</div>
 			</div>
 		</div>
