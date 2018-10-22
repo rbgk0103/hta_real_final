@@ -50,7 +50,7 @@ $().ready(function(){
 	var delete_row = 0;
 	console.log("테이블: " + tableNo);
 	
-	var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+	var webSocket_request = new WebSocket('ws://192.168.0.7:7080/final_1802/request');
 	
 	webSocket_request.onopen = function() {
 	

@@ -11,7 +11,7 @@
 		var msg = "테이블 설정이 완료 되었습니다.";
 		indexWebSocket.send(ipCut + msg);
 		alert("테이블 설정 완료");
-		//location.href = "./table_status.adm";
+		location.href = "./table_status.adm";
 	}
 	indexWebSocket.onclose = function() {
 		console.log("indexWebSocket 클로즈");

@@ -31,7 +31,6 @@
 <SCRIPT>
 	$('#btn_submit').click(function(){
 		var param = $('#frm_table_set').serialize();
-		alert("param = " + param);
 		$("#frm_table_set").attr("action","table_set.adm?"+param).submit();
 	});
 	

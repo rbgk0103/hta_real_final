@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 <script>
 	$().ready(function(){
-		var webSocket_request = new WebSocket('ws://192.168.0.28:7080/final_1802/request');
+		var webSocket_request = new WebSocket('ws://192.168.0.7:7080/final_1802/request');
 		
 		webSocket_request.onopen = function() {
 			console.log("오픈임");
