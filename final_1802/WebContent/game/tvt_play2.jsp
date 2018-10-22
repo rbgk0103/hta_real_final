@@ -61,7 +61,7 @@ $(document).ready(function(){
 		if (msgArr[0] == 'user1') {
 			$('#tp_user1_final_score').text(msgArr[1]);
 			
-		}else (msgArr[0] == 'user2') {
+		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_user2_game_real').hide();
 			$('#tp_user2_game_img').show();

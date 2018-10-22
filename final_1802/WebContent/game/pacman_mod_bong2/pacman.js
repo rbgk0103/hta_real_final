@@ -912,7 +912,7 @@ var PACMAN = (function () {
         if (user.getLives() == 0 && document.frm.gameFlag.value == 'playing') {
         	$('#gameFlag').val('end');
         	
-        	tvtPlayWebSocket.send('user1,'+ user.theScore());
+        	tvtPlayWebSocket.send('user2,'+ user.theScore());
         }
         
     }
