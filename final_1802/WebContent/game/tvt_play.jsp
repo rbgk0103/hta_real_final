@@ -42,7 +42,6 @@ $(document).ready(function(){
 	$('#tp_user1_game_img').hide();
 	
 	
-	
 	$('#user1_tblNo').text(tpInfoArr[0]);
 	$('#user2_tblNo').text(tpInfoArr[1]);
 	
@@ -63,6 +62,7 @@ $(document).ready(function(){
 
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
+			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png')
 		}
 		
 		
@@ -110,8 +110,8 @@ $(document).ready(function(){
 				<div class='tp_user_title'>
 					<h4><span id='user2_tblNo'></span>번 테이블(도전 수락자)</h4>
 				</div>
-				<div class='tp_user_game'>
-					<img src='img/game_img/pacman_playing.png' />
+				<div class='tp_user_game' >
+					<img id='tp_img_user2' src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
 					<h3>점수: <span id='tp_user2_final_score'></span></h3>

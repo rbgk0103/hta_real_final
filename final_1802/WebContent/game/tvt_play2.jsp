@@ -59,11 +59,13 @@ $(document).ready(function(){
 		
 		if (msgArr[0] == 'user1') {
 			$('#tp_user1_final_score').text(msgArr[1]);
+			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
 			
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_user2_game_real').hide();
 			$('#tp_user2_game_img').show();
+			
 		}
 		
 	}
@@ -88,7 +90,7 @@ $(document).ready(function(){
 					<h4><span id='user1_tblNo'></span>번 테이블(도전 신청자)</h4>
 				</div>
 				<div class='tp_user_game'>
-					<img src='img/game_img/pacman_playing.png' />
+					<img id='tp_img_user1' src='img/game_img/pacman_playing.png' />
 				</div>
 				<div class='tp_user_status'>
 					<h3>점수: <span id='tp_user1_final_score'></span></h3>
