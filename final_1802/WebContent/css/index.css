@@ -21,7 +21,7 @@ body {
 	background-color: #793A57;
 	margin-bottom: 4px;
 }
-
+#content {height:1000px;}
 #index #topNav {
 	height: 40px;
 	background-color: #4D3339;

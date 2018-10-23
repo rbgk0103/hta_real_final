@@ -5,6 +5,7 @@
 
 /* game_index.jsp */
 #gi_wrap {
+	padding-top:50px;
 }
 #gi_wrap h3 {
 	text-align: center;
@@ -15,7 +16,7 @@
 }
 #gi_wrap .game_with {
 	display: inline-block;
-	margin: 1%;
+	margin: 5%;
 	width: 20%;
 }
 #gi_wrap .game_with_img {
@@ -25,13 +26,11 @@
 #gi_wrap .input_text {
 	color: black;
 }
-#gi_wrap .btnGame {
-	color: black;
-	font-weight: bold;
-}
+
 
 /* game_title_list.jsp */
 #gtl_wrap {
+	padding-top:50px;
 }
 #gtl_wrap h3 {
 	text-align: center;
@@ -44,11 +43,21 @@
 }
 #gtl_wrap .gt_item {
 	display: inline-block;
-	margin: 1%;
+	margin: 5%;
 	width: 20%;	
 }
 #gtl_wrap input {
-	color: black;
+	text-align: center;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background: #010109;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 26px;
 }
 
 /* tbl_list.jsp */
@@ -59,24 +68,36 @@
 	text-align: center;
 }
 #tbl_list_wrap .tbl_item {
-	margin: 0.5%;
+	
+	
 	background-color: #655643;
-	border: 1px solid gray;
+	
 	display:inline-block;
-	width: 30%;
+	width: 25%;
+    margin: 30px 35px;
 }
 
 #tbl_list_wrap .tbl_info {
-	height: 60px;
+	padding: 20px 0;
 }
 
 #tbl_list_wrap .tbl_btn_area {
-	height: 30px;
-	background-color: #E6AC27;
+	
+	background-color: #010109;
 }
 
 #tbl_list_wrap input {
-	color: black;
+	text-align: center;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background: #010109;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 26px;
 }
 
 #tbl_list_wrap .visibility_hidden {
@@ -102,9 +123,37 @@
 #tvt_ready_wrap input {
 	color: black;
 }
+#tvt_req input {
+	text-align: center;
+    position: relative;
+    margin: 0 auto;
+    color: white;
+    background: #010109;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 35px;
+	margin: 70px 25px;
+}
+
 
 /* gmae_index.jsp */
 #gi_wrap .input_text {
 	display:hidden;
 }
 
+
+
+.btnGame{
+	text-align: center;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background: #010109;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 26px;
+}
