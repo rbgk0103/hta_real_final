@@ -17,55 +17,27 @@ window.onload = function(){
    wes.onmessage = function(msg) {
 	   var ms = msg.data;
 	   var aa = ms.split("/");
-	   if(aa[0] == 'k'){
-		   alert("낙찰 되었습니다.");
-		   window.close();
-	   }
 	   $('#win_tbl').val(aa[0]);
 	   $('#pri').val(parseInt(aa[1]));
-       $("#result").html(parseInt(aa[0]) + "번 테이블  " + String(aa[1]) + "원!!");
+       $("#result").html(parseInt(aa[0]) + "번 테이블 " + String(aa[1]) + "원!!");
    }
 
-   // 배팅
-   $('#btnBat_one').click(function() {
-      var ori = parseInt($('#ae_max').val()) + parseInt($('#pri').val());
-      $('#pri').val(ori);
-      wes.send(String($('#tbl_no').val()+"/"+ori));
-   })
-   $('#btnBat_two').click(function() {
-      var ori = parseInt($('#ae_min').val()) + parseInt($('#pri').val());
-      $('#pri').val(ori);
-      wes.send(String($('#tbl_no').val()+"/"+ori));
-   })
    // 종료
    $('#btnGiveup').click(function() {
       window.close();
    })
-   
-   //낙찰
+	$('#btnBidding').click(function(){
+		wes.send("k/낙찰되었습니다.");
+	    var param = $("#frm_auction").serialize();
+	    $('body').load("./auction_modify.chat", param);
+	})
 
 }
 
 </script>
 <script>
 $().ready(function(){
-   var max = window.opener.document.getElementById("ae_pct_max").value;
-   var min = window.opener.document.getElementById("ae_pct_min").value;
-   var name = window.opener.document.getElementById("menu_name").value;
-   var image = window.opener.document.getElementById("menu_image").value;
-   var tbl_no = window.opener.document.getElementById("tt_no").value;
-   
-   document.getElementById("ae_max").value = max;
-   document.getElementById("pri").value = window.opener.document.getElementById("ae_price").value;
-   document.getElementById("ae_min").value = min;
-   document.getElementById("no").value = window.opener.document.getElementById("AA_no").value;
-   document.getElementById("tbl_no").value = tbl_no;
-   
-   $('#tt_no').append(tbl_no);
-   $('#btnBat_one').val(max + " 배팅");
-   $('#btnBat_two').val(min + " 배팅");
-   $('#strong').append(name);
-   $('#menu_img').attr('src',image);
+   document.getElementById("no").value = window.opener.document.getElementById("bb_no").value;
 })
 </script>
 
@@ -80,10 +52,8 @@ $().ready(function(){
             </h1>
          </div>
          <div id='auction_menu'>
-            <img id = 'menu_img' src='' width='280px'
-               height='280px' />
+           
          </div>
-         <h2 style = 'color:white;'><strong id = 'tt_no'></strong><strong> 번 테이블</strong></h2>
          <label class='menu_name' style='color: yellow;'><strong id = 'strong'></strong></label><br/><br/>
          <label class='now_price'>현재가 </label><br/><div id = 'result'style = 'font-size: 20px; color: yellow;'></div>
          <p/>
@@ -96,15 +66,19 @@ $().ready(function(){
             <input type = 'hidden' id = 'ae_min' name = 'ae_min'><br />
          </div>
          <br/>
-         <input type='button' id='btnBat_one' name = 'btnBat_one' value='' class='btn' /><br />
+         <input type='button' id='btnBat_one' name = 'btnBat_one' value='' class='btn' style = 'display:none;' /><br />
          <!-- 송신버튼 1 -->
-         <input type='button' id='btnBat_two' name = 'btnBat_two' value='' class='btn' />
+         <input type='button' id='btnBat_two' name = 'btnBat_two' value='' class='btn' style = 'display:none;' />
          <!-- 송신버튼2 -->
          <p />
+         <input type='button' id='btnBidding' value = '낙 찰' class='btn_two' onclick = 'bidding()'/>
          <!-- 종료버튼 -->
-         <input type='button' id='btnGiveup' value = '포 기' class='btn_two'/>
+         <input type='button' id='btnGiveup' value = '닫 기 ' class='btn_two'/>
          <p />
       </div>
    </form>
 </body>
+<script>
+
+</script>
 </html>

@@ -45,7 +45,10 @@ public class AuctionController {
    @RequestMapping(value="auction_start.auc")
    public ModelAndView auctionStart(HttpServletRequest req) {
       ModelAndView mv = new ModelAndView();      
+      int b_no = Integer.parseInt(req.getParameter("bb_ no"));
       String msg = dao.auc_start(Integer.parseInt(req.getParameter("ae_no")));
+      
+      mv.addObject("b_no",b_no);
       mv.addObject("msg",msg);
       mv.setViewName("auction/auction_gong");
       return mv;
