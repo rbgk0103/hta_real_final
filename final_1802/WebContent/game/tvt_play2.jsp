@@ -62,12 +62,27 @@ $(document).ready(function(){
 			$('#tp_img_user1').attr('src', 'img/game_img/pacman_end.png');
 			user1Flag = msgArr[1];
 			
+			// 점수비교해서
+			if (user1Flag > user2Flag) {
+				$('#tp_img_user1').attr('src', 'img/game_img/pacman_win.png');
+			}else if (user1Flag < user2Flag) {
+				$('#tp_img_user1').attr('src', 'img/game_img/pacman_lose.png');
+			}
+			
 			
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_user2_game_real').hide();
 			$('#tp_user2_game_img').show();
 			user2Flag = msgArr[1];
+			
+			// 점수비교해서
+			if (user2Flag > user1Flag) {
+				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_win.png');
+			}else if (user2Flag < user1Flag) {
+				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
+			}
+			
 			
 		}
 		
@@ -108,7 +123,7 @@ $(document).ready(function(){
 						<%@ include file='./pacman_mod_bong2/pacman_index2.jsp' %>
 					</div>
 					<div id='tp_user2_game_img'>
-						<img src='img/game_img/pacman_end.png'/>
+						<img id='tp_user2_winlose_img' src='img/game_img/pacman_end.png'/>
 					</div>
 				</div>
 				<div class='tp_user_status'>

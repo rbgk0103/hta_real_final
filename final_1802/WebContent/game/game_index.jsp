@@ -15,7 +15,7 @@
 					<img class="game_with_img" id="game_tvt_img" src="img/game_img/game_tvt.png">
 				</div>
 				<div class='game_with_button_area'>
-					<input type='button' class='btnGame' id='btnTvT' name='btnTvT' value='테이븚vs테이블'
+					<input type='button' class='btnGame' id='btnTvT' name='btnTvT' value='테이블vs테이블'
 						onclick="go_gtl('TVT')" />
 				</div>
 				
