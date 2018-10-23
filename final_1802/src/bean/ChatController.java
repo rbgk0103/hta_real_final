@@ -85,6 +85,7 @@ public class ChatController {
 	public ModelAndView onOpen(HttpServletRequest req) {
 		ModelAndView modelAndView = new ModelAndView();
 		String ip = req.getParameter("ip");	//index.jsp에 있는 자신의 ip를 parameter로 보냄
+		System.out.println("getIP에 있는 ip : " + ip);
 		String ipCut = ip.substring(ip.length()-2, ip.length());	//ip 뒤 두 자리
 		int nowPage = req.getParameter("nowPage") != null	//chatHeader에서 사용하는 nowPage가 없으면 1로 set
 					? Integer.parseInt(req.getParameter("nowPage"))
@@ -130,8 +131,7 @@ public class ChatController {
 			modelAndView.addObject("receiveIntNo", receiveIntNo);
 		}
 		} catch (NumberFormatException ex) {
-			System.out.println("넘포익");
-			ex.printStackTrace();
+			System.out.println("java.lang.NumberFormatException");
 		}
 		
 		modelAndView.addObject("ip", req.getParameter("ip"));
