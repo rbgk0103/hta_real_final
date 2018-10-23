@@ -31,10 +31,7 @@
 			        <div class="item-img"> <img class="img-1" src="./admin/menu/menuImg/${list.menu_image }" alt="" ></div>
 			        <div class="item-name"><a>${list.menu_name }</a></div>
 			        <span class="price">${list.menu_price }</span>
-			        <c:if test='${param.page eq "game" }'>
-			       		<input type='button' value='to게임'/>
-			        </c:if>
-			      </div>  
+		      </div>  
 			 </c:otherwise>
 			 </c:choose>
 			</div>
