@@ -7,7 +7,6 @@
 }
 
 #tp_wrap div{
-	border: 1px solid gray;
 }
 
 #tp_wrap #tp_ground {
@@ -64,16 +63,26 @@ $(document).ready(function(){
 			$('#tp_user1_final_score').text(msgArr[1]);
 			$('#tp_user1_game_real').hide();
 			$('#tp_user1_game_img').show();
-			user1Flag = 1;
+			user2Flag = msgArr[1];
 			
-			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
+			if (user1Flag > user2Flag) {
+				$('#tp_user1_winlose_img').attr('src', 'img/game_img/pacman_win.png');
+			}else if (user1Flag < user2Flag) {
+				$('#tp_user1_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
+			}
+			
 
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
-			user2Flag = 1;
+			user2Flag = msgArr[1];
 			
-			alert('user1Flag: ' + user1Flag + '   user2Flag: ' + user2Flag);
+			if (user1Flag > user2Flag) {
+				$('#tp_img_user2').attr('src', 'img/game_img/pacman_win.png');
+			}else if (user1Flag < user2Flag) {
+				$('#tp_img_user2').attr('src', 'img/game_img/pacman_lose.png');
+			}
+			
 		}
 		
 	}
@@ -94,7 +103,7 @@ $(document).ready(function(){
 
 	<div id='tp_ground'>
 		<div id='tp_top'>
-			<h3>테이블 대전 - 즐겜하세요! ${tvtAcceptMsg}</h3>
+			<h3>테이블 대전 - 즐겜하세요!</h3>
 		</div>
 		<div id='tp_middle'>
 			<div id='tp_user1'>
@@ -106,7 +115,7 @@ $(document).ready(function(){
 						<%@ include file='./pacman_mod_bong/pacman_index.jsp' %>
 					</div>
 					<div id='tp_user1_game_img'>
-						<img src='img/game_img/pacman_end.png'/>
+						<img id='tp_user1_winlose_img' src='img/game_img/pacman_end.png'/>
 					</div>
 				</div>
 				<div class='tp_user_status'>
