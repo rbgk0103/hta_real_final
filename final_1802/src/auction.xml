@@ -12,37 +12,37 @@
    
    <!-- 약 1시간 뒤 등록 -->
    <insert id="auction_input" parameterType = "bean.AuctionVo" >
-   	  insert into auction_events values(seq_auction_events.nextval, #{menu_no}, TO_CHAR(SYSDATE,'HH24:MI'), #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0, 0) 
+        insert into auction_events values(seq_auction_events.nextval, #{menu_no}, TO_CHAR(SYSDATE,'HH24:MI'), #{ae_price}, #{ae_pct_max}, 0, #{ae_pct_min}, 0, 0) 
    </insert>
 
-	<!-- auction_view -->
-	<select id="view" parameterType = "int" resultType="bean.AuctionVo">
-		select ae_no, ae_price, ae_pct_max, ae_pct_min, menu_name, menu_image
-		from auction_events a join menu m on a.menu_no = m.menu_no
-		where ae_no = #{ae_no}
-	</select>
-	
-	<!-- auction_delete -->
-	<delete id="delete" parameterType="int">
-		delete
-		from auction_events
-		where ae_no = #{ae_no}
-	</delete>
-	
-	<!-- auction_start 경매 진행중-->
-	<update id="start" parameterType = 'int'>
-		update auction_events set ae_confirm = 2 where ae_no = #{ae_no}
-	</update>
-	
-	<!-- auction_end 경매 끝-->
-	<update id="end" parameterType = 'int'>
-		update auction_events set ae_confirm = 1 where ae_no = #{ae_no}
-	</update>	
-	
-	<!-- auction_modify -->
-	<update id = 'modify' parameterType="bean.AuctionVo">
-		update auction_events 
-		set ae_price = #{ae_price}, ae_pct_max = #{ae_pct_max}, ae_pct_min = #{ae_pct_min}
-		where ae_no = #{ae_no}
-	</update>
+   <!-- auction_view -->
+   <select id="view" parameterType = "int" resultType="bean.AuctionVo">
+      select ae_no, ae_price, ae_pct_max, ae_pct_min, menu_name, menu_image, menu_price
+      from auction_events a join menu m on a.menu_no = m.menu_no
+      where ae_no = #{ae_no}
+   </select>
+   
+   <!-- auction_delete -->
+   <delete id="delete" parameterType="int">
+      delete
+      from auction_events
+      where ae_no = #{ae_no}
+   </delete>
+   
+   <!-- auction_start 경매 진행중-->
+   <update id="start" parameterType = 'int'>
+      update auction_events set ae_confirm = 2 where ae_no = #{ae_no}
+   </update>
+   
+   <!-- auction_end 경매 끝-->
+   <update id="end" parameterType = 'bean.AuctionVo'>
+      update auction_events set ae_confirm = 1, ae_cost = #{ae_cost} where ae_no = #{ae_no}
+   </update>   
+   
+   <!-- auction_modify -->
+   <update id = 'modify' parameterType="bean.AuctionVo">
+      update auction_events 
+      set ae_price = #{ae_price}, ae_pct_max = #{ae_pct_max}, ae_pct_min = #{ae_pct_min}
+      where ae_no = #{ae_no}
+   </update>
 </mapper>

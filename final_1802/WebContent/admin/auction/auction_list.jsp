@@ -15,57 +15,58 @@
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header" style = 'text-align: center;'>
-    	<h1><strong style = 'text-align: center; '>현제 진행중인 경매</strong></h1>
-    	<hr/>
-    	<div class="modal-body">
-      		<c:forEach var='auc' items='${auctionList }'>
-       			<c:if test="${auc.ae_confirm eq 2 }">
-					<h2><span>경매번호 - ${auc.ae_no}</span></h2>
-    				<h2><span>물품명 - ${auc.menu_name }</span></h2>
-					<h2><span>시작가 - ${auc.ae_price }</span></h2>
-					<img src = './admin/menu/menuImg/${auc.menu_image }'/>
-				</c:if>
-			</c:forEach>
-			<hr/>
-			 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			
-		</div>
-		</div>
+       <h1><strong style = 'text-align: center; '>현제 진행중인 경매</strong></h1>
+       <hr/>
+       <div class="modal-body">
+            <c:forEach var='auc' items='${auctionList }'>
+                <c:if test="${auc.ae_confirm eq 2 }">
+               <h2><span>경매번호 - ${auc.ae_no}</span></h2>
+                <h2><span>물품명 - ${auc.menu_name }</span></h2>
+               <h2><span>시작가 - ${auc.ae_price }</span></h2>
+               <img src = './admin/menu/menuImg/${auc.menu_image }'/>
+            </c:if>
+         </c:forEach>
+         <hr/>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+         
+      </div>
+      </div>
     </div>
 </div>
 </div>
 <script>
+var ws = new WebSocket('ws://192.168.0.20:7080/final_1802/WebAuc');
+window.onload = function(){
+   
+}
 $().ready(function(){
-	$("#btnInput").click(function(){
-		$(".skin-black").load("./menu_list.adm");
-	})
+   $("#btnInput").click(function(){
+      $(".skin-black").load("./menu_list.adm");
+   })
 })
 
 function view(ae_no){
- 	$("#ae_no").val(ae_no);
-	var param = $("#frm_auc").serialize();
-	$(".skin-black").load("./auction_view.auc",param);
+    $("#ae_no").val(ae_no);
+   var param = $("#frm_auc").serialize();
+   $(".skin-black").load("./auction_view.auc",param);
 }
  
 function ae_start(ae_no, ae_price, ae_max, ae_min){
-	$("#ae_no").val(ae_no)
-	var prom = confirm("경매번호 " + ae_no + " \n시작가 " + ae_price + "\nMAX" + ae_max + "\nMIN" + ae_min + "\n\n 시작 하시겠습니까?");
-	if(prom){ //확인 눌렀을때		
-	   var open = window.open("", "auc", "_blank", "width=570, height=810");
-	   var df = document.frm_auc;
-	   df.action = "auctionClient.auc?ae_no="+ae_no+"&ae_price="+ae_price+"&ae_max="+ae_max+"&ae_min="+ae_min;
-	   df.target = "auc";
-	   df.submit();
-/* 	   $(".skin-black").load("./auction_start.auc", param); */
-	}else{
-		alert("취소");
-	}
+   $("#ae_no").val(ae_no);
+   var prom = confirm("경매번호 " + ae_no + " \n시작가 " + ae_price + "\nMAX" + ae_max + "\nMIN" + ae_min + "\n\n 시작 하시겠습니까?");
+   if(prom){ //확인 눌렀을때      
+      ws.send(ae_no);
+      var param = $('#frm_auc').serialize();
+       $(".skin-black").load("./auction_start.auc", param);
+   }else{
+      alert("취소");
+   }
 }
 
 function auction(ae_no){
-	$("#ae_no").val(ae_no);
-	var param = $("#frm_auc").serialize();
-	$(".skin-black").load("./auction.auc",param);
+   $("#ae_no").val(ae_no);
+   var param = $("#frm_auc").serialize();
+   $(".skin-black").load("./auction.auc",param);
 }
 
 
@@ -73,11 +74,10 @@ function auction(ae_no){
 </script>
 <body>
 <!-- 성공,실패 확인 메세지  -->
-${msg }
 <div class="wrap">
    <form name = 'frm_auc' id = 'frm_auc' method = 'post'>
-   		<input type = 'hidden' id = 'ae_no'   name = 'ae_no'/>
-   		<input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
+         <input type = 'hidden' id = 'ae_no'   name = 'ae_no'/>
+         <input type = 'hidden' id = 'menu_no' name = 'menu_no'/>
    </form>
    <div id='menu_div' class='menu_div' class="tbList paginated">
       <table class="table table-hover">
@@ -112,9 +112,9 @@ ${msg }
          </c:forEach>
       </table>
       <br/>
-      	<input type = 'button'  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#auction_list_modal" style = 'position: absolute;right:0;'value = '현재 진행중인 경매'/>
-		<input type = 'button'  class="btn btn-primary btn-lg" value = '등 록'  id = 'btnInput' name = 'btnInput'/>
-	</div>
+         <input type = 'button'  class="btn btn-primary btn-lg" data-toggle="modal" data-target="#auction_list_modal" style = 'position: absolute;right:0;'value = '현재 진행중인 경매'/>
+      <input type = 'button'  class="btn btn-primary btn-lg" value = '등 록'  id = 'btnInput' name = 'btnInput'/>
+   </div>
 </div>
 </body>
 </html>

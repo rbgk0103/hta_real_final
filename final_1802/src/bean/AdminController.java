@@ -88,82 +88,77 @@ public class AdminController {
 	
 	
 	/*********************************menu**************************************/
-	@RequestMapping(value="menu_list.adm")
-	public ModelAndView menu_list(String menu_type) {
-		ModelAndView mv = new ModelAndView();
-		List<MenuVo> list = this.menu_dao.list(menu_type);
-		
-		mv.addObject("list",list);
-		mv.addObject("mt", menu_type);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	
-	@RequestMapping(value="insert_menu.adm")
-	public ModelAndView menu_insert(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		msg = this.menu_dao.insert(req);
-		
-		mv.addObject("msg", msg);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	
-	@RequestMapping(value="menu_view.adm")
-	public ModelAndView menu_view(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		MenuVo vo = menu_dao.view(Integer.parseInt(req.getParameter("menu_no")));
-		mv.addObject("vo", vo);
-		mv.setViewName("menu/menu_view");
-		return mv;
-	}
-	@RequestMapping(value="menu_modify.adm")
-	public ModelAndView menu_modify(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		msg = menu_dao.modify(req);
-		
-		mv.addObject("msg", msg);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	@RequestMapping(value="menu_delete.adm")
-	public ModelAndView menu_delete(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		System.out.println("delete 진입");
-		String msg = "";
-		msg = menu_dao.delete(req);
-		System.out.println(msg);
-		mv.addObject("msg", msg);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	
-	@RequestMapping(value="menu_today.adm")
-	public ModelAndView menu_today(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		msg = menu_dao.today(req, 1);
-		System.out.println(msg);
-		mv.addObject("msg", msg);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	@RequestMapping(value="menu_today_no.adm")
-	public ModelAndView menu_today_no(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		msg = menu_dao.today(req, 0);
-		System.out.println(msg);
-		mv.addObject("msg", msg);
-		mv.setViewName("menu/menu_index");
-		return mv;
-	}
-	@RequestMapping(value="menu_go_insert.adm")
-	   public ModelAndView menu_go_insert(HttpServletRequest req) {
+	   @RequestMapping(value="menu_list.adm")
+	   public ModelAndView menu_list(String menu_type) {
 	      ModelAndView mv = new ModelAndView();
-	      mv.setViewName("menu/menu_insert");
+	      List<MenuVo> list = this.menu_dao.list(menu_type);
+	      mv.addObject("list",list);
+	      mv.addObject("mt", menu_type);
+	      mv.setViewName("menu/menu_index");
 	      return mv;
 	   }
+	   
+	   @RequestMapping(value="insert_menu.adm")
+	   public ModelAndView menu_insert(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      String msg = "";
+	      msg = this.menu_dao.insert(req);
+	      mv.addObject("msg", msg);
+	      mv.setViewName("menu/menu_gong");
+	      return mv;
+	   }
+	   
+	   @RequestMapping(value="menu_view.adm")
+	   public ModelAndView menu_view(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      MenuVo vo = menu_dao.view(Integer.parseInt(req.getParameter("menu_no")));
+	      mv.addObject("vo", vo);
+	      mv.setViewName("menu/menu_view");
+	      return mv;
+	   }
+	   @RequestMapping(value="menu_modify.adm")
+	   public ModelAndView menu_modify(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      String msg = "";
+	      msg = menu_dao.modify(req);
+	      
+	      mv.addObject("msg", msg);
+	      mv.setViewName("menu/menu_gong");
+	      return mv;
+	   }
+	   @RequestMapping(value="menu_delete.adm")
+	   public ModelAndView menu_delete(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      String msg = "";
+	      msg = menu_dao.delete(req);
+	      System.out.println(msg);
+	      mv.addObject("msg", msg);
+	      mv.setViewName("menu/menu_gong");
+	      return mv;
+	   }
+	   
+	   @RequestMapping(value="menu_today.adm")
+	   public ModelAndView menu_today(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      String msg = "";
+	      msg = menu_dao.today(req, 1);
+	      mv.addObject("msg", msg);
+	      mv.setViewName("menu/menu_gong");
+	      return mv;
+	   }
+	   @RequestMapping(value="menu_today_no.adm")
+	   public ModelAndView menu_today_no(HttpServletRequest req) {
+	      ModelAndView mv = new ModelAndView();
+	      String msg = "";
+	      msg = menu_dao.today(req, 0);
+	      mv.addObject("msg", msg);
+	      mv.setViewName("menu/menu_gong");
+	      return mv;
+	   }
+	   @RequestMapping(value="menu_go_insert.adm")
+	      public ModelAndView menu_go_insert(HttpServletRequest req) {
+	         ModelAndView mv = new ModelAndView();
+	         mv.setViewName("menu/menu_insert");
+	         return mv;
+	      }
 }
