@@ -99,8 +99,9 @@ if(request.getParameter("content") !=null){
          <a href ="index.game">게임</a>
          <a href ="#" onclick ="goChat('${tblIp}')">채팅</a>
          <a href ="#" data-toggle="modal" data-target="#modal_call_employee">직원호출</a>
-         <a href ="#" onclick ="auc()" style="visibility:hidden" >경매</a>	<!-- 경매등록시나타남 -->
+         <a href ="#" onclick = 'go_open(${tblVo.tbl_no})' id = 'show_a' style = 'display:none'>경매</a>  	<!-- 경매등록시나타남 -->
       </div>
+       ${show }
 
       <%-- <%@ include file = "./auction/auctionClient.jsp" %>  --%>
 
@@ -210,6 +211,10 @@ if(request.getParameter("content") !=null){
    
 } */
 
+function go_open(){
+	   $("#btn_a").click();
+	}
+
 function mbrLogin(tblNo){
    $(".modal-body #mbr_tbl_no").val(tblNo);
    $("#modal_call_members_login").modal("show");
@@ -300,5 +305,57 @@ indexWebSocket.onmessage = function(msg) {
 }
 
 </script>
+<script>
+$(function(){
+	   var websocket = new WebSocket("ws://192.168.0.29:7080/final_1802/auction");
+	   
+	   websocket.onopen = function() {
+	      var tableNo = "${tblVo.tbl_no}";
+	      websocket.send(tableNo);
+	      console.log("tableNo aucwebsocketㅎㅎggg : " + tableNo);
+	      console.log("연결 오키");
+	   }
+	   
+	   websocket.onmessage = function(msg) {   
+	       console.log(msg.data);
+	       window.open("./index.jsp?msg="+msg.data);  
+	       console.log("연결 메세지");
+	       
+	       var aeOpen = window.open("./modal_auction.jsp", "auction", "_blank", "width=570, height=700");
+	   }
+	   websocket.onclose = function () {
+	      console.log("연결끝");
+	   }
+	   
+	});
+
+	window.onload = function(){
+	   var ws = new WebSocket('ws://192.168.0.20:7080/final_1802/WebAuc');
+	   
+	   ws.onmessage = function(msg){
+	      $('#ae_no').val(msg.data)
+	      var param = $("#frm_au").serialize();
+	      $("body").load("./auction_view.chat", param);
+	      alert(msg.data + "번째 경매를 진행하시겠습니까?");
+	   }
+	}
+	$().ready(function(){
+	   var ae;
+	   $("#btn_a").click(function(){
+	      ae = window.open("./modal_auction.jsp", "auction", "_blank", "width=400, height=400");
+	   })
+	})
+	</script>
+	<form id = 'frm_au' name = 'frm_au' method = 'post'>
+	   <input type = 'hidden' id = 'ae_no' name = 'ae_no'/>
+	</form>
+	<input type = 'text' id = 'ae_pct_max' name = 'ae_pct_max' value = '${vo.ae_pct_max }'/>
+	<input type = 'text' id = 'tt_no' name = 'tt_no' value = '${tblVo.tbl_no}'/>
+	<input type = 'text' id = 'AA_no' name = 'AA_no' value = '${vo.ae_no }'/>
+	<input type = 'text' id = 'ae_pct_min' name = 'ae_pct_min' value = '${vo.ae_pct_min }'/>
+	<input type = 'text' id = 'menu_image' name = 'menu_image' value = './admin/menu/menuImg/${vo.menu_image }'/>
+	<input type = 'text' id = 'ae_price' name = 'ae_price' value = '${vo.ae_price }'/>
+	<input type = 'text' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/>
+	<input type = 'text' id = 'btn_a' name = 'btn_a' value = '경 매' style = 'display:none;'/>
 </body>
 </html>

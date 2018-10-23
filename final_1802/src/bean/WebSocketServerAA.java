@@ -11,21 +11,16 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-@ServerEndpoint("/Web")
-public class WebSocketServerAuc {
+@ServerEndpoint("/WebAuc")
+public class WebSocketServerAA {
 
    private static Set<Session> clients = Collections.synchronizedSet(new HashSet<Session>());
 
    @OnMessage // 메세지(입찰)가 보내졌을때 호출되는 이벤트
    public void onMessage(String msg, Session session) throws Exception {
-      System.out.println("messag : " + msg);
 
-      String[] Stt = msg.split("/");
-      System.out.println("1 : " + Stt[0]);
-      System.out.println("2 : " + Stt[1]);
-      
+      System.out.println("messag : " + msg);
       for (Session sess : clients) {
-         msg = Stt[0] + " 번 테이블  \r  " + Stt[1] + "원";
          sess.getBasicRemote().sendText(msg);
          System.out.println("Auc_sess" + sess.getBasicRemote().hashCode());
       }
@@ -33,7 +28,7 @@ public class WebSocketServerAuc {
 
    @OnOpen // WebSocket이 실행되면 호출되는 이벤트
    public void onOpen(Session session) {
-      System.out.println("onpen : " + session);
+      System.out.println("on pen : " + session);
       clients.add(session);
    }
 

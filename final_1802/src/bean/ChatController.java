@@ -141,4 +141,34 @@ public class ChatController {
 		modelAndView.setViewName("chat/chatHeader");
 		return modelAndView;
 	}
+	
+	//관리자 view
+    @RequestMapping(value="auction_view.chat")
+    public ModelAndView auctionview(HttpServletRequest req) {
+       ModelAndView mv = new ModelAndView();
+       AuctionDao dao = new AuctionDao();
+       String show = "<script>$().ready(function(){$('#show_a').show();   })</script>";
+       System.out.println("au_vi 입장");
+       AuctionVo vo = dao.view(Integer.parseInt(req.getParameter("ae_no")));
+       System.out.println("menu_name : "+vo.menu_name);
+       System.out.println("menu_price : " + vo.menu_price);
+       System.out.println("menu_image : " + vo.menu_image);
+       
+       mv.addObject("show",show);
+       mv.addObject("vo",vo);
+       mv.setViewName("index");
+       return mv;
+    }
+    @RequestMapping(value="auction_modify.chat")
+    public ModelAndView auction_modify(HttpServletRequest req) {
+       ModelAndView mv = new ModelAndView();
+       AuctionDao dao = new AuctionDao();
+       System.out.println("au_vi 입장");
+       String msg;
+       msg = dao.auc_end(req);
+       
+       mv.addObject("msg",msg);
+       mv.setViewName("auction/auction_pung");
+       return mv;
+    }
 }

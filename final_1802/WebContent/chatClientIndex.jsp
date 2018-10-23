@@ -79,7 +79,7 @@
 			var idReceiveNoValue = document.getElementById('receiverNo').value;
 			console.log("msg : " + msgData);
 			console.log("idReceiveNoValue : " + idReceiveNoValue);
-				if (msgSenderNo === reqAttrMyNo) {
+				if (msgSenderNo === reqAttrMyNo && idReceiveNoValue === msgReceiverNo) {
 					switch (msgGetGender) {
 					case "man" : 
 						$('#chatContent').append
