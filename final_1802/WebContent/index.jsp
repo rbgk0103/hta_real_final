@@ -349,13 +349,13 @@ $(function(){
 	<form id = 'frm_au' name = 'frm_au' method = 'post'>
 	   <input type = 'hidden' id = 'ae_no' name = 'ae_no'/>
 	</form>
-	<input type = 'text' id = 'ae_pct_max' name = 'ae_pct_max' value = '${vo.ae_pct_max }'/>
-	<input type = 'text' id = 'tt_no' name = 'tt_no' value = '${tblVo.tbl_no}'/>
-	<input type = 'text' id = 'AA_no' name = 'AA_no' value = '${vo.ae_no }'/>
-	<input type = 'text' id = 'ae_pct_min' name = 'ae_pct_min' value = '${vo.ae_pct_min }'/>
-	<input type = 'text' id = 'menu_image' name = 'menu_image' value = './admin/menu/menuImg/${vo.menu_image }'/>
-	<input type = 'text' id = 'ae_price' name = 'ae_price' value = '${vo.ae_price }'/>
-	<input type = 'text' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/>
-	<input type = 'text' id = 'btn_a' name = 'btn_a' value = '경 매' style = 'display:none;'/>
+	<input type = 'hidden' id = 'ae_pct_max' name = 'ae_pct_max' value = '${vo.ae_pct_max }'/>
+	<input type = 'hidden' id = 'tt_no' name = 'tt_no' value = '${tblVo.tbl_no}'/>
+	<input type = 'hidden' id = 'AA_no' name = 'AA_no' value = '${vo.ae_no }'/>
+	<input type = 'hidden' id = 'ae_pct_min' name = 'ae_pct_min' value = '${vo.ae_pct_min }'/>
+	<input type = 'hidden' id = 'menu_image' name = 'menu_image' value = './admin/menu/menuImg/${vo.menu_image }'/>
+	<input type = 'hidden' id = 'ae_price' name = 'ae_price' value = '${vo.ae_price }'/>
+	<input type = 'hidden' id = 'menu_name' name = 'menu_name' value = '${vo.menu_name }'/>
+	<input type = 'hidden' id = 'btn_a' name = 'btn_a' value = '경 매' style = 'display:none;'/>
 </body>
 </html>

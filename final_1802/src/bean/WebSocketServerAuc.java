@@ -21,11 +21,9 @@ public class WebSocketServerAuc {
       System.out.println("messag : " + msg);
 
       String[] Stt = msg.split("/");
-      System.out.println("1 : " + Stt[0]);
-      System.out.println("2 : " + Stt[1]);
       
       for (Session sess : clients) {
-         msg = Stt[0] + " 번 테이블  \r  " + Stt[1] + "원";
+         msg = Stt[0] + "/" + Stt[1];
          sess.getBasicRemote().sendText(msg);
          System.out.println("Auc_sess" + sess.getBasicRemote().hashCode());
       }

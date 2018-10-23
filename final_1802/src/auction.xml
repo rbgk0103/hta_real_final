@@ -36,7 +36,7 @@
    
    <!-- auction_end 경매 끝-->
    <update id="end" parameterType = 'bean.AuctionVo'>
-      update auction_events set ae_confirm = 1, ae_cost = #{ae_cost} where ae_no = #{ae_no}
+      update auction_events set ae_confirm = 1, ae_cost = #{ae_cost}, ae_win_table = #{ae_win_table} where ae_no = #{ae_no}
    </update>   
    
    <!-- auction_modify -->

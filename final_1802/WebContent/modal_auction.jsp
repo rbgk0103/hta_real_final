@@ -15,7 +15,11 @@ window.onload = function(){
       
    }
    wes.onmessage = function(msg) {
-      $("#result").html(msg.data);
+	   var ms = msg.data;
+	   var aa = ms.split("/");
+	   $('#win_tbl').val(aa[0]);
+	   $('#pri').val(parseInt(aa[1]));
+       $("#result").html(parseInt(aa[0]) + "번 테이블" + String(aa[1]) + "원!!");
    }
 
    // 배팅
@@ -82,6 +86,7 @@ $().ready(function(){
          <div id='txt'>
             <input type = 'hidden' id = 'no' name = 'no'/>
             <input type = 'hidden' id = 'pri' name = 'pri'/>
+            <input type = 'text' id = 'win_tbl' name = 'win_tbl'/>
             <input type = 'hidden' id = 'tbl_no' name = 'tbl_no'/>
             <input type = 'hidden' id = 'ae_max' name = 'ae_max'><br />
             <input type = 'hidden' id = 'ae_min' name = 'ae_min'><br />

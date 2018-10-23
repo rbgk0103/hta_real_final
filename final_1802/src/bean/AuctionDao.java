@@ -92,10 +92,10 @@ public class AuctionDao {
       int cnt = 0;
       System.out.println("A : ");
       AuctionVo vo = new AuctionVo();
-      System.out.println("cost : " + Integer.parseInt(req.getParameter("pri")));
-      System.out.println("ae_no : " + Integer.parseInt(req.getParameter("no")));
+
       vo.setAe_cost(Integer.parseInt(req.getParameter("pri")));
       vo.setAe_no(Integer.parseInt(req.getParameter("no")));
+      vo.setAe_win_table(Integer.parseInt(req.getParameter("win_tbl")));
       cnt = s.update("auc.end", vo);
       if(cnt > 0) {
          System.out.println("B : ");
