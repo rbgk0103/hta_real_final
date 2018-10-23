@@ -68,11 +68,15 @@ $(document).ready(function(){
 			user1Flag = 1;
 			user1Score = msgArr[1];
 			
-			// 점수비교해서
+			// user1이 이긴 경우
 			if (user1Flag == 1 && user2Flag == 1 && user1Score > user2Score) {
 				$('#tp_img_user1').attr('src', 'img/game_img/pacman_win.png');
+				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
+				
+			// user1이 진 경우
 			}else if (user1Flag == 1 && user2Flag == 1 && user1Score < user2Score) {
 				$('#tp_img_user1').attr('src', 'img/game_img/pacman_lose.png');
+				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_win.png');
 			}
 			
 			
@@ -85,11 +89,15 @@ $(document).ready(function(){
 			user2Score = msgArr[1];
 
 			
-			// 점수비교해서
+			// user2가 이긴경우
 			if (user1Flag == 1 && user2Flag == 1 && user2Score > user1Score) {
 				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_win.png');
+				$('#tp_img_user1').attr('src', 'img/game_img/pacman_lose.png');
+				
+			// user2가 진 경우
 			}else if (user1Flag == 1 && user2Flag == 1 && user2Score < user1Score) {
 				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
+				$('#tp_img_user1').attr('src', 'img/game_img/pacman_win.png');
 			}
 			
 			
