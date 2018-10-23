@@ -69,9 +69,9 @@ $(document).ready(function(){
 			user1Score = msgArr[1];
 			
 			// 점수비교해서
-			if (user1Score > user2Score) {
+			if (user1Flag == 1 && user2Flag == 1 && user1Score > user2Score) {
 				$('#tp_img_user1').attr('src', 'img/game_img/pacman_win.png');
-			}else if (user1Score < user2Score) {
+			}else if (user1Flag == 1 && user2Flag == 1 && user1Score < user2Score) {
 				$('#tp_img_user1').attr('src', 'img/game_img/pacman_lose.png');
 			}
 			
@@ -86,9 +86,9 @@ $(document).ready(function(){
 
 			
 			// 점수비교해서
-			if (user2Score > user1Score) {
+			if (user1Flag == 1 && user2Flag == 1 && user2Score > user1Score) {
 				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_win.png');
-			}else if ((user2Score < user1Score) {
+			}else if (user1Flag == 1 && user2Flag == 1 && user2Score < user1Score) {
 				$('#tp_user2_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
 			}
 			
