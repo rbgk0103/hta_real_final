@@ -65,6 +65,7 @@ $(document).ready(function(){
 			$('#tp_user1_game_img').show();
 			user2Flag = msgArr[1];
 			
+			// 점수비교해서
 			if (user1Flag > user2Flag) {
 				$('#tp_user1_winlose_img').attr('src', 'img/game_img/pacman_win.png');
 			}else if (user1Flag < user2Flag) {
@@ -77,9 +78,10 @@ $(document).ready(function(){
 			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
 			user2Flag = msgArr[1];
 			
-			if (user1Flag > user2Flag) {
+// 			점수비교해서
+			if (user2Flag > user1Flag) {
 				$('#tp_img_user2').attr('src', 'img/game_img/pacman_win.png');
-			}else if (user1Flag < user2Flag) {
+			}else if (user2Flag < user1Flag) {
 				$('#tp_img_user2').attr('src', 'img/game_img/pacman_lose.png');
 			}
 			

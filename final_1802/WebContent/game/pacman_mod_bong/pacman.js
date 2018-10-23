@@ -913,7 +913,6 @@ var PACMAN = (function () {
         	$('#gameFlag').val('end');
         	
         	tvtPlayWebSocket.send('user1,'+ user.theScore());
-        	alert('보낸메시지: ' + 'user1,'+ user.theScore())
         }
         
     }
