@@ -15,11 +15,9 @@
 						<img src="img/game_img/${i.gtImage}" />
 					</div>
 					
-					<div class='gt_explain'>
-						<h4 class='gt_name2'>${i.gtName}</h4>
-					</div>
+
 					<div class='gt_btn_area'>
-						<input type='button' name='btn_gt_pick' id='btn_gt_pick' value='게임 선택'
+						<input type='button' name='btn_gt_pick' id='btn_gt_pick' value='${i.gtName}'
 								onclick="go_tbl_list('${i.gtNo}')" />
 					</div>
 				</div>

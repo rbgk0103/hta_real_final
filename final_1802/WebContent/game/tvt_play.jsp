@@ -38,7 +38,10 @@ var tpInfoArr = '${tvtAcceptMsg}'.split(',');
 var tvtPlayWebSocket;
 
 var user1Flag = 0;
+var user1Score = 0;
+
 var user2Flag = 0;
+var user2Score = 0;
 
 $(document).ready(function(){
 	$('#tp_user1_game_real').show();
@@ -63,12 +66,14 @@ $(document).ready(function(){
 			$('#tp_user1_final_score').text(msgArr[1]);
 			$('#tp_user1_game_real').hide();
 			$('#tp_user1_game_img').show();
-			user2Flag = msgArr[1];
+			
+			user1Flag = 1;
+			user1Score = msgArr[1];
 			
 			// 점수비교해서
-			if (user1Flag > user2Flag) {
+			if (user1Score > user2Score) {
 				$('#tp_user1_winlose_img').attr('src', 'img/game_img/pacman_win.png');
-			}else if (user1Flag < user2Flag) {
+			}else if (user1Score < user2Score) {
 				$('#tp_user1_winlose_img').attr('src', 'img/game_img/pacman_lose.png');
 			}
 			
@@ -76,12 +81,14 @@ $(document).ready(function(){
 		}else if (msgArr[0] == 'user2') {
 			$('#tp_user2_final_score').text(msgArr[1]);
 			$('#tp_img_user2').attr('src', 'img/game_img/pacman_end.png');
-			user2Flag = msgArr[1];
+			
+			user2Flag = 1;
+			user2Score = msgArr[1];
 			
 // 			점수비교해서
-			if (user2Flag > user1Flag) {
+			if (user2Score > user1Score) {
 				$('#tp_img_user2').attr('src', 'img/game_img/pacman_win.png');
-			}else if (user2Flag < user1Flag) {
+			}else if (user2Score < user1Score) {
 				$('#tp_img_user2').attr('src', 'img/game_img/pacman_lose.png');
 			}
 			
